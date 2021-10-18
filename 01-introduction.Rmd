@@ -1,0 +1,115 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+library(knitr)
+## Global options
+options(max.print="90")
+opts_chunk$set(echo=TRUE,
+               fig.align='center',
+               cache=TRUE,
+               prompt=FALSE,
+               tidy=FALSE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE,
+               fig.height=4, 
+               fig.width=4.8)
+opts_knit$set(width=90)
+options(width = 90)
+knit_hooks$set(nm = function(before, options, envir){
+  if (before){
+    par(mar=c(0,0,0,0))
+  } 
+})
+knit_hooks$set(sm = function(before, options, envir){
+  if (before){
+    par(mar=c(0,0,1.2,0))
+  } 
+})
+```
+
+# Introduction{#introductionx}
+
+
+
+
+## Le spatial dans R : Historique et évolutions
+
+
+
+
+Historiquement, 4 packages permettent d'importer, de manipuler et de transformer les données spatiales :
+
+- Le package `rgdal` [@R-rgdal] qui est une interface entre R et les librairies [GDAL](http://www.gdal.org/) [@GDAL] et [PROJ](https://proj.org/) [@PROJ] permet d'importer et d'exporter les données spatiales (les shapefiles par exemple) et aussi de gérer les projections cartographiques  
+- Le package `sp` [@R-sp] fournit des classes et méthodes pour les données spatiales vectorielles dans R. Il permet afficher des fond de cartes, d'inspecter une table attributaire etc.  
+- Le package `rgeos` [@R-rgeos] donne accès à la librairie d'opérations spatiales [GEOS](http://trac.osgeo.org/geos/) et rend donc disponible les opérations SIG classiques : calcul de surface ou de périmètre, calcul de distances, agrégations spatiales, zones tampons, intersections etc.  
+- Le package `raster` [@R-raster] est dédié à l'import, la mabipulation et la modélisation des données raster.   
+
+Aujourd'hui, les principaux développements concernants les données vectorielles se sont détachés des 3 anciens (`sp`, `rgdal`, `rgeos`) pour se reposer principalement sur le package `sf` ([@R-sf], [@Pebesma18]). Dans ce manuel nous nous appuierons exclusivement ce package pour manipuler les données vectorielles. 
+   
+Les packages `stars` [@R-stars] et `terra`[@R-terra] sont venus quand à eux remplacer le package `raster` pour le traitement des données raster. Nous avons choisi d'utiliser ici le package `terra` pour sa proximité avec le package `raster`.
+
+
+```{block2, type='linky'}
+En savoir plus sur l'écosysteme spatial de R :     
+[Progress in the R ecosystem for representing and handling spatial data](https://doi.org/10.1007/s10109-020-00336-0) [@bivand2020progress]
+```
+
+```{block2, type='linky'}
+CRAN Task View :   
+[Analysis of Spatial Data](https://CRAN.R-project.org/view=Spatial)
+```
+
+```{block2, type='linky'}
+Liste de discussion :   
+[R Special Interest Group on using Geographical data and Mapping](https://stat.ethz.ch/pipermail/r-sig-geo/)
+```
+
+```{block2, type='linky'}
+Manuel en anglais :   
+[Geocomputation with R](https://geocompr.robinlovelace.net/) [@lovelace2019geocomputation]
+```
+
+
+
+
+## Le package `sf`
+
+<img src="img/sf.gif" align="right" width="150"/> 
+Le package `sf` a été publié fin 2016 par Edzer Pebesma (également auteur de `sp`). Son objectif est de combiner les fonctionnalités de `sp`, `rgeos` et `rgdal` dans un package unique plus ergonomique. 
+Ce package propose des objets plus simples (suivant le standard [*simple feature*](https://en.wikipedia.org/wiki/Simple_Features)) dont la manipulation est plus aisée. Une attention particulière a été portée à la compatibilité du package avec la syntaxe *pipe* et les opérateurs du `tidyverse`.
+
+
+`sf` utilise directement les librairies GDAL, GEOS et PROJ.
+
+```{r imgsfdep, echo = FALSE}
+knitr::include_graphics("img/sf_deps.png")
+```
+<small>[From r-spatial.org](https://r-spatial.org/r/2020/03/17/wkt.html)</small>
+
+
+```{block2, type='linky'}
+Site web du package `sf` :  
+[Simple Features for R](https://r-spatial.github.io/sf/)
+```
+
+
+
+
+
+## Le package `terra`
+<img src="img/logo_terra.png" align="right" width="150"/> 
+Le package `terra` a été publié début 2020 par Robert J. Hijmans (également auteur de `raster`). Son objectif est de proposer des méthodes de traitement et d'analyse de données rasrer. Ce package est très similaire au package `raster`; mais il propose plus de fonctionnalités, il est plus facile à utiliser et il est plus rapide. 
+
+
+
+```{block2, type='linky'}
+Site web du package `terra` :  
+[Spatial Data Science with R and "terra"](https://rspatial.org/terra/)
+```
+
+

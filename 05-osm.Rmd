@@ -1,0 +1,268 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_init5, echo=FALSE, cache=FALSE}
+library(knitr)
+## Global options
+options(max.print="90")
+opts_chunk$set(echo=TRUE,
+               fig.align='center',
+               cache=TRUE,
+               prompt=FALSE,
+               tidy=FALSE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE,
+               fig.height=4, 
+               fig.width=4.8)
+
+opts_knit$set(width=90)
+options(width = 90)
+knit_hooks$set(nm = function(before, options, envir){
+  if (before){
+    par(mar=c(0,0,0,0))
+  } 
+})
+knit_hooks$set(sm = function(before, options, envir){
+  if (before){
+    par(mar=c(0,0,1.2,0))
+  } 
+})
+```
+
+
+# Focus sur OpenStreetMap{#osm}
+
+<div style="float: right"><img src="img/Openstreetmap_logo.svg" width="150px" padding="1em"/>
+</div>
+
+
+[OpenStreetMap (OSM)](https://www.openstreetmap.org){target="_blank"} (OSM) est un projet de cartographie participative qui a pour but de constituer une base de données géographiques libre à l'échelle mondiale. OpenStreetMap vous permet de voir, modifier et utiliser des données géographiques dans le monde entier. 
+
+**Conditions d'utilisation**  
+
+> OpenStreetMap est en données ouvertes : vous êtes libre de l’utiliser pour n’importe quel but tant que vous créditez OpenStreetMap et ses contributeurs. Si vous modifiez ou vous appuyez sur les données d’une façon quelconque, vous pouvez distribuer le résultat seulement suivant la même licence. (…)
+
+
+**Contributeurs**   
+
+> (…) Nos contributeurs incluent des cartographes enthousiastes, des professionnels du SIG, des ingénieurs qui font fonctionner les serveurs d’OSM, des humanitaires cartographiant les zones dévastées par une catastrophe et beaucoup d’autres. (…)
+
+<br/>
+```{block2, type='linky'}   
+[A propos d'OpenStreetMap](https://www.openstreetmap.org/about)
+```
+
+## Afficher une carte interactive
+
+
+Les deux principaux packages qui permettent d'afficher une carte interactive basées sur OSM sont `leaflet` [@R-leaflet] et `mapview` [@R-mapview]. 
+
+### `leaflet` 
+<img src="img/logo_leaflet.png" align="right" width="200"/> 
+`leaflet` utilise la libraire javascript Leaflet [@JS-Leaflet] pour créer des cartes interactives. 
+
+
+```{r leaflet, eval=TRUE, cache = FALSE}
+library(sf)
+library(leaflet)
+com <- st_read("data/lot46.gpkg", layer = "commune", quiet = TRUE)
+restaurant <- st_read("data/lot46.gpkg", layer = "restaurant", quiet = TRUE)
+# Sélection de la commune de Cahors
+cahors <- com[com$INSEE_COM == "46042", ]
+# Sélection des restaurants de Cahors
+restaurant_cahors <- restaurant[restaurant$DEPCOM == "46042", ]
+
+# transformation du système de coordonnées en WGS84
+cahors <- st_transform(cahors, 4326)
+restaurant_cahors <- st_transform(restaurant_cahors, 4326)
+
+# Création de la carte interactive
+m <- leaflet(cahors) %>%
+  addTiles() %>%
+  addPolygons() %>%
+  addMarkers(data = restaurant_cahors)
+m
+```
+
+<br/>
+
+
+```{block2, type='linky'}   
+Site web de `leaflet`  
+[Leaflet for R](https://rstudio.github.io/leaflet/)
+```
+
+
+### `mapview`
+<img src="img/logo_mapview.gif" align="right" width="150"/> 
+`mapview` s'appuie sur `leaflet` pour créer des carte interactive, sont utilisation est plus simple et sa documentation est un peu dense. 
+
+
+```{r mapview, cache=FALSE}
+library(mapview)
+mapview(cahors) + mapview(restaurant_cahors)
+```
+<br/>
+
+```{block2, type='linky'}   
+Site web de `mapview`  
+[`mapview`](https://r-spatial.github.io/mapview/)
+```
+
+
+
+
+## Importer les fonds de carte 
+
+Le package `maptiles` [@R-maptiles] permet de télécharger et d'afficher des fonds de cartes raster.  
+La fonction `get_tiles()` permet de télécharger des fonds de cartes OSM et la fonction `plot_tiles()` permet de les afficher.   
+Les rendus sont meilleurs si les données en entrée utilisent le même système de coordonnées que les tuiles ([EPSG:3857](https://github.com/riatelab/maptiles#projection)). 
+
+
+```{r display_point, fig.width=6, fig.height=6, eval=TRUE}
+library(sf)
+library(maptiles)
+com <- st_read("data/lot46.gpkg", layer = "commune", quiet = TRUE)
+com <- st_transform(com, 3857)
+osm_tiles <- get_tiles(x = com, zoom = 10, crop = TRUE)
+plot_tiles(osm_tiles)
+plot(st_geometry(com), border = "grey20", lwd = .7, add = TRUE)
+mtext(side = 1, line = -1, text = get_credit("OpenStreetMap"), col="tomato")
+```
+
+
+
+## Importer des données OSM
+
+### `osmdata`
+<img src="img/logo_osmdata.png" align="right"  height=140 width=122/> 
+Le package `osmdata` [@R-osmdata] permet d'extraire des données vectorielles depuis OSM en utilisant l'API [Overpass turbo](https://wiki.openstreetmap.org/wiki/Overpass_turbo). 
+
+```{block2, type='linky'}
+[Site web du package `osmdata`](https://docs.ropensci.org/osmdata/)
+```
+
+
+```{r osmdata, eval=TRUE}
+library(sf)
+library(osmdata)
+library(sf)
+com <- st_read("data/lot46.gpkg", layer = "commune", quiet = TRUE)
+# Sélection de la commune de Cahors
+cahors <- com[com$INSEE_COM == "46042", ]
+# Définition d'une bounding box
+q <- opq(bbox = st_bbox(st_transform(cahors, 4326)))
+# Extraction des restaurants
+req <- add_osm_feature(opq = q, key = 'amenity', value = "restaurant")
+res <- osmdata_sf(req)
+res
+```
+
+Le résultat contient une couche de points et une couche de polygones.     
+La couche de polygones contient des polygones qui représentent des restaurants.    
+La couche de points contient des points qui représentent des restaurants (la valeur dans la colonne **amenity** est égale à "restaurant") ET les points qui composent les polygones de la couche des polygones ((la valeur dans la colonne **amenity** est égale à NA).  
+Pour obtenir une couche de points cohérente nous devons un peu travailler sur ces 2 couches. 
+
+```{r osmdata2}
+resto_point <- res$osm_points
+# retirer les points qui composent les polygones
+resto_point <- resto_point[!is.na(resto_point$amenity), ]
+# extraire les centroides des polygones
+resto_poly <- res$osm_polygons
+resto_poly_point <- st_centroid(resto_poly)
+# identifier les champs en commune
+chps <- intersect(names(resto_point), names(resto_poly_point))
+# rassembler les 2 objets
+resto <- rbind(resto_point[, chps], resto_poly_point[, chps])
+```
+
+**Affichage des résultats**
+
+```{r osmdatadisplay, cache=FALSE}
+library(mapview)
+mapview(cahors) + mapview(resto)
+```
+
+
+```{block2, type='linky'}   
+Site web d'`osmdata`  
+[`osmdata`](https://docs.ropensci.org/osmdata/)
+```
+
+
+
+### `osmextract`
+
+<img src="img/logo_osmextract.svg" align="right" width="120"/> 
+Le package `osmextract` [@R-osmextract] permet d'extraire des données depuis une base de données OSM directement. Ce package permet de travailler sur des volumes de données très importants. 
+
+```{block2, type='linky'}   
+Site web d'`osmextract`  
+[`osmextract`](https://docs.ropensci.org/osmextract/)
+```
+
+
+## Calculer des itinéraires
+
+<img src="img/logo_osrm.svg" align="right" width="120"/> 
+Le package `osrm` [@R-osrm] sert d'interface entre R et le service de calcul d'itinéraire [OSRM](http://project-osrm.org/) [@luxen-vetter-2011]. 
+Ce package permet de calculer des matrices de temps et de distances, des itinéraires routiers, des isochrones.   
+Le package utilise par défaut le serveur de démo d'OSRM. En cas d'utilisation intensive [il est fortement recommandé d'utiliser sa propre instance d'OSRM (avec Docker)](https://github.com/Project-OSRM/osrm-backend#using-docker). 
+
+
+### Calcul d'un itinéraire
+La fonction `osrmRoute()` permet de calculer des itinéraires. 
+```{r osrmroute, fig.width = 3, fig.height = 5}
+library(sf)
+library(osrm)
+library(maptiles)
+com <- st_read("data/lot46.gpkg", layer = "commune", quiet = TRUE)
+com <- st_transform(com, 3857)
+# Itinéraire entre Cahors et Puybrun
+cahors  <- com[com$INSEE_COM == "46042", ]
+puybrun <- com[com$INSEE_COM == "46229", ]
+route <- osrmRoute(src = cahors, 
+                   dst = puybrun, 
+                   returnclass = "sf")
+osm <- get_tiles(route, crop = TRUE)
+plot_tiles(osm)
+plot(st_geometry(route), col = "grey10", lwd = 6, add = T)
+plot(st_geometry(route), col = "grey90", lwd = 1, add = T)
+```
+
+
+### Calcul d'une matrice de temps
+La fonction `osrmTable()` permet de calculer des matrices de distances ou de temps par la route. 
+
+
+Dans cet exemple nous calculons une matrice de temps entre 2 adresses et les restaurants de Cahors à pied. 
+```{r osrmtable, fig.width = 8}
+library(sf)
+library(tidygeocoder)
+restaurant <- st_read("data/lot46.gpkg", layer = "restaurant", quiet = TRUE)
+# Sélection des restaurants de Cahors
+restaurant_cahors <- restaurant[restaurant$DEPCOM == "46042", ]
+# geocodage de 2 adresses à Cahors
+adresses <- data.frame(ad = c("3 rue Montaudié, Cahors, France", 
+                              "5 rue Albert Camus, Cahors, France")
+                       )
+places <- tidygeocoder::geocode(.tbl = adresses,address = ad)
+places
+
+# Calcul de la matrice de distance entre les 2 adresses et les restaurants de Cahors
+mat <- osrmTable(src = places[, c(1,3,2)], 
+                 dst = restaurant_cahors, 
+                 osrm.profile = "foot")
+mat$durations[1:2,1:5]
+
+# Quelle adresse possède une meilleurs accessibilité aux restaurants de Cahors?
+boxplot(t(mat$durations[,]), cex.axis = .7)
+```
+
+
+
+ 

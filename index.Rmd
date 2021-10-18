@@ -1,0 +1,48 @@
+--- 
+title: "Géomatique avec R"
+author: Timothée Giraud[^1] & Hugues Pecout[^2]
+date: "`r format(Sys.time(), '%d %B %Y')`"
+bibliography:
+- book.bib
+- packages.bib
+description: Géomatique avec R
+documentclass: book
+link-citations: yes
+site: bookdown::bookdown_site
+biblio-style: apalike
+link-citation: true
+github-repo: rCarto/geomatique_avec_r
+always_allow_html: yes
+cover-umage: img/layer-group-solid.svg
+favicon: img/layer-group-solid.svg
+---
+
+
+
+# Préambule
+
+
+<div style="float: right"><img src="img/layer-group-solid.svg" width="150px" padding="1em"/></div>
+Ce manuel est destiné tant aux utilisateurs de R souhaitant mettre en place traitements de l'information géographique qu'aux utilisateurs souhaitant utiliser R pour réaliser les taches qu'ils réalisent habituellement avec un SIG.   
+Les principales étapes du traitement de l'information géographiques y sont abordées. 
+L'accent est porté sur le traitement des données vectorielles mais une partie est tout de même dédiée aux données raster. 
+
+**Comment utiliser le manuel**  
+Le lecteur peut télécharger un projet RStudio contenant l'ensemble des données utitlisées dans le manuel ici. 
+Il pourra ensuite tester les manipulations proposées dans le manuel directement dans le projet RStudio téléchargé.  
+
+**Contribution et feedback**  
+Vous pouvez nous envoyer vos remarques et suggestions en [postant une *issue*](https://github.com/rCarto/geomatique_avec_r/issues) sur le [*repo* GitHub](https://github.com/rCarto/geomatique_avec_r) de ce document. 
+
+
+
+
+</br>
+![Creative Commons License](img/by-nc-sa.png)  
+La version en ligne de ce document est sous licence [Creative Commons Attribution-NonCommercial-ShareAlike 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/). 
+
+
+[^1]: UMS RIATE, CNRS, Université de Paris, F-75013 Paris, France
+[^2]: FR CIST, CNRS, F-75013 Paris, France
+
+

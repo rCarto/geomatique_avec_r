@@ -1,0 +1,6 @@
+# `sessionInfo()`
+
+```{r test, echo=FALSE}
+sessionInfo()
+```
+

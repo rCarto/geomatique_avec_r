@@ -1,0 +1,304 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_init3, echo=FALSE, cache=FALSE}
+library(knitr)
+## Global options
+options(max.print="90")
+opts_chunk$set(echo=TRUE,
+               fig.align='center',
+               cache=TRUE,
+               prompt=FALSE,
+               tidy=FALSE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE,
+               fig.height=4, 
+               fig.width=4.8)
+
+opts_knit$set(width=90)
+options(width = 90)
+knit_hooks$set(nm = function(before, options, envir){
+  if (before){
+    par(mar=c(0,0,0,0))
+  } 
+})
+knit_hooks$set(sm = function(before, options, envir){
+  if (before){
+    par(mar=c(0,0,1.2,0))
+  } 
+})
+```
+
+# Les données vectorielles 
+
+
+## Format des objets spatiaux `sf`
+
+```{r imgsf, echo = FALSE}
+knitr::include_graphics("img/sf.png")
+```
+
+Les objets `sf` sont des `data.frame` dont l'une des colonnes contient des géométries. Cette colonne est de la classe sfc (simple feature column) et chaque individu de la colonne est un sfg (simple feature geometry).   
+Ce format est très pratique dans la mesure ou les données et les géométries sont intrinsèquement liées dans un même objet. 
+
+```{block2, type='linky'}
+Vignette décrivant le format simple feature :   
+[Simple Features for R](https://r-spatial.github.io/sf/articles/sf1.html)
+```
+
+
+
+## Import et export de données
+
+Les fonctions `st_read()` et `st_write()` permettent d'importer et d'exporter de nombreux types de fichiers.  
+Les lignes suivantes importent la couche des communes du département du Lot situé dans le fichier [geopackage](https://www.geopackage.org/) **lot46.gpkg**.
+
+```{r import}
+library(sf)
+com <- st_read("data/lot46.gpkg", layer = "commune")
+```
+
+Les lignes suivantes exportent l'objet **com** dans un dossier **data** aux formats geopackage et shapefile.   
+```{r export}
+st_write(obj = com, dsn = "data/com.gpkg", layer = "commune", delete_layer = TRUE)
+st_write(obj = com, "data/com.shp", layer_options = "ENCODING=UTF-8", delete_layer = TRUE)
+```
+
+
+## Affichage
+
+
+**Aperçu des variables** via les fonctions `head()` et `plot()`.
+
+```{r aff1, nm = TRUE}
+head(com)
+plot(com)
+```
+
+**Affichage de la géométrie** uniquement.
+
+```{r aff2, nm=TRUE}
+plot(st_geometry(com))
+```
+
+## Les systèmes de projections
+
+### Consulter la projection d'un objet
+La fonction `st_crs()` permet de consulter le système de projection utilisé par un objet sf et de la modifier (**sans reprojeter les données**).
+
+```{r proj1, proj1}
+st_crs(com)
+```
+
+### Modifier la projection d'un objet 
+
+La fonction `st_transform()` permet de reprojeter un objet sf. 
+
+```{r, proj2, sm=TRUE}
+plot(st_geometry(com))
+title("RGF93 / Lambert-93")
+com_reproj <- st_transform(com, "epsg:3035")
+plot(st_geometry(com_reproj))
+title("ETRS89-extended / LAEA Europe")
+```
+Le site [Spatial Reference](http://spatialreference.org/){target="_blank"} met à disposition les références de très nombreux systèmes de projection. 
+
+## Sélection par attributs
+Les objets `sf` **sont** des `data.frame`, on peut donc sélectionner leur lignes et leur colonnes de la même manière que les `data.frame`. 
+
+```{r selectAttr}
+# selection de ligne
+com[1:2, ]
+
+com[com$NOM_COM == "Gramat", ]
+
+# selection de colonnes
+com[com$NOM_COM == "Gramat", 1:4]
+```
+
+
+## Sélection spatiale
+
+
+### Intersections
+Sélection des routes intesectant la commune de Gramat
+
+```{r intersects, nm=TRUE}
+route <- st_read("data/lot46.gpkg", layer = "route", quiet = TRUE)
+gramat <-  com[com$NOM_COM == "Gramat", ]
+route$intersect_gramat <- st_intersects(x = route, y = gramat, sparse = FALSE)
+plot(st_geometry(gramat), col = "lightblue")
+plot(st_geometry(route), add = TRUE)
+plot(st_geometry(route[route$intersect_gramat, ]), col = "tomato", lwd = 2, add = TRUE)
+```
+
+
+### Contains / Within
+Selection des routes contenues dans la commune de Gramat
+
+```{r within, nm = TRUE}
+route$within_gramat <- st_within(route, gramat, sparse = FALSE)
+plot(st_geometry(gramat), col = "lightblue")
+plot(st_geometry(route), add = TRUE)
+plot(st_geometry(route[route$within_gramat, ]), col = "tomato", lwd = 2, add = TRUE)
+
+```
+
+
+
+
+
+
+## Opérations sur les géométries
+
+
+### Extraire des centroides
+
+```{r centroid, nm = TRUE}
+com_c <- st_centroid(com)
+plot(st_geometry(com))
+plot(st_geometry(com_c), add = TRUE, cex = 1.2, col = "red", pch = 20)
+```
+
+
+### Agréger des polygones
+
+```{r aggreg, nm = TRUE}
+dep_46 <- st_union(com)
+plot(st_geometry(com), col = "lightblue")
+plot(st_geometry(dep_46), add = TRUE, lwd = 2, border = "red")
+```
+
+### Agréger des polygones en fonction d'une variable
+
+```{r aggreg2, nm=TRUE}
+com_u <- aggregate(x = com[,c("POPULATION", "SUPERFICIE")],
+                   by = list(STATUS = com$INSEE_ARR),
+                   FUN = "sum")
+plot(com_u)
+```
+
+
+
+### Construire une zone tampon
+
+```{r buffers, nm=TRUE}
+gramat_b <- st_buffer(x = gramat, dist = 5000)
+plot(st_geometry(gramat_b), col = "lightblue")
+plot(st_geometry(gramat), add = TRUE, lwd = 2)
+plot(st_geometry(gramat_b), add=T, lwd=2, border = "red")
+```
+
+### Réaliser une intersection 
+
+```{r intersect2, nm=TRUE}
+zone <- st_geometry(gramat) |>
+  st_centroid() |>
+  st_buffer(10000)
+plot(st_geometry(com))
+plot(zone, border = "red", lwd = 2, add = TRUE)
+com_z <- st_intersection(x = com, y = zone)
+plot(st_geometry(com))
+plot(st_geometry(com_z), col="red", border="green", add=T)
+plot(st_geometry(com_z))
+```
+
+### Créer une grille régulière
+```{r grid, nm=TRUE}
+grid <- st_make_grid(x = com, cellsize = 2500)
+grid <- st_sf(ID = 1:length(grid), geom = grid)
+plot(st_geometry(grid), col = "grey", border = "white")
+plot(st_geometry(com), border = "grey50", add = TRUE)
+```
+
+
+### Compter des points dans un polygone
+
+```{r intersect3, nm=TRUE}
+grid <- grid[st_intersects(grid, dep_46, sparse = FALSE), ]
+restaurant <- st_read("data/lot46.gpkg", layer = "restaurant", quiet = TRUE)
+plot(st_geometry(grid), col = "grey", border = "white")
+plot(st_geometry(restaurant), pch = 20, col = "red", add = TRUE, cex = .2)
+inter <- st_intersects(grid, restaurant)
+grid$nb_restaurant <- sapply(X = inter, FUN = length)
+plot(grid["nb_restaurant"])
+```
+
+
+
+## Mesures
+
+### Créer une matrice de distances
+
+Si le système de projection du jeu de données est renseigné les distances sont exprimées dans l'unité de mesure de la projection (en mètres le plus souvent).
+```{r distance, nm=TRUE}
+mat <- st_distance(x = com_c, y = com_c)
+mat[1:5,1:5]
+```
+
+
+
+
+### Mesurer les longueurs et les surfaces
+
+Mesurer la [densité du réseau routier](https://fr.wikipedia.org/wiki/Densit%C3%A9_du_r%C3%A9seau_routier_par_pays)
+
+1. Intersecter les routes par les communes  
+Nous découpons les routes par les communes. Chaque segment de route récupère l'identifiant de la commune dans laquelle il se trouve. 
+```{r drr1}
+route_com <- st_intersection(route, com[,"INSEE_COM"])
+head(route_com, 1)
+```
+
+2. Calculer la longueur des segments de route  
+Nous rajoutons une colonne **longueur** qui contient la longueur de chacun des segments. 
+```{r drr2}
+route_com$longueur <- st_length(route_com)
+```
+
+3. Calculer la longueur totale par commune  
+Nous aggrégeons les segments de routes par commune pour obtenir des longueurs totales par commune. 
+```{r drr3}
+longueur_total <- aggregate(list(longueur = route_com$longueur), 
+                            by = list(INSEE_COM = route_com$INSEE_COM), 
+                            FUN = sum)
+
+```
+
+4. Joindre les longueurs à la table des communes
+```{r drr4}
+com_dens <- merge(com[,c('INSEE_COM', "POPULATION")], longueur_total, by = "INSEE_COM", all.x = TRUE)
+```
+
+
+5. Calculer les superficies des communes
+```{r drr5}
+com_dens$superficie <- st_area(com_dens)
+```
+
+
+6. Convertir les unités des différentes mesures
+
+```{r drr6}
+units(com_dens$superficie) <- "km^2"
+units(com_dens$longueur) <- "km"
+```
+
+
+7. Calculer les indicateurs  
+Le premier est le rapport entre la longueur des routes et la population des communes. 
+
+```{r drr7}
+com_dens$dens_pop <- com_dens$longueur / com_dens$POPULATION
+plot(com_dens["dens_pop"], main = "km / hab")
+```
+
+Le deuxième est le rapport entre la longueur des routes et la superficie des communes. 
+```{r drr8}
+com_dens$dens_sup <- com_dens$longueur / com_dens$superficie
+plot(com_dens["dens_sup"], main = "km / km²")
+```

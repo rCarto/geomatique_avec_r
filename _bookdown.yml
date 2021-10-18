@@ -1,0 +1,7 @@
+book_filename: "Géomatique avec R"
+repo: https://github.com/rCarto/geomatique_avec_r
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapitre "
+output_dir: "docs"

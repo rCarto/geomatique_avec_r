@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 4 Georéférencement | Géomatique avec R</title>
+  <meta name="description" content="Chapitre 4 Georéférencement | Géomatique avec R" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 4 Georéférencement | Géomatique avec R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapitre 4 Georéférencement | Géomatique avec R" />
+  <meta name="github-repo" content="rCarto/geomatique_avec_r" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 4 Georéférencement | Géomatique avec R" />
+  
+  <meta name="twitter:description" content="Chapitre 4 Georéférencement | Géomatique avec R" />
+  
+
+<meta name="author" content="Timothée Giraud &amp; Hugues Pecout" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="img/layer-group-solid.svg" type="image/x-icon" />
+<link rel="prev" href="les-données-vectorielles.html"/>
+<link rel="next" href="les-données-raster-le-package-terra.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Géomatique avec R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préambule</a></li>
+<li class="chapter" data-level="2" data-path="introductionx.html"><a href="introductionx.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introductionx.html"><a href="introductionx.html#le-spatial-dans-r-historique-et-évolutions"><i class="fa fa-check"></i><b>2.1</b> Le spatial dans R : Historique et évolutions</a></li>
+<li class="chapter" data-level="2.2" data-path="introductionx.html"><a href="introductionx.html#le-package-sf"><i class="fa fa-check"></i><b>2.2</b> Le package <code>sf</code></a></li>
+<li class="chapter" data-level="2.3" data-path="introductionx.html"><a href="introductionx.html#le-package-terra"><i class="fa fa-check"></i><b>2.3</b> Le package <code>terra</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html"><i class="fa fa-check"></i><b>3</b> Les données vectorielles</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#format-des-objets-spatiaux-sf"><i class="fa fa-check"></i><b>3.1</b> Format des objets spatiaux <code>sf</code></a></li>
+<li class="chapter" data-level="3.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#import-et-export-de-données"><i class="fa fa-check"></i><b>3.2</b> Import et export de données</a></li>
+<li class="chapter" data-level="3.3" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#affichage"><i class="fa fa-check"></i><b>3.3</b> Affichage</a></li>
+<li class="chapter" data-level="3.4" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#les-systèmes-de-projections"><i class="fa fa-check"></i><b>3.4</b> Les systèmes de projections</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#consulter-la-projection-dun-objet"><i class="fa fa-check"></i><b>3.4.1</b> Consulter la projection d’un objet</a></li>
+<li class="chapter" data-level="3.4.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#modifier-la-projection-dun-objet"><i class="fa fa-check"></i><b>3.4.2</b> Modifier la projection d’un objet</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#sélection-par-attributs"><i class="fa fa-check"></i><b>3.5</b> Sélection par attributs</a></li>
+<li class="chapter" data-level="3.6" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#sélection-spatiale"><i class="fa fa-check"></i><b>3.6</b> Sélection spatiale</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#intersections"><i class="fa fa-check"></i><b>3.6.1</b> Intersections</a></li>
+<li class="chapter" data-level="3.6.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#contains-within"><i class="fa fa-check"></i><b>3.6.2</b> Contains / Within</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#opérations-sur-les-géométries"><i class="fa fa-check"></i><b>3.7</b> Opérations sur les géométries</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#extraire-des-centroides"><i class="fa fa-check"></i><b>3.7.1</b> Extraire des centroides</a></li>
+<li class="chapter" data-level="3.7.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#agréger-des-polygones"><i class="fa fa-check"></i><b>3.7.2</b> Agréger des polygones</a></li>
+<li class="chapter" data-level="3.7.3" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#agréger-des-polygones-en-fonction-dune-variable"><i class="fa fa-check"></i><b>3.7.3</b> Agréger des polygones en fonction d’une variable</a></li>
+<li class="chapter" data-level="3.7.4" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#construire-une-zone-tampon"><i class="fa fa-check"></i><b>3.7.4</b> Construire une zone tampon</a></li>
+<li class="chapter" data-level="3.7.5" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#réaliser-une-intersection"><i class="fa fa-check"></i><b>3.7.5</b> Réaliser une intersection</a></li>
+<li class="chapter" data-level="3.7.6" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-grille-régulière"><i class="fa fa-check"></i><b>3.7.6</b> Créer une grille régulière</a></li>
+<li class="chapter" data-level="3.7.7" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#compter-des-points-dans-un-polygone"><i class="fa fa-check"></i><b>3.7.7</b> Compter des points dans un polygone</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesures"><i class="fa fa-check"></i><b>3.8</b> Mesures</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-matrice-de-distances"><i class="fa fa-check"></i><b>3.8.1</b> Créer une matrice de distances</a></li>
+<li class="chapter" data-level="3.8.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesurer-les-longueurs-et-les-surfaces"><i class="fa fa-check"></i><b>3.8.2</b> Mesurer les longueurs et les surfaces</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="georéférencement.html"><a href="georéférencement.html"><i class="fa fa-check"></i><b>4</b> Georéférencement</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="georéférencement.html"><a href="georéférencement.html#géocoder-des-adresses"><i class="fa fa-check"></i><b>4.1</b> Géocoder des adresses</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="georéférencement.html"><a href="georéférencement.html#tidygeocoder"><i class="fa fa-check"></i><b>4.1.1</b> <code>tidygeocoder</code></a></li>
+<li class="chapter" data-level="4.1.2" data-path="georéférencement.html"><a href="georéférencement.html#banr"><i class="fa fa-check"></i><b>4.1.2</b> <code>banR</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="georéférencement.html"><a href="georéférencement.html#transformer-les-données-longlat-en-objet-sf"><i class="fa fa-check"></i><b>4.2</b> Transformer les données long/lat en objet <code>sf</code></a></li>
+<li class="chapter" data-level="4.3" data-path="georéférencement.html"><a href="georéférencement.html#digitalisation"><i class="fa fa-check"></i><b>4.3</b> Digitalisation</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html"><i class="fa fa-check"></i><b>5</b> Les données raster: le package terra</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#import-export"><i class="fa fa-check"></i><b>5.1</b> Import / export</a></li>
+<li class="chapter" data-level="5.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#affichage-1"><i class="fa fa-check"></i><b>5.2</b> Affichage</a></li>
+<li class="chapter" data-level="5.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#modifications-de-la-zone-détude"><i class="fa fa-check"></i><b>5.3</b> Modifications de la zone d’étude</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#projections"><i class="fa fa-check"></i><b>5.3.1</b> Projections</a></li>
+<li class="chapter" data-level="5.3.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#crop-mask"><i class="fa fa-check"></i><b>5.3.2</b> crop/ mask</a></li>
+<li class="chapter" data-level="5.3.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#aggreg"><i class="fa fa-check"></i><b>5.3.3</b> aggreg</a></li>
+<li class="chapter" data-level="5.3.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#mosaic-merge"><i class="fa fa-check"></i><b>5.3.4</b> mosaic / merge</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#operations-locales"><i class="fa fa-check"></i><b>5.4</b> Operations locales</a></li>
+<li class="chapter" data-level="5.5" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#operations-focales"><i class="fa fa-check"></i><b>5.5</b> Operations focales</a></li>
+<li class="chapter" data-level="5.6" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#operations-globales"><i class="fa fa-check"></i><b>5.6</b> Operations globales</a></li>
+<li class="chapter" data-level="5.7" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#croisement-rastervecteur"><i class="fa fa-check"></i><b>5.7</b> Croisement raster/vecteur</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="osm.html"><a href="osm.html"><i class="fa fa-check"></i><b>6</b> Focus sur OpenStreetMap</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="osm.html"><a href="osm.html#afficher-une-carte-interactive"><i class="fa fa-check"></i><b>6.1</b> Afficher une carte interactive</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="osm.html"><a href="osm.html#leaflet"><i class="fa fa-check"></i><b>6.1.1</b> <code>leaflet</code></a></li>
+<li class="chapter" data-level="6.1.2" data-path="osm.html"><a href="osm.html#mapview"><i class="fa fa-check"></i><b>6.1.2</b> <code>mapview</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="osm.html"><a href="osm.html#importer-les-fonds-de-carte"><i class="fa fa-check"></i><b>6.2</b> Importer les fonds de carte</a></li>
+<li class="chapter" data-level="6.3" data-path="osm.html"><a href="osm.html#importer-des-données-osm"><i class="fa fa-check"></i><b>6.3</b> Importer des données OSM</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="osm.html"><a href="osm.html#osmdata"><i class="fa fa-check"></i><b>6.3.1</b> <code>osmdata</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="osm.html"><a href="osm.html#osmextract"><i class="fa fa-check"></i><b>6.3.2</b> <code>osmextract</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="osm.html"><a href="osm.html#calculer-des-itinéraires"><i class="fa fa-check"></i><b>6.4</b> Calculer des itinéraires</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="osm.html"><a href="osm.html#calcul-dun-itinéraire"><i class="fa fa-check"></i><b>6.4.1</b> Calcul d’un itinéraire</a></li>
+<li class="chapter" data-level="6.4.2" data-path="osm.html"><a href="osm.html#calcul-dune-matrice-de-temps"><i class="fa fa-check"></i><b>6.4.2</b> Calcul d’une matrice de temps</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html"><i class="fa fa-check"></i><b>7</b> Acquisition de données spatiales</a></li>
+<li class="chapter" data-level="8" data-path="sessioninfo.html"><a href="sessioninfo.html"><i class="fa fa-check"></i><b>8</b> <code>sessionInfo()</code></a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rCarto/geomatique_avec_r" target="blank">Contribuer</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Géomatique avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="georéférencement" class="section level1" number="4">
+<h1><span class="header-section-number">Chapitre 4</span> Georéférencement</h1>
+<div id="géocoder-des-adresses" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Géocoder des adresses</h2>
+<p>Plusieurs packages permettent de géocoder des adresses. <img src="img/logo_tidygeocoder.png" align="right" width="120"/>
+Le package <code>tidygeocoder</code> <span class="citation">(<a href="#ref-R-tidygeocoder" role="doc-biblioref">Cambon et al. 2021</a>)</span> permet d’utiliser un <a href="https://jessecambon.github.io/tidygeocoder/articles/geocoder_services.html">grand nombre de services de géocodage en ligne</a>.
+Le package <code>banR</code> <span class="citation">(<a href="#ref-R-banR" role="doc-biblioref">Gombin and Chevalier 2021</a>)</span>, qui s’appuie sur la <a href="https://adresse.data.gouv.fr/">Base Adresse Nationale</a>, est particulièrement approprié pour géocoder des adresses en France.</p>
+<div id="tidygeocoder" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> <code>tidygeocoder</code></h3>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="georéférencement.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygeocoder)</span>
+<span id="cb44-2"><a href="georéférencement.html#cb44-2" aria-hidden="true" tabindex="-1"></a>mes_adresses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb44-3"><a href="georéférencement.html#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">address =</span> <span class="fu">c</span>(<span class="st">&quot;10 Emma Goldmanweg, 5032MN Tilburg, Netherlands&quot;</span>, </span>
+<span id="cb44-4"><a href="georéférencement.html#cb44-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;Calle Mujeres Libres, 11510 Cadiz, Spain&quot;</span>)</span>
+<span id="cb44-5"><a href="georéférencement.html#cb44-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-6"><a href="georéférencement.html#cb44-6" aria-hidden="true" tabindex="-1"></a>places1 <span class="ot">&lt;-</span> <span class="fu">geocode</span>(mes_adresses, address)</span>
+<span id="cb44-7"><a href="georéférencement.html#cb44-7" aria-hidden="true" tabindex="-1"></a>places1</span></code></pre></div>
+<pre><code># A tibble: 2 × 3
+  address                                           lat  long
+  &lt;chr&gt;                                           &lt;dbl&gt; &lt;dbl&gt;
+1 10 Emma Goldmanweg, 5032MN Tilburg, Netherlands  51.5  5.04
+2 Calle Mujeres Libres, 11510 Cadiz, Spain         36.5 -6.17</code></pre>
+
+<div class="linky">
+Site web de <code>tidygeocoder</code> :<br />
+<a href="https://jessecambon.github.io/tidygeocoder/">tidygeocoder</a>
+</div>
+</div>
+<div id="banr" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> <code>banR</code></h3>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="georéférencement.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github(&quot;joelgombin/banR&quot;)</span></span>
+<span id="cb46-2"><a href="georéférencement.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(banR)</span>
+<span id="cb46-3"><a href="georéférencement.html#cb46-3" aria-hidden="true" tabindex="-1"></a>mes_adresses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb46-4"><a href="georéférencement.html#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">address =</span> <span class="fu">c</span>(<span class="st">&quot;19 rue Michel Bakounine, 29600 Morlaix, France&quot;</span>,</span>
+<span id="cb46-5"><a href="georéférencement.html#cb46-5" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;2 Allee Emile Pouget, 920128 Boulogne-Billancourt&quot;</span>)</span>
+<span id="cb46-6"><a href="georéférencement.html#cb46-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-7"><a href="georéférencement.html#cb46-7" aria-hidden="true" tabindex="-1"></a>places2 <span class="ot">&lt;-</span> <span class="fu">geocode_tbl</span>(<span class="at">tbl =</span> mes_adresses, <span class="at">adresse =</span> address)</span>
+<span id="cb46-8"><a href="georéférencement.html#cb46-8" aria-hidden="true" tabindex="-1"></a>places2</span></code></pre></div>
+<pre><code># A tibble: 2 × 17
+  address        latitude longitude result_label       result_score result_type result_id 
+  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;     
+1 19 rue Michel…     48.6     -3.82 19 Rue Michel Bak…         0.81 housenumber 29151_212…
+2 2 Allee Emile…     48.8      2.24 2 Allee Emile Pou…         0.83 housenumber 92012_315…
+# … with 10 more variables: result_housenumber &lt;chr&gt;, result_name &lt;chr&gt;,
+#   result_street &lt;chr&gt;, result_postcode &lt;chr&gt;, result_city &lt;chr&gt;, result_context &lt;chr&gt;,
+#   result_citycode &lt;chr&gt;, result_oldcitycode &lt;chr&gt;, result_oldcity &lt;chr&gt;,
+#   result_district &lt;chr&gt;</code></pre>
+
+<div class="linky">
+Site web de <code>banR</code> :<br />
+<a href="http://joelgombin.github.io/banR/">An R client for the BAN API</a>
+</div>
+</div>
+</div>
+<div id="transformer-les-données-longlat-en-objet-sf" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Transformer les données long/lat en objet <code>sf</code></h2>
+<p>La fonction <code>st_as_sf()</code> permet de transformer un <code>data.frame</code> contenant des coodonnées géographiques en objet <code>sf</code>.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="georéférencement.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb48-2"><a href="georéférencement.html#cb48-2" aria-hidden="true" tabindex="-1"></a>place_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(places2, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb48-3"><a href="georéférencement.html#cb48-3" aria-hidden="true" tabindex="-1"></a>place_sf</span></code></pre></div>
+<pre><code>Simple feature collection with 2 features and 15 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -3.816429 ymin: 48.59042 xmax: 2.239944 ymax: 48.83024
+Geodetic CRS:  WGS 84
+# A tibble: 2 × 16
+  address   result_label   result_score result_type result_id result_housenum… result_name
+* &lt;chr&gt;     &lt;chr&gt;                 &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;      
+1 19 rue M… 19 Rue Michel…         0.81 housenumber 29151_21… 19               Rue Michel…
+2 2 Allee … 2 Allee Emile…         0.83 housenumber 92012_31… 2                Allee Emil…
+# … with 9 more variables: result_street &lt;chr&gt;, result_postcode &lt;chr&gt;, result_city &lt;chr&gt;,
+#   result_context &lt;chr&gt;, result_citycode &lt;chr&gt;, result_oldcitycode &lt;chr&gt;,
+#   result_oldcity &lt;chr&gt;, result_district &lt;chr&gt;, geometry &lt;POINT [°]&gt;</code></pre>
+<p>Nous pouvons afficher cet objet <code>sf</code> sur un fond de carte <a href="https://www.openstreetmap.org/">OpenStreetMap</a> avec le package <code>maptiles</code> <span class="citation">(<a href="#ref-R-maptiles" role="doc-biblioref">Giraud 2021a</a>)</span>.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="georéférencement.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptiles)</span>
+<span id="cb50-2"><a href="georéférencement.html#cb50-2" aria-hidden="true" tabindex="-1"></a>osm <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="at">x =</span> place_sf, <span class="at">zoom =</span> <span class="dv">7</span>)</span>
+<span id="cb50-3"><a href="georéférencement.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_tiles</span>(osm)</span>
+<span id="cb50-4"><a href="georéférencement.html#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(place_sf), <span class="at">pch =</span> <span class="dv">4</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/display_sf-1.png" width="768" style="display: block; margin: auto;" /></p>
+
+<div class="linky">
+<a href="osm.html#osm">Focus sur OpenStreetMap</a>
+</div>
+</div>
+<div id="digitalisation" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Digitalisation</h2>
+<p>Le package <code>mapedit</code> <span class="citation">(<a href="#ref-R-mapedit" role="doc-biblioref">Appelhans, Russell, and Busetto 2020</a>)</span> permet de digitaliser des fonds de carte directement dans R.
+Bien que pouvant se révéler pratique dans certains cas, ce package ne saurait se substituer aux fonctionnalités d’un SIG pour les tâches de digitalisation importantes.</p>
+<div class="figure">
+<img src="img/mapedit-leafpm-1.gif" alt="" />
+<p class="caption"><small>Gif taken from <a href="https://r-spatial.org/r/2019/03/31/mapedit_leafpm.html"><code>mapedit</code> website</a></small></p>
+</div>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-mapedit" class="csl-entry">
+Appelhans, Tim, Kenton Russell, and Lorenzo Busetto. 2020. <em>Mapedit: Interactive Editing of Spatial Data in r</em>. <a href="https://CRAN.R-project.org/package=mapedit">https://CRAN.R-project.org/package=mapedit</a>.
+</div>
+<div id="ref-R-tidygeocoder" class="csl-entry">
+Cambon, Jesse, Diego Hernangómez, Christopher Belanger, and Daniel Possenriede. 2021. <span>“Tidygeocoder: Geocoding Made Easy.”</span> Zenodo. <a href="https://doi.org/10.5281/zenodo.4686074">https://doi.org/10.5281/zenodo.4686074</a>.
+</div>
+<div id="ref-R-maptiles" class="csl-entry">
+Giraud, Timothée. 2021a. <em>Maptiles: Download and Display Map Tiles</em>. <a href="https://CRAN.R-project.org/package=maptiles">https://CRAN.R-project.org/package=maptiles</a>.
+</div>
+<div id="ref-R-banR" class="csl-entry">
+Gombin, Joel, and Paul-Antoine Chevalier. 2021. <em>banR: R Client for the BAN API</em>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="les-données-vectorielles.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="les-données-raster-le-package-terra.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": {},
+"google": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

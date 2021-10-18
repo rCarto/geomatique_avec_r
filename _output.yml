@@ -1,0 +1,18 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">Géomatique avec R</a></li>
+      after: |
+        <li><a href="https://github.com/rCarto/geomatique_avec_r" target="blank">Contribuer</a></li>
+    sharing:
+      facebook: no
+      twitter: yes
+      google: no
+      linkedin: no
+      weibo: no
+      instapaper: no
+      vk: no
+      github: yes
+      all: []

@@ -1,0 +1,15 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+
+# Acquisition de données spatiales
+
+* packages ou api
+* gadmr
+* giscoR / eurostat
+* naturalearth
+* Package par territoire
+

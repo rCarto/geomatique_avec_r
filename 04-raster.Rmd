@@ -1,0 +1,30 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Les données raster: le package terra
+
+## Import / export
+
+## Affichage
+
+## Modifications de la zone d'étude 
+
+### Projections
+
+### crop/ mask
+
+### aggreg 
+
+### mosaic / merge
+
+## Operations locales
+
+## Operations focales
+
+## Operations globales
+
+## Croisement raster/vecteur
+passage vect <=> rast 

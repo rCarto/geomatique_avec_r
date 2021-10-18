@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 8 sessionInfo() | Géomatique avec R</title>
+  <meta name="description" content="Chapitre 8 sessionInfo() | Géomatique avec R" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 8 sessionInfo() | Géomatique avec R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapitre 8 sessionInfo() | Géomatique avec R" />
+  <meta name="github-repo" content="rCarto/geomatique_avec_r" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 8 sessionInfo() | Géomatique avec R" />
+  
+  <meta name="twitter:description" content="Chapitre 8 sessionInfo() | Géomatique avec R" />
+  
+
+<meta name="author" content="Timothée Giraud &amp; Hugues Pecout" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="img/layer-group-solid.svg" type="image/x-icon" />
+<link rel="prev" href="acquisition-de-données-spatiales.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Géomatique avec R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préambule</a></li>
+<li class="chapter" data-level="2" data-path="introductionx.html"><a href="introductionx.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introductionx.html"><a href="introductionx.html#le-spatial-dans-r-historique-et-évolutions"><i class="fa fa-check"></i><b>2.1</b> Le spatial dans R : Historique et évolutions</a></li>
+<li class="chapter" data-level="2.2" data-path="introductionx.html"><a href="introductionx.html#le-package-sf"><i class="fa fa-check"></i><b>2.2</b> Le package <code>sf</code></a></li>
+<li class="chapter" data-level="2.3" data-path="introductionx.html"><a href="introductionx.html#le-package-terra"><i class="fa fa-check"></i><b>2.3</b> Le package <code>terra</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html"><i class="fa fa-check"></i><b>3</b> Les données vectorielles</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#format-des-objets-spatiaux-sf"><i class="fa fa-check"></i><b>3.1</b> Format des objets spatiaux <code>sf</code></a></li>
+<li class="chapter" data-level="3.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#import-et-export-de-données"><i class="fa fa-check"></i><b>3.2</b> Import et export de données</a></li>
+<li class="chapter" data-level="3.3" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#affichage"><i class="fa fa-check"></i><b>3.3</b> Affichage</a></li>
+<li class="chapter" data-level="3.4" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#les-systèmes-de-projections"><i class="fa fa-check"></i><b>3.4</b> Les systèmes de projections</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#consulter-la-projection-dun-objet"><i class="fa fa-check"></i><b>3.4.1</b> Consulter la projection d’un objet</a></li>
+<li class="chapter" data-level="3.4.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#modifier-la-projection-dun-objet"><i class="fa fa-check"></i><b>3.4.2</b> Modifier la projection d’un objet</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#sélection-par-attributs"><i class="fa fa-check"></i><b>3.5</b> Sélection par attributs</a></li>
+<li class="chapter" data-level="3.6" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#sélection-spatiale"><i class="fa fa-check"></i><b>3.6</b> Sélection spatiale</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#intersections"><i class="fa fa-check"></i><b>3.6.1</b> Intersections</a></li>
+<li class="chapter" data-level="3.6.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#contains-within"><i class="fa fa-check"></i><b>3.6.2</b> Contains / Within</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#opérations-sur-les-géométries"><i class="fa fa-check"></i><b>3.7</b> Opérations sur les géométries</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#extraire-des-centroides"><i class="fa fa-check"></i><b>3.7.1</b> Extraire des centroides</a></li>
+<li class="chapter" data-level="3.7.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#agréger-des-polygones"><i class="fa fa-check"></i><b>3.7.2</b> Agréger des polygones</a></li>
+<li class="chapter" data-level="3.7.3" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#agréger-des-polygones-en-fonction-dune-variable"><i class="fa fa-check"></i><b>3.7.3</b> Agréger des polygones en fonction d’une variable</a></li>
+<li class="chapter" data-level="3.7.4" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#construire-une-zone-tampon"><i class="fa fa-check"></i><b>3.7.4</b> Construire une zone tampon</a></li>
+<li class="chapter" data-level="3.7.5" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#réaliser-une-intersection"><i class="fa fa-check"></i><b>3.7.5</b> Réaliser une intersection</a></li>
+<li class="chapter" data-level="3.7.6" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-grille-régulière"><i class="fa fa-check"></i><b>3.7.6</b> Créer une grille régulière</a></li>
+<li class="chapter" data-level="3.7.7" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#compter-des-points-dans-un-polygone"><i class="fa fa-check"></i><b>3.7.7</b> Compter des points dans un polygone</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesures"><i class="fa fa-check"></i><b>3.8</b> Mesures</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-matrice-de-distances"><i class="fa fa-check"></i><b>3.8.1</b> Créer une matrice de distances</a></li>
+<li class="chapter" data-level="3.8.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesurer-les-longueurs-et-les-surfaces"><i class="fa fa-check"></i><b>3.8.2</b> Mesurer les longueurs et les surfaces</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="georéférencement.html"><a href="georéférencement.html"><i class="fa fa-check"></i><b>4</b> Georéférencement</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="georéférencement.html"><a href="georéférencement.html#géocoder-des-adresses"><i class="fa fa-check"></i><b>4.1</b> Géocoder des adresses</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="georéférencement.html"><a href="georéférencement.html#tidygeocoder"><i class="fa fa-check"></i><b>4.1.1</b> <code>tidygeocoder</code></a></li>
+<li class="chapter" data-level="4.1.2" data-path="georéférencement.html"><a href="georéférencement.html#banr"><i class="fa fa-check"></i><b>4.1.2</b> <code>banR</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="georéférencement.html"><a href="georéférencement.html#transformer-les-données-longlat-en-objet-sf"><i class="fa fa-check"></i><b>4.2</b> Transformer les données long/lat en objet <code>sf</code></a></li>
+<li class="chapter" data-level="4.3" data-path="georéférencement.html"><a href="georéférencement.html#digitalisation"><i class="fa fa-check"></i><b>4.3</b> Digitalisation</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html"><i class="fa fa-check"></i><b>5</b> Les données raster: le package terra</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#import-export"><i class="fa fa-check"></i><b>5.1</b> Import / export</a></li>
+<li class="chapter" data-level="5.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#affichage-1"><i class="fa fa-check"></i><b>5.2</b> Affichage</a></li>
+<li class="chapter" data-level="5.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#modifications-de-la-zone-détude"><i class="fa fa-check"></i><b>5.3</b> Modifications de la zone d’étude</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#projections"><i class="fa fa-check"></i><b>5.3.1</b> Projections</a></li>
+<li class="chapter" data-level="5.3.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#crop-mask"><i class="fa fa-check"></i><b>5.3.2</b> crop/ mask</a></li>
+<li class="chapter" data-level="5.3.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#aggreg"><i class="fa fa-check"></i><b>5.3.3</b> aggreg</a></li>
+<li class="chapter" data-level="5.3.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#mosaic-merge"><i class="fa fa-check"></i><b>5.3.4</b> mosaic / merge</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#operations-locales"><i class="fa fa-check"></i><b>5.4</b> Operations locales</a></li>
+<li class="chapter" data-level="5.5" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#operations-focales"><i class="fa fa-check"></i><b>5.5</b> Operations focales</a></li>
+<li class="chapter" data-level="5.6" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#operations-globales"><i class="fa fa-check"></i><b>5.6</b> Operations globales</a></li>
+<li class="chapter" data-level="5.7" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#croisement-rastervecteur"><i class="fa fa-check"></i><b>5.7</b> Croisement raster/vecteur</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="osm.html"><a href="osm.html"><i class="fa fa-check"></i><b>6</b> Focus sur OpenStreetMap</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="osm.html"><a href="osm.html#afficher-une-carte-interactive"><i class="fa fa-check"></i><b>6.1</b> Afficher une carte interactive</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="osm.html"><a href="osm.html#leaflet"><i class="fa fa-check"></i><b>6.1.1</b> <code>leaflet</code></a></li>
+<li class="chapter" data-level="6.1.2" data-path="osm.html"><a href="osm.html#mapview"><i class="fa fa-check"></i><b>6.1.2</b> <code>mapview</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="osm.html"><a href="osm.html#importer-les-fonds-de-carte"><i class="fa fa-check"></i><b>6.2</b> Importer les fonds de carte</a></li>
+<li class="chapter" data-level="6.3" data-path="osm.html"><a href="osm.html#importer-des-données-osm"><i class="fa fa-check"></i><b>6.3</b> Importer des données OSM</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="osm.html"><a href="osm.html#osmdata"><i class="fa fa-check"></i><b>6.3.1</b> <code>osmdata</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="osm.html"><a href="osm.html#osmextract"><i class="fa fa-check"></i><b>6.3.2</b> <code>osmextract</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="osm.html"><a href="osm.html#calculer-des-itinéraires"><i class="fa fa-check"></i><b>6.4</b> Calculer des itinéraires</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="osm.html"><a href="osm.html#calcul-dun-itinéraire"><i class="fa fa-check"></i><b>6.4.1</b> Calcul d’un itinéraire</a></li>
+<li class="chapter" data-level="6.4.2" data-path="osm.html"><a href="osm.html#calcul-dune-matrice-de-temps"><i class="fa fa-check"></i><b>6.4.2</b> Calcul d’une matrice de temps</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html"><i class="fa fa-check"></i><b>7</b> Acquisition de données spatiales</a></li>
+<li class="chapter" data-level="8" data-path="sessioninfo.html"><a href="sessioninfo.html"><i class="fa fa-check"></i><b>8</b> <code>sessionInfo()</code></a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rCarto/geomatique_avec_r" target="blank">Contribuer</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Géomatique avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sessioninfo" class="section level1" number="8">
+<h1><span class="header-section-number">Chapitre 8</span> <code>sessionInfo()</code></h1>
+<pre><code>R version 4.1.1 (2021-08-10)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Debian GNU/Linux 11 (bullseye)
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
+
+locale:
+ [1] LC_CTYPE=fr_FR.UTF-8       LC_NUMERIC=C               LC_TIME=fr_FR.UTF-8       
+ [4] LC_COLLATE=fr_FR.UTF-8     LC_MONETARY=fr_FR.UTF-8    LC_MESSAGES=fr_FR.UTF-8   
+ [7] LC_PAPER=fr_FR.UTF-8       LC_NAME=C                  LC_ADDRESS=C              
+[10] LC_TELEPHONE=C             LC_MEASUREMENT=fr_FR.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] osrm_3.5.0         osmdata_0.1.8      maptiles_0.3.0     banR_0.2.2        
+[5] tidygeocoder_1.0.4 mapview_2.10.0     leaflet_2.0.4.1    sf_1.0-3          
+[9] knitr_1.36        
+
+loaded via a namespace (and not attached):
+ [1] httr_1.4.2              sass_0.4.0              jsonlite_1.7.2         
+ [4] bslib_0.3.1             assertthat_0.2.1        highr_0.9              
+ [7] sp_1.4-5                stats4_4.1.1            yaml_2.2.1             
+[10] pillar_1.6.3            lattice_0.20-44         glue_1.4.2             
+[13] uuid_0.1-4              digest_0.6.28           RColorBrewer_1.1-2     
+[16] rvest_1.0.2             colorspace_2.0-2        leaflet.providers_1.9.0
+[19] htmltools_0.5.2         pkgconfig_2.0.3         raster_3.5-2           
+[22] bookdown_0.24           purrr_0.3.4             scales_1.1.1           
+[25] webshot_0.5.2           brew_1.0-6              svglite_2.0.0          
+[28] terra_1.4-11            satellite_1.0.4         tibble_3.1.5           
+[31] proxy_0.4-26            generics_0.1.0          ellipsis_0.3.2         
+[34] cli_3.0.1               magrittr_2.0.1          crayon_1.4.1           
+[37] evaluate_0.14           fansi_0.5.0             xml2_1.3.2             
+[40] class_7.3-19            tools_4.1.1             lifecycle_1.0.1        
+[43] stringr_1.4.0           munsell_0.5.0           compiler_4.1.1         
+[46] jquerylib_0.1.4         e1071_1.7-9             systemfonts_1.0.3      
+[49] rlang_0.4.11            classInt_0.4-3          units_0.7-2            
+[52] grid_4.1.1              leafpop_0.1.0           rstudioapi_0.13        
+[55] htmlwidgets_1.5.4       crosstalk_1.1.1         leafem_0.1.6           
+[58] base64enc_0.1-3         rmarkdown_2.11          codetools_0.2-18       
+[61] DBI_1.1.1               curl_4.3.2              R6_2.5.1               
+[64] lubridate_1.8.0         dplyr_1.0.7             fastmap_1.1.0          
+[67] utf8_1.2.2              KernSmooth_2.23-20      stringi_1.7.5          
+[70] Rcpp_1.0.7              vctrs_0.3.8             png_0.1-7              
+[73] tidyselect_1.1.1        xfun_0.26              </code></pre>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="acquisition-de-données-spatiales.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": {},
+"google": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
