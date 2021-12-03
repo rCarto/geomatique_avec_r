@@ -188,9 +188,8 @@ plot(com_u)
 
 ```{r buffers, nm=TRUE}
 gramat_b <- st_buffer(x = gramat, dist = 5000)
-plot(st_geometry(gramat_b), col = "lightblue")
+plot(st_geometry(gramat_b), col = "lightblue", lwd=2, border = "red")
 plot(st_geometry(gramat), add = TRUE, lwd = 2)
-plot(st_geometry(gramat_b), add=T, lwd=2, border = "red")
 ```
 
 ### Réaliser une intersection 
