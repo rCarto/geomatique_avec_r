@@ -210,8 +210,8 @@ div.csl-indent {
 <li class="chapter" data-level="3.8" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesures"><i class="fa fa-check"></i><b>3.8</b> Mesures</a>
 <ul>
 <li class="chapter" data-level="3.8.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-matrice-de-distances"><i class="fa fa-check"></i><b>3.8.1</b> Créer une matrice de distances</a></li>
-<li class="chapter" data-level="3.8.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesurer-les-longueurs-et-les-surfaces"><i class="fa fa-check"></i><b>3.8.2</b> Mesurer les longueurs et les surfaces</a></li>
 </ul></li>
+<li class="chapter" data-level="3.9" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#exercices"><i class="fa fa-check"></i><b>3.9</b> Exercices</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="georéférencement.html"><a href="georéférencement.html"><i class="fa fa-check"></i><b>4</b> Georéférencement</a>
 <ul>
@@ -578,66 +578,62 @@ Projected CRS: RGF93_Lambert_93
 [4,] 22653.98 16688.438  9029.510     0.000  2935.613
 [5,] 23874.80 19036.897 11058.602  2935.613     0.000</code></pre>
 </div>
-<div id="mesurer-les-longueurs-et-les-surfaces" class="section level3" number="3.8.2">
-<h3><span class="header-section-number">3.8.2</span> Mesurer les longueurs et les surfaces</h3>
-<p>Mesurer la <a href="https://fr.wikipedia.org/wiki/Densit%C3%A9_du_r%C3%A9seau_routier_par_pays">densité du réseau routier</a></p>
+</div>
+<div id="exercices" class="section level2" number="3.9">
+<h2><span class="header-section-number">3.9</span> Exercices</h2>
+<div id="calculer-le-nombre-de-restaurants-par-communes" class="section level4" number="3.9.0.1">
+<h4><span class="header-section-number">3.9.0.1</span> Calculer le nombre de restaurants par communes</h4>
+<ul>
+<li><p>Quelles communes ont plus de 10 restaurants et moins de 1000 habitants ?</p></li>
+<li><p>Créez une carte où les positions de ces communes sont indiquées.</p></li>
+</ul>
+</div>
+<div id="mesurer-la-densité-du-réseau-routier-par-commune" class="section level4" number="3.9.0.2">
+<h4><span class="header-section-number">3.9.0.2</span> Mesurer la <a href="https://fr.wikipedia.org/wiki/Densit%C3%A9_du_r%C3%A9seau_routier_par_pays">densité du réseau routier</a> par commune</h4>
 <ol style="list-style-type: decimal">
 <li>Intersecter les routes par les communes<br />
-Nous découpons les routes par les communes. Chaque segment de route récupère l’identifiant de la commune dans laquelle il se trouve.</li>
+Découper les routes par les communes. Chaque segment de route récupère l’identifiant de la commune dans laquelle il se trouve.</li>
 </ol>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="les-données-vectorielles.html#cb38-1" aria-hidden="true" tabindex="-1"></a>route_com <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(route, com[,<span class="st">&quot;INSEE_COM&quot;</span>])</span>
-<span id="cb38-2"><a href="les-données-vectorielles.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(route_com, <span class="dv">1</span>)</span></code></pre></div>
-<pre><code>Simple feature collection with 1 feature and 20 fields
-Geometry type: LINESTRING
-Dimension:     XY
-Bounding box:  xmin: 620262.6 ymin: 6427445 xmax: 620325.5 ymax: 6427855
-Projected CRS: RGF93_Lambert_93
-                         ID       VOCATION NB_CHAUSSE NB_VOIES   ETAT ACCES POS_SOL
-30 BDCTRORO0000000021253313 Liaison locale 1 chaussée   1 voie Revêtu Libre  Au sol
-   RES_VERT        SENS NB_VOIES_M NB_VOIES_D TOPONYME                     USAGE
-30      Non Double sens Sans objet Sans objet     &lt;NA&gt; Logique et cartographique
-         DATE NUM_ROUTE      CLASS_ADM GEST_ROUTE intersect_gramat within_gramat
-30 2021-05-07       D40 Départementale         46            FALSE         FALSE
-   INSEE_COM                           geom
-30     46311 LINESTRING (620262.6 642785...</code></pre>
+<blockquote>
+<p>st_intersection()</p>
+</blockquote>
 <ol start="2" style="list-style-type: decimal">
 <li>Calculer la longueur des segments de route<br />
-Nous rajoutons une colonne <strong>longueur</strong> qui contient la longueur de chacun des segments.</li>
+Rajouter une colonne <strong>longueur</strong> qui contient la longueur de chacun des segments.</li>
 </ol>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="les-données-vectorielles.html#cb40-1" aria-hidden="true" tabindex="-1"></a>route_com<span class="sc">$</span>longueur <span class="ot">&lt;-</span> <span class="fu">st_length</span>(route_com)</span></code></pre></div>
+<blockquote>
+<p>st_length()</p>
+</blockquote>
 <ol start="3" style="list-style-type: decimal">
 <li>Calculer la longueur totale par commune<br />
-Nous aggrégeons les segments de routes par commune pour obtenir des longueurs totales par commune.</li>
+Aggreger les segments de routes par commune pour obtenir des longueurs totales par commune.</li>
 </ol>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="les-données-vectorielles.html#cb41-1" aria-hidden="true" tabindex="-1"></a>longueur_total <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="at">x =</span> <span class="fu">list</span>(<span class="at">longueur =</span> route_com<span class="sc">$</span>longueur), </span>
-<span id="cb41-2"><a href="les-données-vectorielles.html#cb41-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">by =</span> <span class="fu">list</span>(<span class="at">INSEE_COM =</span> route_com<span class="sc">$</span>INSEE_COM), </span>
-<span id="cb41-3"><a href="les-données-vectorielles.html#cb41-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">FUN =</span> sum)</span></code></pre></div>
+<blockquote>
+<p>aggregate()</p>
+</blockquote>
 <ol start="4" style="list-style-type: decimal">
 <li>Joindre les longueurs à la table des communes</li>
 </ol>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="les-données-vectorielles.html#cb42-1" aria-hidden="true" tabindex="-1"></a>com_dens <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> com[,<span class="fu">c</span>(<span class="st">&#39;INSEE_COM&#39;</span>, <span class="st">&quot;POPULATION&quot;</span>)], </span>
-<span id="cb42-2"><a href="les-données-vectorielles.html#cb42-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> longueur_total, </span>
-<span id="cb42-3"><a href="les-données-vectorielles.html#cb42-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">by =</span> <span class="st">&quot;INSEE_COM&quot;</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<blockquote>
+<p>merge()</p>
+</blockquote>
 <ol start="5" style="list-style-type: decimal">
 <li>Calculer les superficies des communes</li>
 </ol>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="les-données-vectorielles.html#cb43-1" aria-hidden="true" tabindex="-1"></a>com_dens<span class="sc">$</span>superficie <span class="ot">&lt;-</span> <span class="fu">st_area</span>(com_dens)</span></code></pre></div>
+<blockquote>
+<p>st_area()</p>
+</blockquote>
 <ol start="6" style="list-style-type: decimal">
 <li>Convertir les unités des différentes mesures</li>
 </ol>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="les-données-vectorielles.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">units</span>(com_dens<span class="sc">$</span>superficie) <span class="ot">&lt;-</span> <span class="st">&quot;km^2&quot;</span></span>
-<span id="cb44-2"><a href="les-données-vectorielles.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">units</span>(com_dens<span class="sc">$</span>longueur) <span class="ot">&lt;-</span> <span class="st">&quot;km&quot;</span></span></code></pre></div>
+<blockquote>
+<p><code>units &lt;-</code></p>
+</blockquote>
 <ol start="7" style="list-style-type: decimal">
 <li>Calculer les indicateurs<br />
-Le premier est le rapport entre la longueur des routes et la population des communes.</li>
+Le premier est le rapport entre la longueur des routes et la population des communes.
+Le deuxième est le rapport entre la longueur des routes et la superficie des communes.</li>
 </ol>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="les-données-vectorielles.html#cb45-1" aria-hidden="true" tabindex="-1"></a>com_dens<span class="sc">$</span>dens_pop <span class="ot">&lt;-</span> com_dens<span class="sc">$</span>longueur <span class="sc">/</span> com_dens<span class="sc">$</span>POPULATION</span>
-<span id="cb45-2"><a href="les-données-vectorielles.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(com_dens[<span class="st">&quot;dens_pop&quot;</span>], <span class="at">main =</span> <span class="st">&quot;km / hab&quot;</span>)</span></code></pre></div>
-<p><img src="G%C3%A9omatique-avec-R_files/figure-html/drr7-1.png" width="460.8" style="display: block; margin: auto;" /></p>
-<p>Le deuxième est le rapport entre la longueur des routes et la superficie des communes.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="les-données-vectorielles.html#cb46-1" aria-hidden="true" tabindex="-1"></a>com_dens<span class="sc">$</span>dens_sup <span class="ot">&lt;-</span> com_dens<span class="sc">$</span>longueur <span class="sc">/</span> com_dens<span class="sc">$</span>superficie</span>
-<span id="cb46-2"><a href="les-données-vectorielles.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(com_dens[<span class="st">&quot;dens_sup&quot;</span>], <span class="at">main =</span> <span class="st">&quot;km / km²&quot;</span>)</span></code></pre></div>
-<p><img src="G%C3%A9omatique-avec-R_files/figure-html/drr8-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

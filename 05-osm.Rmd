@@ -174,7 +174,7 @@ resto_point <- resto_point[!is.na(resto_point$amenity), ]
 # extraire les centroides des polygones
 resto_poly <- res$osm_polygons
 resto_poly_point <- st_centroid(resto_poly)
-# identifier les champs en commune
+# identifier les champs en commun
 chps <- intersect(names(resto_point), names(resto_poly_point))
 # rassembler les 2 objets
 resto <- rbind(resto_point[, chps], resto_poly_point[, chps])

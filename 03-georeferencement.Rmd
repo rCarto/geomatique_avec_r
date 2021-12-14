@@ -79,7 +79,7 @@ place_sf
 Nous pouvons afficher cet objet `sf` sur un fond de carte [OpenStreetMap](https://www.openstreetmap.org/) avec le package `maptiles` [@R-maptiles]. 
 
 
-```{r display_sf, eval = TRUE, echo = TRUE, nm = TRUE, fig.width=8, fig.height = 3}
+```{r display_sf, eval = TRUE, echo = TRUE, nm = TRUE, out.width="788px"}
 library(maptiles)
 osm <- get_tiles(x = place_sf, zoom = 7)
 plot_tiles(osm)

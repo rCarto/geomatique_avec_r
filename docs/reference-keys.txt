@@ -24,7 +24,9 @@ créer-une-grille-régulière
 compter-des-points-dans-un-polygone
 mesures
 créer-une-matrice-de-distances
-mesurer-les-longueurs-et-les-surfaces
+exercices
+calculer-le-nombre-de-restaurants-par-communes
+mesurer-la-densité-du-réseau-routier-par-commune
 georéférencement
 géocoder-des-adresses
 tidygeocoder

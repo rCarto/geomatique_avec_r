@@ -260,26 +260,53 @@ mat[1:5,1:5]
 
 
 
-### Mesurer les longueurs et les surfaces
+## Exercices
 
-Mesurer la [densité du réseau routier](https://fr.wikipedia.org/wiki/Densit%C3%A9_du_r%C3%A9seau_routier_par_pays)
+
+#### Calculer le nombre de restaurants par communes
+
+```{r, eval=FALSE, echo = FALSE}
+restaurant <- st_read("data/lot46.gpkg", layer = "restaurant", quiet = TRUE)
+inter <- st_intersects(com, restaurant)
+com$nb_restaurant <- sapply(X = inter, FUN = length)
+plot(com["nb_restaurant"])
+com[com$nb_restaurant>=10 & com$POPULATION<=1000,]
+```
+
+* Quelles communes ont plus de 10 restaurants et moins de 1000 habitants ?
+
+* Créez une carte où les positions de ces communes sont indiquées. 
+
+
+
+#### Mesurer la [densité du réseau routier](https://fr.wikipedia.org/wiki/Densit%C3%A9_du_r%C3%A9seau_routier_par_pays) par commune 
 
 1. Intersecter les routes par les communes  
-Nous découpons les routes par les communes. Chaque segment de route récupère l'identifiant de la commune dans laquelle il se trouve. 
-```{r drr1}
+Découper les routes par les communes. Chaque segment de route récupère l'identifiant de la commune dans laquelle il se trouve. 
+
+> st_intersection()
+
+
+```{r drr1, eval=FALSE, echo = FALSE}
 route_com <- st_intersection(route, com[,"INSEE_COM"])
 head(route_com, 1)
 ```
 
 2. Calculer la longueur des segments de route  
-Nous rajoutons une colonne **longueur** qui contient la longueur de chacun des segments. 
-```{r drr2}
+Rajouter une colonne **longueur** qui contient la longueur de chacun des segments. 
+
+> st_length()
+
+```{r drr2, eval=FALSE, echo = FALSE}
 route_com$longueur <- st_length(route_com)
 ```
 
 3. Calculer la longueur totale par commune  
-Nous aggrégeons les segments de routes par commune pour obtenir des longueurs totales par commune. 
-```{r drr3}
+Aggreger les segments de routes par commune pour obtenir des longueurs totales par commune. 
+
+> aggregate()
+
+```{r drr3, eval=FALSE, echo = FALSE}
 longueur_total <- aggregate(x = list(longueur = route_com$longueur), 
                             by = list(INSEE_COM = route_com$INSEE_COM), 
                             FUN = sum)
@@ -287,7 +314,10 @@ longueur_total <- aggregate(x = list(longueur = route_com$longueur),
 ```
 
 4. Joindre les longueurs à la table des communes
-```{r drr4}
+
+> merge()
+
+```{r drr4, eval=FALSE, echo = FALSE}
 com_dens <- merge(x = com[,c('INSEE_COM', "POPULATION")], 
                   y = longueur_total, 
                   by = "INSEE_COM", all.x = TRUE)
@@ -295,14 +325,19 @@ com_dens <- merge(x = com[,c('INSEE_COM', "POPULATION")],
 
 
 5. Calculer les superficies des communes
-```{r drr5}
+
+> st_area()
+
+```{r drr5, eval=FALSE, echo = FALSE}
 com_dens$superficie <- st_area(com_dens)
 ```
 
 
 6. Convertir les unités des différentes mesures
 
-```{r drr6}
+> ``units <-`` 
+
+```{r drr6, eval=FALSE, echo = FALSE}
 units(com_dens$superficie) <- "km^2"
 units(com_dens$longueur) <- "km"
 ```
@@ -310,14 +345,14 @@ units(com_dens$longueur) <- "km"
 
 7. Calculer les indicateurs  
 Le premier est le rapport entre la longueur des routes et la population des communes. 
+Le deuxième est le rapport entre la longueur des routes et la superficie des communes. 
 
-```{r drr7}
+```{r drr7, eval=FALSE, echo = FALSE}
 com_dens$dens_pop <- com_dens$longueur / com_dens$POPULATION
 plot(com_dens["dens_pop"], main = "km / hab")
 ```
 
-Le deuxième est le rapport entre la longueur des routes et la superficie des communes. 
-```{r drr8}
+```{r drr8, eval=FALSE, echo = FALSE}
 com_dens$dens_sup <- com_dens$longueur / com_dens$superficie
 plot(com_dens["dens_sup"], main = "km / km²")
 ```
