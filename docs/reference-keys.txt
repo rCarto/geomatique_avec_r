@@ -7,9 +7,9 @@ les-données-vectorielles
 format-des-objets-spatiaux-sf
 import-et-export-de-données
 affichage
-les-systèmes-de-projections
-consulter-la-projection-dun-objet
-modifier-la-projection-dun-objet
+les-systèmes-de-coordonnées
+consulter-le-système-de-coordonnées-dun-objet
+modifier-le-système-de-coordonnées-dun-objet
 sélection-par-attributs
 sélection-spatiale
 intersections

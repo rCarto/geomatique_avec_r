@@ -186,10 +186,10 @@ div.csl-indent {
 <li class="chapter" data-level="3.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#format-des-objets-spatiaux-sf"><i class="fa fa-check"></i><b>3.1</b> Format des objets spatiaux <code>sf</code></a></li>
 <li class="chapter" data-level="3.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#import-et-export-de-données"><i class="fa fa-check"></i><b>3.2</b> Import et export de données</a></li>
 <li class="chapter" data-level="3.3" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#affichage"><i class="fa fa-check"></i><b>3.3</b> Affichage</a></li>
-<li class="chapter" data-level="3.4" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#les-systèmes-de-projections"><i class="fa fa-check"></i><b>3.4</b> Les systèmes de projections</a>
+<li class="chapter" data-level="3.4" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#les-systèmes-de-coordonnées"><i class="fa fa-check"></i><b>3.4</b> Les systèmes de coordonnées</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#consulter-la-projection-dun-objet"><i class="fa fa-check"></i><b>3.4.1</b> Consulter la projection d’un objet</a></li>
-<li class="chapter" data-level="3.4.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#modifier-la-projection-dun-objet"><i class="fa fa-check"></i><b>3.4.2</b> Modifier la projection d’un objet</a></li>
+<li class="chapter" data-level="3.4.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#consulter-le-système-de-coordonnées-dun-objet"><i class="fa fa-check"></i><b>3.4.1</b> Consulter le système de coordonnées d’un objet</a></li>
+<li class="chapter" data-level="3.4.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#modifier-le-système-de-coordonnées-dun-objet"><i class="fa fa-check"></i><b>3.4.2</b> Modifier le système de coordonnées d’un objet</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#sélection-par-attributs"><i class="fa fa-check"></i><b>3.5</b> Sélection par attributs</a></li>
 <li class="chapter" data-level="3.6" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#sélection-spatiale"><i class="fa fa-check"></i><b>3.6</b> Sélection spatiale</a>
@@ -291,11 +291,11 @@ div.csl-indent {
 </li>
 <li>Le package <code>sp</code> <span class="citation">(<a href="#ref-R-sp" role="doc-biblioref">Pebesma and Bivand 2018</a>)</span> fournit des classes et méthodes pour les données spatiales vectorielles dans R. Il permet afficher des fond de cartes, d’inspecter une table attributaire etc.<br />
 </li>
-<li>Le package <code>rgeos</code> <span class="citation">(<a href="#ref-R-rgeos" role="doc-biblioref">R. Bivand and Rundel 2018</a>)</span> donne accès à la librairie d’opérations spatiales <a href="http://trac.osgeo.org/geos/">GEOS</a> et rend donc disponible les opérations SIG classiques : calcul de surface ou de périmètre, calcul de distances, agrégations spatiales, zones tampons, intersections etc.<br />
+<li>Le package <code>rgeos</code> <span class="citation">(<a href="#ref-R-rgeos" role="doc-biblioref">R. Bivand and Rundel 2018</a>)</span> donne accès à la librairie d’opérations spatiales <a href="http://trac.osgeo.org/geos/">GEOS</a> et rend donc disponible les opérations SIG classiques : calcul de surfaces ou de périmètres, calcul de distances, agrégations spatiales, zones tampons, intersections etc.<br />
 </li>
 <li>Le package <code>raster</code> <span class="citation">(<a href="#ref-R-raster" role="doc-biblioref">Hijmans 2021a</a>)</span> est dédié à l’import, la mabipulation et la modélisation des données raster.</li>
 </ul>
-<p>Aujourd’hui, les principaux développements concernants les données vectorielles se sont détachés des 3 anciens (<code>sp</code>, <code>rgdal</code>, <code>rgeos</code>) pour se reposer principalement sur le package <code>sf</code> (<span class="citation">(<a href="#ref-R-sf" role="doc-biblioref">Pebesma 2018a</a>)</span>, <span class="citation">(<a href="#ref-Pebesma18" role="doc-biblioref">Pebesma 2018b</a>)</span>). Dans ce manuel nous nous appuierons exclusivement ce package pour manipuler les données vectorielles.</p>
+<p>Aujourd’hui, les principaux développements concernants les données vectorielles se sont détachés des 3 anciens (<code>sp</code>, <code>rgdal</code>, <code>rgeos</code>) pour se reposer principalement sur le package <code>sf</code> (<span class="citation">(<a href="#ref-R-sf" role="doc-biblioref">Pebesma 2018a</a>)</span>, <span class="citation">(<a href="#ref-Pebesma18" role="doc-biblioref">Pebesma 2018b</a>)</span>). Dans ce manuel nous nous appuierons exclusivement sur ce package pour manipuler les données vectorielles.</p>
 <p>Les packages <code>stars</code> <span class="citation">(<a href="#ref-R-stars" role="doc-biblioref">Pebesma 2021</a>)</span> et <code>terra</code><span class="citation">(<a href="#ref-R-terra" role="doc-biblioref">Hijmans 2021b</a>)</span> sont venus quand à eux remplacer le package <code>raster</code> pour le traitement des données raster. Nous avons choisi d’utiliser ici le package <code>terra</code> pour sa proximité avec le package <code>raster</code>.</p>
 
 <div class="linky">

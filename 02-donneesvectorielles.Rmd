@@ -42,7 +42,7 @@ knit_hooks$set(sm = function(before, options, envir){
 knitr::include_graphics("img/sf.png")
 ```
 
-Les objets `sf` sont des `data.frame` dont l'une des colonnes contient des géométries. Cette colonne est de la classe sfc (simple feature column) et chaque individu de la colonne est un sfg (simple feature geometry).   
+Les objets `sf` sont des `data.frame` dont l'une des colonnes contient des géométries. Cette colonne est de la classe sfc (*simple feature column*) et chaque individu de la colonne est un sfg (*simple feature geometry)*.   
 Ce format est très pratique dans la mesure ou les données et les géométries sont intrinsèquement liées dans un même objet. 
 
 ```{block2, type='linky'}
@@ -85,18 +85,18 @@ plot(com)
 plot(st_geometry(com))
 ```
 
-## Les systèmes de projections
+## Les systèmes de coordonnées
 
-### Consulter la projection d'un objet
-La fonction `st_crs()` permet de consulter le système de projection utilisé par un objet sf et de la modifier (**sans reprojeter les données**).
+### Consulter le système de coordonnées d'un objet
+La fonction `st_crs()` permet de consulter le système de coordonnées utilisé par un objet sf.
 
 ```{r proj1, proj1}
 st_crs(com)
 ```
 
-### Modifier la projection d'un objet 
+### Modifier le système de coordonnées d'un objet 
 
-La fonction `st_transform()` permet de reprojeter un objet sf. 
+La fonction `st_transform()` permet de change le système de coordonnées d'un objet sf, de le reprojeter. 
 
 ```{r, proj2, sm=TRUE}
 plot(st_geometry(com))
@@ -105,7 +105,7 @@ com_reproj <- st_transform(com, "epsg:3035")
 plot(st_geometry(com_reproj))
 title("ETRS89-extended / LAEA Europe")
 ```
-Le site [Spatial Reference](http://spatialreference.org/){target="_blank"} met à disposition les références de très nombreux systèmes de projection. 
+Le site [Spatial Reference](http://spatialreference.org/){target="_blank"} met à disposition les références de très nombreux systèmes de coordonnées. 
 
 ## Sélection par attributs
 Les objets `sf` **sont** des `data.frame`, on peut donc sélectionner leur lignes et leur colonnes de la même manière que les `data.frame`. 
@@ -125,26 +125,44 @@ com[com$NOM_COM == "Gramat", 1:4]
 
 
 ### Intersections
-Sélection des routes intesectant la commune de Gramat
+Sélection des routes intesectant la commune de Gramat. 
 
 ```{r intersects, nm=TRUE}
 route <- st_read("data/lot46.gpkg", layer = "route", quiet = TRUE)
 gramat <-  com[com$NOM_COM == "Gramat", ]
-route$intersect_gramat <- st_intersects(x = route, y = gramat, sparse = FALSE)
+inter <- st_intersects(x = route, y = gramat, sparse = FALSE)
+head(inter)
+route$intersect_gramat <- inter
 plot(st_geometry(gramat), col = "lightblue")
 plot(st_geometry(route), add = TRUE)
-plot(st_geometry(route[route$intersect_gramat, ]), col = "tomato", lwd = 2, add = TRUE)
+plot(st_geometry(route[route$intersect_gramat, ]), col = "tomato", 
+     lwd = 2, add = TRUE)
 ```
 
 
+Il est possible de faire autrement : 
+```{r intersects2, nm = T}
+route <- st_read("data/lot46.gpkg", layer = "route", quiet = TRUE)
+gramat <-  com[com$NOM_COM == "Gramat", ]
+rinter <- route[gramat, op = st_intersects]
+plot(st_geometry(gramat), col = "lightblue")
+plot(st_geometry(route), add = TRUE)
+plot(st_geometry(rinter), col = "tomato", lwd = 2, add = TRUE)
+
+```
+
+
+
+
 ### Contains / Within
-Selection des routes contenues dans la commune de Gramat
+Sélection des routes contenues dans la commune de Gramat
 
 ```{r within, nm = TRUE}
 route$within_gramat <- st_within(route, gramat, sparse = FALSE)
 plot(st_geometry(gramat), col = "lightblue")
 plot(st_geometry(route), add = TRUE)
-plot(st_geometry(route[route$within_gramat, ]), col = "tomato", lwd = 2, add = TRUE)
+plot(st_geometry(route[route$within_gramat, ]), col = "tomato", 
+     lwd = 2, add = TRUE)
 
 ```
 
@@ -262,7 +280,7 @@ route_com$longueur <- st_length(route_com)
 3. Calculer la longueur totale par commune  
 Nous aggrégeons les segments de routes par commune pour obtenir des longueurs totales par commune. 
 ```{r drr3}
-longueur_total <- aggregate(list(longueur = route_com$longueur), 
+longueur_total <- aggregate(x = list(longueur = route_com$longueur), 
                             by = list(INSEE_COM = route_com$INSEE_COM), 
                             FUN = sum)
 
@@ -270,7 +288,9 @@ longueur_total <- aggregate(list(longueur = route_com$longueur),
 
 4. Joindre les longueurs à la table des communes
 ```{r drr4}
-com_dens <- merge(com[,c('INSEE_COM', "POPULATION")], longueur_total, by = "INSEE_COM", all.x = TRUE)
+com_dens <- merge(x = com[,c('INSEE_COM', "POPULATION")], 
+                  y = longueur_total, 
+                  by = "INSEE_COM", all.x = TRUE)
 ```
 
 
