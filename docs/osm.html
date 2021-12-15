@@ -11,7 +11,7 @@
   <meta property="og:title" content="Chapitre 6 Focus sur OpenStreetMap | Géomatique avec R" />
   <meta property="og:type" content="book" />
   
-  
+  <meta property="og:image" content="/img/layer-group-solid.svg" />
   <meta property="og:description" content="Chapitre 6 Focus sur OpenStreetMap | Géomatique avec R" />
   <meta name="github-repo" content="rCarto/geomatique_avec_r" />
 
@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Chapitre 6 Focus sur OpenStreetMap | Géomatique avec R" />
   
   <meta name="twitter:description" content="Chapitre 6 Focus sur OpenStreetMap | Géomatique avec R" />
-  
+  <meta name="twitter:image" content="/img/layer-group-solid.svg" />
 
 <meta name="author" content="Timothée Giraud &amp; Hugues Pecout" />
 
@@ -302,11 +302,11 @@ div.csl-indent {
 </div>
 <div id="afficher-une-carte-interactive" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Afficher une carte interactive</h2>
-<p>Les deux principaux packages qui permettent d’afficher une carte interactive basées sur OSM sont <code>leaflet</code> <span class="citation">(<a href="#ref-R-leaflet" role="doc-biblioref">Cheng, Karambelkar, and Xie 2018</a>)</span> et <code>mapview</code> <span class="citation">(<a href="#ref-R-mapview" role="doc-biblioref">Appelhans et al. 2018</a>)</span>.</p>
+<p>Les deux principaux packages qui permettent d’afficher une carte interactive basées sur OSM sont <code>leaflet</code> <span class="citation">(<a href="#ref-R-leaflet" role="doc-biblioref">Cheng et al., 2018</a>)</span> et <code>mapview</code> <span class="citation">(<a href="#ref-R-mapview" role="doc-biblioref">Appelhans et al., 2018</a>)</span>.</p>
 <div id="leaflet" class="section level3" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> <code>leaflet</code></h3>
 <p><img src="img/logo_leaflet.png" align="right" width="200"/>
-<code>leaflet</code> utilise la libraire javascript Leaflet <span class="citation">(<a href="#ref-JS-Leaflet" role="doc-biblioref">Agafonkin 2015</a>)</span> pour créer des cartes interactives.</p>
+<code>leaflet</code> utilise la libraire javascript Leaflet <span class="citation">(<a href="#ref-JS-Leaflet" role="doc-biblioref">Agafonkin, 2015</a>)</span> pour créer des cartes interactives.</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="osm.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
 <span id="cb45-2"><a href="osm.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
 <span id="cb45-3"><a href="osm.html#cb45-3" aria-hidden="true" tabindex="-1"></a>com <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/lot46.gpkg&quot;</span>, <span class="at">layer =</span> <span class="st">&quot;commune&quot;</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
@@ -353,7 +353,7 @@ Site web de <code>mapview</code><br />
 </div>
 <div id="importer-les-fonds-de-carte" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Importer les fonds de carte</h2>
-<p>Le package <code>maptiles</code> <span class="citation">(<a href="#ref-R-maptiles" role="doc-biblioref">Giraud 2021a</a>)</span> permet de télécharger et d’afficher des fonds de cartes raster.<br />
+<p>Le package <code>maptiles</code> <span class="citation">(<a href="#ref-R-maptiles" role="doc-biblioref">Giraud, 2021a</a>)</span> permet de télécharger et d’afficher des fonds de cartes raster.<br />
 La fonction <code>get_tiles()</code> permet de télécharger des fonds de cartes OSM et la fonction <code>plot_tiles()</code> permet de les afficher.<br />
 Les rendus sont meilleurs si les données en entrée utilisent le même système de coordonnées que les tuiles (<a href="https://github.com/riatelab/maptiles#projection">EPSG:3857</a>).</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="osm.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
@@ -371,7 +371,7 @@ Les rendus sont meilleurs si les données en entrée utilisent le même système
 <div id="osmdata" class="section level3" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> <code>osmdata</code></h3>
 <p><img src="img/logo_osmdata.png" align="right"  height=140 width=122/>
-Le package <code>osmdata</code> <span class="citation">(<a href="#ref-R-osmdata" role="doc-biblioref">Padgham et al. 2017</a>)</span> permet d’extraire des données vectorielles depuis OSM en utilisant l’API <a href="https://wiki.openstreetmap.org/wiki/Overpass_turbo">Overpass turbo</a>.</p>
+Le package <code>osmdata</code> <span class="citation">(<a href="#ref-R-osmdata" role="doc-biblioref">Padgham et al., 2017</a>)</span> permet d’extraire des données vectorielles depuis OSM en utilisant l’API <a href="https://wiki.openstreetmap.org/wiki/Overpass_turbo">Overpass turbo</a>.</p>
 
 <div class="linky">
 <a href="https://docs.ropensci.org/osmdata/">Site web du package <code>osmdata</code></a>
@@ -416,7 +416,7 @@ Site web d’<code>osmdata</code><br />
 <div id="osmextract" class="section level3" number="6.3.2">
 <h3><span class="header-section-number">6.3.2</span> <code>osmextract</code></h3>
 <p><img src="img/logo_osmextract.svg" align="right" width="120"/>
-Le package <code>osmextract</code> <span class="citation">(<a href="#ref-R-osmextract" role="doc-biblioref">Gilardi and Lovelace 2021</a>)</span> permet d’extraire des données depuis une base de données OSM directement. Ce package permet de travailler sur des volumes de données très importants.</p>
+Le package <code>osmextract</code> <span class="citation">(<a href="#ref-R-osmextract" role="doc-biblioref">Gilardi et Lovelace, 2021</a>)</span> permet d’extraire des données depuis une base de données OSM directement. Ce package permet de travailler sur des volumes de données très importants.</p>
 
 <div class="linky">
 Site web d’<code>osmextract</code><br />
@@ -427,7 +427,7 @@ Site web d’<code>osmextract</code><br />
 <div id="calculer-des-itinéraires" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> Calculer des itinéraires</h2>
 <p><img src="img/logo_osrm.svg" align="right" width="120"/>
-Le package <code>osrm</code> <span class="citation">(<a href="#ref-R-osrm" role="doc-biblioref">Giraud 2021b</a>)</span> sert d’interface entre R et le service de calcul d’itinéraire <a href="http://project-osrm.org/">OSRM</a> <span class="citation">(<a href="#ref-luxen-vetter-2011" role="doc-biblioref">Luxen and Vetter 2011</a>)</span>.
+Le package <code>osrm</code> <span class="citation">(<a href="#ref-R-osrm" role="doc-biblioref">Giraud, 2021b</a>)</span> sert d’interface entre R et le service de calcul d’itinéraire <a href="http://project-osrm.org/">OSRM</a> <span class="citation">(<a href="#ref-luxen-vetter-2011" role="doc-biblioref">Luxen et Vetter, 2011</a>)</span>.
 Ce package permet de calculer des matrices de temps et de distances, des itinéraires routiers, des isochrones.<br />
 Le package utilise par défaut le serveur de démo d’OSRM. En cas d’utilisation intensive <a href="https://github.com/Project-OSRM/osrm-backend#using-docker">il est fortement recommandé d’utiliser sa propre instance d’OSRM (avec Docker)</a>.</p>
 <div id="calcul-dun-itinéraire" class="section level3" number="6.4.1">
@@ -486,30 +486,30 @@ Le package utilise par défaut le serveur de démo d’OSRM. En cas d’utilisat
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
 <div id="ref-JS-Leaflet" class="csl-entry">
-Agafonkin, Vladimir. 2015. <span>“Leaflet Javascript Libary.”</span>
+Agafonkin, V. (2015). Leaflet javascript libary.
 </div>
 <div id="ref-R-mapview" class="csl-entry">
-Appelhans, Tim, Florian Detsch, Christoph Reudenbach, and Stefan Woellauer. 2018. <em>Mapview: Interactive Viewing of Spatial Data in r</em>. <a href="https://CRAN.R-project.org/package=mapview">https://CRAN.R-project.org/package=mapview</a>.
+Appelhans, T., Detsch, F., Reudenbach, C. et Woellauer, S. (2018). <em>mapview: Interactive Viewing of Spatial Data in R</em>. <a href="https://CRAN.R-project.org/package=mapview">https://CRAN.R-project.org/package=mapview</a>
 </div>
 <div id="ref-R-leaflet" class="csl-entry">
-Cheng, Joe, Bhaskar Karambelkar, and Yihui Xie. 2018. <em>Leaflet: Create Interactive Web Maps with the JavaScript ’Leaflet’ Library</em>. <a href="https://CRAN.R-project.org/package=leaflet">https://CRAN.R-project.org/package=leaflet</a>.
+Cheng, J., Karambelkar, B. et Xie, Y. (2018). <em>leaflet: Create Interactive Web Maps with the JavaScript ’Leaflet’ Library</em>. <a href="https://CRAN.R-project.org/package=leaflet">https://CRAN.R-project.org/package=leaflet</a>
 </div>
 <div id="ref-R-osmextract" class="csl-entry">
-Gilardi, Andrea, and Robin Lovelace. 2021. <em>Osmextract: Download and Import Open Stree tMap Data Extracts</em>. <a href="https://CRAN.R-project.org/package=osmextract">https://CRAN.R-project.org/package=osmextract</a>.
+Gilardi, A. et Lovelace, R. (2021). <em>osmextract: Download and Import Open Stree tMap Data Extracts</em>. <a href="https://CRAN.R-project.org/package=osmextract">https://CRAN.R-project.org/package=osmextract</a>
 </div>
 <div id="ref-R-maptiles" class="csl-entry">
-Giraud, Timothée. 2021a. <em>Maptiles: Download and Display Map Tiles</em>. <a href="https://CRAN.R-project.org/package=maptiles">https://CRAN.R-project.org/package=maptiles</a>.
+Giraud, T. (2021a). <em>maptiles: Download and Display Map Tiles</em>. <a href="https://CRAN.R-project.org/package=maptiles">https://CRAN.R-project.org/package=maptiles</a>
 </div>
 <div id="ref-R-osrm" class="csl-entry">
-———. 2021b. <em>Osrm: Interface Between r and the OpenStreetMap-Based Routing Service OSRM</em>. <a href="https://CRAN.R-project.org/package=osrm">https://CRAN.R-project.org/package=osrm</a>.
+Giraud, T. (2021b). <em>osrm: Interface Between R and the OpenStreetMap-Based Routing Service OSRM</em>. <a href="https://CRAN.R-project.org/package=osrm">https://CRAN.R-project.org/package=osrm</a>
 </div>
 <div id="ref-luxen-vetter-2011" class="csl-entry">
-Luxen, Dennis, and Christian Vetter. 2011. <span>“Real-Time Routing with OpenStreetMap Data.”</span> In <em>Proceedings of the 19th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems</em>, 513–16. GIS ’11. New York, NY, USA: ACM. <a href="https://doi.org/10.1145/2093973.2094062">https://doi.org/10.1145/2093973.2094062</a>.
+Luxen, D. et Vetter, C. (2011). <em>Real-time routing with OpenStreetMap data</em>. New York, NY, USA (p. 513‑516). <a href="https://doi.org/10.1145/2093973.2094062">https://doi.org/10.1145/2093973.2094062</a>
 </div>
 <div id="ref-R-osmdata" class="csl-entry">
-Padgham, Mark, Bob Rudis, Robin Lovelace, and Maëlle Salmon. 2017. <span>“Osmdata.”</span> <em>The Journal of Open Source Software</em> 2 (14). <a href="https://doi.org/10.21105/joss.00305">https://doi.org/10.21105/joss.00305</a>.
+Padgham, M., Rudis, B., Lovelace, R. et Salmon, M. (2017). osmdata. <em>The Journal of Open Source Software</em>, <em>2</em>(14). <a href="https://doi.org/10.21105/joss.00305">https://doi.org/10.21105/joss.00305</a>
 </div>
 </div>
             </section>

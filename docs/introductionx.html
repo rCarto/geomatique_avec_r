@@ -11,7 +11,7 @@
   <meta property="og:title" content="Chapitre 2 Introduction | Géomatique avec R" />
   <meta property="og:type" content="book" />
   
-  
+  <meta property="og:image" content="/img/layer-group-solid.svg" />
   <meta property="og:description" content="Chapitre 2 Introduction | Géomatique avec R" />
   <meta name="github-repo" content="rCarto/geomatique_avec_r" />
 
@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Chapitre 2 Introduction | Géomatique avec R" />
   
   <meta name="twitter:description" content="Chapitre 2 Introduction | Géomatique avec R" />
-  
+  <meta name="twitter:image" content="/img/layer-group-solid.svg" />
 
 <meta name="author" content="Timothée Giraud &amp; Hugues Pecout" />
 
@@ -287,20 +287,20 @@ div.csl-indent {
 <h2><span class="header-section-number">2.1</span> Le spatial dans R : Historique et évolutions</h2>
 <p>Historiquement, 4 packages permettent d’importer, de manipuler et de transformer les données spatiales :</p>
 <ul>
-<li>Le package <code>rgdal</code> <span class="citation">(<a href="#ref-R-rgdal" role="doc-biblioref">R. Bivand, Keitt, and Rowlingson 2018</a>)</span> qui est une interface entre R et les librairies <a href="http://www.gdal.org/">GDAL</a> <span class="citation">(<a href="#ref-GDAL" role="doc-biblioref">GDAL/OGR contributors, n.d.</a>)</span> et <a href="https://proj.org/">PROJ</a> <span class="citation">(<a href="#ref-PROJ" role="doc-biblioref">PROJ contributors 2021</a>)</span> permet d’importer et d’exporter les données spatiales (les shapefiles par exemple) et aussi de gérer les projections cartographiques<br />
+<li>Le package <code>rgdal</code> <span class="citation">(<a href="#ref-R-rgdal" role="doc-biblioref">R. Bivand et al., 2018</a>)</span> qui est une interface entre R et les librairies <a href="http://www.gdal.org/">GDAL</a> <span class="citation">(<a href="#ref-GDAL" role="doc-biblioref">GDAL/OGR contributors, s. d.</a>)</span> et <a href="https://proj.org/">PROJ</a> <span class="citation">(<a href="#ref-PROJ" role="doc-biblioref">PROJ contributors, 2021</a>)</span> permet d’importer et d’exporter les données spatiales (les shapefiles par exemple) et aussi de gérer les projections cartographiques<br />
 </li>
-<li>Le package <code>sp</code> <span class="citation">(<a href="#ref-R-sp" role="doc-biblioref">Pebesma and Bivand 2018</a>)</span> fournit des classes et méthodes pour les données spatiales vectorielles dans R. Il permet afficher des fond de cartes, d’inspecter une table attributaire etc.<br />
+<li>Le package <code>sp</code> <span class="citation">(<a href="#ref-R-sp" role="doc-biblioref">Pebesma et Bivand, 2018</a>)</span> fournit des classes et méthodes pour les données spatiales vectorielles dans R. Il permet afficher des fond de cartes, d’inspecter une table attributaire etc.<br />
 </li>
-<li>Le package <code>rgeos</code> <span class="citation">(<a href="#ref-R-rgeos" role="doc-biblioref">R. Bivand and Rundel 2018</a>)</span> donne accès à la librairie d’opérations spatiales <a href="http://trac.osgeo.org/geos/">GEOS</a> et rend donc disponible les opérations SIG classiques : calcul de surfaces ou de périmètres, calcul de distances, agrégations spatiales, zones tampons, intersections etc.<br />
+<li>Le package <code>rgeos</code> <span class="citation">(<a href="#ref-R-rgeos" role="doc-biblioref">R. Bivand et Rundel, 2018</a>)</span> donne accès à la librairie d’opérations spatiales <a href="http://trac.osgeo.org/geos/">GEOS</a> et rend donc disponible les opérations SIG classiques : calcul de surfaces ou de périmètres, calcul de distances, agrégations spatiales, zones tampons, intersections etc.<br />
 </li>
-<li>Le package <code>raster</code> <span class="citation">(<a href="#ref-R-raster" role="doc-biblioref">Hijmans 2021a</a>)</span> est dédié à l’import, la mabipulation et la modélisation des données raster.</li>
+<li>Le package <code>raster</code> <span class="citation">(<a href="#ref-R-raster" role="doc-biblioref">Hijmans, 2021a</a>)</span> est dédié à l’import, la mabipulation et la modélisation des données raster.</li>
 </ul>
-<p>Aujourd’hui, les principaux développements concernants les données vectorielles se sont détachés des 3 anciens (<code>sp</code>, <code>rgdal</code>, <code>rgeos</code>) pour se reposer principalement sur le package <code>sf</code> (<span class="citation">(<a href="#ref-R-sf" role="doc-biblioref">Pebesma 2018a</a>)</span>, <span class="citation">(<a href="#ref-Pebesma18" role="doc-biblioref">Pebesma 2018b</a>)</span>). Dans ce manuel nous nous appuierons exclusivement sur ce package pour manipuler les données vectorielles.</p>
-<p>Les packages <code>stars</code> <span class="citation">(<a href="#ref-R-stars" role="doc-biblioref">Pebesma 2021</a>)</span> et <code>terra</code><span class="citation">(<a href="#ref-R-terra" role="doc-biblioref">Hijmans 2021b</a>)</span> sont venus quand à eux remplacer le package <code>raster</code> pour le traitement des données raster. Nous avons choisi d’utiliser ici le package <code>terra</code> pour sa proximité avec le package <code>raster</code>.</p>
+<p>Aujourd’hui, les principaux développements concernants les données vectorielles se sont détachés des 3 anciens (<code>sp</code>, <code>rgdal</code>, <code>rgeos</code>) pour se reposer principalement sur le package <code>sf</code> (<span class="citation">(<a href="#ref-R-sf" role="doc-biblioref">Pebesma, 2018a</a>)</span>, <span class="citation">(<a href="#ref-Pebesma18" role="doc-biblioref">Pebesma, 2018b</a>)</span>). Dans ce manuel nous nous appuierons exclusivement sur ce package pour manipuler les données vectorielles.</p>
+<p>Les packages <code>stars</code> <span class="citation">(<a href="#ref-R-stars" role="doc-biblioref">Pebesma, 2021</a>)</span> et <code>terra</code><span class="citation">(<a href="#ref-R-terra" role="doc-biblioref">Hijmans, 2021b</a>)</span> sont venus quand à eux remplacer le package <code>raster</code> pour le traitement des données raster. Nous avons choisi d’utiliser ici le package <code>terra</code> pour sa proximité avec le package <code>raster</code>.</p>
 
 <div class="linky">
 En savoir plus sur l’écosysteme spatial de R :<br />
-<a href="https://doi.org/10.1007/s10109-020-00336-0">Progress in the R ecosystem for representing and handling spatial data</a> <span class="citation">(<a href="#ref-bivand2020progress" role="doc-biblioref">R. S. Bivand 2020</a>)</span>
+<a href="https://doi.org/10.1007/s10109-020-00336-0">Progress in the R ecosystem for representing and handling spatial data</a> <span class="citation">(<a href="#ref-bivand2020progress" role="doc-biblioref">R. S. Bivand, 2020</a>)</span>
 </div>
 
 <div class="linky">
@@ -315,7 +315,7 @@ Liste de discussion :<br />
 
 <div class="linky">
 Manuel en anglais :<br />
-<a href="https://geocompr.robinlovelace.net/">Geocomputation with R</a> <span class="citation">(<a href="#ref-lovelace2019geocomputation" role="doc-biblioref">Lovelace, Nowosad, and Muenchow 2019</a>)</span>
+<a href="https://geocompr.robinlovelace.net/">Geocomputation with R</a> <span class="citation">(<a href="#ref-lovelace2019geocomputation" role="doc-biblioref">Lovelace et al., 2019</a>)</span>
 </div>
 </div>
 <div id="le-package-sf" class="section level2" number="2.2">
@@ -345,42 +345,42 @@ Site web du package <code>terra</code> :<br />
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
 <div id="ref-bivand2020progress" class="csl-entry">
-Bivand, Roger S. 2020. <span>“Progress in the r Ecosystem for Representing and Handling Spatial Data.”</span> <em>Journal of Geographical Systems</em>, 1–32.
+Bivand, R. S. (2020). Progress in the R ecosystem for representing and handling spatial data. <em>Journal of Geographical Systems</em>, 1‑32.
 </div>
 <div id="ref-R-rgdal" class="csl-entry">
-Bivand, Roger, Tim Keitt, and Barry Rowlingson. 2018. <em>Rgdal: Bindings for the ’Geospatial’ Data Abstraction Library</em>. <a href="https://CRAN.R-project.org/package=rgdal">https://CRAN.R-project.org/package=rgdal</a>.
+Bivand, R., Keitt, T. et Rowlingson, B. (2018). <em>rgdal: Bindings for the ’Geospatial’ Data Abstraction Library</em>. <a href="https://CRAN.R-project.org/package=rgdal">https://CRAN.R-project.org/package=rgdal</a>
 </div>
 <div id="ref-R-rgeos" class="csl-entry">
-Bivand, Roger, and Colin Rundel. 2018. <em>Rgeos: Interface to Geometry Engine - Open Source (’GEOS’)</em>. <a href="https://CRAN.R-project.org/package=rgeos">https://CRAN.R-project.org/package=rgeos</a>.
+Bivand, R. et Rundel, C. (2018). <em>rgeos: Interface to Geometry Engine - Open Source (’GEOS’)</em>. <a href="https://CRAN.R-project.org/package=rgeos">https://CRAN.R-project.org/package=rgeos</a>
 </div>
 <div id="ref-GDAL" class="csl-entry">
-GDAL/OGR contributors. n.d. <em><span>GDAL/OGR</span> Geospatial Data Abstraction Software Library</em>. Open Source Geospatial Foundation. <a href="https://gdal.org">https://gdal.org</a>.
+GDAL/OGR contributors. (s. d.). <em><span>GDAL/OGR</span> Geospatial Data Abstraction software Library</em>. Open Source Geospatial Foundation. <a href="https://gdal.org">https://gdal.org</a>
 </div>
 <div id="ref-R-raster" class="csl-entry">
-Hijmans, Robert J. 2021a. <em>Raster: Geographic Data Analysis and Modeling</em>. <a href="https://CRAN.R-project.org/package=raster">https://CRAN.R-project.org/package=raster</a>.
+Hijmans, R. J. (2021a). <em>raster: Geographic Data Analysis and Modeling</em>. <a href="https://CRAN.R-project.org/package=raster">https://CRAN.R-project.org/package=raster</a>
 </div>
 <div id="ref-R-terra" class="csl-entry">
-———. 2021b. <em>Terra: Spatial Data Analysis</em>. <a href="https://CRAN.R-project.org/package=terra">https://CRAN.R-project.org/package=terra</a>.
+Hijmans, R. J. (2021b). <em>terra: Spatial Data Analysis</em>. <a href="https://CRAN.R-project.org/package=terra">https://CRAN.R-project.org/package=terra</a>
 </div>
 <div id="ref-lovelace2019geocomputation" class="csl-entry">
-Lovelace, Robin, Jakub Nowosad, and Jannes Muenchow. 2019. <em>Geocomputation with r</em>. CRC Press. <a href="https://geocompr.robinlovelace.net/">https://geocompr.robinlovelace.net/</a>.
+Lovelace, R., Nowosad, J. et Muenchow, J. (2019). <em>Geocomputation with R</em>. CRC Press. <a href="https://geocompr.robinlovelace.net/">https://geocompr.robinlovelace.net/</a>
 </div>
 <div id="ref-R-sf" class="csl-entry">
-Pebesma, Edzer. 2018a. <em>Sf: Simple Features for r</em>. <a href="https://CRAN.R-project.org/package=sf">https://CRAN.R-project.org/package=sf</a>.
+Pebesma, E. (2018a). <em>sf: Simple Features for R</em>. <a href="https://CRAN.R-project.org/package=sf">https://CRAN.R-project.org/package=sf</a>
 </div>
 <div id="ref-Pebesma18" class="csl-entry">
-———. 2018b. <span>“<span class="nocase">Simple Features for R: Standardized Support for Spatial Vector Data</span>.”</span> <em><span>The R Journal</span></em>. <a href="https://journal.r-project.org/archive/2018/RJ-2018-009/index.html">https://journal.r-project.org/archive/2018/RJ-2018-009/index.html</a>.
+Pebesma, E. (2018b). <span>Simple Features for R: Standardized Support for Spatial Vector Data</span>. <em><span>The R Journal</span></em>. <a href="https://journal.r-project.org/archive/2018/RJ-2018-009/index.html">https://journal.r-project.org/archive/2018/RJ-2018-009/index.html</a>
 </div>
 <div id="ref-R-stars" class="csl-entry">
-———. 2021. <em>Stars: Spatiotemporal Arrays, Raster and Vector Data Cubes</em>. <a href="https://CRAN.R-project.org/package=stars">https://CRAN.R-project.org/package=stars</a>.
+Pebesma, E. (2021). <em>stars: Spatiotemporal Arrays, Raster and Vector Data Cubes</em>. <a href="https://CRAN.R-project.org/package=stars">https://CRAN.R-project.org/package=stars</a>
 </div>
 <div id="ref-R-sp" class="csl-entry">
-Pebesma, Edzer, and Roger Bivand. 2018. <em>Sp: Classes and Methods for Spatial Data</em>. <a href="https://CRAN.R-project.org/package=sp">https://CRAN.R-project.org/package=sp</a>.
+Pebesma, E. et Bivand, R. (2018). <em>sp: Classes and Methods for Spatial Data</em>. <a href="https://CRAN.R-project.org/package=sp">https://CRAN.R-project.org/package=sp</a>
 </div>
 <div id="ref-PROJ" class="csl-entry">
-PROJ contributors. 2021. <em><span>PROJ</span> Coordinate Transformation Software Library</em>. Open Source Geospatial Foundation. <a href="https://proj.org/">https://proj.org/</a>.
+PROJ contributors. (2021). <em><span>PROJ</span> coordinate transformation software library</em>. Open Source Geospatial Foundation. <a href="https://proj.org/">https://proj.org/</a>
 </div>
 </div>
             </section>

@@ -11,7 +11,7 @@
   <meta property="og:title" content="Chapitre 4 Georéférencement | Géomatique avec R" />
   <meta property="og:type" content="book" />
   
-  
+  <meta property="og:image" content="/img/layer-group-solid.svg" />
   <meta property="og:description" content="Chapitre 4 Georéférencement | Géomatique avec R" />
   <meta name="github-repo" content="rCarto/geomatique_avec_r" />
 
@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Chapitre 4 Georéférencement | Géomatique avec R" />
   
   <meta name="twitter:description" content="Chapitre 4 Georéférencement | Géomatique avec R" />
-  
+  <meta name="twitter:image" content="/img/layer-group-solid.svg" />
 
 <meta name="author" content="Timothée Giraud &amp; Hugues Pecout" />
 
@@ -286,8 +286,8 @@ div.csl-indent {
 <div id="géocoder-des-adresses" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Géocoder des adresses</h2>
 <p>Plusieurs packages permettent de géocoder des adresses. <img src="img/logo_tidygeocoder.png" align="right" width="120"/>
-Le package <code>tidygeocoder</code> <span class="citation">(<a href="#ref-R-tidygeocoder" role="doc-biblioref">Cambon et al. 2021</a>)</span> permet d’utiliser un <a href="https://jessecambon.github.io/tidygeocoder/articles/geocoder_services.html">grand nombre de services de géocodage en ligne</a>.
-Le package <code>banR</code> <span class="citation">(<a href="#ref-R-banR" role="doc-biblioref">Gombin and Chevalier 2021</a>)</span>, qui s’appuie sur la <a href="https://adresse.data.gouv.fr/">Base Adresse Nationale</a>, est particulièrement approprié pour géocoder des adresses en France.</p>
+Le package <code>tidygeocoder</code> <span class="citation">(<a href="#ref-R-tidygeocoder" role="doc-biblioref">Cambon et al., 2021</a>)</span> permet d’utiliser un <a href="https://jessecambon.github.io/tidygeocoder/articles/geocoder_services.html">grand nombre de services de géocodage en ligne</a>.
+Le package <code>banR</code> <span class="citation">(<a href="#ref-R-banR" role="doc-biblioref">Gombin et Chevalier, 2021</a>)</span>, qui s’appuie sur la <a href="https://adresse.data.gouv.fr/">Base Adresse Nationale</a>, est particulièrement approprié pour géocoder des adresses en France.</p>
 <div id="tidygeocoder" class="section level3" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> <code>tidygeocoder</code></h3>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="georéférencement.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygeocoder)</span>
@@ -353,7 +353,7 @@ Geodetic CRS:  WGS 84
 # … with 9 more variables: result_street &lt;chr&gt;, result_postcode &lt;chr&gt;, result_city &lt;chr&gt;,
 #   result_context &lt;chr&gt;, result_citycode &lt;chr&gt;, result_oldcitycode &lt;chr&gt;,
 #   result_oldcity &lt;chr&gt;, result_district &lt;chr&gt;, geometry &lt;POINT [°]&gt;</code></pre>
-<p>Nous pouvons afficher cet objet <code>sf</code> sur un fond de carte <a href="https://www.openstreetmap.org/">OpenStreetMap</a> avec le package <code>maptiles</code> <span class="citation">(<a href="#ref-R-maptiles" role="doc-biblioref">Giraud 2021a</a>)</span>.</p>
+<p>Nous pouvons afficher cet objet <code>sf</code> sur un fond de carte <a href="https://www.openstreetmap.org/">OpenStreetMap</a> avec le package <code>maptiles</code> <span class="citation">(<a href="#ref-R-maptiles" role="doc-biblioref">Giraud, 2021a</a>)</span>.</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="georéférencement.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptiles)</span>
 <span id="cb44-2"><a href="georéférencement.html#cb44-2" aria-hidden="true" tabindex="-1"></a>osm <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="at">x =</span> place_sf, <span class="at">zoom =</span> <span class="dv">7</span>)</span>
 <span id="cb44-3"><a href="georéférencement.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_tiles</span>(osm)</span>
@@ -366,7 +366,7 @@ Geodetic CRS:  WGS 84
 </div>
 <div id="digitalisation" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Digitalisation</h2>
-<p>Le package <code>mapedit</code> <span class="citation">(<a href="#ref-R-mapedit" role="doc-biblioref">Appelhans, Russell, and Busetto 2020</a>)</span> permet de digitaliser des fonds de carte directement dans R.
+<p>Le package <code>mapedit</code> <span class="citation">(<a href="#ref-R-mapedit" role="doc-biblioref">Appelhans et al., 2020</a>)</span> permet de digitaliser des fonds de carte directement dans R.
 Bien que pouvant se révéler pratique dans certains cas, ce package ne saurait se substituer aux fonctionnalités d’un SIG pour les tâches de digitalisation importantes.</p>
 <div class="figure">
 <img src="img/mapedit-leafpm-1.gif" alt="" />
@@ -376,18 +376,18 @@ Bien que pouvant se révéler pratique dans certains cas, ce package ne saurait 
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
 <div id="ref-R-mapedit" class="csl-entry">
-Appelhans, Tim, Kenton Russell, and Lorenzo Busetto. 2020. <em>Mapedit: Interactive Editing of Spatial Data in r</em>. <a href="https://CRAN.R-project.org/package=mapedit">https://CRAN.R-project.org/package=mapedit</a>.
+Appelhans, T., Russell, K. et Busetto, L. (2020). <em>mapedit: Interactive Editing of Spatial Data in R</em>. <a href="https://CRAN.R-project.org/package=mapedit">https://CRAN.R-project.org/package=mapedit</a>
 </div>
 <div id="ref-R-tidygeocoder" class="csl-entry">
-Cambon, Jesse, Diego Hernangómez, Christopher Belanger, and Daniel Possenriede. 2021. <span>“Tidygeocoder: Geocoding Made Easy.”</span> Zenodo. <a href="https://doi.org/10.5281/zenodo.4686074">https://doi.org/10.5281/zenodo.4686074</a>.
+Cambon, J., Hernangómez, D., Belanger, C. et Possenriede, D. (2021). tidygeocoder: Geocoding Made Easy. Zenodo. <a href="https://doi.org/10.5281/zenodo.4686074">https://doi.org/10.5281/zenodo.4686074</a>
 </div>
 <div id="ref-R-maptiles" class="csl-entry">
-Giraud, Timothée. 2021a. <em>Maptiles: Download and Display Map Tiles</em>. <a href="https://CRAN.R-project.org/package=maptiles">https://CRAN.R-project.org/package=maptiles</a>.
+Giraud, T. (2021a). <em>maptiles: Download and Display Map Tiles</em>. <a href="https://CRAN.R-project.org/package=maptiles">https://CRAN.R-project.org/package=maptiles</a>
 </div>
 <div id="ref-R-banR" class="csl-entry">
-Gombin, Joel, and Paul-Antoine Chevalier. 2021. <em>banR: R Client for the BAN API</em>.
+Gombin, J. et Chevalier, P.-A. (2021). <em>banR: R Client for the BAN API</em>.
 </div>
 </div>
             </section>

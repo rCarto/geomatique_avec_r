@@ -5,15 +5,14 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 bibliography:
 - book.bib
 - packages.bib
+csl: "universite-de-montreal-apa.csl"
 description: Géomatique avec R
 documentclass: book
-link-citations: yes
+link-citations: true
 site: bookdown::bookdown_site
-biblio-style: apalike
-link-citation: true
 github-repo: rCarto/geomatique_avec_r
 always_allow_html: yes
-cover-umage: img/layer-group-solid.svg
+cover-image: img/layer-group-solid.svg
 favicon: img/layer-group-solid.svg
 ---
 
