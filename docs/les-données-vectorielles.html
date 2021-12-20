@@ -605,7 +605,7 @@ Rajouter une colonne <strong>longueur</strong> qui contient la longueur de chacu
 <p>st_length()</p>
 </blockquote>
 <ol start="3" style="list-style-type: decimal">
-<li>Calculer la longueur totale par commune<br />
+<li>Calculer la longueur totale de route par commune<br />
 Aggreger les segments de routes par commune pour obtenir des longueurs totales par commune.</li>
 </ol>
 <blockquote>
@@ -627,11 +627,11 @@ Aggreger les segments de routes par commune pour obtenir des longueurs totales p
 <li>Convertir les unités des différentes mesures</li>
 </ol>
 <blockquote>
-<p><code>units &lt;-</code></p>
+<p>units(…)&lt;-“km^2”</p>
 </blockquote>
 <ol start="7" style="list-style-type: decimal">
 <li>Calculer les indicateurs<br />
-Le premier est le rapport entre la longueur des routes et la population des communes.
+Le premier est le rapport entre la longueur des routes et la population des communes.<br />
 Le deuxième est le rapport entre la longueur des routes et la superficie des communes.</li>
 </ol>
 

@@ -301,7 +301,7 @@ Rajouter une colonne **longueur** qui contient la longueur de chacun des segment
 route_com$longueur <- st_length(route_com)
 ```
 
-3. Calculer la longueur totale par commune  
+3. Calculer la longueur totale de route par commune  
 Aggreger les segments de routes par commune pour obtenir des longueurs totales par commune. 
 
 > aggregate()
@@ -335,7 +335,7 @@ com_dens$superficie <- st_area(com_dens)
 
 6. Convertir les unités des différentes mesures
 
-> ``units <-`` 
+> units(...)<-"km^2" 
 
 ```{r drr6, eval=FALSE, echo = FALSE}
 units(com_dens$superficie) <- "km^2"
@@ -344,7 +344,7 @@ units(com_dens$longueur) <- "km"
 
 
 7. Calculer les indicateurs  
-Le premier est le rapport entre la longueur des routes et la population des communes. 
+Le premier est le rapport entre la longueur des routes et la population des communes.   
 Le deuxième est le rapport entre la longueur des routes et la superficie des communes. 
 
 ```{r drr7, eval=FALSE, echo = FALSE}
