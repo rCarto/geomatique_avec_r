@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="Chapitre 5 Les données raster: le package terra | Géomatique avec R" />
   <meta name="twitter:image" content="/img/layer-group-solid.svg" />
 
-<meta name="author" content="Timothée Giraud &amp; Hugues Pecout" />
+<meta name="author" content="Timothée Giraud[^1] &amp; Hugues Pecout[^2]" />
 
 
 
@@ -32,7 +32,7 @@
   <link rel="shortcut icon" href="img/layer-group-solid.svg" type="image/x-icon" />
 <link rel="prev" href="georéférencement.html"/>
 <link rel="next" href="osm.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11.2/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,22 +52,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
-<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
-<script src="libs/HomeButton-0.0.1/home-button.js"></script>
-<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
-<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
-<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
-<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -225,19 +209,31 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html"><i class="fa fa-check"></i><b>5</b> Les données raster: le package terra</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#import-export"><i class="fa fa-check"></i><b>5.1</b> Import / export</a></li>
-<li class="chapter" data-level="5.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#affichage-1"><i class="fa fa-check"></i><b>5.2</b> Affichage</a></li>
-<li class="chapter" data-level="5.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#modifications-de-la-zone-détude"><i class="fa fa-check"></i><b>5.3</b> Modifications de la zone d’étude</a>
+<li class="chapter" data-level="5.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#format-des-objets-spatraster"><i class="fa fa-check"></i><b>5.1</b> Format des objets SpatRaster</a></li>
+<li class="chapter" data-level="5.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#import-et-export-de-données-1"><i class="fa fa-check"></i><b>5.2</b> Import et export de données</a></li>
+<li class="chapter" data-level="5.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#affichage-dun-objet-spatraster"><i class="fa fa-check"></i><b>5.3</b> Affichage d’un objet SpatRaster</a></li>
+<li class="chapter" data-level="5.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#modifications-de-la-zone-détude"><i class="fa fa-check"></i><b>5.4</b> Modifications de la zone d’étude</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#projections"><i class="fa fa-check"></i><b>5.3.1</b> Projections</a></li>
-<li class="chapter" data-level="5.3.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#crop-mask"><i class="fa fa-check"></i><b>5.3.2</b> crop/ mask</a></li>
-<li class="chapter" data-level="5.3.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#aggreg"><i class="fa fa-check"></i><b>5.3.3</b> aggreg</a></li>
-<li class="chapter" data-level="5.3.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#mosaic-merge"><i class="fa fa-check"></i><b>5.3.4</b> mosaic / merge</a></li>
+<li class="chapter" data-level="5.4.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#reprojections"><i class="fa fa-check"></i><b>5.4.1</b> (Re)projections</a></li>
+<li class="chapter" data-level="5.4.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#crop"><i class="fa fa-check"></i><b>5.4.2</b> Crop</a></li>
+<li class="chapter" data-level="5.4.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#mask"><i class="fa fa-check"></i><b>5.4.3</b> Mask</a></li>
+<li class="chapter" data-level="5.4.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#agrégation-désagrégation"><i class="fa fa-check"></i><b>5.4.4</b> Agrégation &amp; désagrégation</a></li>
+<li class="chapter" data-level="5.4.5" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#fusion-de-raster"><i class="fa fa-check"></i><b>5.4.5</b> Fusion de raster</a></li>
+<li class="chapter" data-level="5.4.6" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#segregate"><i class="fa fa-check"></i><b>5.4.6</b> segregate</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#operations-locales"><i class="fa fa-check"></i><b>5.4</b> Operations locales</a></li>
-<li class="chapter" data-level="5.5" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#operations-focales"><i class="fa fa-check"></i><b>5.5</b> Operations focales</a></li>
-<li class="chapter" data-level="5.6" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#operations-globales"><i class="fa fa-check"></i><b>5.6</b> Operations globales</a></li>
-<li class="chapter" data-level="5.7" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#croisement-rastervecteur"><i class="fa fa-check"></i><b>5.7</b> Croisement raster/vecteur</a></li>
+<li class="chapter" data-level="5.5" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#algèbre-spatial"><i class="fa fa-check"></i><b>5.5</b> Algèbre spatial</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#opérations-locales"><i class="fa fa-check"></i><b>5.5.1</b> Opérations locales</a></li>
+<li class="chapter" data-level="5.5.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#opérations-focales"><i class="fa fa-check"></i><b>5.5.2</b> Opérations focales</a></li>
+<li class="chapter" data-level="5.5.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#opérations-globales"><i class="fa fa-check"></i><b>5.5.3</b> Opérations globales</a></li>
+<li class="chapter" data-level="5.5.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#opérations-zonales"><i class="fa fa-check"></i><b>5.5.4</b> Opérations zonales</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#transformation-et-conversion"><i class="fa fa-check"></i><b>5.6</b> Transformation et conversion</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#rasterisation"><i class="fa fa-check"></i><b>5.6.1</b> Rasterisation</a></li>
+<li class="chapter" data-level="5.6.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#vectorisation"><i class="fa fa-check"></i><b>5.6.2</b> Vectorisation</a></li>
+<li class="chapter" data-level="5.6.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#terra-raster-sf-stars"><i class="fa fa-check"></i><b>5.6.3</b> terra, raster, sf, stars…</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="osm.html"><a href="osm.html"><i class="fa fa-check"></i><b>6</b> Focus sur OpenStreetMap</a>
 <ul>
@@ -258,7 +254,13 @@ div.csl-indent {
 <li class="chapter" data-level="6.4.2" data-path="osm.html"><a href="osm.html#calcul-dune-matrice-de-temps"><i class="fa fa-check"></i><b>6.4.2</b> Calcul d’une matrice de temps</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html"><i class="fa fa-check"></i><b>7</b> Acquisition de données spatiales</a></li>
+<li class="chapter" data-level="7" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html"><i class="fa fa-check"></i><b>7</b> Acquisition de données spatiales</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html#à-léchelle-mondiale"><i class="fa fa-check"></i><b>7.1</b> À l’échelle mondiale</a></li>
+<li class="chapter" data-level="7.2" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html#à-léchelle-européenne"><i class="fa fa-check"></i><b>7.2</b> À l’échelle européenne</a></li>
+<li class="chapter" data-level="7.3" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html#à-léchelle-française"><i class="fa fa-check"></i><b>7.3</b> À l’échelle Française</a></li>
+<li class="chapter" data-level="7.4" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html#autres"><i class="fa fa-check"></i><b>7.4</b> Autres…</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="sessioninfo.html"><a href="sessioninfo.html"><i class="fa fa-check"></i><b>8</b> <code>sessionInfo()</code></a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -283,40 +285,595 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="les-données-raster-le-package-terra" class="section level1" number="5">
 <h1><span class="header-section-number">Chapitre 5</span> Les données raster: le package terra</h1>
-<div id="import-export" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Import / export</h2>
+<div id="format-des-objets-spatraster" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Format des objets SpatRaster</h2>
+<p>Le package <code>terra</code> <span class="citation">(<a href="#ref-R-terra" role="doc-biblioref">Hijmans, 2021</a>)</span> permet de gérer des données vectorielles et raster. Pour manipuler ces données spatiales, <code>terra</code> les stocke dans des objets de type <code>SpatVector</code> et <code>SpatRaster</code>. Dans ce chapitre, nous nous focalisons sur la manipulation de données raster (<code>SpatRaster</code>) à partir de fonctions proposées par ce package.</p>
+<p>Un objet <code>SpatRaster</code> représente des données matricielles, en une ou plusieurs couches (variables). Cet objet stocke également un certain nombre de paramètres fondamentaux qui le décrivent (nombre de colonnes, de lignes, étendue spatiale, système de référence des coordonnées…).</p>
+<img src="img/raster.png" width="384" style="display: block; margin: auto;" />
+<center>
+<span style="font-size:80%;color:#A9A9A9;">Source : <span class="citation">(<a href="#ref-RasterCheatSheet" role="doc-biblioref">Racine, 2016</a>)</span></span>
+</center>
+<p></br></p>
 </div>
-<div id="affichage-1" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Affichage</h2>
+<div id="import-et-export-de-données-1" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Import et export de données</h2>
+<p>Le package <code>terra</code> permet d’importer et d’exporter des fichiers raster. Il repose sur la bibliothèque <a href="https://gdal.org/">GDAL</a> qui permet de lire et de traiter un très grand nombre de format d’images géographiques.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="les-données-raster-le-package-terra.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code></pre></div>
+<p>La fonction <code>rast()</code> permet de créer et/ou d’importer des données raster.
+Les lignes suivantes importent le fichier raster <strong>elevation.tif</strong> (<a href="https://fr.wikipedia.org/wiki/Tagged_Image_File_Format"><em>Tagged Image File Format</em></a>) dans un objet de type <code>SpatRaster</code> (par défaut).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="les-données-raster-le-package-terra.html#cb2-1" aria-hidden="true" tabindex="-1"></a>Elevation_Lot <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">&quot;data/elevation.tif&quot;</span>) </span>
+<span id="cb2-2"><a href="les-données-raster-le-package-terra.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="les-données-raster-le-package-terra.html#cb2-3" aria-hidden="true" tabindex="-1"></a>Elevation_Lot</span></code></pre></div>
+<pre><code>## class       : SpatRaster 
+## dimensions  : 2904, 4202, 1  (nrow, ncol, nlyr)
+## resolution  : 0.0002972796, 0.0002972796  (x, y)
+## extent      : 0.9716575, 2.220826, 44.19333, 45.05663  (xmin, xmax, ymin, ymax)
+## coord. ref. : lon/lat WGS 84 (EPSG:4326) 
+## source      : elevation.tif 
+## name        : file1f72aebb76 
+## min value   :             53 
+## max value   :            778</code></pre>
+<p>Modification du nom de la variable stockée (altitude).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="les-données-raster-le-package-terra.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(Elevation_Lot) <span class="ot">&lt;-</span> <span class="st">&quot;Altitude&quot;</span> </span></code></pre></div>
+<p>La fonction <code>writeRaster()</code> permet d’enregistrer un objet <code>SpatRaster</code> sur votre machine, dans le format de votre choix.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="les-données-raster-le-package-terra.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(<span class="at">x =</span> Elevation_Lot, <span class="at">filename =</span> <span class="st">&quot;data/new_elevation_Lot.tif&quot;</span>)</span></code></pre></div>
 </div>
-<div id="modifications-de-la-zone-détude" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Modifications de la zone d’étude</h2>
-<div id="projections" class="section level3" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Projections</h3>
+<div id="affichage-dun-objet-spatraster" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Affichage d’un objet SpatRaster</h2>
+<p>La fonction d’affichage <code>plot()</code> (du package <code>terra</code> !) permet d’afficher un objet <code>SpatRaster</code>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="les-données-raster-le-package-terra.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Elevation_Lot)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/affichage_1_raster-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Un raster contient toujours des données numériques, mais il peut aussi bien s’agir de données quantitatives que de données qualitatives (catégorielles) codées numériquement (ex: type d’occupation du sol).**</p>
+<p>Précisez le type de données stockées avec l’argument <code>type</code> (“continuous” par défaut), pour les afficher correctement.</p>
+<p>Import et affichage d’un raster contenant des données catégorielles : CORINE Land Cover 2018 (type d’occupation du sol) avec une résolution de 100m.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="les-données-raster-le-package-terra.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import des données CORINE Land Cover 2018 </span></span>
+<span id="cb7-2"><a href="les-données-raster-le-package-terra.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Type d&#39;occupation du sol, résolution de 100m</span></span>
+<span id="cb7-3"><a href="les-données-raster-le-package-terra.html#cb7-3" aria-hidden="true" tabindex="-1"></a>CLC2018_Lot <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">&quot;data/CLC2018_Lot.tif&quot;</span>)</span></code></pre></div>
+<p>Ces données ont été récupérées sur le <a href="https://land.copernicus.eu/pan-european/corine-land-cover/clc2018?tab=download">site de Copernicus</a>, le programme européen de surveillance de la Terre qui collecte et met à disposition des données issues de ses propres satellites (<em>Sentinelles</em>) d’observation. Une extraction centrée sur la commune de Cahors a ensuite été réalisée.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="les-données-raster-le-package-terra.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CLC2018_Lot, <span class="at">type=</span><span class="st">&quot;classes&quot;</span>)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/affichage_raster_2-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Pour afficher les intitulés réels des types d’occupation du sol, ainsi que les couleurs officielles de la nomenclature CORINE Land Cover (consultables <a href="https://www.statistiques.developpement-durable.gouv.fr/corine-land-cover-0">ici</a>), vous pouvez procéder de la manière suivante.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="les-données-raster-le-package-terra.html#cb9-1" aria-hidden="true" tabindex="-1"></a>intitule_poste <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Tissu urbain continu&quot;</span>, <span class="st">&quot;Tissu urbain discontinu&quot;</span>,<span class="st">&quot;Zones industrielles ou commerciales et installations publiques&quot;</span>,</span>
+<span id="cb9-2"><a href="les-données-raster-le-package-terra.html#cb9-2" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;Réseaux routier et ferroviaire et espaces associés&quot;</span>, <span class="st">&quot;Aéroports&quot;</span>,<span class="st">&quot;Extraction de matériaux&quot;</span>, </span>
+<span id="cb9-3"><a href="les-données-raster-le-package-terra.html#cb9-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;Equipements sportifs et de loisirs&quot;</span>, <span class="st">&quot;Terres arables hors périmètres d&#39;irrigation&quot;</span>, <span class="st">&quot;Vignobles&quot;</span>, </span>
+<span id="cb9-4"><a href="les-données-raster-le-package-terra.html#cb9-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;Vergers et petits fruits&quot;</span>, <span class="st">&quot;Prairies et autres surfaces toujours en herbe à usage agricole&quot;</span>, </span>
+<span id="cb9-5"><a href="les-données-raster-le-package-terra.html#cb9-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;Systèmes culturaux et parcellaires complexes&quot;</span>, <span class="st">&quot;Surfaces essentiellement agricoles (interrompues par espaces nat.)&quot;</span>, </span>
+<span id="cb9-6"><a href="les-données-raster-le-package-terra.html#cb9-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;Forêts de feuillus&quot;</span>, <span class="st">&quot;Forêts de conifères&quot;</span>, <span class="st">&quot;Forêts mélangées&quot;</span>, <span class="st">&quot;Pelouses et pâturages naturels&quot;</span>, </span>
+<span id="cb9-7"><a href="les-données-raster-le-package-terra.html#cb9-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;Landes et broussailles&quot;</span>, <span class="st">&quot;Végétation sclérophylle&quot;</span>, <span class="st">&quot;Forêt et végétation arbustive en mutation&quot;</span>, </span>
+<span id="cb9-8"><a href="les-données-raster-le-package-terra.html#cb9-8" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;Cours et voies d&#39;eau&quot;</span>, <span class="st">&quot;Plans d&#39;eau&quot;</span>)</span>
+<span id="cb9-9"><a href="les-données-raster-le-package-terra.html#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="les-données-raster-le-package-terra.html#cb9-10" aria-hidden="true" tabindex="-1"></a>couleur_off <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;#E6004D&quot;</span>, <span class="st">&quot;#FF0000&quot;</span>, <span class="st">&quot;#CC4DF2&quot;</span>, <span class="st">&quot;#CC0000&quot;</span>, <span class="st">&quot;#E6CCE6&quot;</span>, <span class="st">&quot;#A600CC&quot;</span>, </span>
+<span id="cb9-11"><a href="les-données-raster-le-package-terra.html#cb9-11" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;#FFE6FF&quot;</span>, <span class="st">&quot;#FFFFA8&quot;</span>, <span class="st">&quot;#E68000&quot;</span>, <span class="st">&quot;#F2A64D&quot;</span>, <span class="st">&quot;#E6E64D&quot;</span>, <span class="st">&quot;#FFE64D&quot;</span>, </span>
+<span id="cb9-12"><a href="les-données-raster-le-package-terra.html#cb9-12" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;#E6CC4D&quot;</span>, <span class="st">&quot;#80FF00&quot;</span>, <span class="st">&quot;#00A600&quot;</span>, <span class="st">&quot;#4DFF00&quot;</span>, <span class="st">&quot;#CCF24D&quot;</span>, <span class="st">&quot;#A6FF80&quot;</span>, </span>
+<span id="cb9-13"><a href="les-données-raster-le-package-terra.html#cb9-13" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;#A6E64D&quot;</span>, <span class="st">&quot;#A6F200&quot;</span>, <span class="st">&quot;#00CCF2&quot;</span>, <span class="st">&quot;#80F2E6&quot;</span>)</span>
+<span id="cb9-14"><a href="les-données-raster-le-package-terra.html#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="les-données-raster-le-package-terra.html#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="les-données-raster-le-package-terra.html#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CLC2018_Lot, <span class="at">type =</span><span class="st">&quot;classes&quot;</span>, </span>
+<span id="cb9-17"><a href="les-données-raster-le-package-terra.html#cb9-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">levels =</span> intitule_poste,</span>
+<span id="cb9-18"><a href="les-données-raster-le-package-terra.html#cb9-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> couleur_off, </span>
+<span id="cb9-19"><a href="les-données-raster-le-package-terra.html#cb9-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">plg=</span><span class="fu">list</span>(<span class="at">cex =</span><span class="fl">0.7</span>),</span>
+<span id="cb9-20"><a href="les-données-raster-le-package-terra.html#cb9-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">1.5</span>, <span class="dv">1</span>, <span class="fl">18.5</span>))</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/affichage_raster_3-1.png" width="95%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="crop-mask" class="section level3" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> crop/ mask</h3>
+<div id="modifications-de-la-zone-détude" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Modifications de la zone d’étude</h2>
+<div id="reprojections" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> (Re)projections</h3>
+<p>Pour modifier le système de projection d’un raster, utilisez la fonction <code>project()</code>. Il est alors nécessaire d’indiquer la méthode d’estimation des nouvelles valeurs des cellules.</p>
+<p><img src="img/project_raster.png" width="95%" style="display: block; margin: auto;" /></p>
+<center>
+<span style="font-size:80%;color:#A9A9A9;">Source : Centre Canadien de Télédétection</span>
+</center>
+<p></br></p>
+<p>Quatre méthodes d’estimation sont disponibles :</p>
+<ul>
+<li><strong><em>near</em></strong> : plus proche voisin. Méthode rapide et par défaut pour les données qualitatives;<br />
+</li>
+<li><strong><em>bilinear</em></strong> : interpolation bilinéaire. Méthode par défaut pour les données quantitatives;<br />
+</li>
+<li><strong><em>cubic</em></strong> : interpolation cubique;<br />
+</li>
+<li><strong><em>cubicspline</em></strong> : interpolation cubique spline.</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="les-données-raster-le-package-terra.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Projection en RGF93 / Lambert-93</span></span>
+<span id="cb10-2"><a href="les-données-raster-le-package-terra.html#cb10-2" aria-hidden="true" tabindex="-1"></a>Elevation_Lot_L93 <span class="ot">&lt;-</span> <span class="fu">project</span>(<span class="at">x=</span> Elevation_Lot, <span class="at">y =</span>  <span class="st">&quot;EPSG:2154&quot;</span>, <span class="at">method =</span> <span class="st">&quot;bilinear&quot;</span>)</span>
+<span id="cb10-3"><a href="les-données-raster-le-package-terra.html#cb10-3" aria-hidden="true" tabindex="-1"></a>CLC2018_Lot_L93 <span class="ot">&lt;-</span> <span class="fu">project</span>(<span class="at">x=</span> CLC2018_Lot, <span class="at">y =</span> <span class="st">&quot;EPSG:2154&quot;</span>, <span class="at">method =</span> <span class="st">&quot;near&quot;</span>)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/reproj_raster_2-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="aggreg" class="section level3" number="5.3.3">
-<h3><span class="header-section-number">5.3.3</span> aggreg</h3>
+<div id="crop" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Crop</h3>
+<p>Le découpage d’un raster en fonction de l’étendue d’un autre objet <code>SpatVector</code> ou <code>SpatRaster</code> est réalisable avec la fonction <code>crop()</code>.</p>
+<img src="img/crop.png" width="384" /><img src="img/crop2.png" width="384" />
+<center>
+<span style="font-size:80%;color:#A9A9A9;">Source : <span class="citation">(<a href="#ref-RasterCheatSheet" role="doc-biblioref">Racine, 2016</a>)</span></span>
+</center>
+<p></br></p>
+<p>Import de données vectorielles (découpages communaux) avec la fonction <code>vect</code>. Ces données seront stockées dans un objet <code>SpatVector</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="les-données-raster-le-package-terra.html#cb11-1" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">&quot;data/lot46.gpkg&quot;</span>, <span class="at">layer=</span><span class="st">&quot;commune&quot;</span>)</span></code></pre></div>
+<p>Extraction des limites communales de Cahors (code INSEE : 46042).</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="les-données-raster-le-package-terra.html#cb12-1" aria-hidden="true" tabindex="-1"></a>cahors <span class="ot">&lt;-</span> <span class="fu">subset</span>(commune, commune<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&quot;46042&quot;</span>) </span></code></pre></div>
+<p>Utilisation de la fonction <code>crop()</code>. Les deux couches de données doivent être dans la même projection.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="les-données-raster-le-package-terra.html#cb13-1" aria-hidden="true" tabindex="-1"></a>crop_cahors <span class="ot">&lt;-</span> <span class="fu">crop</span>(Elevation_Lot_L93, cahors)</span>
+<span id="cb13-2"><a href="les-données-raster-le-package-terra.html#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="les-données-raster-le-package-terra.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(crop_cahors)</span>
+<span id="cb13-4"><a href="les-données-raster-le-package-terra.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cahors, <span class="at">add=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/crop_raster_3-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
-<div id="mosaic-merge" class="section level3" number="5.3.4">
-<h3><span class="header-section-number">5.3.4</span> mosaic / merge</h3>
+<div id="mask" class="section level3" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Mask</h3>
+<p>Pour afficher uniquement les valeurs d’un raster contenu dans un polygone, utilisez la fonction <code>mask()</code>.</p>
+<img src="img/mask.png" width="384" style="display: block; margin: auto;" />
+<center>
+<span style="font-size:80%;color:#A9A9A9;">Source : <span class="citation">(<a href="#ref-RasterCheatSheet" role="doc-biblioref">Racine, 2016</a>)</span></span>
+</center>
+<p></br></p>
+<p>Création d’un masque sur le raster <strong>crop_cahors</strong> en fonction des limites communales (polygone) de <strong>cahors</strong>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="les-données-raster-le-package-terra.html#cb14-1" aria-hidden="true" tabindex="-1"></a>mask_cahors <span class="ot">&lt;-</span> <span class="fu">mask</span>(crop_cahors, cahors)</span>
+<span id="cb14-2"><a href="les-données-raster-le-package-terra.html#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="les-données-raster-le-package-terra.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mask_cahors)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/mask_raster-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="agrégation-désagrégation" class="section level3" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> Agrégation &amp; désagrégation</h3>
+<p>Le ré-échantillonnage d’un raster dans une résolution différente se fait en deux étapes.</p>
+<img src="img/agr_raster_2.png" width="33%" /><img src="img/raster.png" width="33%" /><img src="img/agr_raster.png" width="33%" />
+<center>
+<span style="font-size:80%;color:#A9A9A9;">Source : <span class="citation">(<a href="#ref-RasterCheatSheet" role="doc-biblioref">Racine, 2016</a>)</span></span>
+</center>
+<p></br></p>
+<p>Afficher la résolution d’un raster avec la fonction <code>res()</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="les-données-raster-le-package-terra.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Taille des cellules ?</span></span>
+<span id="cb15-2"><a href="les-données-raster-le-package-terra.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(Elevation_Lot_L93) </span></code></pre></div>
+<pre><code>## [1] 26.99635 26.99635</code></pre>
+<p>Créer une grille de même étendue, puis en diminuer la résolution spatiale (plus grosses cellules).</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="les-données-raster-le-package-terra.html#cb17-1" aria-hidden="true" tabindex="-1"></a>Elevation_LowerGrid  <span class="ot">&lt;-</span> Elevation_Lot_L93</span>
+<span id="cb17-2"><a href="les-données-raster-le-package-terra.html#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="les-données-raster-le-package-terra.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Tailles des cellules = 1000 mètres</span></span>
+<span id="cb17-4"><a href="les-données-raster-le-package-terra.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(Elevation_LowerGrid) <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb17-5"><a href="les-données-raster-le-package-terra.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># res(Elevation_HigherGrid) &lt;- 10</span></span>
+<span id="cb17-6"><a href="les-données-raster-le-package-terra.html#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="les-données-raster-le-package-terra.html#cb17-7" aria-hidden="true" tabindex="-1"></a>Elevation_LowerGrid</span></code></pre></div>
+<pre><code>## class       : SpatRaster 
+## dimensions  : 98, 101, 1  (nrow, ncol, nlyr)
+## resolution  : 1000, 1000  (x, y)
+## extent      : 537884, 638884, 6344114, 6442114  (xmin, xmax, ymin, ymax)
+## coord. ref. : RGF93 / Lambert-93 (EPSG:2154)</code></pre>
+<p>La fonction <code>resample()</code> permet de ré-échantillonner les valeurs de départ dans la nouvelle résolution spatiale. Plusieurs méthodes de ré-échantillonnage sont disponibles (cf. <a href="les-données-raster-le-package-terra.html#reprojections">partie 5.4.1</a>).</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="les-données-raster-le-package-terra.html#cb19-1" aria-hidden="true" tabindex="-1"></a>Elevation_LowerGrid <span class="ot">&lt;-</span> <span class="fu">resample</span>(Elevation_Lot_L93, </span>
+<span id="cb19-2"><a href="les-données-raster-le-package-terra.html#cb19-2" aria-hidden="true" tabindex="-1"></a>                                 Elevation_LowerGrid, </span>
+<span id="cb19-3"><a href="les-données-raster-le-package-terra.html#cb19-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">method =</span> <span class="st">&quot;bilinear&quot;</span>) </span>
+<span id="cb19-4"><a href="les-données-raster-le-package-terra.html#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="les-données-raster-le-package-terra.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Elevation_LowerGrid, </span>
+<span id="cb19-6"><a href="les-données-raster-le-package-terra.html#cb19-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Taille des cellules = 1000m</span><span class="sc">\n</span><span class="st">Méthode de ré-échantillonnage bilinéaire&quot;</span>)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/agr_raster_2-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="fusion-de-raster" class="section level3" number="5.4.5">
+<h3><span class="header-section-number">5.4.5</span> Fusion de raster</h3>
+<p>Fusionner plusieurs objets <code>SpatRaster</code> en un seul avec <code>merge()</code> ou <code>mosaic()</code>.</p>
+<img src="img/mosaic.png" width="90%" style="display: block; margin: auto;" />
+<center>
+<span style="font-size:80%;color:#A9A9A9;">Source : <a href='https://desktop.arcgis.com/fr/arcmap/10.3/manage-data/raster-and-images/what-is-a-mosaic.htm'><a href="https://desktop.arcgis.com/fr/arcmap/10.3/manage-data/raster-and-images/what-is-a-mosaic.htm" class="uri">https://desktop.arcgis.com/fr/arcmap/10.3/manage-data/raster-and-images/what-is-a-mosaic.htm</a></span>
+</center>
+<p></br></p>
+<p>Après un découpage du raster d’élévation par la limite communale de Cahors (cf <a href="les-données-raster-le-package-terra.html#crop">partie 5.4.2</a>), nous réalisons la même chose pour la commune limitrophe de Bellefont-La Rauze.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="les-données-raster-le-package-terra.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraction des limites communales de Bellefont-La Rauze</span></span>
+<span id="cb20-2"><a href="les-données-raster-le-package-terra.html#cb20-2" aria-hidden="true" tabindex="-1"></a>bellefont <span class="ot">&lt;-</span> <span class="fu">subset</span>(commune, commune<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">&quot;46156&quot;</span>) </span>
+<span id="cb20-3"><a href="les-données-raster-le-package-terra.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="les-données-raster-le-package-terra.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Découpage du raster d&#39;élévation en fonction des limites communales</span></span>
+<span id="cb20-5"><a href="les-données-raster-le-package-terra.html#cb20-5" aria-hidden="true" tabindex="-1"></a>crop_bellefont <span class="ot">&lt;-</span> <span class="fu">crop</span>(Elevation_Lot_L93, bellefont)</span></code></pre></div>
+<p>Les rasters d’élévation <strong>crop_cahors</strong> et <strong>crop_bellefont</strong> se chevauchent spatialement :</p>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/merge_raster_1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>La différence entre les fonctions <code>merge()</code> ou <code>mosaic()</code> concerne les valeurs des cellules qui se superposent. La fonction <code>mosaic()</code> calcule la valeur moyenne tandis que <code>merge()</code> conserve la valeur du premier objet <code>SpatRaster</code> appelé dans la fonction.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="les-données-raster-le-package-terra.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dans cet exemple, merge() et mosaic() donne le même résultat</span></span>
+<span id="cb21-2"><a href="les-données-raster-le-package-terra.html#cb21-2" aria-hidden="true" tabindex="-1"></a>merge_raster <span class="ot">&lt;-</span> <span class="fu">merge</span>(crop_cahors, crop_bellefont)</span>
+<span id="cb21-3"><a href="les-données-raster-le-package-terra.html#cb21-3" aria-hidden="true" tabindex="-1"></a>mosaic_raster <span class="ot">&lt;-</span> <span class="fu">mosaic</span>(crop_cahors, crop_bellefont)</span>
+<span id="cb21-4"><a href="les-données-raster-le-package-terra.html#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="les-données-raster-le-package-terra.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(merge_raster)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/merge_raster_2-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="segregate" class="section level3" number="5.4.6">
+<h3><span class="header-section-number">5.4.6</span> segregate</h3>
+<p>Décomposer un raster par valeur (ou modalité) en différentes couches matricielles avec la fonction <code>segregate()</code>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="les-données-raster-le-package-terra.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Création d&#39;une couche matricielle par modalité</span></span>
+<span id="cb22-2"><a href="les-données-raster-le-package-terra.html#cb22-2" aria-hidden="true" tabindex="-1"></a>CLC2018_by_class <span class="ot">&lt;-</span> <span class="fu">segregate</span>(CLC2018_Lot_L93, <span class="at">keep=</span><span class="cn">TRUE</span>, <span class="at">other=</span><span class="cn">NA</span>)</span>
+<span id="cb22-3"><a href="les-données-raster-le-package-terra.html#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="les-données-raster-le-package-terra.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CLC2018_by_class)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/segregate-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p></br></p>
 </div>
 </div>
-<div id="operations-locales" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Operations locales</h2>
+<div id="algèbre-spatial" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Algèbre spatial</h2>
+<p>L’algèbre spatial se classifie en quatre groupes d’opération (Tomlin, 1990) :</p>
+<ul>
+<li><strong><em>Local</em></strong> : opération par cellule, sur une ou plusieurs couches;<br />
+</li>
+<li><strong><em>Focal</em></strong> : opération de voisinage (cellules environnantes);<br />
+</li>
+<li><strong><em>Zonal</em></strong> : pour résumer les valeurs matricielles pour certaines zones, généralement irrégulières;<br />
+</li>
+<li><strong><em>Global</em></strong> : pour résumer les valeurs matricielles d’une ou plusieurs matrices.</li>
+</ul>
+<img src="img/lo_fo_zo_glo.png" width="90%" style="display: block; margin: auto;" />
+<center>
+<span style="font-size:80%;color:#A9A9A9;">Source : <a href="https://slideplayer.com/slide/5822638/"><em>Map algebra and beyond : 1. Map algebra for scalar fields</em></a>, Xingong Li, 2009.
+</center>
+<p></br></p>
+<div id="opérations-locales" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Opérations locales</h3>
+<img src="img/op_local_2.png" width="60%" style="display: block; margin: auto;" />
+<center>
+<span style="font-size:80%;color:#A9A9A9;">Source : Jeremy Mennis
+</center>
+<p></br></p>
+<!-- Les opérations locales concernent les calculs réalisés indépendamment sur une cellule, à partir d'une ou plusieurs couches (matrices).  -->
+<div id="remplacement-de-valeur" class="section level4" number="5.5.1.1">
+<h4><span class="header-section-number">5.5.1.1</span> Remplacement de valeur</h4>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="les-données-raster-le-package-terra.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remplace les valeurs -9999 par NA</span></span>
+<span id="cb23-2"><a href="les-données-raster-le-package-terra.html#cb23-2" aria-hidden="true" tabindex="-1"></a>Elevation_Lot_L93[Elevation_Lot_L93[[<span class="dv">1</span>]]<span class="sc">==</span> <span class="sc">-</span><span class="dv">9999</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb23-3"><a href="les-données-raster-le-package-terra.html#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="les-données-raster-le-package-terra.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Remplace les valeurs &lt; 1500 par NA</span></span>
+<span id="cb23-5"><a href="les-données-raster-le-package-terra.html#cb23-5" aria-hidden="true" tabindex="-1"></a>Elevation_Lot_L93[Elevation_Lot_L93 <span class="sc">&lt;</span> <span class="dv">1500</span>]  <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="les-données-raster-le-package-terra.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remplace les valeurs NA par 0</span></span>
+<span id="cb24-2"><a href="les-données-raster-le-package-terra.html#cb24-2" aria-hidden="true" tabindex="-1"></a>Elevation_Lot_L93[<span class="fu">is.na</span>(Elevation_Lot_L93 )] <span class="ot">&lt;-</span> <span class="dv">0</span></span></code></pre></div>
 </div>
-<div id="operations-focales" class="section level2" number="5.5">
-<h2><span class="header-section-number">5.5</span> Operations focales</h2>
+<div id="opération-sur-chaque-cellule" class="section level4" number="5.5.1.2">
+<h4><span class="header-section-number">5.5.1.2</span> Opération sur chaque cellule</h4>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="les-données-raster-le-package-terra.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout de 1000 à la valeur de chaque cellule</span></span>
+<span id="cb25-2"><a href="les-données-raster-le-package-terra.html#cb25-2" aria-hidden="true" tabindex="-1"></a>Elevation_Lot_1000 <span class="ot">&lt;-</span>  Elevation_Lot_L93 <span class="sc">+</span> <span class="dv">1000</span></span>
+<span id="cb25-3"><a href="les-données-raster-le-package-terra.html#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="les-données-raster-le-package-terra.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Suppression de l&#39;altitude médiane à la valeur de chaque cellule</span></span>
+<span id="cb25-5"><a href="les-données-raster-le-package-terra.html#cb25-5" aria-hidden="true" tabindex="-1"></a>Elevation_Lot_median <span class="ot">&lt;-</span>  Elevation_Lot_L93 <span class="sc">-</span> <span class="fu">global</span>(Elevation_Lot_L93, median)[[<span class="dv">1</span>]]</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/op_local_2-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="operations-globales" class="section level2" number="5.6">
-<h2><span class="header-section-number">5.6</span> Operations globales</h2>
+<div id="reclassification" class="section level4" number="5.5.1.3">
+<h4><span class="header-section-number">5.5.1.3</span> Reclassification</h4>
+<p>la reclassification des valeurs de données raster peut aussi bien être utilisée pour discrétiser des données quantitatives que pour catégoriser des modalités qualitatives.</p>
+<p>Cela permet par exemple de répartir les <a href="https://www.statistiques.developpement-durable.gouv.fr/corine-land-cover-0">44 postes de la nomenclature CLC</a> selon les 5 grands types d’occupation du territoire : territoires artificialisés, agricoles, forêts et milieux semi-naturels, zones humides et surfaces en eau. Pour cela, il est d’abord nécessaire de construire la table (matrice) de correspondance.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="les-données-raster-le-package-terra.html#cb26-1" aria-hidden="true" tabindex="-1"></a>reclassif <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">199</span>, <span class="dv">1</span>, </span>
+<span id="cb26-2"><a href="les-données-raster-le-package-terra.html#cb26-2" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">200</span>, <span class="dv">299</span>, <span class="dv">2</span>, </span>
+<span id="cb26-3"><a href="les-données-raster-le-package-terra.html#cb26-3" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">300</span>, <span class="dv">399</span>, <span class="dv">3</span>, </span>
+<span id="cb26-4"><a href="les-données-raster-le-package-terra.html#cb26-4" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">400</span>, <span class="dv">499</span>, <span class="dv">4</span>,</span>
+<span id="cb26-5"><a href="les-données-raster-le-package-terra.html#cb26-5" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">500</span>, <span class="dv">599</span>, <span class="dv">5</span>), </span>
+<span id="cb26-6"><a href="les-données-raster-le-package-terra.html#cb26-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Les valeurs comprises entre 100 et 199 seront remplacées par la valeur 1.<br />
+Les valeurs comprises entre 200 et 299 seront remplacées par la valeur 2.<br />
+Les valeurs comprises entre 300 et 399 seront remplacées par la valeur 3.<br />
+…</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="les-données-raster-le-package-terra.html#cb27-1" aria-hidden="true" tabindex="-1"></a>reclassif</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]  100  199    1
+## [2,]  200  299    2
+## [3,]  300  399    3
+## [4,]  400  499    4
+## [5,]  500  599    5</code></pre>
+<p>La fonction <code>classify()</code> permet de réaliser la reclassification.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="les-données-raster-le-package-terra.html#cb29-1" aria-hidden="true" tabindex="-1"></a>CLC2018_5class <span class="ot">&lt;-</span> <span class="fu">classify</span>(CLC2018_Lot_L93, <span class="at">rcl =</span> reclassif)</span>
+<span id="cb29-2"><a href="les-données-raster-le-package-terra.html#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="les-données-raster-le-package-terra.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CLC2018_5class, <span class="at">type =</span><span class="st">&quot;classes&quot;</span>)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/reclass_4-1.png" width="672" /></p>
+<p>Affichage avec les intitulés et couleurs officiels des différentes catégories.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="les-données-raster-le-package-terra.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CLC2018_5class, </span>
+<span id="cb30-2"><a href="les-données-raster-le-package-terra.html#cb30-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span><span class="st">&quot;classes&quot;</span>, </span>
+<span id="cb30-3"><a href="les-données-raster-le-package-terra.html#cb30-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;Territoires artificialisés&quot;</span>,</span>
+<span id="cb30-4"><a href="les-données-raster-le-package-terra.html#cb30-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;Territoires agricoles&quot;</span>,</span>
+<span id="cb30-5"><a href="les-données-raster-le-package-terra.html#cb30-5" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;Forêts et milieux semi-naturels&quot;</span>,</span>
+<span id="cb30-6"><a href="les-données-raster-le-package-terra.html#cb30-6" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;Surfaces en eau&quot;</span>),</span>
+<span id="cb30-7"><a href="les-données-raster-le-package-terra.html#cb30-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;#E6004D&quot;</span>, </span>
+<span id="cb30-8"><a href="les-données-raster-le-package-terra.html#cb30-8" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;#FFFFA8&quot;</span>, </span>
+<span id="cb30-9"><a href="les-données-raster-le-package-terra.html#cb30-9" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;#80FF00&quot;</span>, </span>
+<span id="cb30-10"><a href="les-données-raster-le-package-terra.html#cb30-10" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;#00CCF2&quot;</span>),</span>
+<span id="cb30-11"><a href="les-données-raster-le-package-terra.html#cb30-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">1.5</span>, <span class="dv">1</span>, <span class="dv">11</span>))</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/reclass_6-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="croisement-rastervecteur" class="section level2" number="5.7">
-<h2><span class="header-section-number">5.7</span> Croisement raster/vecteur</h2>
-<p>passage vect &lt;=&gt; rast</p>
+<div id="opération-sur-plusieurs-couches-ex-ndvi" class="section level4" number="5.5.1.4">
+<h4><span class="header-section-number">5.5.1.4</span> Opération sur plusieurs couches (ex: NDVI)</h4>
+<p>Il est possible de calculer la valeur d’une cellule à partir de ses valeurs stockées dans différentes couches d’un objet <code>SpatRaster</code>.</p>
+<p>L’exemple le plus courant est sans doute le calcul de l’<a href="http://www.trameverteetbleue.fr/outils-methodes/donnees-mobilisables/indice-vegetation-modis">indice de végétation normalisé (<em>NDVI</em>)</a>. Pour chaque cellule, on calcule une valeur à partir de deux deux couches de données matricielle d’une image satellite multispectrale.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="les-données-raster-le-package-terra.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import d&#39;une image satellite multispectrale</span></span>
+<span id="cb31-2"><a href="les-données-raster-le-package-terra.html#cb31-2" aria-hidden="true" tabindex="-1"></a>Sentinel2a <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">&quot;data/Sentinel2A.tif&quot;</span>)</span></code></pre></div>
+<p>Cette image satellite multispectrale (résolution de 10m) datée du 12/10/2021, a été produite par le satellite <em>Sentinel-2</em> et a été récupéré sur la <a href="https://scihub.copernicus.eu/dhus/#/home">plateforme Copernicus Open Access Hub</a>. Une extraction des bandes spectrales Rouge et proche infrarouge, centrée sur le département du Lot a ensuite été réalisée.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="les-données-raster-le-package-terra.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Sentinel2a)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/NDVI_1-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p></br></p>
+<p>Pour alléger le code, on assigne les deux couches matricielles dans des objets <code>SpatRaster</code> différents.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="les-données-raster-le-package-terra.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bande spectrale rouge</span></span>
+<span id="cb33-2"><a href="les-données-raster-le-package-terra.html#cb33-2" aria-hidden="true" tabindex="-1"></a>B04_Red <span class="ot">&lt;-</span> Sentinel2a[[<span class="dv">1</span>]]</span>
+<span id="cb33-3"><a href="les-données-raster-le-package-terra.html#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="les-données-raster-le-package-terra.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Bande spectrale proche infrarouge</span></span>
+<span id="cb33-5"><a href="les-données-raster-le-package-terra.html#cb33-5" aria-hidden="true" tabindex="-1"></a>B08_NIR <span class="ot">&lt;-</span>Sentinel2a[[<span class="dv">2</span>]]</span></code></pre></div>
+<p>À partir de ces deux rasters, nous pouvons calculer l’indice de végétation normalisé :</p>
+<p><span class="math display">\[{NDVI}=\frac{\mathrm{NIR} - \mathrm{Red}} {\mathrm{NIR} + \mathrm{Red}}\]</span></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="les-données-raster-le-package-terra.html#cb34-1" aria-hidden="true" tabindex="-1"></a>raster_NDVI <span class="ot">&lt;-</span> (B08_NIR <span class="sc">-</span> B04_Red ) <span class="sc">/</span> (B08_NIR <span class="sc">+</span> B04_Red )</span>
+<span id="cb34-2"><a href="les-données-raster-le-package-terra.html#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="les-données-raster-le-package-terra.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(raster_NDVI)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/NDVI_3-1.png" width="90%" style="display: block; margin: auto;" />
+Plus les valeurs sont importantes (proche de 1), plus la végétation est dense.</p>
+</div>
+</div>
+<div id="opérations-focales" class="section level3" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Opérations focales</h3>
+<img src="img/op_focal_2.png" width="50%" style="display: block; margin: auto;" />
+<center>
+<span style="font-size:80%;color:#A9A9A9;">Source : Jeremy Mennis
+</center>
+<p></br></p>
+<p>L’analyse focale considère une cellule plus ses voisins directs de manière contiguë et symétrique (opérations de voisinage). Le plus souvent, la valeur de la cellule de sortie est le résultat d’un bloc de cellules d’entrée 3 x 3 (nombre impair).</p>
+<p>La première étape consiste à construire une matrice qui détermine le bloc de cellules qui sera pris en compte autour de chaque cellule.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="les-données-raster-le-package-terra.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrice 5 x 5, où chaque cellule présente la même pondération</span></span>
+<span id="cb35-2"><a href="les-données-raster-le-package-terra.html#cb35-2" aria-hidden="true" tabindex="-1"></a>mon_focal <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span>, <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span>
+<span id="cb35-3"><a href="les-données-raster-le-package-terra.html#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="les-données-raster-le-package-terra.html#cb35-4" aria-hidden="true" tabindex="-1"></a>mon_focal</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    1    1    1    1
+## [2,]    1    1    1    1    1
+## [3,]    1    1    1    1    1
+## [4,]    1    1    1    1    1
+## [5,]    1    1    1    1    1</code></pre>
+<p>La fonction <code>focal()</code> permet de ensuite de réaliser l’analyse souhaitée. Par exemple : le calcul de la moyenne des valeurs de toutes les cellules contiguës, pour chaque cellule du raster.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="les-données-raster-le-package-terra.html#cb37-1" aria-hidden="true" tabindex="-1"></a>Elevation_LowerGrid_mean <span class="ot">&lt;-</span> <span class="fu">focal</span>(Elevation_LowerGrid, </span>
+<span id="cb37-2"><a href="les-données-raster-le-package-terra.html#cb37-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">w =</span> mon_focal, </span>
+<span id="cb37-3"><a href="les-données-raster-le-package-terra.html#cb37-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">fun =</span> mean)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/op_focal_5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="opération-focales-pour-rasters-délévation" class="section level4" number="5.5.2.1">
+<h4><span class="header-section-number">5.5.2.1</span> Opération focales pour rasters d’élévation</h4>
+<p>La fonction <code>terrain</code> permet de réaliser des analyses focales spécifiques au rasters d’élévation. Six opérations sont disponibles :</p>
+<ul>
+<li><strong><em>slope</em></strong> = calcul de la pente ou degré d’inclinaison de la surface;<br />
+</li>
+<li><strong><em>aspect</em></strong> = calcul de l’orientation de la pente;<br />
+</li>
+<li><strong><em>roughness</em></strong> = calcul de la variabilité ou l’irrégularité de l’élévation;<br />
+</li>
+<li><strong><em>TPI</em></strong> = calcul de l’indice des positions topographiques;<br />
+</li>
+<li><strong><em>TRI</em></strong> = calcul de l’indice de la variabilité de l’élévation;<br />
+</li>
+<li><strong><em>flowdir</em></strong> = calcul du sens d’écoulement de l’eau.</li>
+</ul>
+<p>Exemples avec le calcul des pentes (<em>slope</em>).</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="les-données-raster-le-package-terra.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcul de la pente (slope)</span></span>
+<span id="cb38-2"><a href="les-données-raster-le-package-terra.html#cb38-2" aria-hidden="true" tabindex="-1"></a>slope <span class="ot">&lt;-</span> <span class="fu">terrain</span>(Elevation_Lot_L93, <span class="st">&quot;slope&quot;</span>, </span>
+<span id="cb38-3"><a href="les-données-raster-le-package-terra.html#cb38-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">neighbors =</span> <span class="dv">8</span>, <span class="co"># 8 (ou 4) cellules autour pris en compte</span></span>
+<span id="cb38-4"><a href="les-données-raster-le-package-terra.html#cb38-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">unit =</span> <span class="st">&quot;degrees&quot;</span>) <span class="co"># Unité en sortie</span></span>
+<span id="cb38-5"><a href="les-données-raster-le-package-terra.html#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="les-données-raster-le-package-terra.html#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="les-données-raster-le-package-terra.html#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Inclinaison des pentes, en degré</span></span>
+<span id="cb38-8"><a href="les-données-raster-le-package-terra.html#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(slope)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/op_focal_6-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="opérations-globales" class="section level3" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> Opérations globales</h3>
+<img src="img/op_global.png" width="50%" style="display: block; margin: auto;" />
+<center>
+<span style="font-size:80%;color:#A9A9A9;">Source : <a href="https://gisgeography.com/map-algebra-global-zonal-focal-local/" class="uri">https://gisgeography.com/map-algebra-global-zonal-focal-local/</a>
+</center>
+<p></br></p>
+<p>Les opérations globales permettent de résumer les valeurs matricielles d’une ou plusieurs matrices.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="les-données-raster-le-package-terra.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Valeur moyenne</span></span>
+<span id="cb39-2"><a href="les-données-raster-le-package-terra.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">global</span>(Elevation_Lot_L93, <span class="at">fun =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<pre><code>##              mean
+## Altitude 284.5169</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="les-données-raster-le-package-terra.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Écart-type</span></span>
+<span id="cb41-2"><a href="les-données-raster-le-package-terra.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">global</span>(Elevation_Lot_L93, <span class="at">fun =</span> <span class="st">&quot;sd&quot;</span>)</span></code></pre></div>
+<pre><code>##                sd
+## Altitude 135.6232</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="les-données-raster-le-package-terra.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fréquence</span></span>
+<span id="cb43-2"><a href="les-données-raster-le-package-terra.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">freq</span>(CLC2018_5class)</span></code></pre></div>
+<pre><code>##      layer value  count
+## [1,]     1     1  18319
+## [2,]     1     2 469848
+## [3,]     1     3 406889
+## [4,]     1     5   5333</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="les-données-raster-le-package-terra.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tableau de contingence</span></span>
+<span id="cb45-2"><a href="les-données-raster-le-package-terra.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CLC2018_5class[])</span></code></pre></div>
+<pre><code>## 
+##      1      2      3      5 
+##  18319 469848 406889   5333</code></pre>
+<p>Représentations statistiques qui résument les informations matricielles.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="les-données-raster-le-package-terra.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogramme</span></span>
+<span id="cb47-2"><a href="les-données-raster-le-package-terra.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Elevation_Lot_L93)</span></code></pre></div>
+<pre><code>## Warning: [hist] a sample of7% of the cells was used</code></pre>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/op_global_4-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="les-données-raster-le-package-terra.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Densité</span></span>
+<span id="cb49-2"><a href="les-données-raster-le-package-terra.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">density</span>(Elevation_Lot_L93)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/op_global_4-2.png" width="576" style="display: block; margin: auto;" /></p>
+<p></br></p>
+<p>Calcul de l’auto-corrélation spatiale (indice de Moran et de Geary) :</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="les-données-raster-le-package-terra.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Indice de Moran</span></span>
+<span id="cb50-2"><a href="les-données-raster-le-package-terra.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">autocor</span>(Elevation_LowerGrid, <span class="at">global=</span><span class="cn">TRUE</span> , <span class="at">method=</span><span class="st">&quot;moran&quot;</span>)</span></code></pre></div>
+<pre><code>##  Altitude 
+## 0.9823628</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="les-données-raster-le-package-terra.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Indice de Geary</span></span>
+<span id="cb52-2"><a href="les-données-raster-le-package-terra.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">autocor</span>(Elevation_LowerGrid, <span class="at">global=</span><span class="cn">TRUE</span> , <span class="at">method=</span><span class="st">&quot;geary&quot;</span>)</span></code></pre></div>
+<pre><code>##   Altitude 
+## 0.03378047</code></pre>
+</div>
+<div id="opérations-zonales" class="section level3" number="5.5.4">
+<h3><span class="header-section-number">5.5.4</span> Opérations zonales</h3>
+<img src="img/op_zonal_2.png" width="50%" style="display: block; margin: auto;" />
+<center>
+<span style="font-size:80%;color:#A9A9A9;">Source : Jeremy Mennis
+</center>
+<p></br></p>
+<p>Les opérations zonales permettent de résumer les valeurs matricielles de certaines zones (groupe de cellules contiguë dans l’espace ou en valeur).</p>
+<div id="opération-zonale-sur-une-extraction" class="section level4" number="5.5.4.1">
+<h4><span class="header-section-number">5.5.4.1</span> Opération zonale sur une extraction</h4>
+<p><strong>Toutes les opérations globales peuvent être réalisées sur une extraction de cellules résultant des fonctions <code>crop()</code>, <code>mask()</code>, <code>segregate()</code>…</strong></p>
+<p>Exemple : élévation moyenne pour la ville de Cahors (cf <a href="les-données-raster-le-package-terra.html#mask">partie 5.4.3</a>).</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="les-données-raster-le-package-terra.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Valeur moyenne du raster &quot;mask&quot; sur Cahors</span></span>
+<span id="cb54-2"><a href="les-données-raster-le-package-terra.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">global</span>(mask_cahors, <span class="at">fun =</span> <span class="st">&quot;mean&quot;</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##              mean
+## Altitude 205.1767</code></pre>
+</div>
+<div id="opération-zonale-à-partir-dune-couche-vectorielle" class="section level4" number="5.5.4.2">
+<h4><span class="header-section-number">5.5.4.2</span> Opération zonale à partir d’une couche vectorielle</h4>
+<p>La fonction <code>extract()</code> permet d’extraire et de manipuler les valeurs des cellules qui intersectent des données vectorielles.</p>
+<p>Exemple à partir de polygones :</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="les-données-raster-le-package-terra.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Moyenne d&#39;élévation pour chaque polygone (commune) ?</span></span>
+<span id="cb56-2"><a href="les-données-raster-le-package-terra.html#cb56-2" aria-hidden="true" tabindex="-1"></a>elevation_by_com <span class="ot">&lt;-</span>  <span class="fu">extract</span>(Elevation_LowerGrid, commune, <span class="at">fun=</span>mean)</span>
+<span id="cb56-3"><a href="les-données-raster-le-package-terra.html#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="les-données-raster-le-package-terra.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(elevation_by_com, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##    ID Altitude
+## 1   1 203.0747
+## 2   2 383.3535
+## 3   3 325.7307
+## 4   4 417.7236
+## 5   5 124.6304
+## 6   6 202.1067
+## 7   7 214.6572
+## 8   8 237.2690
+## 9   9 345.3603
+## 10 10 216.9668</code></pre>
+<!-- Exemple à partir de points : -->
+<!-- ```{r op_zonal_pts, eval=TRUE} -->
+<!-- # Extraction des centroïdes de commune -->
+<!-- com_centroid <- centroids(commune) -->
+<!-- # Valeurs du "CLC2018_Lot_L93" sous chaque centroïde de commune ? -->
+<!-- CLC_by_centroid <-  extract(CLC2018_Lot_L93, com_centroid) -->
+<!-- head(CLC_by_centroid, 10) -->
+<!-- ``` -->
+</div>
+<div id="opération-zonale-à-partir-dun-raster" class="section level4" number="5.5.4.3">
+<h4><span class="header-section-number">5.5.4.3</span> Opération zonale à partir d’un raster</h4>
+<p>Les opérations zonales peuvent être réaliser par zone délimitée par les valeurs catégorielles d’un second raster. Pour cela, les deux rasters doivent avoir exactement le même étendue et la même résolution.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="les-données-raster-le-package-terra.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Création d&#39;un second raster</span></span>
+<span id="cb58-2"><a href="les-données-raster-le-package-terra.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Même résolution et étendue que &quot;Elevation_LowerGrid&quot;</span></span>
+<span id="cb58-3"><a href="les-données-raster-le-package-terra.html#cb58-3" aria-hidden="true" tabindex="-1"></a>second_raster_CLC <span class="ot">&lt;-</span> <span class="fu">rast</span>(Elevation_LowerGrid)</span>
+<span id="cb58-4"><a href="les-données-raster-le-package-terra.html#cb58-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-5"><a href="les-données-raster-le-package-terra.html#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Ré-échantillonnage du type d&#39;occupation du sol</span></span>
+<span id="cb58-6"><a href="les-données-raster-le-package-terra.html#cb58-6" aria-hidden="true" tabindex="-1"></a>second_raster_CLC <span class="ot">&lt;-</span> <span class="fu">resample</span>(CLC2018_5class, </span>
+<span id="cb58-7"><a href="les-données-raster-le-package-terra.html#cb58-7" aria-hidden="true" tabindex="-1"></a>                              second_raster_CLC, </span>
+<span id="cb58-8"><a href="les-données-raster-le-package-terra.html#cb58-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">method =</span> <span class="st">&quot;near&quot;</span>) </span>
+<span id="cb58-9"><a href="les-données-raster-le-package-terra.html#cb58-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-10"><a href="les-données-raster-le-package-terra.html#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout d&#39;un nom de variable pour le second raster</span></span>
+<span id="cb58-11"><a href="les-données-raster-le-package-terra.html#cb58-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(second_raster_CLC) <span class="ot">&lt;-</span> <span class="st">&quot;CLC2018_5class&quot;</span></span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/op_zonal_2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Calcul de l’élévation moyenne pour les différentes zones du second raster.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="les-données-raster-le-package-terra.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Élévation moyenne pour chaque zone du &quot;second_raster&quot;</span></span>
+<span id="cb59-2"><a href="les-données-raster-le-package-terra.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">zonal</span>(Elevation_LowerGrid, second_raster_CLC , <span class="st">&quot;mean&quot;</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##   CLC2018_5class Altitude
+## 1              1 234.4005
+## 2              2 298.2720
+## 3              3 287.8398
+## 4              5 156.1017</code></pre>
+</div>
+</div>
+</div>
+<div id="transformation-et-conversion" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> Transformation et conversion</h2>
+<div id="rasterisation" class="section level3" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Rasterisation</h3>
+<p>Transformer des polygones en format raster.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="les-données-raster-le-package-terra.html#cb61-1" aria-hidden="true" tabindex="-1"></a>raster_commune <span class="ot">&lt;-</span> <span class="fu">rasterize</span>(<span class="at">x =</span> commune, <span class="at">y =</span> Elevation_Lot_L93 , <span class="at">field =</span> <span class="dv">46</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="les-données-raster-le-package-terra.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(raster_commune)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/Raster_vec11-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Transformer des points en format raster.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="les-données-raster-le-package-terra.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rasterisation des centroïdes des communes</span></span>
+<span id="cb63-2"><a href="les-données-raster-le-package-terra.html#cb63-2" aria-hidden="true" tabindex="-1"></a>raster_com_centroide <span class="ot">&lt;-</span> <span class="fu">rasterize</span>(<span class="at">x =</span> <span class="fu">centroids</span>(commune), </span>
+<span id="cb63-3"><a href="les-données-raster-le-package-terra.html#cb63-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">y =</span> Elevation_LowerGrid, <span class="at">fun=</span>sum)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="les-données-raster-le-package-terra.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(raster_com_centroide)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/Raster_vec22-1.png" width="672" /></p>
+<p>Transformer des lignes format raster.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="les-données-raster-le-package-terra.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rasterisation des limites communales</span></span>
+<span id="cb65-2"><a href="les-données-raster-le-package-terra.html#cb65-2" aria-hidden="true" tabindex="-1"></a>raster_com_line <span class="ot">&lt;-</span> <span class="fu">rasterize</span>(<span class="at">x =</span> <span class="fu">as.lines</span>(commune), <span class="at">y =</span> Elevation_LowerGrid, <span class="at">fun=</span>sum)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="les-données-raster-le-package-terra.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(raster_com_line)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/Raster_vec33-1.png" width="672" /></p>
+</div>
+<div id="vectorisation" class="section level3" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> Vectorisation</h3>
+<p>Transformer un raster en polygones vectoriels.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="les-données-raster-le-package-terra.html#cb67-1" aria-hidden="true" tabindex="-1"></a>Polygone_Elevation <span class="ot">&lt;-</span> <span class="fu">as.polygons</span>(Elevation_LowerGrid)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="les-données-raster-le-package-terra.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Polygone_Elevation, <span class="at">y =</span> <span class="dv">1</span>, <span class="at">border=</span><span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/Raster_vec44-1.png" width="672" /></p>
+<p>Transformer un raster en points vectoriels.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="les-données-raster-le-package-terra.html#cb69-1" aria-hidden="true" tabindex="-1"></a>Points_Elevation <span class="ot">&lt;-</span> <span class="fu">as.points</span>(Elevation_LowerGrid)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="les-données-raster-le-package-terra.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Points_Elevation, <span class="at">y =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/Raster_vec55-1.png" width="672" /></p>
+<p>Transformer un raster en lignes vectorielles.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="les-données-raster-le-package-terra.html#cb71-1" aria-hidden="true" tabindex="-1"></a>Lines_Elevation <span class="ot">&lt;-</span> <span class="fu">as.lines</span>(Elevation_LowerGrid)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="les-données-raster-le-package-terra.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Lines_Elevation)</span></code></pre></div>
+<p><img src="G%C3%A9omatique-avec-R_files/figure-html/Raster_vec66-1.png" width="672" /></p>
+</div>
+<div id="terra-raster-sf-stars" class="section level3" number="5.6.3">
+<h3><span class="header-section-number">5.6.3</span> terra, raster, sf, stars…</h3>
+<p>Les packages de références permettant de manipuler les données spatiales reposent tous sur leur propre classe d’objet. Il est parfois nécessaire de convertir ces objets d’une classe à l’autre pour profiter de l’ensemble des fonctionnalités offertes par ces différents packages.</p>
+<p>Les fonctions de conversion pour les données matricielles :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">FROM/TO</th>
+<th align="left">raster</th>
+<th align="left">terra</th>
+<th align="left">stars</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">raster</td>
+<td align="left"></td>
+<td align="left">rast()</td>
+<td align="left">st_as_stars()</td>
+</tr>
+<tr class="even">
+<td align="left">terra</td>
+<td align="left">raster()</td>
+<td align="left"></td>
+<td align="left">st_as_stars()</td>
+</tr>
+<tr class="odd">
+<td align="left">stars</td>
+<td align="left">raster()</td>
+<td align="left">as(x, ‘Raster’) + rast()</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p></br></p>
+<p>Les fonctions de conversion pour les données vectorielles :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">FROM/TO</th>
+<th align="left">sf</th>
+<th align="left">sp</th>
+<th align="left">terra</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">sf</td>
+<td align="left"></td>
+<td align="left">as(x, ‘Spatial’)</td>
+<td align="left">vect()</td>
+</tr>
+<tr class="even">
+<td align="left">sp</td>
+<td align="left">st_as_sf()</td>
+<td align="left"></td>
+<td align="left">vect()</td>
+</tr>
+<tr class="odd">
+<td align="left">terra</td>
+<td align="left">st_as_sf()</td>
+<td align="left">as(x, ‘Spatial’)</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p></br></p>
 
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-R-terra" class="csl-entry">
+Hijmans, R. J. (2021). <em>terra: Spatial Data Analysis</em>. <a href="https://CRAN.R-project.org/package=terra">https://CRAN.R-project.org/package=terra</a>
+</div>
+<div id="ref-RasterCheatSheet" class="csl-entry">
+Racine, E. B. (2016). The Visual Raster Cheat Sheet. <a href="https://rpubs.com/etiennebr/visualraster">https://rpubs.com/etiennebr/visualraster</a>.
 </div>
 </div>
             </section>
@@ -380,6 +937,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
