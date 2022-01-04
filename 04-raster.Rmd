@@ -3,7 +3,7 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 nocite: |
-  @MmadelinSIGR, @JNowosadSIGR, @RasterCheatSheet
+  @MmadelinSIGR, @JNowosadSIGR
 ---
 
 # Les données raster: le package terra

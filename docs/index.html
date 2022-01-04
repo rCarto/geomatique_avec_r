@@ -32,7 +32,7 @@
   <link rel="shortcut icon" href="img/layer-group-solid.svg" type="image/x-icon" />
 
 <link rel="next" href="introductionx.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11.2/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,111 +52,9 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
-<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
-<script src="libs/HomeButton-0.0.1/home-button.js"></script>
-<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
-<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
-<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
-<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -225,19 +123,31 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html"><i class="fa fa-check"></i><b>5</b> Les données raster: le package terra</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#import-export"><i class="fa fa-check"></i><b>5.1</b> Import / export</a></li>
-<li class="chapter" data-level="5.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#affichage-1"><i class="fa fa-check"></i><b>5.2</b> Affichage</a></li>
-<li class="chapter" data-level="5.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#modifications-de-la-zone-détude"><i class="fa fa-check"></i><b>5.3</b> Modifications de la zone d’étude</a>
+<li class="chapter" data-level="5.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#format-des-objets-spatraster"><i class="fa fa-check"></i><b>5.1</b> Format des objets SpatRaster</a></li>
+<li class="chapter" data-level="5.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#import-et-export-de-données-1"><i class="fa fa-check"></i><b>5.2</b> Import et export de données</a></li>
+<li class="chapter" data-level="5.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#affichage-dun-objet-spatraster"><i class="fa fa-check"></i><b>5.3</b> Affichage d’un objet SpatRaster</a></li>
+<li class="chapter" data-level="5.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#modifications-de-la-zone-détude"><i class="fa fa-check"></i><b>5.4</b> Modifications de la zone d’étude</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#projections"><i class="fa fa-check"></i><b>5.3.1</b> Projections</a></li>
-<li class="chapter" data-level="5.3.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#crop-mask"><i class="fa fa-check"></i><b>5.3.2</b> crop/ mask</a></li>
-<li class="chapter" data-level="5.3.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#aggreg"><i class="fa fa-check"></i><b>5.3.3</b> aggreg</a></li>
-<li class="chapter" data-level="5.3.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#mosaic-merge"><i class="fa fa-check"></i><b>5.3.4</b> mosaic / merge</a></li>
+<li class="chapter" data-level="5.4.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#reprojections"><i class="fa fa-check"></i><b>5.4.1</b> (Re)projections</a></li>
+<li class="chapter" data-level="5.4.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#crop"><i class="fa fa-check"></i><b>5.4.2</b> Crop</a></li>
+<li class="chapter" data-level="5.4.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#mask"><i class="fa fa-check"></i><b>5.4.3</b> Mask</a></li>
+<li class="chapter" data-level="5.4.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#agrégation-désagrégation"><i class="fa fa-check"></i><b>5.4.4</b> Agrégation &amp; désagrégation</a></li>
+<li class="chapter" data-level="5.4.5" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#fusion-de-raster"><i class="fa fa-check"></i><b>5.4.5</b> Fusion de raster</a></li>
+<li class="chapter" data-level="5.4.6" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#segregate"><i class="fa fa-check"></i><b>5.4.6</b> segregate</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#operations-locales"><i class="fa fa-check"></i><b>5.4</b> Operations locales</a></li>
-<li class="chapter" data-level="5.5" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#operations-focales"><i class="fa fa-check"></i><b>5.5</b> Operations focales</a></li>
-<li class="chapter" data-level="5.6" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#operations-globales"><i class="fa fa-check"></i><b>5.6</b> Operations globales</a></li>
-<li class="chapter" data-level="5.7" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#croisement-rastervecteur"><i class="fa fa-check"></i><b>5.7</b> Croisement raster/vecteur</a></li>
+<li class="chapter" data-level="5.5" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#algèbre-spatial"><i class="fa fa-check"></i><b>5.5</b> Algèbre spatial</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#opérations-locales"><i class="fa fa-check"></i><b>5.5.1</b> Opérations locales</a></li>
+<li class="chapter" data-level="5.5.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#opérations-focales"><i class="fa fa-check"></i><b>5.5.2</b> Opérations focales</a></li>
+<li class="chapter" data-level="5.5.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#opérations-globales"><i class="fa fa-check"></i><b>5.5.3</b> Opérations globales</a></li>
+<li class="chapter" data-level="5.5.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#opérations-zonales"><i class="fa fa-check"></i><b>5.5.4</b> Opérations zonales</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#transformation-et-conversion"><i class="fa fa-check"></i><b>5.6</b> Transformation et conversion</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#rasterisation"><i class="fa fa-check"></i><b>5.6.1</b> Rasterisation</a></li>
+<li class="chapter" data-level="5.6.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#vectorisation"><i class="fa fa-check"></i><b>5.6.2</b> Vectorisation</a></li>
+<li class="chapter" data-level="5.6.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#terra-raster-sf-stars"><i class="fa fa-check"></i><b>5.6.3</b> terra, raster, sf, stars…</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="osm.html"><a href="osm.html"><i class="fa fa-check"></i><b>6</b> Focus sur OpenStreetMap</a>
 <ul>
@@ -258,7 +168,13 @@ div.csl-indent {
 <li class="chapter" data-level="6.4.2" data-path="osm.html"><a href="osm.html#calcul-dune-matrice-de-temps"><i class="fa fa-check"></i><b>6.4.2</b> Calcul d’une matrice de temps</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html"><i class="fa fa-check"></i><b>7</b> Acquisition de données spatiales</a></li>
+<li class="chapter" data-level="7" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html"><i class="fa fa-check"></i><b>7</b> Acquisition de données spatiales</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html#à-léchelle-mondiale"><i class="fa fa-check"></i><b>7.1</b> À l’échelle mondiale</a></li>
+<li class="chapter" data-level="7.2" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html#à-léchelle-européenne"><i class="fa fa-check"></i><b>7.2</b> À l’échelle européenne</a></li>
+<li class="chapter" data-level="7.3" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html#à-léchelle-française"><i class="fa fa-check"></i><b>7.3</b> À l’échelle Française</a></li>
+<li class="chapter" data-level="7.4" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html#autres"><i class="fa fa-check"></i><b>7.4</b> Autres…</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="sessioninfo.html"><a href="sessioninfo.html"><i class="fa fa-check"></i><b>8</b> <code>sessionInfo()</code></a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -284,7 +200,7 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">Géomatique avec R</h1>
 <p class="author"><em>Timothée Giraud<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> &amp; Hugues Pecout<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></em></p>
-<p class="date"><em>20 décembre 2021</em></p>
+<p class="date"><em>04 janvier 2022</em></p>
 </div>
 <div id="préambule" class="section level1" number="1">
 <h1><span class="header-section-number">Chapitre 1</span> Préambule</h1>
