@@ -2,15 +2,23 @@
 output: html_document
 editor_options: 
   chunk_output_type: console
-nocite: |
-  @MmadelinSIGR, @JNowosadSIGR
 ---
+
+```{r knitr_initx, echo=FALSE, cache=FALSE}
+library(knitr)
+## Global options
+options(max.print="90")
+opts_chunk$set(echo=TRUE,
+               fig.align='center',
+               cache=TRUE)
+```
+
 
 # Les données raster: le package terra
 
-## Format des objets SpatRaster
+## Format des objets `SpatRaster`
 
-Le package `terra` [@R-terra] permet de gérer des données vectorielles et raster. Pour manipuler ces données spatiales, `terra` les stocke dans des objets de type `SpatVector` et `SpatRaster`. Dans ce chapitre, nous nous focalisons sur la manipulation de données raster (`SpatRaster`) à partir de fonctions proposées par ce package.
+Le package `terra` [@R-terra] permet de gérer des données vectorielles et raster. Pour manipuler ces données spatiales, `terra` les stockent dans des objets de type `SpatVector` et `SpatRaster`. Dans ce chapitre, nous nous focalisons sur la manipulation de données raster (`SpatRaster`) à partir de fonctions proposées par ce package.
 
 Un objet `SpatRaster` représente des données matricielles, en une ou plusieurs couches (variables). Cet objet stocke également un certain nombre de paramètres fondamentaux qui le décrivent (nombre de colonnes, de lignes, étendue spatiale, système de référence des coordonnées...).
 
@@ -54,18 +62,19 @@ writeRaster(x = Elevation_Lot, filename = "data/new_elevation_Lot.tif")
 ## Affichage d'un objet SpatRaster
 
 
-La fonction d'affichage `plot()` (du package `terra` !) permet d'afficher un objet `SpatRaster`.
+La fonction `plot()` permet d'afficher un objet `SpatRaster`.
 
 ```{r affichage_1_raster, eval=TRUE, fig.align='center', fig.width=6}
 plot(Elevation_Lot)
 ```
 
 
-Un raster contient toujours des données numériques, mais il peut aussi bien s'agir de données quantitatives que de données qualitatives (catégorielles) codées numériquement (ex: type d'occupation du sol).**
+Un raster contient toujours des données numériques, mais il peut aussi bien s'agir de données quantitatives que de données qualitatives (catégorielles) codées numériquement (ex: type d'occupation du sol).
 
-Précisez le type de données stockées avec l'argument `type` ("continuous" par défaut), pour les afficher correctement.
+Précisez le type de données stockées avec l'argument `type` (`type = "continuous"` par défaut), pour les afficher correctement.
 
-Import et affichage d'un raster contenant des données catégorielles : CORINE Land Cover 2018 (type d'occupation du sol) avec une résolution de 100m.
+Import et affichage d'un raster contenant des données catégorielles : CORINE Land Cover 2018 (type d'occupation du sol) avec une résolution de 100m : 
+
 ```{r import_raster_2, message=FALSE}
 # Import des données CORINE Land Cover 2018 
 # Type d'occupation du sol, résolution de 100m
@@ -82,27 +91,36 @@ Pour afficher les intitulés réels des types d'occupation du sol, ainsi que les
 
 ```{r affichage_raster_3, eval=TRUE, fig.align='center', out.width="95%"}
 
-intitule_poste <- c("Tissu urbain continu", "Tissu urbain discontinu","Zones industrielles ou commerciales et installations publiques",
-                    "Réseaux routier et ferroviaire et espaces associés", "Aéroports","Extraction de matériaux", 
-                    "Equipements sportifs et de loisirs", "Terres arables hors périmètres d'irrigation", "Vignobles", 
-                    "Vergers et petits fruits", "Prairies et autres surfaces toujours en herbe à usage agricole", 
-                    "Systèmes culturaux et parcellaires complexes", "Surfaces essentiellement agricoles (interrompues par espaces nat.)", 
-                    "Forêts de feuillus", "Forêts de conifères", "Forêts mélangées", "Pelouses et pâturages naturels", 
-                    "Landes et broussailles", "Végétation sclérophylle", "Forêt et végétation arbustive en mutation", 
-                    "Cours et voies d'eau", "Plans d'eau")
+intitule_poste <- c(
+  "Tissu urbain continu", "Tissu urbain discontinu",
+  "Zones industrielles ou commerciales et installations publiques",
+  "Réseaux routier et ferroviaire et espaces associés", 
+  "Aéroports","Extraction de matériaux", 
+  "Equipements sportifs et de loisirs", 
+  "Terres arables hors périmètres d'irrigation", "Vignobles", 
+  "Vergers et petits fruits", 
+  "Prairies et autres surfaces toujours en herbe à usage agricole", 
+  "Systèmes culturaux et parcellaires complexes", 
+  "Surfaces essentiellement agricoles (interrompues par espaces nat.)", 
+  "Forêts de feuillus", "Forêts de conifères", "Forêts mélangées",
+  "Pelouses et pâturages naturels", 
+  "Landes et broussailles", "Végétation sclérophylle", 
+  "Forêt et végétation arbustive en mutation", 
+  "Cours et voies d'eau", "Plans d'eau"
+)
 
 couleur_off <- c("#E6004D", "#FF0000", "#CC4DF2", "#CC0000", "#E6CCE6", "#A600CC", 
                  "#FFE6FF", "#FFFFA8", "#E68000", "#F2A64D", "#E6E64D", "#FFE64D", 
                  "#E6CC4D", "#80FF00", "#00A600", "#4DFF00", "#CCF24D", "#A6FF80", 
                  "#A6E64D", "#A6F200", "#00CCF2", "#80F2E6")
 
-
-plot(CLC2018_Lot, type ="classes", 
+plot(CLC2018_Lot, 
+     type = "classes", 
      levels = intitule_poste,
      col = couleur_off, 
-     plg=list(cex =0.7),
-     mar=c(3, 1.5, 1, 18.5))
-    
+     plg = list(cex = 0.7),
+     mar = c(3, 1.5, 1, 18.5))
+
 ```
 
 
@@ -127,7 +145,7 @@ Quatre méthodes d'estimation sont disponibles :
 - ***cubic*** : interpolation cubique;     
 - ***cubicspline*** : interpolation cubique spline.    
 
-```{r reproj_raster, eval=TRUE, fig.align='center'}
+```{r reproj_raster, eval=TRUE, fig.align='center', fig.width=8}
 # Projection en RGF93 / Lambert-93
 Elevation_Lot_L93 <- project(x= Elevation_Lot, y =  "EPSG:2154", method = "bilinear")
 CLC2018_Lot_L93 <- project(x= CLC2018_Lot, y = "EPSG:2154", method = "near")
@@ -221,8 +239,8 @@ La fonction `resample()` permet de ré-échantillonner les valeurs de départ da
 ```{r agr_raster_2, eval=TRUE, fig.align='center', fig.width=6}
 
 Elevation_LowerGrid <- resample(Elevation_Lot_L93, 
-                                 Elevation_LowerGrid, 
-                                 method = "bilinear") 
+                                Elevation_LowerGrid, 
+                                method = "bilinear") 
 
 plot(Elevation_LowerGrid, 
      main="Taille des cellules = 1000m\nMéthode de ré-échantillonnage bilinéaire")
@@ -252,7 +270,7 @@ crop_bellefont <- crop(Elevation_Lot_L93, bellefont)
 
 Les rasters d'élévation **crop_cahors** et **crop_bellefont** se chevauchent spatialement :
 
-```{r merge_raster_1, eval=TRUE, echo=FALSE, fig.align='center'}
+```{r merge_raster_1, eval=TRUE, echo=FALSE, fig.align='center',fig.width=8}
 par(mfrow=c(1,2), mar=c(0,0,0,0))
 plot(crop_cahors, main="Crop Cahors")
 plot(cahors, add=TRUE)
@@ -265,7 +283,7 @@ plot(cahors, add=TRUE)
 La différence entre les fonctions `merge()` ou `mosaic()` concerne les valeurs des cellules qui se superposent. La fonction `mosaic()` calcule la valeur moyenne tandis que `merge()` conserve la valeur du premier objet `SpatRaster` appelé dans la fonction.
 
 ```{r merge_raster_2, eval=TRUE, fig.align='center', fig.width=6}
-# Dans cet exemple, merge() et mosaic() donne le même résultat
+# Dans cet exemple, merge() et mosaic() donnent le même résultat
 merge_raster <- merge(crop_cahors, crop_bellefont)
 mosaic_raster <- mosaic(crop_cahors, crop_bellefont)
 
@@ -342,7 +360,7 @@ Elevation_Lot_median <-  Elevation_Lot_L93 - global(Elevation_Lot_L93, median)[[
 
 ```
 
-```{r op_local_2, eval=TRUE, echo=FALSE,  fig.align='center'}
+```{r op_local_2, eval=TRUE, echo=FALSE,  fig.align='center', fig.width=8}
 par(mfrow=c(1,2), mar=c(0,0,0,0))
 plot(Elevation_Lot_1000, main="Elevation_Lot_1000\nElevation + 1000")
 plot(Elevation_Lot_median, main="Elevation_Lot_median\nElevation - median value")
@@ -352,7 +370,7 @@ plot(Elevation_Lot_median, main="Elevation_Lot_median\nElevation - median value"
 
 #### Reclassification
 
-la reclassification des valeurs de données raster peut aussi bien être utilisée pour discrétiser des données quantitatives que pour catégoriser des modalités qualitatives.
+La reclassification des valeurs d'un raster peut aussi bien être utilisée pour discrétiser des données quantitatives que pour catégoriser des modalités qualitatives.
 
 Cela permet par exemple de répartir les [44 postes de la nomenclature CLC](https://www.statistiques.developpement-durable.gouv.fr/corine-land-cover-0) selon les 5 grands types d'occupation du territoire : territoires artificialisés, agricoles, forêts et milieux semi-naturels, zones humides et surfaces en eau. Pour cela, il est d'abord nécessaire de construire la table (matrice) de correspondance.
 ```{r reclass_2, eval=TRUE}
@@ -367,7 +385,7 @@ reclassif <- matrix(c(100, 199, 1,
 Les valeurs comprises entre 100 et 199 seront remplacées par la valeur 1.   
 Les valeurs comprises entre 200 et 299 seront remplacées par la valeur 2.   
 Les valeurs comprises entre 300 et 399 seront remplacées par la valeur 3.   
-...  
+...
 ```{r reclass_3, eval=TRUE}
 reclassif
 ```
@@ -398,7 +416,7 @@ plot(CLC2018_5class,
 
 Il est possible de calculer la valeur d'une cellule à partir de ses valeurs stockées dans différentes couches d'un objet `SpatRaster`.   
 
-L'exemple le plus courant est sans doute le calcul de l'[indice de végétation normalisé (*NDVI*)](http://www.trameverteetbleue.fr/outils-methodes/donnees-mobilisables/indice-vegetation-modis). Pour chaque cellule, on calcule une valeur à partir de deux deux couches de données matricielle d'une image satellite multispectrale.
+L'exemple le plus courant est sans doute le calcul de l'[indice de végétation normalisé (*NDVI*)](http://www.trameverteetbleue.fr/outils-methodes/donnees-mobilisables/indice-vegetation-modis). Pour chaque cellule, on calcule une valeur à partir de deux couches de données matricielles d'une image satellite multispectrale.
 
 ```{r NDVI, eval=TRUE}
 # Import d'une image satellite multispectrale
@@ -453,11 +471,11 @@ mon_focal
 La fonction `focal()` permet de ensuite de réaliser l'analyse souhaitée. Par exemple : le calcul de la moyenne des valeurs de toutes les cellules contiguës, pour chaque cellule du raster.
 ```{r op_focal_3, eval=TRUE}
 Elevation_LowerGrid_mean <- focal(Elevation_LowerGrid, 
-                                   w = mon_focal, 
-                                   fun = mean)
+                                  w = mon_focal, 
+                                  fun = mean)
 ```
 
-```{r op_focal_5, eval=TRUE, echo=FALSE, fig.align='center', out.widht="100%"}
+```{r op_focal_5, eval=TRUE, echo=FALSE, fig.align='center', fig.width=8}
 par(mfrow=c(1,2), mar=c(0,0,0,0))
 plot(Elevation_LowerGrid,  main="Elevation_LowerGrid\n(raster de départ)")
 plot(Elevation_LowerGrid_mean, main="Elevation_LowerGrid_mean\n(résultat focal 5 x 5)")
@@ -465,7 +483,7 @@ plot(Elevation_LowerGrid_mean, main="Elevation_LowerGrid_mean\n(résultat focal 
 
 #### Opération focales pour rasters d'élévation
 
-La fonction `terrain` permet de réaliser des analyses focales spécifiques au rasters d'élévation. Six opérations sont disponibles : 
+La fonction `terrain()` permet de réaliser des analyses focales spécifiques au rasters d'élévation. Six opérations sont disponibles : 
 
 - ***slope*** = calcul de la pente ou degré d'inclinaison de la surface;   
 - ***aspect*** = calcul de l'orientation de la pente;   
@@ -480,8 +498,6 @@ Exemples avec le calcul des pentes (*slope*).
 slope <- terrain(Elevation_Lot_L93, "slope", 
                  neighbors = 8, # 8 (ou 4) cellules autour pris en compte
                  unit = "degrees") # Unité en sortie
-
-
 # Inclinaison des pentes, en degré
 plot(slope)
 ```
@@ -512,7 +528,6 @@ global(Elevation_Lot_L93, fun = "sd")
 ```{r op_global_3, eval=TRUE}
 # Fréquence
 freq(CLC2018_5class)
-
 # Tableau de contingence
 table(CLC2018_5class[])
 ```
@@ -520,22 +535,21 @@ Représentations statistiques qui résument les informations matricielles.
 ```{r op_global_4, eval=TRUE,  fig.align='center', fig.width=6}
 # Histogramme
 hist(Elevation_Lot_L93)
-
 # Densité
 density(Elevation_Lot_L93)
 ```
 
-</br>
 
-Calcul de l'auto-corrélation spatiale (indice de Moran et de Geary) :
-```{r op_global_5, eval=TRUE}
-# Indice de Moran
-autocor(Elevation_LowerGrid, global=TRUE , method="moran")
 
-# Indice de Geary
-autocor(Elevation_LowerGrid, global=TRUE , method="geary")
+<!-- Calcul de l'auto-corrélation spatiale (indice de Moran et de Geary) : -->
+<!-- ```{r op_global_5, eval=TRUE} -->
+<!-- # Indice de Moran -->
+<!-- autocor(Elevation_LowerGrid, global=TRUE , method="moran") -->
 
-```
+<!-- # Indice de Geary -->
+<!-- autocor(Elevation_LowerGrid, global=TRUE , method="geary") -->
+
+<!-- ``` -->
 
 
 ### Opérations zonales
@@ -565,10 +579,8 @@ La fonction `extract()` permet d'extraire et de manipuler les valeurs des cellul
 
 Exemple à partir de polygones :
 ```{r op_zonal_poly, eval=TRUE}
-
 # Moyenne d'élévation pour chaque polygone (commune) ?
 elevation_by_com <-  extract(Elevation_LowerGrid, commune, fun=mean)
-
 head(elevation_by_com, 10)
 ```
 
@@ -589,22 +601,19 @@ head(elevation_by_com, 10)
 Les opérations zonales peuvent être réaliser par zone délimitée par les valeurs catégorielles d'un second raster. Pour cela, les deux rasters doivent avoir exactement le même étendue et la même résolution.
 
 ```{r op_zonal_1, eval=TRUE}
-
 # Création d'un second raster
 # Même résolution et étendue que "Elevation_LowerGrid"
 second_raster_CLC <- rast(Elevation_LowerGrid)
-
 # Ré-échantillonnage du type d'occupation du sol
 second_raster_CLC <- resample(CLC2018_5class, 
                               second_raster_CLC, 
                               method = "near") 
-
 # Ajout d'un nom de variable pour le second raster
 names(second_raster_CLC) <- "CLC2018_5class"
 ```
 
 
-```{r op_zonal_2, eval=TRUE, echo=FALSE, fig.align='center', out.widht="100%"}
+```{r op_zonal_2, eval=TRUE, echo=FALSE, fig.align='center', fig.width=8}
 par(mfrow=c(1,2), mar=c(0,0,0,0))
 plot(Elevation_LowerGrid,  main="Elevation_LowerGrid")
 plot(second_raster_CLC, type ="classes",  main="second_raster_CLC")
@@ -636,9 +645,6 @@ Transformer des points en format raster.
 # Rasterisation des centroïdes des communes
 raster_com_centroide <- rasterize(x = centroids(commune), 
                                   y = Elevation_LowerGrid, fun=sum)
-```
-
-```{r Raster_vec22, eval=TRUE}
 plot(raster_com_centroide)
 ```
 

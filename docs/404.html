@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="Page not found | Géomatique avec R" />
   <meta name="twitter:image" content="/img/layer-group-solid.svg" />
 
-<meta name="author" content="Timothée Giraud[^1] &amp; Hugues Pecout[^2]" />
+<meta name="author" content="Timothée Giraud &amp; Hugues Pecout" />
 
 
 
@@ -32,7 +32,7 @@
   <link rel="shortcut icon" href="img/layer-group-solid.svg" type="image/x-icon" />
 
 
-<script src="libs/header-attrs-2.11.2/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,6 +52,22 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -190,12 +206,17 @@ div.csl-indent {
 <li class="chapter" data-level="3.7.5" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#réaliser-une-intersection"><i class="fa fa-check"></i><b>3.7.5</b> Réaliser une intersection</a></li>
 <li class="chapter" data-level="3.7.6" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-grille-régulière"><i class="fa fa-check"></i><b>3.7.6</b> Créer une grille régulière</a></li>
 <li class="chapter" data-level="3.7.7" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#compter-des-points-dans-un-polygone"><i class="fa fa-check"></i><b>3.7.7</b> Compter des points dans un polygone</a></li>
+<li class="chapter" data-level="3.7.8" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#aggréger-les-valeurs-de-points-dans-des-polygones"><i class="fa fa-check"></i><b>3.7.8</b> Aggréger les valeurs de points dans des polygones</a></li>
 </ul></li>
 <li class="chapter" data-level="3.8" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesures"><i class="fa fa-check"></i><b>3.8</b> Mesures</a>
 <ul>
 <li class="chapter" data-level="3.8.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-matrice-de-distances"><i class="fa fa-check"></i><b>3.8.1</b> Créer une matrice de distances</a></li>
 </ul></li>
-<li class="chapter" data-level="3.9" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#exercices"><i class="fa fa-check"></i><b>3.9</b> Exercices</a></li>
+<li class="chapter" data-level="3.9" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#exercices"><i class="fa fa-check"></i><b>3.9</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#calculer-le-nombre-de-restaurants-par-communes"><i class="fa fa-check"></i><b>3.9.1</b> Calculer le nombre de restaurants par communes</a></li>
+<li class="chapter" data-level="3.9.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesurer-la-densité-du-réseau-routier-par-commune"><i class="fa fa-check"></i><b>3.9.2</b> Mesurer la <span>densité du réseau routier</span> par commune</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="georéférencement.html"><a href="georéférencement.html"><i class="fa fa-check"></i><b>4</b> Georéférencement</a>
 <ul>
@@ -209,7 +230,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html"><i class="fa fa-check"></i><b>5</b> Les données raster: le package terra</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#format-des-objets-spatraster"><i class="fa fa-check"></i><b>5.1</b> Format des objets SpatRaster</a></li>
+<li class="chapter" data-level="5.1" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#format-des-objets-spatraster"><i class="fa fa-check"></i><b>5.1</b> Format des objets <code>SpatRaster</code></a></li>
 <li class="chapter" data-level="5.2" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#import-et-export-de-données-1"><i class="fa fa-check"></i><b>5.2</b> Import et export de données</a></li>
 <li class="chapter" data-level="5.3" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#affichage-dun-objet-spatraster"><i class="fa fa-check"></i><b>5.3</b> Affichage d’un objet SpatRaster</a></li>
 <li class="chapter" data-level="5.4" data-path="les-données-raster-le-package-terra.html"><a href="les-données-raster-le-package-terra.html#modifications-de-la-zone-détude"><i class="fa fa-check"></i><b>5.4</b> Modifications de la zone d’étude</a>

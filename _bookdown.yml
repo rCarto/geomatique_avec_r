@@ -1,4 +1,4 @@
-book_filename: "Géomatique avec R"
+book_filename: "Geomatique avec R"
 repo: https://github.com/rCarto/geomatique_avec_r
 delete_merged_file: true
 language:
