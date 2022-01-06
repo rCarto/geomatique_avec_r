@@ -4,13 +4,13 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r knitr_initx, echo=FALSE, cache=FALSE}
+```{r knitr_initx, echo=FALSE, cache = FALSE}
 library(knitr)
 ## Global options
 options(max.print="90")
-opts_chunk$set(echo=TRUE,
-               fig.align='center',
-               cache=TRUE)
+opts_chunk$set(echo = TRUE,
+               fig.align = 'center',
+               cache = TRUE)
 ```
 
 
@@ -89,7 +89,7 @@ plot(CLC2018_Lot, type="classes")
 
 Pour afficher les intitulés réels des types d'occupation du sol, ainsi que les couleurs officielles de la nomenclature CORINE Land Cover (consultables [ici](https://www.statistiques.developpement-durable.gouv.fr/corine-land-cover-0)), vous pouvez procéder de la manière suivante.
 
-```{r affichage_raster_3, eval=TRUE, fig.align='center', out.width="95%"}
+```{r affichage_raster_3, eval=TRUE, fig.align='center', fig.width=8}
 
 intitule_poste <- c(
   "Tissu urbain continu", "Tissu urbain discontinu",
@@ -108,18 +108,17 @@ intitule_poste <- c(
   "Forêt et végétation arbustive en mutation", 
   "Cours et voies d'eau", "Plans d'eau"
 )
-
 couleur_off <- c("#E6004D", "#FF0000", "#CC4DF2", "#CC0000", "#E6CCE6", "#A600CC", 
                  "#FFE6FF", "#FFFFA8", "#E68000", "#F2A64D", "#E6E64D", "#FFE64D", 
                  "#E6CC4D", "#80FF00", "#00A600", "#4DFF00", "#CCF24D", "#A6FF80", 
                  "#A6E64D", "#A6F200", "#00CCF2", "#80F2E6")
-
 plot(CLC2018_Lot, 
      type = "classes", 
      levels = intitule_poste,
      col = couleur_off, 
      plg = list(cex = 0.7),
-     mar = c(3, 1.5, 1, 18.5))
+     mar = c(3, 1.5, 1, 18.5)
+     )
 
 ```
 
@@ -151,9 +150,9 @@ Elevation_Lot_L93 <- project(x= Elevation_Lot, y =  "EPSG:2154", method = "bilin
 CLC2018_Lot_L93 <- project(x= CLC2018_Lot, y = "EPSG:2154", method = "near")
 ```
 
-```{r reproj_raster_2, eval=TRUE, echo=FALSE, fig.align='center', out.widht="100%"}
-par(mfrow=c(1,2), mar=c(0,0,0,0))
-plot(Elevation_Lot_L93,  main="Raster d'élévation projeté en Lambert 93")
+```{r reproj_raster_2, eval=TRUE, echo=FALSE, fig.align='center', fig.width = 7}
+par(mfrow=c(1,2))
+plot(Elevation_Lot_L93,  main="Raster d'élévation projeté en Lambert 93" )
 plot(CLC2018_Lot_L93, type ="classes",  main="CLC 2018 projeté en Lambert 93")
 ```
 
@@ -424,7 +423,7 @@ Sentinel2a <- rast("data/Sentinel2A.tif")
 ```
 Cette image satellite multispectrale (résolution de 10m) datée du 12/10/2021, a été produite par le satellite *Sentinel-2* et a été récupéré sur la [plateforme Copernicus Open Access Hub](https://scihub.copernicus.eu/dhus/#/home). Une extraction des bandes spectrales Rouge et proche infrarouge, centrée sur le département du Lot a ensuite été réalisée.
 
-```{r NDVI_1, eval=TRUE, fig.align='center', out.width="100%"}
+```{r NDVI_1, eval=TRUE, fig.align='center', fig.width=7}
 plot(Sentinel2a)
 ```
 
