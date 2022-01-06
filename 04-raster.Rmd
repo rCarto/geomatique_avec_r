@@ -16,6 +16,8 @@ opts_chunk$set(echo = TRUE,
 
 # Les données raster: le package terra
 
+Ce chapitre est largement inspiré de deux présentations; @MmadelinSIGR et @JNowosadSIGR; réalisées dans le cadre de l'école thématique [SIGR2021](https://sigr2021.github.io/site/index.html). 
+
 ## Format des objets `SpatRaster`
 
 Le package `terra` [@R-terra] permet de gérer des données vectorielles et raster. Pour manipuler ces données spatiales, `terra` les stockent dans des objets de type `SpatVector` et `SpatRaster`. Dans ce chapitre, nous nous focalisons sur la manipulation de données raster (`SpatRaster`) à partir de fonctions proposées par ce package.
@@ -25,7 +27,7 @@ Un objet `SpatRaster` représente des données matricielles, en une ou plusieurs
 ```{r raster, eval=TRUE, echo=FALSE, fig.align='center', fig.width=5}
 knitr::include_graphics("img/raster.png")
 ```
-<center><span style="font-size:80%;color:#A9A9A9;">Source : [@RasterCheatSheet]</span></center>
+<center><span style="font-size:80%;color:#A9A9A9;">Source : @RasterCheatSheet</span></center>
 
 </br>
 
@@ -161,11 +163,11 @@ plot(CLC2018_Lot_L93, type ="classes",  main="CLC 2018 projeté en Lambert 93")
 
 Le découpage d'un raster en fonction de l'étendue d'un autre objet `SpatVector` ou `SpatRaster` est réalisable avec la fonction `crop()`.
 
-```{r crop, eval=TRUE, echo=FALSE,  fig.show='hold'}
+```{r crop, eval=TRUE, echo=FALSE,  fig.show='hold', out.width='49%'}
 knitr::include_graphics("img/crop.png")
 knitr::include_graphics("img/crop2.png")
 ```
-<center><span style="font-size:80%;color:#A9A9A9;">Source : [@RasterCheatSheet]</span></center>
+<center><span style="font-size:80%;color:#A9A9A9;">Source : @RasterCheatSheet</span></center>
 
 </br>
 
@@ -194,7 +196,7 @@ Pour afficher uniquement les valeurs d'un raster contenu dans un polygone, utili
 ```{r mask, eval=TRUE, echo=FALSE, fig.align='center', fig.width=6}
 knitr::include_graphics("img/mask.png")
 ```
-<center><span style="font-size:80%;color:#A9A9A9;">Source : [@RasterCheatSheet]</span></center>
+<center><span style="font-size:80%;color:#A9A9A9;">Source : @RasterCheatSheet</span></center>
 
 </br>
 
@@ -209,10 +211,10 @@ plot(mask_cahors)
 
 Le ré-échantillonnage d'un raster dans une résolution différente se fait en deux étapes.
 
-```{r agr_raster_fig, eval=TRUE, echo=FALSE,  fig.show='hold', out.width='33%'}
-knitr::include_graphics(c("img/agr_raster_2.png", "img/raster.png", "img/agr_raster.png"))
+```{r agr_raster_fig, eval=TRUE, echo=FALSE, fig.show='hold', out.width='30%'}
+knitr::include_graphics(c( "img/raster.png", "img/agr_raster.png", "img/agr_raster_2.png"))
 ```
-<center><span style="font-size:80%;color:#A9A9A9;">Source : [@RasterCheatSheet]</span></center>
+<center><span style="font-size:80%;color:#A9A9A9;">Source : @RasterCheatSheet</span></center>
 
 </br>
 
@@ -305,7 +307,7 @@ plot(CLC2018_by_class)
 
 ## Algèbre spatial
 
-L'algèbre spatial se classifie en quatre groupes d'opération (Tomlin, 1990) :   
+L'algèbre spatial se classifie en quatre groupes d'opération [@022222ar] :   
 
 - ***Local*** : opération par cellule, sur une ou plusieurs couches;   
 - ***Focal*** : opération de voisinage (cellules environnantes);   
@@ -315,7 +317,7 @@ L'algèbre spatial se classifie en quatre groupes d'opération (Tomlin, 1990) :
 ```{r lo_fo_zo_glo, eval=TRUE, echo=FALSE, fig.align='center', out.width="90%"}
 knitr::include_graphics("img/lo_fo_zo_glo.png")
 ```
-<center><span style="font-size:80%;color:#A9A9A9;">Source : [*Map algebra and beyond : 1. Map algebra for scalar fields*](https://slideplayer.com/slide/5822638/), Xingong Li, 2009.</center>
+<center><span style="font-size:80%;color:#A9A9A9;">Source : @XingongLi2009</center>
 
 </br>
 
@@ -325,7 +327,7 @@ knitr::include_graphics("img/lo_fo_zo_glo.png")
 ```{r op_local, eval=TRUE, echo=FALSE, fig.align='center', out.width="60%"}
 knitr::include_graphics("img/op_local_2.png")
 ```
-<center><span style="font-size:80%;color:#A9A9A9;">Source : Jeremy Mennis</center>
+<center><span style="font-size:80%;color:#A9A9A9;">Source : @JMennis2015</center>
 
 </br>
 
@@ -453,7 +455,7 @@ Plus les valeurs sont importantes (proche de 1), plus la végétation est dense.
 ```{r op_focal, eval=TRUE, echo=FALSE,  fig.align='center', out.width="50%"}
 knitr::include_graphics("img/op_focal_2.png")
 ```
-<center><span style="font-size:80%;color:#A9A9A9;">Source : Jeremy Mennis</center>
+<center><span style="font-size:80%;color:#A9A9A9;">Source : @JMennis2015</center>
 
 </br>
 
@@ -555,7 +557,7 @@ density(Elevation_Lot_L93)
 ```{r op_zonal_global, eval=TRUE, echo=FALSE,  fig.align='center', out.width="50%"}
 knitr::include_graphics("img/op_zonal_2.png")
 ```
-<center><span style="font-size:80%;color:#A9A9A9;">Source : Jeremy Mennis</center>
+<center><span style="font-size:80%;color:#A9A9A9;">Source : @JMennis2015</center>
 
 </br>
 

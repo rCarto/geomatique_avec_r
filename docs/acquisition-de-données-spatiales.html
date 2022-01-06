@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="Chapitre 7 Acquisition de données spatiales | Géomatique avec R" />
   <meta name="twitter:image" content="/img/layer-group-solid.svg" />
 
-<meta name="author" content="Timothée Giraud &amp; Hugues Pecout" />
+<meta name="author" content="Timothée Giraud[^1] &amp; Hugues Pecout[^2]" />
 
 
 
@@ -52,88 +52,8 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
-<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
-<script src="libs/HomeButton-0.0.1/home-button.js"></script>
-<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
-<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
-<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
-<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
@@ -279,8 +199,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="7.1" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html#à-léchelle-mondiale"><i class="fa fa-check"></i><b>7.1</b> À l’échelle mondiale</a></li>
 <li class="chapter" data-level="7.2" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html#à-léchelle-européenne"><i class="fa fa-check"></i><b>7.2</b> À l’échelle européenne</a></li>
-<li class="chapter" data-level="7.3" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html#à-léchelle-française"><i class="fa fa-check"></i><b>7.3</b> À l’échelle Française</a></li>
-<li class="chapter" data-level="7.4" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html#autres"><i class="fa fa-check"></i><b>7.4</b> Autres…</a></li>
+<li class="chapter" data-level="7.3" data-path="acquisition-de-données-spatiales.html"><a href="acquisition-de-données-spatiales.html#à-léchelle-national"><i class="fa fa-check"></i><b>7.3</b> À l’échelle national</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="sessioninfo.html"><a href="sessioninfo.html"><i class="fa fa-check"></i><b>8</b> <code>sessionInfo()</code></a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -314,51 +233,91 @@ div.csl-indent {
 </li>
 <li><img src="img/geom.svg" alt="Géométries" width="20"> <code>gadmr</code> <span class="citation">(<a href="#ref-R-gadmr" role="doc-biblioref">Guevarra, 2021</a>)</span> : permet de récupérer les données du <a href="https://gadm.org/index.html">GADM</a> (découpages administratifs nationaux et infra-nationaux de l’ensemble des pays du monde).<br />
 </li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>osmextract</code> <span class="citation">(<a href="#ref-R-osmextract" role="doc-biblioref">Gilardi et Lovelace, 2021</a>)</span> : permet d’importer des données <a href="https://www.openstreetmap.org/">OpenStreetMap</a>.<br />
-</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>osmdata</code> <span class="citation">(<a href="#ref-osmdata2017" role="doc-biblioref">Padgham et al., 2017b</a>)</span> : pour télécharger et utiliser les données d’OpenStreetMap.<br />
-</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>maptiles</code> <span class="citation">(<a href="#ref-R-maptiles" role="doc-biblioref">Giraud, 2021a</a>)</span> : Ce package télécharge, compose et affiche des tuiles à partir d’un grand nombre de fournisseurs (<em>OpenStreetMap</em>, <em>Stamen</em>, <em>Esri</em>, <em>CARTO</em> ou <em>Thunderforest</em>…).<br />
-</li>
-<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>geonames</code> <span class="citation">(<a href="#ref-R-geonames" role="doc-biblioref">Rowlingson, 2019</a>)</span> : permet d’interroger la BD <a href="http://www.geonames.org/">geonames</a>, qui fournit notamment des localisations.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>rgeoboundaries</code> <span class="citation">(<a href="#ref-R-rgeoboundaries" role="doc-biblioref">Dicko, 2021</a>)</span> : client R pour l’API <a href="https://www.geoboundaries.org/index.html">geoBoundaries</a>, fournissant les frontières administratives politiques des pays.</li>
 <li><img src="img/geom.svg" alt="Géométries" width="20"> <code>cshapes</code> <span class="citation">(<a href="#ref-R-cshapes" role="doc-biblioref">Weidmann et al., 2021</a>)</span> : met à disposition les frontières nationales, de 1886 à aujourd’hui.<br />
 </li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>osmextract</code> <span class="citation">(<a href="#ref-R-osmextract" role="doc-biblioref">Gilardi et Lovelace, 2021</a>)</span> : permet d’importer des données <a href="https://www.openstreetmap.org/">OpenStreetMap</a>.<br />
+</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>osmdata</code> <span class="citation">(<a href="#ref-osmdata2017" role="doc-biblioref">Padgham et al., 2017</a>)</span> : pour télécharger et utiliser les données d’OpenStreetMap.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>maptiles</code> <span class="citation">(<a href="#ref-R-maptiles" role="doc-biblioref">Giraud, 2021</a>)</span> : Ce package télécharge, compose et affiche des tuiles à partir d’un grand nombre de fournisseurs (<em>OpenStreetMap</em>, <em>Stamen</em>, <em>Esri</em>, <em>CARTO</em> ou <em>Thunderforest</em>…).<br />
+</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>geonames</code> <span class="citation">(<a href="#ref-R-geonames" role="doc-biblioref">Rowlingson, 2019</a>)</span> : permet d’interroger la BD <a href="http://www.geonames.org/">geonames</a>, qui fournit notamment des localisations.</li>
 <li><img src="img/table.svg" alt="données attributaires" width="20"> <code>wbstats</code> <span class="citation">(<a href="#ref-wbstats2020" role="doc-biblioref">Piburn, 2020</a>)</span> et <code>WDI</code> <span class="citation">(<a href="#ref-R-WDI" role="doc-biblioref">Arel-Bundock, 2021</a>)</span> : donnent accès aux données et statistiques de la Banque mondiale.<br />
 </li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>sen2r</code> <span class="citation">(<a href="#ref-R-sen2r" role="doc-biblioref">Ranghetti et Busetto, 2021</a>)</span> : permet de télécharger et prétraiter automatiquement les données du satellite Sentinel-2.<br />
+</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>MODIStsp</code> <span class="citation">(<a href="#ref-MODIStsp2016" role="doc-biblioref">Busetto et Ranghetti, 2016</a>)</span> : permet de trouver, télécharger et traiter des images <em>MODIS</em>.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geodata</code> <span class="citation">(<a href="#ref-R-geodata" role="doc-biblioref">Hijmans et al., 2021</a>)</span> : founit un accès à des <a href="https://github.com/rspatial/geodata">données</a> sur le climat, l’altitude, le sol, la présence d’espèces et les limites administratives.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>elevatr</code> <span class="citation">(<a href="#ref-R-elevatr" role="doc-biblioref">Hollister, 2021</a>)</span> : donne accès à des données d’élévation mises à disposition par <a href="https://registry.opendata.aws/terrain-tiles/"><em>Amazon Web Services Terrain Tiles</em></a>, l’<a href="https://opentopography.org/developers/"><em>Open Topography Global Datasets API</em></a> et l’<a href="https://nationalmap.gov/epqs/"><em>USGS Elevation Point Query Service</em></a>.</li>
 <li><img src="img/geom.svg" alt="Géométries" width="20"> <code>rgee</code> <span class="citation">(<a href="#ref-R-rgee" role="doc-biblioref">Aybar, 2021</a>)</span> : permet d’utiliser l’API de <a href="https://www.google.com/intl/fr_in/earth/education/tools/google-earth-engine/">Google Earth Engine</a>, catalogue de données publiques et infrastructure de calcul pour les images satellites.<br />
 </li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>sen2r</code> <span class="citation">(<a href="#ref-R-sen2r" role="doc-biblioref">Ranghetti et Busetto, 2021</a>)</span> : permet de télécharger et prétraiter automatiquement les données du satellite Sentinel-2.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>nasapower</code> <span class="citation">(<a href="#ref-nasapower2018" role="doc-biblioref">Sparks, 2018</a>)</span> : API client <em>NASA</em> (prévision des ressources énergétiques mondiales, météorologie, énergie solaire de surface et climatologie).</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geoknife</code> <span class="citation">(<a href="#ref-geoknife2015" role="doc-biblioref">Read et al., 2015</a>)</span> : permet de traiter (en ligne) des données matricielles volumineuses issuent du <em>Geo Data Portal</em> de l’<em>U.S. Geological Survey</em>.</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>wopr</code> <span class="citation">(<a href="#ref-R-wopr" role="doc-biblioref">Leasure et al., 2021</a>)</span> : fournit un accès API à la base de données <a href="https://wopr.worldpop.org/"><em>WorldPop Open Population Repository</em></a>.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>rdhs</code> <span class="citation">(<a href="#ref-rdhs2019" role="doc-biblioref">Watson et al., 2019</a>)</span> : API client et gestions de données de l’<a href="https://dhsprogram.com/">enquête démographique et de santé (DHS)</a>.</li>
 </ul>
 </div>
 <div id="à-léchelle-européenne" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> À l’échelle européenne</h2>
 <ul>
-<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>eurostat</code> <span class="citation">(<a href="#ref-eurostat2017" role="doc-biblioref">Lahti et al., 2017</a>)</span> : permet de télécharger des données de la BD <a href="https://ec.europa.eu/eurostat">Eurostat</a>.<br />
-</li>
 <li><img src="img/geom.svg" alt="Géométries" width="20"> <code>giscoR</code> <span class="citation">(<a href="#ref-R-giscoR" role="doc-biblioref">Hernangómez, 2021a</a>)</span> : permet de télécharger des données cartographiques mondiales et européennes de la BD <a href="https://ec.europa.eu/eurostat/web/gisco">GISCO</a> d’Eurostat (système d’information géographique de la Commission).</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>eurostat</code> <span class="citation">(<a href="#ref-eurostat2017" role="doc-biblioref">Lahti et al., 2017</a>)</span> : permet de télécharger des données de la BD <a href="https://ec.europa.eu/eurostat">Eurostat</a>.</li>
 </ul>
 </div>
-<div id="à-léchelle-française" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> À l’échelle Française</h2>
+<div id="à-léchelle-national" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> À l’échelle national</h2>
+<ul>
+<li><strong>Brésil</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geobr</code> <span class="citation">(<a href="#ref-R-geobr" role="doc-biblioref">Pereira et Goncalves, 2021</a>)</span> : fournit un accès facile aux séries de données spatiales officielles du Brésil pour différentes années et découpage administratifs.</li>
+</ul></li>
+<li><strong>Chili</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>chilemapas</code> <span class="citation">(<a href="#ref-R-chilemapas" role="doc-biblioref">Vargas, 2020</a>)</span> : donne accès aux divisions politiques et administratives du Chili.</li>
+</ul></li>
+<li><strong>Espagne</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>mapSpain</code> <span class="citation">(<a href="#ref-R-mapSpain" role="doc-biblioref">Hernangómez, 2021b</a>)</span> : propose les limites administratives de l’Espagne à plusieurs niveaux (Communautés autonomes, Provinces, Municipalités), ainsi que des tuiles.</li>
+</ul></li>
+<li><strong>États-Unis</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>tidycensus</code> <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker et Herman, 2021</a>)</span> : permet de charger des données et géométries du recensement américain en format <code>sf` et `tidyverse</code></li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>tigris</code> <span class="citation">(<a href="#ref-R-tigris" role="doc-biblioref">Walker, 2021b</a>)</span> : donne accès aux éléments cartographiques fournis par le US Census Bureau TIGER, y compris les limites cartographiques, les routes et l’eau.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>FedData</code> <span class="citation">(<a href="#ref-R-FedData" role="doc-biblioref">Bocinsky, 2019</a>)</span> : automatise le téléchargement de données géospatiales disponibles à partir de plusieurs sources de données fédérées.</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>acs</code> <span class="citation">(<a href="#ref-R-acs" role="doc-biblioref">Glenn, 2019</a>)</span> : permet de télécharger et manipuler les données de l’<em>American Community Survey</em> et les données décennales du recensement des États-Unis.</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>censusapi</code> <span class="citation">(<a href="#ref-R-censusapi" role="doc-biblioref">Recht, 2020</a>)</span> : wrapper pour les API du <em>Census Bureau</em> des États-Unis.</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>censusGeography</code> <span class="citation">(<a href="#ref-R-censusGeography" role="doc-biblioref">Kaplan, 2016</a>)</span> : Permet de convertir les codes géographiques du recensement des États-Unis en nom de lieu.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>choroplethr</code> <span class="citation">(<a href="#ref-R-choroplethr" role="doc-biblioref">Lamstein, 2020</a>)</span> et <code>choroplethrMaps</code> <span class="citation">(<a href="#ref-R-choroplethrMaps" role="doc-biblioref">Lamstein, 2017</a>)</span> : Simplifient la création de cartes choroplèthes à partir des données de recensement des États-Unis.</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>idbr</code> <span class="citation">(<a href="#ref-R-idbr" role="doc-biblioref">Walker, 2021a</a>)</span> : interface avec l’API de la base de données internationale du US Census Bureau.<br />
+</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>ipumsr</code> <span class="citation">(<a href="#ref-R-ipumsr" role="doc-biblioref">Greg Freedman Ellis et Derek Burk, 2020</a>)</span> : Permet d’importer des données de recensement, d’enquête et géographiques fournies par l’<a href="https://www.ipums.org/">IPUMS</a>.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>SeerMapper</code> &amp; co <span class="citation">(<a href="#ref-R-SeerMapper" role="doc-biblioref">Pearson, 2021</a>)</span> : permettent de cartographier des données par États, comtés, secteurs de recensement ou des registres <em>Seer</em> (découpage du recensement 2000 et 2010).</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>totalcensus</code> <span class="citation">(<a href="#ref-R-totalcensus" role="doc-biblioref">Li, 2021</a>)</span> : permet d’extraire les données du recensement décennal et de l’<em>American Community Survey</em> au niveaux des <em>block</em>, <em>block group</em> et <em>tract</em>.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>UScensus2010</code> <span class="citation">(<a href="#ref-R-UScensus2010" role="doc-biblioref">Almquist, 2021</a>)</span>, <code>UScensus2000cdp</code> <span class="citation">(<a href="#ref-R-UScensus2000cdp" role="doc-biblioref">Almquist, 2012a</a>)</span> et <code>UScensus2000tract</code> <span class="citation">(<a href="#ref-R-UScensus2000tract" role="doc-biblioref">Almquist, 2012b</a>)</span> : fournissent les géométries du recensement des États-Unis en 2000/2010, ainsi que des données démographiques supplémentaires.</li>
+</ul></li>
+<li><strong>Finland</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>mapsFinland</code> <span class="citation">(<a href="#ref-R-mapsFinland" role="doc-biblioref">Haukka, 2020</a>)</span> : donne un accès à des cartes et données concernant la Finland.</li>
+</ul></li>
+<li><strong>France</strong>
 <ul>
 <li><img src="img/geom.svg" alt="Géométries" width="20"> <code>inseeLocalData</code> <span class="citation">(<a href="#ref-R-inseeLocalData" role="doc-biblioref">FAURE, 2022</a>)</span> : client R pour l’<a href="https://api.insee.fr/catalogue/site/themes/wso2/subthemes/insee/pages/item-info.jag?name=DonneesLocales&amp;version=V0.1&amp;provider=insee">API Données Locales</a> de l’Insee.</li>
 <li><img src="img/geom.svg" alt="Géométries" width="20"> <code>insee</code> <span class="citation">(<a href="#ref-R-insee" role="doc-biblioref">Leclerc, 2021</a>)</span> : pour télécharger facilement les données de la base BDM (<a href="https://www.data.gouv.fr/fr/reuses/insee-package-r/">Banque de Données Macroéconomiques</a>) de l’INSEE.</li>
 <li><img src="img/geom.svg" alt="Géométries" width="20"> <code>COGugaison</code> <span class="citation">(<a href="#ref-COGugaison2022" role="doc-biblioref">Antunez, s. d.</a>)</span> et <code>CARTElette</code> <span class="citation">(<a href="#ref-R-CARTElette" role="doc-biblioref">Antunez, 2022</a>)</span> : Manipulation, agrégation de données communales françaises et création de couches cartographiques à partir du code officiel géographique (COG) et des couches IGN.</li>
-</ul>
-</div>
-<div id="autres" class="section level2" number="7.4">
-<h2><span class="header-section-number">7.4</span> Autres…</h2>
+</ul></li>
+<li><strong>Pologne</strong>
 <ul>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>tidycensus</code> <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker et Herman, 2021</a>)</span> : permet d’accéder aux données et géométries fournies par le <strong>US</strong> Census Bureau.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>tigris</code> <span class="citation">(<a href="#ref-R-tigris" role="doc-biblioref">Walker, 2021</a>)</span> : donne accès aux éléments cartographiques fournis par le <strong>US</strong> Census Bureau TIGER, y compris les limites cartographiques, les routes et l’eau.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geobr</code> <span class="citation">(<a href="#ref-R-geobr" role="doc-biblioref">Pereira et Goncalves, 2021</a>)</span> : fournit un accès facile aux séries de données spatiales officielles du <strong>Brésil</strong> pour différentes années et découpage administratifs.<br />
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>rgugik</code> <span class="citation">(<a href="#ref-rgugik2021" role="doc-biblioref">Dyba et Nowosad, 2021</a>)</span> : permet l’acquisition automatique de données ouvertes à partir des ressources du Bureau central polonais de la géodésie et de la cartographie (<a href="https://www.gov.pl/web/gugik">Główny Urząd Geodezji i Kartografii</a> ).<br />
 </li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>chilemapas</code> <span class="citation">(<a href="#ref-R-chilemapas" role="doc-biblioref">Vargas, 2020</a>)</span> : donne accès aux divisions politiques et administratives du <strong>Chili</strong>.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geouy</code> <span class="citation">(<a href="#ref-R-geouy" role="doc-biblioref">Detomasi, 2021</a>)</span> : permet le chargement d’informations géographiques sur l’<strong>Uruguay</strong>.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>rgugik</code> <span class="citation">(<a href="#ref-rgugik2021" role="doc-biblioref">Dyba et Nowosad, 2021</a>)</span> : permet l’acquisition automatique de données ouvertes à partir des ressources du Bureau central <strong>polonais</strong> de la géodésie et de la cartographie (<a href="https://www.gov.pl/web/gugik">Główny Urząd Geodezji i Kartografii</a> ).<br />
-</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>mapSpain</code> <span class="citation">(<a href="#ref-R-mapSpain" role="doc-biblioref">Hernangómez, 2021b</a>)</span> : propose les limites administratives de l’<strong>Espagne</strong> à plusieurs niveaux (Communautés autonomes, Provinces, Municipalités), ainsi que des tuiles.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>mapsFinland</code> <span class="citation">(<a href="#ref-R-mapsFinland" role="doc-biblioref">Haukka, 2020</a>)</span> : donne un accès à des cartes et données concernant la <strong>Finland</strong>.</li>
+</ul></li>
+<li><strong>Royaume-Uni</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geographr</code> <span class="citation">(<a href="#ref-R-geographr" role="doc-biblioref">Mike Page, 2021</a>)</span> : pour manipuler et cartographier les limites géographiques et administratives du Royaume-Uni.</li>
+</ul></li>
+<li><strong>Uruguay</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geouy</code> <span class="citation">(<a href="#ref-R-geouy" role="doc-biblioref">Detomasi, 2021</a>)</span> : permet le chargement d’informations géographiques sur l’Uruguay.</li>
+</ul></li>
 <li>…</li>
 </ul>
 
@@ -366,6 +325,15 @@ div.csl-indent {
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-R-UScensus2000cdp" class="csl-entry">
+Almquist, Z. W. (2012a). <em>UScensus2000cdp: US Census 2000 Designated Places Shapefiles and Additional Demographic Data</em>. <a href="http://disasternets.calit2.uci.edu/census2000/">http://disasternets.calit2.uci.edu/census2000/</a>
+</div>
+<div id="ref-R-UScensus2000tract" class="csl-entry">
+Almquist, Z. W. (2012b). <em>UScensus2000tract: US Census 2000 Tract Level Shapefiles and Additional Demographic Data</em>. <a href="http://disasternets.calit2.uci.edu/census2000/">http://disasternets.calit2.uci.edu/census2000/</a>
+</div>
+<div id="ref-R-UScensus2010" class="csl-entry">
+Almquist, Z. W. (2021). <em>UScensus2010: US Census 2010 Suite of R Packages</em>. <a href="https://github.com/zalmquist/UScensus2010">https://github.com/zalmquist/UScensus2010</a>
+</div>
 <div id="ref-COGugaison2022" class="csl-entry">
 Antunez, K. (s. d.). <em>package R COGugaison</em>. <a href="https://antuki.github.io/COGugaison/">https://antuki.github.io/COGugaison/</a>
 </div>
@@ -378,8 +346,17 @@ Arel-Bundock, V. (2021). <em>WDI: World Development Indicators and Other World B
 <div id="ref-R-rgee" class="csl-entry">
 Aybar, C. (2021). <em>rgee: R Bindings for Calling the Earth Engine API</em>. <a href="https://CRAN.R-project.org/package=rgee">https://CRAN.R-project.org/package=rgee</a>
 </div>
+<div id="ref-R-FedData" class="csl-entry">
+Bocinsky, R. K. (2019). <em>FedData: Functions to Automate Downloading Geospatial Data Available from Several Federated Data Sources</em>. <a href="https://github.com/ropensci/FedData">https://github.com/ropensci/FedData</a>
+</div>
+<div id="ref-MODIStsp2016" class="csl-entry">
+Busetto, L. et Ranghetti, L. (2016). MODIStsp: an R package for preprocessing of MODIS Land Products time series. <em>Computers &amp; Geosciences</em>, <em>97</em>, 40‑48. <a href="https://doi.org/10.1016/j.cageo.2016.08.020">https://doi.org/10.1016/j.cageo.2016.08.020</a>
+</div>
 <div id="ref-R-geouy" class="csl-entry">
 Detomasi, R. (2021). <em>geouy: Geographic Information of Uruguay</em>. <a href="https://CRAN.R-project.org/package=geouy">https://CRAN.R-project.org/package=geouy</a>
+</div>
+<div id="ref-R-rgeoboundaries" class="csl-entry">
+Dicko, A. (2021). <em>R client for the geoBoundaries API, providing country political administrative boundaries</em>. <a href="https://dickoa.gitlab.io/rgeoboundaries/index.html">https://dickoa.gitlab.io/rgeoboundaries/index.html</a>
 </div>
 <div id="ref-rgugik2021" class="csl-entry">
 Dyba, K. et Nowosad, J. (2021). rgugik: Search and Retrieve Spatial Data from the Polish Head Office of Geodesy and Cartography in R. <em>Journal of Open Source Software</em>, <em>6</em>(59), 2948. <a href="https://doi.org/10.21105/joss.02948">https://doi.org/10.21105/joss.02948</a>
@@ -391,7 +368,13 @@ FAURE, M.-E. (2022). <em>inseeLocalData: Accès aux données locales de l’Inse
 Gilardi, A. et Lovelace, R. (2021). <em>osmextract: Download and Import Open Street Map Data Extracts</em>. <a href="https://CRAN.R-project.org/package=osmextract">https://CRAN.R-project.org/package=osmextract</a>
 </div>
 <div id="ref-R-maptiles" class="csl-entry">
-Giraud, T. (2021a). <em>maptiles: Download and Display Map Tiles</em>. <a href="https://github.com/riatelab/maptiles/">https://github.com/riatelab/maptiles/</a>
+Giraud, T. (2021). <em>maptiles: Download and Display Map Tiles</em>. <a href="https://github.com/riatelab/maptiles/">https://github.com/riatelab/maptiles/</a>
+</div>
+<div id="ref-R-acs" class="csl-entry">
+Glenn, E. H. (2019). <em>acs: Download, Manipulate, and Present American Community Survey and Decennial Data from the US Census</em>. <a href="https://CRAN.R-project.org/package=acs">https://CRAN.R-project.org/package=acs</a>
+</div>
+<div id="ref-R-ipumsr" class="csl-entry">
+Greg Freedman Ellis et Derek Burk. (2020). <em>ipumsr: Read IPUMS Extract Files</em>. <a href="https://CRAN.R-project.org/package=ipumsr">https://CRAN.R-project.org/package=ipumsr</a>
 </div>
 <div id="ref-R-gadmr" class="csl-entry">
 Guevarra, E. (2021). <em>gadmr: An R Interface to the GADM Map Repository</em>. <a href="https://github.com/SpatialWorks/gadmr">https://github.com/SpatialWorks/gadmr</a>
@@ -405,14 +388,41 @@ Hernangómez, D. (2021a). <em>giscoR: Download Map Data from GISCO API - Eurosta
 <div id="ref-R-mapSpain" class="csl-entry">
 Hernangómez, D. (2021b). <em>mapSpain: Administrative Boundaries of Spain</em>. <a href="https://CRAN.R-project.org/package=mapSpain">https://CRAN.R-project.org/package=mapSpain</a>
 </div>
+<div id="ref-R-geodata" class="csl-entry">
+Hijmans, R. J., Ghosh, A. et Mandel, A. (2021). <em>geodata: Download Geographic Data</em>. <a href="https://CRAN.R-project.org/package=geodata">https://CRAN.R-project.org/package=geodata</a>
+</div>
+<div id="ref-R-elevatr" class="csl-entry">
+Hollister, J. (2021). <em>elevatr: Access Elevation Data from Various APIs</em>. <a href="https://github.com/jhollist/elevatr/">https://github.com/jhollist/elevatr/</a>
+</div>
+<div id="ref-R-censusGeography" class="csl-entry">
+Kaplan, J. (2016). <em>censusGeography: Changes United States Census Geographic Code into Name of Location</em>. <a href="https://CRAN.R-project.org/package=censusGeography">https://CRAN.R-project.org/package=censusGeography</a>
+</div>
 <div id="ref-eurostat2017" class="csl-entry">
 Lahti, L., Huovari, J., Kainu, M. et Biecek, P. (2017). eurostat R package. <em>R Journal</em>. <a href="https://journal.r-project.org/archive/2017/RJ-2017-019/index.html">https://journal.r-project.org/archive/2017/RJ-2017-019/index.html</a>
+</div>
+<div id="ref-R-choroplethrMaps" class="csl-entry">
+Lamstein, A. (2017). <em>choroplethrMaps: Contains Maps Used by the choroplethr Package</em>. <a href="http://www.arilamstein.com/open-source">http://www.arilamstein.com/open-source</a>
+</div>
+<div id="ref-R-choroplethr" class="csl-entry">
+Lamstein, A. (2020). <em>choroplethr: Simplify the Creation of Choropleth Maps in R</em>. <a href="https://www.choroplethr.com">www.choroplethr.com</a>
+</div>
+<div id="ref-R-wopr" class="csl-entry">
+Leasure, D. R., Bondarenko, M., Darin, E. et Tatem, A. J. (2021). <em>wopr: An R Package to access the WorldPop Open Population Repository (WOPR)</em>.
 </div>
 <div id="ref-R-insee" class="csl-entry">
 Leclerc, H. (2021). <em>insee: Tools to Easily Download Data from INSEE BDM Database</em>. <a href="https://pyr-opendatafr.github.io/R-Insee-Data/">https://pyr-opendatafr.github.io/R-Insee-Data/</a>
 </div>
+<div id="ref-R-totalcensus" class="csl-entry">
+Li, G. (2021). <em>totalcensus: Extract Decennial Census and American Community Survey Data</em>. <a href="https://github.com/GL-Li/totalcensus">https://github.com/GL-Li/totalcensus</a>
+</div>
+<div id="ref-R-geographr" class="csl-entry">
+Mike Page, M. T. (British. R. C. S. (2021). <em>R package for mapping UK geographies</em>. <a href="https://github.com/britishredcrosssociety/geographr">https://github.com/britishredcrosssociety/geographr</a>
+</div>
 <div id="ref-osmdata2017" class="csl-entry">
-Padgham, M., Rudis, B., Lovelace, R. et Salmon, M. (2017b). osmdata. <em>The Journal of Open Source Software</em>, <em>2</em>(14). <a href="https://doi.org/10.21105/joss.00305">https://doi.org/10.21105/joss.00305</a>
+Padgham, M., Rudis, B., Lovelace, R. et Salmon, M. (2017). osmdata. <em>The Journal of Open Source Software</em>, <em>2</em>(14). <a href="https://doi.org/10.21105/joss.00305">https://doi.org/10.21105/joss.00305</a>
+</div>
+<div id="ref-R-SeerMapper" class="csl-entry">
+Pearson, J. (2021). <em>SeerMapper: A Quick Way to Map U.S. Rates and Data of U.S. States, Counties, Census Tracts, or Seer Registries using 2000 and 2010 U.S. Census Boundaries</em>. <a href="https://CRAN.R-project.org/package=SeerMapper">https://CRAN.R-project.org/package=SeerMapper</a>
 </div>
 <div id="ref-R-geobr" class="csl-entry">
 Pereira, R. H. M. et Goncalves, C. N. (2021). <em>geobr: Download Official Spatial Data Sets of Brazil</em>. <a href="https://github.com/ipeaGIT/geobr">https://github.com/ipeaGIT/geobr</a>
@@ -423,20 +433,35 @@ Piburn, J. (2020). <em>wbstats: Programmatic Access to the World Bank API</em>. 
 <div id="ref-R-sen2r" class="csl-entry">
 Ranghetti, L. et Busetto, L. (2021). <em>sen2r: Find, Download and Process Sentinel-2 Data</em>. <a href="https://sen2r.ranghetti.info">https://sen2r.ranghetti.info</a>
 </div>
+<div id="ref-geoknife2015" class="csl-entry">
+Read, J. S., Walker, J. I., Appling, A., Blodgett, D. L., Read, E. K. et Winslow, L. A. (2015). geoknife: Reproducible web-processing of large gridded datasets. <em>Ecography</em>. <a href="https://doi.org/10.1111/ecog.01880">https://doi.org/10.1111/ecog.01880</a>
+</div>
+<div id="ref-R-censusapi" class="csl-entry">
+Recht, H. (2020). <em>censusapi: Retrieve Data from the Census APIs</em>. <a href="https://github.com/hrecht/censusapi">https://github.com/hrecht/censusapi</a>
+</div>
 <div id="ref-R-geonames" class="csl-entry">
 Rowlingson, B. (2019). <em>geonames: Interface to the "Geonames" Spatial Query Web Service</em>. <a href="https://CRAN.R-project.org/package=geonames">https://CRAN.R-project.org/package=geonames</a>
 </div>
 <div id="ref-R-rnaturalearth" class="csl-entry">
 South, A. (2017). <em>rnaturalearth: World Map Data from Natural Earth</em>. <a href="https://github.com/ropenscilabs/rnaturalearth">https://github.com/ropenscilabs/rnaturalearth</a>
 </div>
+<div id="ref-nasapower2018" class="csl-entry">
+Sparks, A. H. (2018). nasapower: A NASA POWER Global Meteorology, Surface Solar Energy and Climatology Data Client for R. <em>The Journal of Open Source Software</em>, <em>3</em>(30), 1035. <a href="https://doi.org/10.21105/joss.01035">https://doi.org/10.21105/joss.01035</a>
+</div>
 <div id="ref-R-chilemapas" class="csl-entry">
 Vargas, M. (2020). <em>chilemapas: Mapas de las Divisiones Politicas y Administrativas de Chile (Maps of the Political and Administrative Divisions of Chile)</em>. <a href="https://pachamaltese.github.io/chilemapas/">https://pachamaltese.github.io/chilemapas/</a>
 </div>
+<div id="ref-R-idbr" class="csl-entry">
+Walker, K. (2021a). <em>idbr: R Interface to the US Census Bureau International Data Base API</em>. <a href="https://CRAN.R-project.org/package=idbr">https://CRAN.R-project.org/package=idbr</a>
+</div>
 <div id="ref-R-tigris" class="csl-entry">
-Walker, K. (2021). <em>tigris: Load Census TIGER/Line Shapefiles</em>. <a href="https://github.com/walkerke/tigris">https://github.com/walkerke/tigris</a>
+Walker, K. (2021b). <em>tigris: Load Census TIGER/Line Shapefiles</em>. <a href="https://github.com/walkerke/tigris">https://github.com/walkerke/tigris</a>
 </div>
 <div id="ref-R-tidycensus" class="csl-entry">
 Walker, K. et Herman, M. (2021). <em>tidycensus: Load US Census Boundary and Attribute Data as tidyverse and sf-Ready Data Frames</em>. <a href="https://walker-data.com/tidycensus/">https://walker-data.com/tidycensus/</a>
+</div>
+<div id="ref-rdhs2019" class="csl-entry">
+Watson, O. J., FitzJohn, R. et Eaton, J. W. (2019). rdhs: an R package to interact with The Demographic and Health Surveys (DHS) Program datasets. <em>Wellcome Open Research</em>, <em>4</em>, 103. <a href="https://doi.org/10.12688/wellcomeopenres.15311.1">https://doi.org/10.12688/wellcomeopenres.15311.1</a>
 </div>
 <div id="ref-R-cshapes" class="csl-entry">
 Weidmann, N. B., Schvitz, G. et Girardin, L. (2021). <em>cshapes: The CShapes 2.0 Dataset and Utilities</em>. <a href="https://CRAN.R-project.org/package=cshapes">https://CRAN.R-project.org/package=cshapes</a>
@@ -503,20 +528,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

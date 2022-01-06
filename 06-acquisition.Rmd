@@ -13,83 +13,71 @@ Depuis l'apparition du package `sf`, qui a très largement contribué à la popu
 
 - <img src="img/geom.svg" alt="Géométries" width="20"> `rnaturalearth` [@R-rnaturalearth] : permet de récupérer les données cartographiques [Natural Earth](https://www.naturalearthdata.com/).   
 - <img src="img/geom.svg" alt="Géométries" width="20"> `gadmr` [@R-gadmr] : permet de récupérer les données du [GADM](https://gadm.org/index.html) (découpages administratifs nationaux et infra-nationaux de l'ensemble des pays du monde).  
+- <img src="img/geom.svg" alt="Géométries" width="20"> `rgeoboundaries` [@R-rgeoboundaries] : client R pour l'API [geoBoundaries](https://www.geoboundaries.org/index.html), fournissant les frontières administratives politiques des pays.
+- <img src="img/geom.svg" alt="Géométries" width="20"> `cshapes` [@R-cshapes] : met à disposition les frontières nationales, de 1886 à aujourd'hui.  
 - <img src="img/geom.svg" alt="Géométries" width="20"> `osmextract` [@R-osmextract] : permet d'importer des données [OpenStreetMap](https://www.openstreetmap.org/).   
-- <img src="img/geom.svg" alt="Géométries" width="20"> `osmdata` [@osmdata2017] : pour télécharger et utiliser les données d'OpenStreetMap.    
+- <img src="img/geom.svg" alt="Géométries" width="20"> `osmdata` [@osmdata2017] : pour télécharger et utiliser les données d'OpenStreetMap.
 - <img src="img/geom.svg" alt="Géométries" width="20"> `maptiles` [@R-maptiles] : Ce package télécharge, compose et affiche des tuiles à partir d'un grand nombre de fournisseurs (*OpenStreetMap*, *Stamen*, *Esri*, *CARTO* ou *Thunderforest*...).   
 - <img src="img/table.svg" alt="données attributaires" width="20"> `geonames` [@R-geonames] : permet d'interroger la BD [geonames](http://www.geonames.org/), qui fournit notamment des localisations.
-- <img src="img/geom.svg" alt="Géométries" width="20"> `cshapes` [@R-cshapes] : met à disposition les frontières nationales, de 1886 à aujourd'hui.   
 - <img src="img/table.svg" alt="données attributaires" width="20"> `wbstats` [@wbstats2020] et `WDI` [@R-WDI] : donnent accès aux données et statistiques de la Banque mondiale.   
-- <img src="img/geom.svg" alt="Géométries" width="20"> `rgee` [@R-rgee] : permet d'utiliser l'API de [Google Earth Engine](https://www.google.com/intl/fr_in/earth/education/tools/google-earth-engine/), catalogue de données publiques et infrastructure de calcul pour les images satellites.   
 - <img src="img/geom.svg" alt="Géométries" width="20"> `sen2r` [@R-sen2r] : permet de télécharger et prétraiter automatiquement les données du satellite Sentinel-2.   
+- <img src="img/geom.svg" alt="Géométries" width="20"> `MODIStsp` [@MODIStsp2016] : permet de trouver, télécharger et traiter des images *MODIS*.
+- <img src="img/geom.svg" alt="Géométries" width="20"> `geodata` [@R-geodata] : founit un accès à des [données](https://github.com/rspatial/geodata) sur le climat, l'altitude, le sol, la présence d'espèces et les limites administratives. 
+- <img src="img/geom.svg" alt="Géométries" width="20"> `elevatr` [@R-elevatr] : donne accès à des données d'élévation mises à disposition par [*Amazon Web Services Terrain Tiles*](https://registry.opendata.aws/terrain-tiles/), l'[*Open Topography Global Datasets API*](https://opentopography.org/developers/) et l'[*USGS Elevation Point Query Service*](https://nationalmap.gov/epqs/).
+- <img src="img/geom.svg" alt="Géométries" width="20"> `rgee` [@R-rgee] : permet d'utiliser l'API de [Google Earth Engine](https://www.google.com/intl/fr_in/earth/education/tools/google-earth-engine/), catalogue de données publiques et infrastructure de calcul pour les images satellites.   
+- <img src="img/geom.svg" alt="Géométries" width="20"> `nasapower` [@nasapower2018] : API client *NASA* (prévision des ressources énergétiques mondiales, météorologie, énergie solaire de surface et climatologie). 
+- <img src="img/geom.svg" alt="Géométries" width="20"> `geoknife` [@geoknife2015] : permet de traiter (en ligne) des données matricielles volumineuses issuent du *Geo Data Portal* de l'*U.S. Geological Survey*.
+- <img src="img/table.svg" alt="données attributaires" width="20"> `wopr` [@R-wopr] : fournit un accès API à la base de données [*WorldPop Open Population Repository*](https://wopr.worldpop.org/). 
+- <img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> `rdhs` [@rdhs2019] : API client et gestions de données de l'[enquête démographique et de santé (DHS)](https://dhsprogram.com/).
 
 
-```{r create_reference_list, include=FALSE, eval = FALSE}
-library(rnaturalearth)
-# if(!require(gadmr)) remotes::install_github("SpatialWorks/gadmr")
-library(gadmr)
-library(osmextract)
-library(osmdata)
-library(maptiles)
-library(geonames)
 
-library(WDI)
-library(wbstats)
-library(rgee)
-
-library(eurostat)
-library(giscoR)
-library(insee)
-library(eurostat)
-
-# remotes::install_github("antuki/COGugaison")
-library(COGugaison)
-# remotes::install_github("antuki/CARTElette/CARTElette@RPackage")
-
-remotes::install_github("inseefrlab/inseeLocalData")
-library(inseeLocalData)
-
-install.packages(c("tidycensus", "tidycensus", "tigris", "geobr", "chilemapas",
-                   "mapSpain", "mapsFinland", "rgugik", "geouy"))
-library(tidycensus)
-library(tigris)
-library(geobr)
-library(mapSpain)
-library(mapsFinland)
-library(rgugik)
-library(geouy)
-
-library(CARTElette)
-library(cshapes)
-library(sen2r)
-library(chilemapas)
-
-knitr::write_bib(x = .packages(), file = 'packages2.bib')
-```
 
 ## À l'échelle européenne
 
+- <img src="img/geom.svg" alt="Géométries" width="20"> `giscoR` [@R-giscoR] : permet de télécharger des données cartographiques mondiales et européennes de la BD [GISCO](https://ec.europa.eu/eurostat/web/gisco) d'Eurostat (système d'information géographique de la Commission). 
 - <img src="img/table.svg" alt="données attributaires" width="20"> `eurostat` [@eurostat2017] : permet de télécharger des données de la BD [Eurostat](https://ec.europa.eu/eurostat).    
-- <img src="img/geom.svg" alt="Géométries" width="20"> `giscoR` [@R-giscoR] : permet de télécharger des données cartographiques mondiales et européennes de la BD [GISCO](https://ec.europa.eu/eurostat/web/gisco) d'Eurostat (système d'information géographique de la Commission).   
+  
 
 
-## À l'échelle Française
-
-- <img src="img/geom.svg" alt="Géométries" width="20"> `inseeLocalData` [@R-inseeLocalData] : client R pour l'[API Données Locales](https://api.insee.fr/catalogue/site/themes/wso2/subthemes/insee/pages/item-info.jag?name=DonneesLocales&version=V0.1&provider=insee) de l'Insee.
-- <img src="img/geom.svg" alt="Géométries" width="20"> `insee` [@R-insee] : pour télécharger facilement les données de la base BDM ([Banque de Données Macroéconomiques](https://www.data.gouv.fr/fr/reuses/insee-package-r/)) de l'INSEE.
-- <img src="img/geom.svg" alt="Géométries" width="20"> `COGugaison` [@COGugaison2022] et `CARTElette` [@R-CARTElette] : Manipulation, agrégation de données communales françaises et création de couches cartographiques à partir du code officiel géographique (COG) et des couches IGN.
+## À l'échelle national
 
 
-## Autres...
 
-- <img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> `tidycensus` [@R-tidycensus] : permet d'accéder aux données et géométries fournies par le **US** Census Bureau.
-- <img src="img/geom.svg" alt="Géométries" width="20"> `tigris` [@R-tigris] : donne accès aux éléments cartographiques fournis par le **US** Census Bureau TIGER, y compris les limites cartographiques, les routes et l'eau.
-- <img src="img/geom.svg" alt="Géométries" width="20"> `geobr` [@R-geobr] : fournit un accès facile aux séries de données spatiales officielles du **Brésil** pour différentes années et découpage administratifs.  
-- <img src="img/geom.svg" alt="Géométries" width="20"> `chilemapas` [@R-chilemapas] : donne accès aux  divisions politiques et administratives du **Chili**. 
-- <img src="img/geom.svg" alt="Géométries" width="20"> `geouy` [@R-geouy] : permet le chargement d'informations géographiques sur l'**Uruguay**.
-- <img src="img/geom.svg" alt="Géométries" width="20"> `rgugik` [@rgugik2021] : permet l'acquisition automatique de données ouvertes à partir des ressources du Bureau central **polonais** de la géodésie et de la cartographie ([Główny Urząd Geodezji i Kartografii](https://www.gov.pl/web/gugik) ).  
-- <img src="img/geom.svg" alt="Géométries" width="20"> `mapSpain` [@R-mapSpain] : propose les limites administratives de l'**Espagne** à plusieurs niveaux (Communautés autonomes, Provinces, Municipalités), ainsi que des tuiles.
-- <img src="img/geom.svg" alt="Géométries" width="20"> `mapsFinland` [@R-mapsFinland] : donne un accès à des cartes et données concernant la **Finland**.
+- **Brésil**
+  - <img src="img/geom.svg" alt="Géométries" width="20"> `geobr` [@R-geobr] : fournit un accès facile aux séries de données spatiales officielles du Brésil pour différentes années et découpage administratifs. 
+- **Chili**
+  - <img src="img/geom.svg" alt="Géométries" width="20"> `chilemapas` [@R-chilemapas] : donne accès aux  divisions politiques et administratives du Chili. 
+- **Espagne** 
+  - <img src="img/geom.svg" alt="Géométries" width="20"> `mapSpain` [@R-mapSpain] : propose les limites administratives de l'Espagne à plusieurs niveaux (Communautés autonomes, Provinces, Municipalités), ainsi que des tuiles.
+- **États-Unis**
+  - <img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> `tidycensus` [@R-tidycensus] : permet de charger des données et géométries du recensement américain en format ``sf` et `tidyverse``
+  - <img src="img/geom.svg" alt="Géométries" width="20"> `tigris` [@R-tigris] : donne accès aux éléments cartographiques fournis par le US Census Bureau TIGER, y compris les limites cartographiques, les routes et l'eau.
+  - <img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> `FedData` [@R-FedData] : automatise le téléchargement de données géospatiales disponibles à partir de plusieurs sources de données fédérées.
+  - <img src="img/table.svg" alt="données attributaires" width="20"> `acs` [@R-acs] : permet de télécharger et manipuler les données de l'*American Community Survey* et les données décennales du recensement des États-Unis.
+  - <img src="img/table.svg" alt="données attributaires" width="20"> `censusapi` [@R-censusapi] : wrapper pour les API du *Census Bureau* des États-Unis.
+  - <img src="img/table.svg" alt="données attributaires" width="20"> `censusGeography` [@R-censusGeography] : Permet de convertir les codes géographiques du recensement des États-Unis en nom de lieu.
+  - <img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> `choroplethr` [@R-choroplethr] et `choroplethrMaps` [@R-choroplethrMaps] : Simplifient la création de cartes choroplèthes à partir des données de recensement des États-Unis.
+  - <img src="img/table.svg" alt="données attributaires" width="20"> `idbr` [@R-idbr] : interface avec l'API de la base de données internationale du US Census Bureau.  
+  - <img src="img/table.svg" alt="données attributaires" width="20"> `ipumsr` [@R-ipumsr] : Permet d'importer des données de recensement, d'enquête et géographiques fournies par l'[IPUMS](https://www.ipums.org/).
+  - <img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> `SeerMapper` & co [@R-SeerMapper] : permettent de cartographier des données par États, comtés, secteurs de recensement ou des registres *Seer* (découpage du recensement 2000 et 2010).
+  - <img src="img/table.svg" alt="données attributaires" width="20"> `totalcensus` [@R-totalcensus] : permet d'extraire les données du recensement décennal et de l'*American Community Survey* au niveaux des *block*, *block group* et *tract*.
+  - <img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> `UScensus2010` [@R-UScensus2010], `UScensus2000cdp` [@R-UScensus2000cdp] et `UScensus2000tract` [@R-UScensus2000tract] : fournissent les géométries du recensement des États-Unis en 2000/2010, ainsi que des données démographiques supplémentaires.
+- **Finland**
+  - <img src="img/geom.svg" alt="Géométries" width="20"> `mapsFinland` [@R-mapsFinland] : donne un accès à des cartes et données concernant la Finland.
+- **France**
+  - <img src="img/geom.svg" alt="Géométries" width="20"> `inseeLocalData` [@R-inseeLocalData] : client R pour l'[API Données Locales](https://api.insee.fr/catalogue/site/themes/wso2/subthemes/insee/pages/item-info.jag?name=DonneesLocales&version=V0.1&provider=insee) de l'Insee.
+  - <img src="img/geom.svg" alt="Géométries" width="20"> `insee` [@R-insee] : pour télécharger facilement les données de la base BDM ([Banque de Données Macroéconomiques](https://www.data.gouv.fr/fr/reuses/insee-package-r/)) de l'INSEE.
+  - <img src="img/geom.svg" alt="Géométries" width="20"> `COGugaison` [@COGugaison2022] et `CARTElette` [@R-CARTElette] : Manipulation, agrégation de données communales françaises et création de couches cartographiques à partir du code officiel géographique (COG) et des couches IGN.
+- **Pologne**
+  - <img src="img/geom.svg" alt="Géométries" width="20"> `rgugik` [@rgugik2021] : permet l'acquisition automatique de données ouvertes à partir des ressources du Bureau central polonais de la géodésie et de la cartographie ([Główny Urząd Geodezji i Kartografii](https://www.gov.pl/web/gugik) ).  
+- **Royaume-Uni**
+  - <img src="img/geom.svg" alt="Géométries" width="20"> `geographr` [@R-geographr] : pour manipuler et cartographier les limites géographiques et administratives du Royaume-Uni.
+- **Uruguay**
+  - <img src="img/geom.svg" alt="Géométries" width="20"> `geouy` [@R-geouy] : permet le chargement d'informations géographiques sur l'Uruguay.
 - ...
+
+
 
 
 
