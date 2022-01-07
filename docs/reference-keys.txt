@@ -76,7 +76,5 @@ calcul-dune-matrice-de-temps
 acquisition-de-données-spatiales
 à-léchelle-mondiale
 à-léchelle-européenne
-à-léchelle-française
-autres
-sessioninfo
 à-léchelle-national
+sessioninfo
