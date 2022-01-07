@@ -1,4 +1,4 @@
-# [Géomatique avec R](https://rcarto.github.io/geomatique_avec_r/) <div style="float: right"><img src="img/layer-group-solid.svg" width="120px" padding="1em"/></div>
+# [Géomatique avec R](https://rcarto.github.io/geomatique_avec_r/) <img src="img/layer-group-solid.svg" width="120" align="right"/>
 
 Ce manuel est destiné tant aux utilisateurs de R souhaitant mettre en place traitements de l'information géographique qu'aux utilisateurs souhaitant utiliser R pour réaliser les taches qu'ils réalisent habituellement avec un SIG.   
 Les principales étapes du traitement de l'information géographiques y sont abordées. 
