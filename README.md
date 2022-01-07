@@ -20,6 +20,5 @@ Un deuxième manuel centré sur la cartographie est disponible ici :
 [Cartographie avec R](https://rcarto.github.io/cartographie_avec_r/).
 
 
-</br>
-![Creative Commons License](img/by-nc-sa.png)  
+![](img/by-nc-sa.png)  
 La version en ligne de ce document est sous licence [Creative Commons Attribution-NonCommercial-ShareAlike 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/). 
