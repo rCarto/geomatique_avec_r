@@ -150,6 +150,49 @@ plot(st_geometry(route[route$intersect_gramat, ]),
 ```
 
 
+#### Différence entre `sparse = TRUE` et `sparse = FALSE`
+
+```{r st_intersparse, echo =FALSE, eval = TRUE}
+library(sf)
+set.seed(41)
+x <- mapsf::mf_get_mtq()
+grid <- st_make_grid(x = x, n = c(2,2))
+grid <- st_sf(id = 1:4, geom = grid)
+pt <- st_sample(grid, size = 8)
+pt <- st_sf(id = letters[1:length(pt)], geom = pt)
+
+library(mapsf)
+mf_init(grid, expandBB = c(0, 0, 0, .3))
+mf_map(grid, add = T)
+mf_label(grid, "id", cex = 2, pos = 3)
+mf_map(pt, add = T, pch = 4, cex = 1.2, lwd = 2, col = "red")
+mf_label(pt, "id", cex = 1, col = "red", font = 3, pos = 2, overlap = F)
+legend(x = "topright", 
+       col = c("black", NA, "red"), 
+       legend = 
+         c("    grid  ", NA, "    pt  "), 
+       pch = c(22,NA,4), 
+       pt.bg = "grey", 
+       pt.cex = c(6,NA, 1.2), 
+       bty = "n")
+mf_title("st_intersects()", tab = FALSE, pos = "center")
+```
+
+
+* `sparse = TRUE`
+```{r st_intersparse2}
+inter <- st_intersects(x = grid, y = pt, sparse = TRUE)
+inter
+```
+
+* `sparse = FALSE`
+```{r st_intersparse3}
+inter <- st_intersects(x = grid, y = pt, sparse = FALSE)
+rownames(inter) <- grid$id
+colnames(inter) <- pt$id
+inter
+```
+
 
 
 ### Contains / Within
@@ -342,18 +385,30 @@ mat[1:5,1:5]
 
 ### Calculer le nombre de restaurants par communes
 
-```{r, eval=FALSE, echo = FALSE}
+* Quelles communes ont plus de 10 restaurants et moins de 1000 habitants ?
+
+```{r exo1_1, eval=TRUE, echo = TRUE}
+# Import des restaurants
 restaurant <- st_read("data/lot46.gpkg", layer = "restaurant", quiet = TRUE)
-inter <- st_intersects(com, restaurant)
+# Calcul des intersections
+inter <- st_intersects(x = com, y = restaurant, sparse = TRUE)
+# Parcourir la liste et compter le nombre d"éléments
 com$nb_restaurant <- sapply(X = inter, FUN = length)
+
 plot(com["nb_restaurant"])
-com[com$nb_restaurant>=10 & com$POPULATION<=1000,]
+
+com_sel <- com[com$nb_restaurant>=10 & com$POPULATION<=1000,]
+com_sel$NOM_COM
 ```
 
-* Quelles communes ont plus de 10 restaurants et moins de 1000 habitants ?
+
 
 * Créez une carte où vous afficherez toutes les communes en gris et les communes sélectionnées plus haut en rouge. 
 
+```{r exo1_2, nm=TRUE}
+plot(st_geometry(com), col = "grey")
+plot(st_geometry(com_sel), col = "red", add = TRUE)
+```
 
 
 
@@ -365,7 +420,7 @@ Découper les routes par les communes. Chaque segment de route récupère l'iden
 > st_intersection()
 
 
-```{r drr1, eval=FALSE, echo = FALSE}
+```{r drr1, eval=TRUE, echo = TRUE}
 route_com <- st_intersection(route, com[,"INSEE_COM"])
 head(route_com, 1)
 ```
@@ -375,7 +430,7 @@ Rajouter une colonne **longueur** qui contient la longueur de chacun des segment
 
 > st_length()
 
-```{r drr2, eval=FALSE, echo = FALSE}
+```{r drr2, eval=TRUE, echo = TRUE}
 route_com$longueur <- st_length(route_com)
 ```
 
@@ -384,10 +439,10 @@ Aggreger les segments de routes par commune pour obtenir des longueurs totales p
 
 > aggregate()
 
-```{r drr3, eval=FALSE, echo = FALSE}
+```{r drr3, eval=TRUE, echo = TRUE}
 longueur_total <- aggregate(x = list(longueur = route_com$longueur), 
-by = list(INSEE_COM = route_com$INSEE_COM), 
-FUN = sum)
+                            by = list(INSEE_COM = route_com$INSEE_COM), 
+                            FUN = sum)
 
 ```
 
@@ -395,10 +450,10 @@ FUN = sum)
 
 > merge()
 
-```{r drr4, eval=FALSE, echo = FALSE}
+```{r drr4, eval=TRUE, echo = TRUE}
 com_dens <- merge(x = com[,c('INSEE_COM', "POPULATION")], 
-y = longueur_total, 
-by = "INSEE_COM", all.x = TRUE)
+                  y = longueur_total, 
+                  by = "INSEE_COM", all.x = TRUE)
 ```
 
 
@@ -406,7 +461,7 @@ by = "INSEE_COM", all.x = TRUE)
 
 > st_area()
 
-```{r drr5, eval=FALSE, echo = FALSE}
+```{r drr5, eval=TRUE, echo = TRUE}
 com_dens$superficie <- st_area(com_dens)
 ```
 
@@ -415,7 +470,7 @@ com_dens$superficie <- st_area(com_dens)
 
 > units(...)<-"km^2" 
 
-```{r drr6, eval=FALSE, echo = FALSE}
+```{r drr6, eval=TRUE, echo = TRUE}
 units(com_dens$superficie) <- "km^2"
 units(com_dens$longueur) <- "km"
 ```
@@ -425,12 +480,12 @@ units(com_dens$longueur) <- "km"
 Le premier est le rapport entre la longueur des routes et la population des communes.   
 Le deuxième est le rapport entre la longueur des routes et la superficie des communes. 
 
-```{r drr7, eval=FALSE, echo = FALSE}
+```{r drr7, eval=TRUE, echo = TRUE}
 com_dens$dens_pop <- com_dens$longueur / com_dens$POPULATION
 plot(com_dens["dens_pop"], main = "km / hab")
 ```
 
-```{r drr8, eval=FALSE, echo = FALSE}
+```{r drr8, eval=TRUE, echo = TRUE}
 com_dens$dens_sup <- com_dens$longueur / com_dens$superficie
 plot(com_dens["dens_sup"], main = "km / km²")
 ```

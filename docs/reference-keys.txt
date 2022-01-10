@@ -13,6 +13,7 @@ modifier-le-système-de-coordonnées-dun-objet
 sélection-par-attributs
 sélection-spatiale
 intersections
+différence-entre-sparse-true-et-sparse-false
 contains-within
 opérations-sur-les-géométries
 extraire-des-centroides
