@@ -66,7 +66,7 @@ Site web de `banR` :
 ## Transformer les données long/lat en objet `sf`
 
 
-La fonction `st_as_sf()` permet de transformer un `data.frame` contenant des coodonnées géographiques en objet `sf`.
+La fonction `st_as_sf()` permet de transformer un `data.frame` contenant des coodonnées géographiques en objet `sf`. Ici nous utilisons le `data.frame` `places2` créé au point précédent. 
 
 ```{r build_sf, eval = TRUE, echo = TRUE, nm = TRUE, fig.width=8}
 library(sf)
@@ -74,6 +74,13 @@ place_sf <- st_as_sf(places2, coords = c("longitude", "latitude"), crs = 4326)
 place_sf
 ```
 
+
+Pour créer un objet `sf` de type POINT avec uniquement une paire de coordonnées (WGS84, longitude=0.5, latitude = 45.5) : 
+```{r build_sf2, eval = TRUE, echo = TRUE, nm = TRUE, fig.width=8}
+library(sf)
+mon_point <- st_as_sf(data.frame(x = 0.5, y = 45.5), coords = c("x", "y"), crs = 4326)
+mon_point
+```
 
 
 Nous pouvons afficher cet objet `sf` sur un fond de carte [OpenStreetMap](https://www.openstreetmap.org/) avec le package `maptiles` [@R-maptiles]. 

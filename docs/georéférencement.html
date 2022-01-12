@@ -358,7 +358,7 @@ Site web de <code>banR</code> :<br />
 </div>
 <div id="transformer-les-données-longlat-en-objet-sf" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Transformer les données long/lat en objet <code>sf</code></h2>
-<p>La fonction <code>st_as_sf()</code> permet de transformer un <code>data.frame</code> contenant des coodonnées géographiques en objet <code>sf</code>.</p>
+<p>La fonction <code>st_as_sf()</code> permet de transformer un <code>data.frame</code> contenant des coodonnées géographiques en objet <code>sf</code>. Ici nous utilisons le <code>data.frame</code> <code>places2</code> créé au point précédent.</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="georéférencement.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
 <span id="cb71-2"><a href="georéférencement.html#cb71-2" aria-hidden="true" tabindex="-1"></a>place_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(places2, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
 <span id="cb71-3"><a href="georéférencement.html#cb71-3" aria-hidden="true" tabindex="-1"></a>place_sf</span></code></pre></div>
@@ -375,11 +375,22 @@ Geodetic CRS:  WGS 84
 # … with 9 more variables: result_street &lt;chr&gt;, result_postcode &lt;chr&gt;, result_city &lt;chr&gt;,
 #   result_context &lt;chr&gt;, result_citycode &lt;chr&gt;, result_oldcitycode &lt;chr&gt;,
 #   result_oldcity &lt;chr&gt;, result_district &lt;chr&gt;, geometry &lt;POINT [°]&gt;</code></pre>
+<p>Pour créer un objet <code>sf</code> de type POINT avec uniquement une paire de coordonnées (WGS84, longitude=0.5, latitude = 45.5) :</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="georéférencement.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb73-2"><a href="georéférencement.html#cb73-2" aria-hidden="true" tabindex="-1"></a>mon_point <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fl">45.5</span>), <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb73-3"><a href="georéférencement.html#cb73-3" aria-hidden="true" tabindex="-1"></a>mon_point</span></code></pre></div>
+<pre><code>Simple feature collection with 1 feature and 0 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: 0.5 ymin: 45.5 xmax: 0.5 ymax: 45.5
+Geodetic CRS:  WGS 84
+          geometry
+1 POINT (0.5 45.5)</code></pre>
 <p>Nous pouvons afficher cet objet <code>sf</code> sur un fond de carte <a href="https://www.openstreetmap.org/">OpenStreetMap</a> avec le package <code>maptiles</code> <span class="citation">(<a href="#ref-R-maptiles" role="doc-biblioref">Giraud, 2021a</a>)</span>.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="georéférencement.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptiles)</span>
-<span id="cb73-2"><a href="georéférencement.html#cb73-2" aria-hidden="true" tabindex="-1"></a>osm <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="at">x =</span> place_sf, <span class="at">zoom =</span> <span class="dv">7</span>)</span>
-<span id="cb73-3"><a href="georéférencement.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_tiles</span>(osm)</span>
-<span id="cb73-4"><a href="georéférencement.html#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(place_sf), <span class="at">pch =</span> <span class="dv">4</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="georéférencement.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptiles)</span>
+<span id="cb75-2"><a href="georéférencement.html#cb75-2" aria-hidden="true" tabindex="-1"></a>osm <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="at">x =</span> place_sf, <span class="at">zoom =</span> <span class="dv">7</span>)</span>
+<span id="cb75-3"><a href="georéférencement.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_tiles</span>(osm)</span>
+<span id="cb75-4"><a href="georéférencement.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(place_sf), <span class="at">pch =</span> <span class="dv">4</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="Geomatique-avec-R_files/figure-html/display_sf-1.png" width="788px" style="display: block; margin: auto;" /></p>
 
 <div class="linky">
