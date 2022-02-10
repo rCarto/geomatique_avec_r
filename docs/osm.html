@@ -409,21 +409,20 @@ Le package <code>osmdata</code> <span class="citation">(<a href="#ref-R-osmdata"
 <span id="cb145-9"><a href="osm.html#cb145-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraction des restaurants</span></span>
 <span id="cb145-10"><a href="osm.html#cb145-10" aria-hidden="true" tabindex="-1"></a>req <span class="ot">&lt;-</span> <span class="fu">add_osm_feature</span>(<span class="at">opq =</span> q, <span class="at">key =</span> <span class="st">&#39;amenity&#39;</span>, <span class="at">value =</span> <span class="st">&quot;restaurant&quot;</span>)</span>
 <span id="cb145-11"><a href="osm.html#cb145-11" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">osmdata_sf</span>(req)</span>
-<span id="cb145-12"><a href="osm.html#cb145-12" aria-hidden="true" tabindex="-1"></a>res</span></code></pre></div>
+<span id="cb145-12"><a href="osm.html#cb145-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Reductcion du resultats </span></span>
+<span id="cb145-13"><a href="osm.html#cb145-13" aria-hidden="true" tabindex="-1"></a><span class="co"># (les points composant les polygones sont supprimés)</span></span>
+<span id="cb145-14"><a href="osm.html#cb145-14" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">unique_osmdata</span>(res)</span></code></pre></div>
 <p>Le résultat contient une couche de points et une couche de polygones.<br />
 La couche de polygones contient des polygones qui représentent des restaurants.<br />
-La couche de points contient des points qui représentent des restaurants (la valeur dans la colonne <strong>amenity</strong> est égale à “restaurant”) ET les points qui composent les polygones de la couche des polygones ((la valeur dans la colonne <strong>amenity</strong> est égale à NA).<br />
-Pour obtenir une couche de points cohérente nous devons un peu travailler sur ces 2 couches.</p>
+Pour obtenir une couche de points cohérente nous pouvons utiliser les centroides des polygones.</p>
 <div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="osm.html#cb146-1" aria-hidden="true" tabindex="-1"></a>resto_point <span class="ot">&lt;-</span> res<span class="sc">$</span>osm_points</span>
-<span id="cb146-2"><a href="osm.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="co"># retirer les points qui composent les polygones</span></span>
-<span id="cb146-3"><a href="osm.html#cb146-3" aria-hidden="true" tabindex="-1"></a>resto_point <span class="ot">&lt;-</span> resto_point[<span class="sc">!</span><span class="fu">is.na</span>(resto_point<span class="sc">$</span>amenity), ]</span>
-<span id="cb146-4"><a href="osm.html#cb146-4" aria-hidden="true" tabindex="-1"></a><span class="co"># extraire les centroides des polygones</span></span>
-<span id="cb146-5"><a href="osm.html#cb146-5" aria-hidden="true" tabindex="-1"></a>resto_poly <span class="ot">&lt;-</span> res<span class="sc">$</span>osm_polygons</span>
-<span id="cb146-6"><a href="osm.html#cb146-6" aria-hidden="true" tabindex="-1"></a>resto_poly_point <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(resto_poly)</span>
-<span id="cb146-7"><a href="osm.html#cb146-7" aria-hidden="true" tabindex="-1"></a><span class="co"># identifier les champs en commun</span></span>
-<span id="cb146-8"><a href="osm.html#cb146-8" aria-hidden="true" tabindex="-1"></a>chps <span class="ot">&lt;-</span> <span class="fu">intersect</span>(<span class="fu">names</span>(resto_point), <span class="fu">names</span>(resto_poly_point))</span>
-<span id="cb146-9"><a href="osm.html#cb146-9" aria-hidden="true" tabindex="-1"></a><span class="co"># rassembler les 2 objets</span></span>
-<span id="cb146-10"><a href="osm.html#cb146-10" aria-hidden="true" tabindex="-1"></a>resto <span class="ot">&lt;-</span> <span class="fu">rbind</span>(resto_point[, chps], resto_poly_point[, chps])</span></code></pre></div>
+<span id="cb146-2"><a href="osm.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extraire les centroides des polygones</span></span>
+<span id="cb146-3"><a href="osm.html#cb146-3" aria-hidden="true" tabindex="-1"></a>resto_poly <span class="ot">&lt;-</span> res<span class="sc">$</span>osm_polygons</span>
+<span id="cb146-4"><a href="osm.html#cb146-4" aria-hidden="true" tabindex="-1"></a>resto_poly_point <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(resto_poly)</span>
+<span id="cb146-5"><a href="osm.html#cb146-5" aria-hidden="true" tabindex="-1"></a><span class="co"># identifier les champs en commun</span></span>
+<span id="cb146-6"><a href="osm.html#cb146-6" aria-hidden="true" tabindex="-1"></a>chps <span class="ot">&lt;-</span> <span class="fu">intersect</span>(<span class="fu">names</span>(resto_point), <span class="fu">names</span>(resto_poly_point))</span>
+<span id="cb146-7"><a href="osm.html#cb146-7" aria-hidden="true" tabindex="-1"></a><span class="co"># rassembler les 2 objets</span></span>
+<span id="cb146-8"><a href="osm.html#cb146-8" aria-hidden="true" tabindex="-1"></a>resto <span class="ot">&lt;-</span> <span class="fu">rbind</span>(resto_point[, chps], resto_poly_point[, chps])</span></code></pre></div>
 <p><strong>Affichage des résultats</strong></p>
 <div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="osm.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapview)</span>
 <span id="cb147-2"><a href="osm.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mapview</span>(cahors) <span class="sc">+</span> <span class="fu">mapview</span>(resto)</span></code></pre></div>

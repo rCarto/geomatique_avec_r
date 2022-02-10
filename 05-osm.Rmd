@@ -159,18 +159,17 @@ q <- opq(bbox = st_bbox(st_transform(cahors, 4326)))
 # Extraction des restaurants
 req <- add_osm_feature(opq = q, key = 'amenity', value = "restaurant")
 res <- osmdata_sf(req)
-res
+# Reductcion du resultats 
+# (les points composant les polygones sont supprimés)
+res <- unique_osmdata(res)
 ```
 
 Le résultat contient une couche de points et une couche de polygones.     
 La couche de polygones contient des polygones qui représentent des restaurants.    
-La couche de points contient des points qui représentent des restaurants (la valeur dans la colonne **amenity** est égale à "restaurant") ET les points qui composent les polygones de la couche des polygones ((la valeur dans la colonne **amenity** est égale à NA).  
-Pour obtenir une couche de points cohérente nous devons un peu travailler sur ces 2 couches. 
+Pour obtenir une couche de points cohérente nous pouvons utiliser les centroides des polygones. 
 
 ```{r osmdata2}
 resto_point <- res$osm_points
-# retirer les points qui composent les polygones
-resto_point <- resto_point[!is.na(resto_point$amenity), ]
 # extraire les centroides des polygones
 resto_poly <- res$osm_polygons
 resto_poly_point <- st_centroid(resto_poly)
