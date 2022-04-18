@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 8 sessionInfo() | Géomatique avec R</title>
   <meta name="description" content="Chapitre 8 sessionInfo() | Géomatique avec R" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 8 sessionInfo() | Géomatique avec R" />
   <meta property="og:type" content="book" />
-  
   <meta property="og:image" content="/img/layer-group-solid.svg" />
   <meta property="og:description" content="Chapitre 8 sessionInfo() | Géomatique avec R" />
   <meta name="github-repo" content="rCarto/geomatique_avec_r" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="img/layer-group-solid.svg" type="image/x-icon" />
 <link rel="prev" href="acquisition-de-données-spatiales.html"/>
 <link rel="next" href="references.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
@@ -59,9 +58,9 @@
 <script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -303,15 +302,15 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sessioninfo" class="section level1" number="8">
-<h1><span class="header-section-number">Chapitre 8</span> <code>sessionInfo()</code></h1>
-<pre><code>R version 4.1.2 (2021-11-01)
+<div id="sessioninfo" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapitre 8</span> <code>sessionInfo()</code><a href="sessioninfo.html#sessioninfo" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<pre><code>R version 4.1.3 (2022-03-10)
 Platform: x86_64-pc-linux-gnu (64-bit)
 Running under: Debian GNU/Linux 11 (bullseye)
 
 Matrix products: default
-BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
-LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
+BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3
+LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.13.so
 
 locale:
  [1] LC_CTYPE=fr_FR.UTF-8       LC_NUMERIC=C               LC_TIME=fr_FR.UTF-8       
@@ -323,40 +322,40 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] osrm_3.5.0         osmdata_0.1.8      mapview_2.10.0     leaflet_2.0.4.1   
- [5] terra_1.4-22       maptiles_0.3.0     banR_0.2.2         tidygeocoder_1.0.5
- [9] mapsf_0.4.0        sf_1.0-5           knitr_1.37        
+ [1] osrm_3.5.2.0       osmdata_0.1.9      mapview_2.11.0     leaflet_2.1.1     
+ [5] terra_1.5-21       maptiles_0.4.0.0   banR_0.2.2         tidygeocoder_1.0.5
+ [9] mapsf_0.5.0.0      sf_1.0-7           knitr_1.38        
 
 loaded via a namespace (and not attached):
- [1] httr_1.4.2              sass_0.4.0              bit64_4.0.5            
- [4] vroom_1.5.7             jsonlite_1.7.2          bslib_0.3.1            
+ [1] httr_1.4.2              sass_0.4.1              bit64_4.0.5            
+ [4] vroom_1.5.7             jsonlite_1.8.0          bslib_0.3.1            
  [7] assertthat_0.2.1        sp_1.4-6                highr_0.9              
-[10] stats4_4.1.2            yaml_2.2.1              pillar_1.6.4           
-[13] lattice_0.20-45         glue_1.6.0              uuid_1.0-3             
-[16] digest_0.6.29           RColorBrewer_1.1-2      rvest_1.0.2            
-[19] leaflet.providers_1.9.0 colorspace_2.0-2        htmltools_0.5.2        
-[22] slippymath_0.3.1        pkgconfig_2.0.3         raster_3.5-11          
-[25] s2_1.0.7                bookdown_0.24           purrr_0.3.4            
-[28] scales_1.1.1            webshot_0.5.2           brew_1.0-6             
-[31] svglite_2.0.0           satellite_1.0.4         tzdb_0.2.0             
-[34] tibble_3.1.6            proxy_0.4-26            generics_0.1.1         
-[37] ellipsis_0.3.2          googlePolylines_0.8.2   cli_3.1.0              
-[40] magrittr_2.0.1          crayon_1.4.2            mime_0.12              
-[43] evaluate_0.14           fansi_0.5.0             xml2_1.3.3             
-[46] class_7.3-19            tools_4.1.2             hms_1.1.1              
+[10] stats4_4.1.3            yaml_2.3.5              pillar_1.7.0           
+[13] lattice_0.20-45         glue_1.6.2              uuid_1.0-4             
+[16] digest_0.6.29           RColorBrewer_1.1-3      rvest_1.0.2            
+[19] leaflet.providers_1.9.0 colorspace_2.0-3        htmltools_0.5.2        
+[22] slippymath_0.3.1        pkgconfig_2.0.3         raster_3.5-15          
+[25] s2_1.0.7                bookdown_0.26           purrr_0.3.4            
+[28] scales_1.2.0            webshot_0.5.3           brew_1.0-7             
+[31] svglite_2.1.0           satellite_1.0.4         tzdb_0.3.0             
+[34] tibble_3.1.6            proxy_0.4-26            generics_0.1.2         
+[37] ellipsis_0.3.2          googlePolylines_0.8.2   cli_3.2.0              
+[40] magrittr_2.0.3          crayon_1.5.1            mime_0.12              
+[43] evaluate_0.15           fansi_1.0.3             xml2_1.3.3             
+[46] class_7.3-20            tools_4.1.3             hms_1.1.1              
 [49] lifecycle_1.0.1         stringr_1.4.0           munsell_0.5.0          
-[52] compiler_4.1.2          jquerylib_0.1.4         e1071_1.7-9            
-[55] systemfonts_1.0.3       rlang_0.4.12            classInt_0.4-3         
-[58] units_0.7-2             grid_4.1.2              leafpop_0.1.0          
+[52] compiler_4.1.3          jquerylib_0.1.4         e1071_1.7-9            
+[55] systemfonts_1.0.4       rlang_1.0.2             classInt_0.4-3         
+[58] units_0.8-0             grid_4.1.3              leafpop_0.1.0          
 [61] rstudioapi_0.13         htmlwidgets_1.5.4       crosstalk_1.2.0        
-[64] leafem_0.1.6            base64enc_0.1-3         rmarkdown_2.11         
+[64] leafem_0.2.0            base64enc_0.1-3         rmarkdown_2.13         
 [67] wk_0.6.0                codetools_0.2-18        DBI_1.1.2              
 [70] curl_4.3.2              R6_2.5.1                lubridate_1.8.0        
-[73] dplyr_1.0.7             fastmap_1.1.0           bit_4.0.4              
-[76] utf8_1.2.2              KernSmooth_2.23-20      readr_2.1.1            
-[79] stringi_1.7.6           parallel_4.1.2          Rcpp_1.0.7             
-[82] vctrs_0.3.8             png_0.1-7               tidyselect_1.1.1       
-[85] xfun_0.29              </code></pre>
+[73] dplyr_1.0.8             fastmap_1.1.0           bit_4.0.4              
+[76] utf8_1.2.2              KernSmooth_2.23-20      readr_2.1.2            
+[79] stringi_1.7.6           parallel_4.1.3          Rcpp_1.0.8.3           
+[82] vctrs_0.4.1             png_0.1-7               tidyselect_1.1.2       
+[85] xfun_0.30              </code></pre>
 
 </div>
             </section>

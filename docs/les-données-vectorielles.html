@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 3 Les données vectorielles | Géomatique avec R</title>
   <meta name="description" content="Chapitre 3 Les données vectorielles | Géomatique avec R" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 3 Les données vectorielles | Géomatique avec R" />
   <meta property="og:type" content="book" />
-  
   <meta property="og:image" content="/img/layer-group-solid.svg" />
   <meta property="og:description" content="Chapitre 3 Les données vectorielles | Géomatique avec R" />
   <meta name="github-repo" content="rCarto/geomatique_avec_r" />
@@ -32,7 +31,6 @@
   <link rel="shortcut icon" href="img/layer-group-solid.svg" type="image/x-icon" />
 <link rel="prev" href="introductionx.html"/>
 <link rel="next" href="georéférencement.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
@@ -59,9 +58,9 @@
 <script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -303,10 +302,10 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="les-données-vectorielles" class="section level1" number="3">
-<h1><span class="header-section-number">Chapitre 3</span> Les données vectorielles</h1>
-<div id="format-des-objets-spatiaux-sf" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Format des objets spatiaux <code>sf</code></h2>
+<div id="les-données-vectorielles" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapitre 3</span> Les données vectorielles<a href="les-données-vectorielles.html#les-données-vectorielles" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="format-des-objets-spatiaux-sf" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Format des objets spatiaux <code>sf</code><a href="les-données-vectorielles.html#format-des-objets-spatiaux-sf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><img src="img/sf.png" width="562" style="display: block; margin: auto;" /></p>
 <p>Les objets <code>sf</code> sont des <code>data.frame</code> dont l’une des colonnes contient des géométries. Cette colonne est de la classe sfc (<em>simple feature column</em>) et chaque individu de la colonne est un sfg (<em>simple feature geometry)</em>.<br />
 Ce format est très pratique dans la mesure ou les données et les géométries sont intrinsèquement liées dans un même objet.</p>
@@ -316,8 +315,8 @@ Vignette décrivant le format simple feature :<br />
 <a href="https://r-spatial.github.io/sf/articles/sf1.html">Simple Features for R</a>
 </div>
 </div>
-<div id="import-et-export-de-données" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Import et export de données</h2>
+<div id="import-et-export-de-données" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Import et export de données<a href="les-données-vectorielles.html#import-et-export-de-données" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Les fonctions <code>st_read()</code> et <code>st_write()</code> permettent d’importer et d’exporter de nombreux types de fichiers.<br />
 Les lignes suivantes importent la couche des communes du département du Lot situé dans le fichier <a href="https://www.geopackage.org/">geopackage</a> <strong>lot46.gpkg</strong>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="les-données-vectorielles.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
@@ -340,8 +339,8 @@ Writing layer `com&#39; to data source `data/com.shp&#39; using driver `ESRI Sha
 options:        ENCODING=UTF-8 
 Writing 313 features with 12 fields and geometry type Multi Polygon.</code></pre>
 </div>
-<div id="affichage" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Affichage</h2>
+<div id="affichage" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Affichage<a href="les-données-vectorielles.html#affichage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Aperçu des variables</strong> via les fonctions <code>head()</code> et <code>plot()</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="les-données-vectorielles.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(com)</span></code></pre></div>
 <pre><code>Simple feature collection with 6 features and 12 fields
@@ -369,10 +368,10 @@ Projected CRS: RGF93 / Lambert-93
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="les-données-vectorielles.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(com))</span></code></pre></div>
 <p><img src="Geomatique-avec-R_files/figure-html/aff2-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 </div>
-<div id="les-systèmes-de-coordonnées" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Les systèmes de coordonnées</h2>
-<div id="consulter-le-système-de-coordonnées-dun-objet" class="section level3" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> Consulter le système de coordonnées d’un objet</h3>
+<div id="les-systèmes-de-coordonnées" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Les systèmes de coordonnées<a href="les-données-vectorielles.html#les-systèmes-de-coordonnées" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="consulter-le-système-de-coordonnées-dun-objet" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Consulter le système de coordonnées d’un objet<a href="les-données-vectorielles.html#consulter-le-système-de-coordonnées-dun-objet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La fonction <code>st_crs()</code> permet de consulter le système de coordonnées utilisé par un objet sf.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="les-données-vectorielles.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(com)</span></code></pre></div>
 <pre><code>Coordinate Reference System:
@@ -420,8 +419,8 @@ PROJCRS[&quot;RGF93 / Lambert-93&quot;,
         BBOX[41.15,-9.86,51.56,10.38]],
     ID[&quot;EPSG&quot;,2154]]</code></pre>
 </div>
-<div id="modifier-le-système-de-coordonnées-dun-objet" class="section level3" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> Modifier le système de coordonnées d’un objet</h3>
+<div id="modifier-le-système-de-coordonnées-dun-objet" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Modifier le système de coordonnées d’un objet<a href="les-données-vectorielles.html#modifier-le-système-de-coordonnées-dun-objet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La fonction <code>st_transform()</code> permet de change le système de coordonnées d’un objet sf, de le reprojeter.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="les-données-vectorielles.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(com))</span>
 <span id="cb13-2"><a href="les-données-vectorielles.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;RGF93 / Lambert-93&quot;</span>)</span></code></pre></div>
@@ -433,8 +432,8 @@ PROJCRS[&quot;RGF93 / Lambert-93&quot;,
 Le site <a href="http://spatialreference.org/" target="_blank">Spatial Reference</a> met à disposition les références de très nombreux systèmes de coordonnées.</p>
 </div>
 </div>
-<div id="sélection-par-attributs" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Sélection par attributs</h2>
+<div id="sélection-par-attributs" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Sélection par attributs<a href="les-données-vectorielles.html#sélection-par-attributs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Les objets <code>sf</code> <strong>sont</strong> des <code>data.frame</code>, on peut donc sélectionner leur lignes et leur colonnes de la même manière que les <code>data.frame</code>.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="les-données-vectorielles.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># selection de ligne</span></span>
 <span id="cb15-2"><a href="les-données-vectorielles.html#cb15-2" aria-hidden="true" tabindex="-1"></a>com[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, ]</span></code></pre></div>
@@ -469,10 +468,10 @@ Projected CRS: RGF93 / Lambert-93
     INSEE_COM NOM_COM         STATUT POPULATION                           geom
 119     46128  Gramat Commune simple       3468 MULTIPOLYGON (((594713.1 64...</code></pre>
 </div>
-<div id="sélection-spatiale" class="section level2" number="3.6">
-<h2><span class="header-section-number">3.6</span> Sélection spatiale</h2>
-<div id="intersections" class="section level3" number="3.6.1">
-<h3><span class="header-section-number">3.6.1</span> Intersections</h3>
+<div id="sélection-spatiale" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Sélection spatiale<a href="les-données-vectorielles.html#sélection-spatiale" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="intersections" class="section level3 hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Intersections<a href="les-données-vectorielles.html#intersections" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sélection des routes intesectant la commune de Gramat.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="les-données-vectorielles.html#cb21-1" aria-hidden="true" tabindex="-1"></a>route <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/lot46.gpkg&quot;</span>, <span class="at">layer =</span> <span class="st">&quot;route&quot;</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb21-2"><a href="les-données-vectorielles.html#cb21-2" aria-hidden="true" tabindex="-1"></a>gramat <span class="ot">&lt;-</span>  com[com<span class="sc">$</span>NOM_COM <span class="sc">==</span> <span class="st">&quot;Gramat&quot;</span>, ]</span>
@@ -498,8 +497,8 @@ Il est ensuite possible de créer une colonne à partir de cet objet :</p>
 <span id="cb25-4"><a href="les-données-vectorielles.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(route[route<span class="sc">$</span>intersect_gramat, ]), </span>
 <span id="cb25-5"><a href="les-données-vectorielles.html#cb25-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;tomato&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="Geomatique-avec-R_files/figure-html/intersects2-1.png" width="460.8" style="display: block; margin: auto;" /></p>
-<div id="différence-entre-sparse-true-et-sparse-false" class="section level4" number="3.6.1.1">
-<h4><span class="header-section-number">3.6.1.1</span> Différence entre <code>sparse = TRUE</code> et <code>sparse = FALSE</code></h4>
+<div id="différence-entre-sparse-true-et-sparse-false" class="section level4 hasAnchor" number="3.6.1.1">
+<h4><span class="header-section-number">3.6.1.1</span> Différence entre <code>sparse = TRUE</code> et <code>sparse = FALSE</code><a href="les-données-vectorielles.html#différence-entre-sparse-true-et-sparse-false" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><img src="Geomatique-avec-R_files/figure-html/st_intersparse-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 <ul>
 <li><code>sparse = TRUE</code></li>
@@ -526,8 +525,8 @@ Il est ensuite possible de créer une colonne à partir de cet objet :</p>
 4 FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE</code></pre>
 </div>
 </div>
-<div id="contains-within" class="section level3" number="3.6.2">
-<h3><span class="header-section-number">3.6.2</span> Contains / Within</h3>
+<div id="contains-within" class="section level3 hasAnchor" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> Contains / Within<a href="les-données-vectorielles.html#contains-within" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sélection des routes contenues dans la commune de Gramat.
 La fonctin <code>st_within()</code> fonctionne comme la fonction <code>st_intersects()</code></p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="les-données-vectorielles.html#cb30-1" aria-hidden="true" tabindex="-1"></a>route<span class="sc">$</span>within_gramat <span class="ot">&lt;-</span> <span class="fu">st_within</span>(route, gramat, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
@@ -538,39 +537,39 @@ La fonctin <code>st_within()</code> fonctionne comme la fonction <code>st_inters
 <p><img src="Geomatique-avec-R_files/figure-html/within-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<div id="opérations-sur-les-géométries" class="section level2" number="3.7">
-<h2><span class="header-section-number">3.7</span> Opérations sur les géométries</h2>
-<div id="extraire-des-centroides" class="section level3" number="3.7.1">
-<h3><span class="header-section-number">3.7.1</span> Extraire des centroides</h3>
+<div id="opérations-sur-les-géométries" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Opérations sur les géométries<a href="les-données-vectorielles.html#opérations-sur-les-géométries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="extraire-des-centroides" class="section level3 hasAnchor" number="3.7.1">
+<h3><span class="header-section-number">3.7.1</span> Extraire des centroides<a href="les-données-vectorielles.html#extraire-des-centroides" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="les-données-vectorielles.html#cb31-1" aria-hidden="true" tabindex="-1"></a>com_c <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(com)</span>
 <span id="cb31-2"><a href="les-données-vectorielles.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(com))</span>
 <span id="cb31-3"><a href="les-données-vectorielles.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(com_c), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="fl">1.2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>)</span></code></pre></div>
 <p><img src="Geomatique-avec-R_files/figure-html/centroid-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 </div>
-<div id="agréger-des-polygones" class="section level3" number="3.7.2">
-<h3><span class="header-section-number">3.7.2</span> Agréger des polygones</h3>
+<div id="agréger-des-polygones" class="section level3 hasAnchor" number="3.7.2">
+<h3><span class="header-section-number">3.7.2</span> Agréger des polygones<a href="les-données-vectorielles.html#agréger-des-polygones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="les-données-vectorielles.html#cb32-1" aria-hidden="true" tabindex="-1"></a>dep_46 <span class="ot">&lt;-</span> <span class="fu">st_union</span>(com)</span>
 <span id="cb32-2"><a href="les-données-vectorielles.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(com), <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>)</span>
 <span id="cb32-3"><a href="les-données-vectorielles.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(dep_46), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">border =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="Geomatique-avec-R_files/figure-html/aggreg-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 </div>
-<div id="agréger-des-polygones-en-fonction-dune-variable" class="section level3" number="3.7.3">
-<h3><span class="header-section-number">3.7.3</span> Agréger des polygones en fonction d’une variable</h3>
+<div id="agréger-des-polygones-en-fonction-dune-variable" class="section level3 hasAnchor" number="3.7.3">
+<h3><span class="header-section-number">3.7.3</span> Agréger des polygones en fonction d’une variable<a href="les-données-vectorielles.html#agréger-des-polygones-en-fonction-dune-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="les-données-vectorielles.html#cb33-1" aria-hidden="true" tabindex="-1"></a>com_u <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="at">x =</span> com[,<span class="fu">c</span>(<span class="st">&quot;POPULATION&quot;</span>)],</span>
 <span id="cb33-2"><a href="les-données-vectorielles.html#cb33-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">by =</span> <span class="fu">list</span>(<span class="at">STATUT =</span> com<span class="sc">$</span>STATUT),</span>
 <span id="cb33-3"><a href="les-données-vectorielles.html#cb33-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">FUN =</span> <span class="st">&quot;sum&quot;</span>)</span>
 <span id="cb33-4"><a href="les-données-vectorielles.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(com_u)</span></code></pre></div>
 <p><img src="Geomatique-avec-R_files/figure-html/aggreg2-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 </div>
-<div id="construire-une-zone-tampon" class="section level3" number="3.7.4">
-<h3><span class="header-section-number">3.7.4</span> Construire une zone tampon</h3>
+<div id="construire-une-zone-tampon" class="section level3 hasAnchor" number="3.7.4">
+<h3><span class="header-section-number">3.7.4</span> Construire une zone tampon<a href="les-données-vectorielles.html#construire-une-zone-tampon" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="les-données-vectorielles.html#cb34-1" aria-hidden="true" tabindex="-1"></a>gramat_b <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="at">x =</span> gramat, <span class="at">dist =</span> <span class="dv">5000</span>)</span>
 <span id="cb34-2"><a href="les-données-vectorielles.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(gramat_b), <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">border =</span> <span class="st">&quot;red&quot;</span>)</span>
 <span id="cb34-3"><a href="les-données-vectorielles.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(gramat), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="Geomatique-avec-R_files/figure-html/buffers-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 </div>
-<div id="réaliser-une-intersection" class="section level3" number="3.7.5">
-<h3><span class="header-section-number">3.7.5</span> Réaliser une intersection</h3>
+<div id="réaliser-une-intersection" class="section level3 hasAnchor" number="3.7.5">
+<h3><span class="header-section-number">3.7.5</span> Réaliser une intersection<a href="les-données-vectorielles.html#réaliser-une-intersection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En utilisant la fonction <code>st_intersection()</code> on va découper une couche par une autre.</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="les-données-vectorielles.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># création d&#39;une zone tampon autour du centroid de la commune de Gramat</span></span>
 <span id="cb35-2"><a href="les-données-vectorielles.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># en utilisant le pipe</span></span>
@@ -587,8 +586,8 @@ La fonctin <code>st_within()</code> fonctionne comme la fonction <code>st_inters
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="les-données-vectorielles.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(com_z))</span></code></pre></div>
 <p><img src="Geomatique-avec-R_files/figure-html/intersect2-3.png" width="460.8" style="display: block; margin: auto;" /></p>
 </div>
-<div id="créer-une-grille-régulière" class="section level3" number="3.7.6">
-<h3><span class="header-section-number">3.7.6</span> Créer une grille régulière</h3>
+<div id="créer-une-grille-régulière" class="section level3 hasAnchor" number="3.7.6">
+<h3><span class="header-section-number">3.7.6</span> Créer une grille régulière<a href="les-données-vectorielles.html#créer-une-grille-régulière" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La fonction <code>st_make_grid()</code> permet de créer une grille régulière.
 La fonction produit un objet <code>sfc</code>, il faut ensuite utiliser la fonction <code>st_sf()</code> pour transformer
 cet objet <code>sfc</code> en objet <code>sf</code>. Lors de cette transformation nous rajoutons ici une colonne
@@ -599,8 +598,8 @@ d’identifiants uniques.</p>
 <span id="cb38-4"><a href="les-données-vectorielles.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(com), <span class="at">border =</span> <span class="st">&quot;grey50&quot;</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="Geomatique-avec-R_files/figure-html/grid-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 </div>
-<div id="compter-des-points-dans-un-polygone" class="section level3" number="3.7.7">
-<h3><span class="header-section-number">3.7.7</span> Compter des points dans un polygone</h3>
+<div id="compter-des-points-dans-un-polygone" class="section level3 hasAnchor" number="3.7.7">
+<h3><span class="header-section-number">3.7.7</span> Compter des points dans un polygone<a href="les-données-vectorielles.html#compter-des-points-dans-un-polygone" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="les-données-vectorielles.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># selection des carreaux de la grille qui intersectent le département </span></span>
 <span id="cb39-2"><a href="les-données-vectorielles.html#cb39-2" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersects</span>(grid, dep_46, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb39-3"><a href="les-données-vectorielles.html#cb39-3" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> grid[inter, ]</span>
@@ -627,8 +626,8 @@ reporter la longueur de chacun de ces éléments.</p>
 <span id="cb45-2"><a href="les-données-vectorielles.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(grid[<span class="st">&quot;nb_restaurant&quot;</span>])</span></code></pre></div>
 <p><img src="Geomatique-avec-R_files/figure-html/intersect3.4-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 </div>
-<div id="aggréger-les-valeurs-de-points-dans-des-polygones" class="section level3" number="3.7.8">
-<h3><span class="header-section-number">3.7.8</span> Aggréger les valeurs de points dans des polygones</h3>
+<div id="aggréger-les-valeurs-de-points-dans-des-polygones" class="section level3 hasAnchor" number="3.7.8">
+<h3><span class="header-section-number">3.7.8</span> Aggréger les valeurs de points dans des polygones<a href="les-données-vectorielles.html#aggréger-les-valeurs-de-points-dans-des-polygones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Dans cet exemple nous importons un fichier csv qui contient les données d’une grille de population.<br />
 Une fois importé nous transformons le <code>data.frame</code> en objet <code>sf</code>.</p>
 <p>L’objectif est d’aggréger les valeur de ces points (les populations contenues dans le champ “Ind”)
@@ -711,10 +710,10 @@ First 10 features:
  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 4 rows ]</code></pre>
 </div>
 </div>
-<div id="mesures" class="section level2" number="3.8">
-<h2><span class="header-section-number">3.8</span> Mesures</h2>
-<div id="créer-une-matrice-de-distances" class="section level3" number="3.8.1">
-<h3><span class="header-section-number">3.8.1</span> Créer une matrice de distances</h3>
+<div id="mesures" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Mesures<a href="les-données-vectorielles.html#mesures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="créer-une-matrice-de-distances" class="section level3 hasAnchor" number="3.8.1">
+<h3><span class="header-section-number">3.8.1</span> Créer une matrice de distances<a href="les-données-vectorielles.html#créer-une-matrice-de-distances" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Si le système de projection du jeu de données est renseigné les distances sont exprimées dans l’unité de mesure de la projection (en mètres le plus souvent).</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="les-données-vectorielles.html#cb52-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">st_distance</span>(<span class="at">x =</span> com_c, <span class="at">y =</span> com_c)</span>
 <span id="cb52-2"><a href="les-données-vectorielles.html#cb52-2" aria-hidden="true" tabindex="-1"></a>mat[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
@@ -727,34 +726,17 @@ First 10 features:
 [5,]  3790.688 57288.10 54030.81 62016.14     0.000</code></pre>
 </div>
 </div>
-<div id="exercices" class="section level2" number="3.9">
-<h2><span class="header-section-number">3.9</span> Exercices</h2>
-<div id="calculer-le-nombre-de-restaurants-par-communes" class="section level3" number="3.9.1">
-<h3><span class="header-section-number">3.9.1</span> Calculer le nombre de restaurants par communes</h3>
+<div id="exercices" class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> Exercices<a href="les-données-vectorielles.html#exercices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="calculer-le-nombre-de-restaurants-par-communes" class="section level3 hasAnchor" number="3.9.1">
+<h3><span class="header-section-number">3.9.1</span> Calculer le nombre de restaurants par communes<a href="les-données-vectorielles.html#calculer-le-nombre-de-restaurants-par-communes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>Quelles communes ont plus de 10 restaurants et moins de 1000 habitants ?</li>
+<li><p>Quelles communes ont plus de 10 restaurants et moins de 1000 habitants ?</p></li>
+<li><p>Créez une carte où vous afficherez toutes les communes en gris et les communes sélectionnées plus haut en rouge.</p></li>
 </ul>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="les-données-vectorielles.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import des restaurants</span></span>
-<span id="cb54-2"><a href="les-données-vectorielles.html#cb54-2" aria-hidden="true" tabindex="-1"></a>restaurant <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/lot46.gpkg&quot;</span>, <span class="at">layer =</span> <span class="st">&quot;restaurant&quot;</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb54-3"><a href="les-données-vectorielles.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcul des intersections</span></span>
-<span id="cb54-4"><a href="les-données-vectorielles.html#cb54-4" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersects</span>(<span class="at">x =</span> com, <span class="at">y =</span> restaurant, <span class="at">sparse =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb54-5"><a href="les-données-vectorielles.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Parcourir la liste et compter le nombre d&quot;éléments</span></span>
-<span id="cb54-6"><a href="les-données-vectorielles.html#cb54-6" aria-hidden="true" tabindex="-1"></a>com<span class="sc">$</span>nb_restaurant <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="at">X =</span> inter, <span class="at">FUN =</span> length)</span>
-<span id="cb54-7"><a href="les-données-vectorielles.html#cb54-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-8"><a href="les-données-vectorielles.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(com[<span class="st">&quot;nb_restaurant&quot;</span>])</span></code></pre></div>
-<p><img src="Geomatique-avec-R_files/figure-html/exo1_1-1.png" width="460.8" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="les-données-vectorielles.html#cb55-1" aria-hidden="true" tabindex="-1"></a>com_sel <span class="ot">&lt;-</span> com[com<span class="sc">$</span>nb_restaurant<span class="sc">&gt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> com<span class="sc">$</span>POPULATION<span class="sc">&lt;=</span><span class="dv">1000</span>,]</span>
-<span id="cb55-2"><a href="les-données-vectorielles.html#cb55-2" aria-hidden="true" tabindex="-1"></a>com_sel<span class="sc">$</span>NOM_COM</span></code></pre></div>
-<pre><code>[1] &quot;Rocamadour&quot;         &quot;Saint-Cirq-Lapopie&quot;</code></pre>
-<ul>
-<li>Créez une carte où vous afficherez toutes les communes en gris et les communes sélectionnées plus haut en rouge.</li>
-</ul>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="les-données-vectorielles.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(com), <span class="at">col =</span> <span class="st">&quot;grey&quot;</span>)</span>
-<span id="cb57-2"><a href="les-données-vectorielles.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(com_sel), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="Geomatique-avec-R_files/figure-html/exo1_2-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 </div>
-<div id="mesurer-la-densité-du-réseau-routier-par-commune" class="section level3" number="3.9.2">
-<h3><span class="header-section-number">3.9.2</span> Mesurer la <a href="https://fr.wikipedia.org/wiki/Densit%C3%A9_du_r%C3%A9seau_routier_par_pays">densité du réseau routier</a> par commune</h3>
+<div id="mesurer-la-densité-du-réseau-routier-par-commune" class="section level3 hasAnchor" number="3.9.2">
+<h3><span class="header-section-number">3.9.2</span> Mesurer la <a href="https://fr.wikipedia.org/wiki/Densit%C3%A9_du_r%C3%A9seau_routier_par_pays">densité du réseau routier</a> par commune<a href="les-données-vectorielles.html#mesurer-la-densité-du-réseau-routier-par-commune" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Intersecter les routes par les communes<br />
 Découper les routes par les communes. Chaque segment de route récupère l’identifiant de la commune dans laquelle il se trouve.</li>
@@ -762,21 +744,6 @@ Découper les routes par les communes. Chaque segment de route récupère l’id
 <blockquote>
 <p>st_intersection()</p>
 </blockquote>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="les-données-vectorielles.html#cb58-1" aria-hidden="true" tabindex="-1"></a>route_com <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(route, com[,<span class="st">&quot;INSEE_COM&quot;</span>])</span>
-<span id="cb58-2"><a href="les-données-vectorielles.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(route_com, <span class="dv">1</span>)</span></code></pre></div>
-<pre><code>Simple feature collection with 1 feature and 20 fields
-Geometry type: LINESTRING
-Dimension:     XY
-Bounding box:  xmin: 559100.3 ymin: 6372557 xmax: 561184 ymax: 6373301
-Projected CRS: RGF93 / Lambert-93
-                           ID       VOCATION NB_CHAUSSE NB_VOIES   ETAT ACCES POS_SOL
-2572 BDCTRORO0000000021341618 Liaison locale 1 chaussée   1 voie Revêtu Libre  Au sol
-     RES_VERT        SENS NB_VOIES_M NB_VOIES_D TOPONYME                     USAGE
-2572      Non Double sens Sans objet Sans objet     &lt;NA&gt; Logique et cartographique
-           DATE NUM_ROUTE  CLASS_ADM GEST_ROUTE intersect_gramat within_gramat INSEE_COM
-2572 2021-05-07      &lt;NA&gt; Sans objet       &lt;NA&gt;            FALSE         FALSE     46001
-                               geom
-2572 LINESTRING (559100.3 637330...</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Calculer la longueur des segments de route<br />
 Rajouter une colonne <strong>longueur</strong> qui contient la longueur de chacun des segments.</li>
@@ -784,7 +751,6 @@ Rajouter une colonne <strong>longueur</strong> qui contient la longueur de chacu
 <blockquote>
 <p>st_length()</p>
 </blockquote>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="les-données-vectorielles.html#cb60-1" aria-hidden="true" tabindex="-1"></a>route_com<span class="sc">$</span>longueur <span class="ot">&lt;-</span> <span class="fu">st_length</span>(route_com)</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Calculer la longueur totale de route par commune<br />
 Aggreger les segments de routes par commune pour obtenir des longueurs totales par commune.</li>
@@ -792,44 +758,29 @@ Aggreger les segments de routes par commune pour obtenir des longueurs totales p
 <blockquote>
 <p>aggregate()</p>
 </blockquote>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="les-données-vectorielles.html#cb61-1" aria-hidden="true" tabindex="-1"></a>longueur_total <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="at">x =</span> <span class="fu">list</span>(<span class="at">longueur =</span> route_com<span class="sc">$</span>longueur), </span>
-<span id="cb61-2"><a href="les-données-vectorielles.html#cb61-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">by =</span> <span class="fu">list</span>(<span class="at">INSEE_COM =</span> route_com<span class="sc">$</span>INSEE_COM), </span>
-<span id="cb61-3"><a href="les-données-vectorielles.html#cb61-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">FUN =</span> sum)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>Joindre les longueurs à la table des communes</li>
 </ol>
 <blockquote>
 <p>merge()</p>
 </blockquote>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="les-données-vectorielles.html#cb62-1" aria-hidden="true" tabindex="-1"></a>com_dens <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> com[,<span class="fu">c</span>(<span class="st">&#39;INSEE_COM&#39;</span>, <span class="st">&quot;POPULATION&quot;</span>)], </span>
-<span id="cb62-2"><a href="les-données-vectorielles.html#cb62-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> longueur_total, </span>
-<span id="cb62-3"><a href="les-données-vectorielles.html#cb62-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">by =</span> <span class="st">&quot;INSEE_COM&quot;</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>Calculer les superficies des communes</li>
 </ol>
 <blockquote>
 <p>st_area()</p>
 </blockquote>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="les-données-vectorielles.html#cb63-1" aria-hidden="true" tabindex="-1"></a>com_dens<span class="sc">$</span>superficie <span class="ot">&lt;-</span> <span class="fu">st_area</span>(com_dens)</span></code></pre></div>
 <ol start="6" style="list-style-type: decimal">
 <li>Convertir les unités des différentes mesures</li>
 </ol>
 <blockquote>
 <p>units(…)&lt;-“km^2”</p>
 </blockquote>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="les-données-vectorielles.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">units</span>(com_dens<span class="sc">$</span>superficie) <span class="ot">&lt;-</span> <span class="st">&quot;km^2&quot;</span></span>
-<span id="cb64-2"><a href="les-données-vectorielles.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">units</span>(com_dens<span class="sc">$</span>longueur) <span class="ot">&lt;-</span> <span class="st">&quot;km&quot;</span></span></code></pre></div>
 <ol start="7" style="list-style-type: decimal">
 <li>Calculer les indicateurs<br />
 Le premier est le rapport entre la longueur des routes et la population des communes.<br />
 Le deuxième est le rapport entre la longueur des routes et la superficie des communes.</li>
 </ol>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="les-données-vectorielles.html#cb65-1" aria-hidden="true" tabindex="-1"></a>com_dens<span class="sc">$</span>dens_pop <span class="ot">&lt;-</span> com_dens<span class="sc">$</span>longueur <span class="sc">/</span> com_dens<span class="sc">$</span>POPULATION</span>
-<span id="cb65-2"><a href="les-données-vectorielles.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(com_dens[<span class="st">&quot;dens_pop&quot;</span>], <span class="at">main =</span> <span class="st">&quot;km / hab&quot;</span>)</span></code></pre></div>
-<p><img src="Geomatique-avec-R_files/figure-html/drr7-1.png" width="460.8" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="les-données-vectorielles.html#cb66-1" aria-hidden="true" tabindex="-1"></a>com_dens<span class="sc">$</span>dens_sup <span class="ot">&lt;-</span> com_dens<span class="sc">$</span>longueur <span class="sc">/</span> com_dens<span class="sc">$</span>superficie</span>
-<span id="cb66-2"><a href="les-données-vectorielles.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(com_dens[<span class="st">&quot;dens_sup&quot;</span>], <span class="at">main =</span> <span class="st">&quot;km / km²&quot;</span>)</span></code></pre></div>
-<p><img src="Geomatique-avec-R_files/figure-html/drr8-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
