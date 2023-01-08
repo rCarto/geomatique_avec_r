@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 8 sessionInfo() | Géomatique avec R</title>
   <meta name="description" content="Chapitre 8 sessionInfo() | Géomatique avec R" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 8 sessionInfo() | Géomatique avec R" />
   <meta property="og:type" content="book" />
@@ -51,7 +51,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
@@ -107,7 +107,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -120,7 +120,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -214,7 +214,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.9" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#exercices"><i class="fa fa-check"></i><b>3.9</b> Exercices</a>
 <ul>
 <li class="chapter" data-level="3.9.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#calculer-le-nombre-de-restaurants-par-communes"><i class="fa fa-check"></i><b>3.9.1</b> Calculer le nombre de restaurants par communes</a></li>
-<li class="chapter" data-level="3.9.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesurer-la-densité-du-réseau-routier-par-commune"><i class="fa fa-check"></i><b>3.9.2</b> Mesurer la <span>densité du réseau routier</span> par commune</a></li>
+<li class="chapter" data-level="3.9.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesurer-la-densité-du-réseau-routier-par-commune"><i class="fa fa-check"></i><b>3.9.2</b> Mesurer la densité du réseau routier par commune</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="georéférencement.html"><a href="georéférencement.html"><i class="fa fa-check"></i><b>4</b> Georéférencement</a>
@@ -222,7 +222,6 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="georéférencement.html"><a href="georéférencement.html#géocoder-des-adresses"><i class="fa fa-check"></i><b>4.1</b> Géocoder des adresses</a>
 <ul>
 <li class="chapter" data-level="4.1.1" data-path="georéférencement.html"><a href="georéférencement.html#tidygeocoder"><i class="fa fa-check"></i><b>4.1.1</b> <code>tidygeocoder</code></a></li>
-<li class="chapter" data-level="4.1.2" data-path="georéférencement.html"><a href="georéférencement.html#banr"><i class="fa fa-check"></i><b>4.1.2</b> <code>banR</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="georéférencement.html"><a href="georéférencement.html#transformer-les-données-longlat-en-objet-sf"><i class="fa fa-check"></i><b>4.2</b> Transformer les données long/lat en objet <code>sf</code></a></li>
 <li class="chapter" data-level="4.3" data-path="georéférencement.html"><a href="georéférencement.html#digitalisation"><i class="fa fa-check"></i><b>4.3</b> Digitalisation</a></li>
@@ -304,13 +303,13 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="sessioninfo" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">Chapitre 8</span> <code>sessionInfo()</code><a href="sessioninfo.html#sessioninfo" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<pre><code>R version 4.1.3 (2022-03-10)
+<pre><code>R version 4.2.2 (2022-10-31)
 Platform: x86_64-pc-linux-gnu (64-bit)
 Running under: Debian GNU/Linux 11 (bullseye)
 
 Matrix products: default
-BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3
-LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.13.so
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
 
 locale:
  [1] LC_CTYPE=fr_FR.UTF-8       LC_NUMERIC=C               LC_TIME=fr_FR.UTF-8       
@@ -322,40 +321,36 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] osrm_3.5.2.0       osmdata_0.1.9      mapview_2.11.0     leaflet_2.1.1     
- [5] terra_1.5-21       maptiles_0.4.0.0   banR_0.2.2         tidygeocoder_1.0.5
- [9] mapsf_0.5.0.0      sf_1.0-7           knitr_1.38        
+ [1] osrm_4.0.1         osmdata_0.1.10     terra_1.6-47       maptiles_0.4.0    
+ [5] tidygeocoder_1.0.5 mapsf_0.6.1        mapview_2.11.0     leaflet_2.1.1     
+ [9] sf_1.0-9           knitr_1.41        
 
 loaded via a namespace (and not attached):
- [1] httr_1.4.2              sass_0.4.1              bit64_4.0.5            
- [4] vroom_1.5.7             jsonlite_1.8.0          bslib_0.3.1            
- [7] assertthat_0.2.1        sp_1.4-6                highr_0.9              
-[10] stats4_4.1.3            yaml_2.3.5              pillar_1.7.0           
-[13] lattice_0.20-45         glue_1.6.2              uuid_1.0-4             
-[16] digest_0.6.29           RColorBrewer_1.1-3      rvest_1.0.2            
-[19] leaflet.providers_1.9.0 colorspace_2.0-3        htmltools_0.5.2        
-[22] slippymath_0.3.1        pkgconfig_2.0.3         raster_3.5-15          
-[25] s2_1.0.7                bookdown_0.26           purrr_0.3.4            
-[28] scales_1.2.0            webshot_0.5.3           brew_1.0-7             
-[31] svglite_2.1.0           satellite_1.0.4         tzdb_0.3.0             
-[34] tibble_3.1.6            proxy_0.4-26            generics_0.1.2         
-[37] ellipsis_0.3.2          googlePolylines_0.8.2   cli_3.2.0              
-[40] magrittr_2.0.3          crayon_1.5.1            mime_0.12              
-[43] evaluate_0.15           fansi_1.0.3             xml2_1.3.3             
-[46] class_7.3-20            tools_4.1.3             hms_1.1.1              
-[49] lifecycle_1.0.1         stringr_1.4.0           munsell_0.5.0          
-[52] compiler_4.1.3          jquerylib_0.1.4         e1071_1.7-9            
-[55] systemfonts_1.0.4       rlang_1.0.2             classInt_0.4-3         
-[58] units_0.8-0             grid_4.1.3              leafpop_0.1.0          
-[61] rstudioapi_0.13         htmlwidgets_1.5.4       crosstalk_1.2.0        
-[64] leafem_0.2.0            base64enc_0.1-3         rmarkdown_2.13         
-[67] wk_0.6.0                codetools_0.2-18        DBI_1.1.2              
-[70] curl_4.3.2              R6_2.5.1                lubridate_1.8.0        
-[73] dplyr_1.0.8             fastmap_1.1.0           bit_4.0.4              
-[76] utf8_1.2.2              KernSmooth_2.23-20      readr_2.1.2            
-[79] stringi_1.7.6           parallel_4.1.3          Rcpp_1.0.8.3           
-[82] vctrs_0.4.1             png_0.1-7               tidyselect_1.1.2       
-[85] xfun_0.30              </code></pre>
+ [1] httr_1.4.4              sass_0.4.4              jsonlite_1.8.4         
+ [4] bslib_0.4.2             assertthat_0.2.1        highr_0.10             
+ [7] sp_1.5-1                stats4_4.2.2            yaml_2.3.6             
+[10] pillar_1.8.1            lattice_0.20-45         glue_1.6.2             
+[13] uuid_1.1-0              digest_0.6.31           RColorBrewer_1.1-3     
+[16] colorspace_2.0-3        leaflet.providers_1.9.0 htmltools_0.5.4        
+[19] slippymath_0.3.1        pkgconfig_2.0.3         raster_3.6-13          
+[22] bookdown_0.31           purrr_1.0.0             scales_1.2.1           
+[25] webshot_0.5.4           brew_1.0-8              svglite_2.1.0          
+[28] satellite_1.0.4         tibble_3.1.8            proxy_0.4-27           
+[31] generics_0.1.3          ellipsis_0.3.2          googlePolylines_0.8.2  
+[34] cachem_1.0.6            cli_3.5.0               magrittr_2.0.3         
+[37] evaluate_0.19           fansi_1.0.3             class_7.3-20           
+[40] tools_4.2.2             mapiso_0.2.0            lifecycle_1.0.3        
+[43] stringr_1.5.0           munsell_0.5.0           isoband_0.2.7          
+[46] compiler_4.2.2          jquerylib_0.1.4         e1071_1.7-12           
+[49] systemfonts_1.0.4       rlang_1.0.6             classInt_0.4-8         
+[52] units_0.8-1             grid_4.2.2              leafpop_0.1.0          
+[55] rstudioapi_0.14         htmlwidgets_1.6.1       crosstalk_1.2.0        
+[58] leafem_0.2.0            base64enc_0.1-3         rmarkdown_2.19         
+[61] codetools_0.2-18        DBI_1.1.3               curl_4.3.3             
+[64] RcppSimdJson_0.1.8      R6_2.5.1                dplyr_1.0.10           
+[67] fastmap_1.1.0           utf8_1.2.2              KernSmooth_2.23-20     
+[70] stringi_1.7.8           Rcpp_1.0.9              vctrs_0.5.1            
+[73] png_0.1-8               tidyselect_1.2.0        xfun_0.36              </code></pre>
 
 </div>
             </section>
@@ -425,7 +420,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

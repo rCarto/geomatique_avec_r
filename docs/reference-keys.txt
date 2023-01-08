@@ -32,7 +32,6 @@ mesurer-la-densité-du-réseau-routier-par-commune
 georéférencement
 géocoder-des-adresses
 tidygeocoder
-banr
 transformer-les-données-longlat-en-objet-sf
 digitalisation
 les-données-raster-le-package-terra

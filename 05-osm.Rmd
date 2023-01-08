@@ -222,11 +222,10 @@ library(maptiles)
 com <- st_read("data/lot46.gpkg", layer = "commune", quiet = TRUE)
 com <- st_transform(com, 3857)
 # Itinéraire entre Cahors et Puybrun
-cahors  <- com[com$INSEE_COM == "46042", ]
-puybrun <- com[com$INSEE_COM == "46229", ]
+cahors  <- st_centroid(com[com$INSEE_COM == "46042", ])
+puybrun <- st_centroid(com[com$INSEE_COM == "46229", ])
 route <- osrmRoute(src = cahors, 
-                   dst = puybrun, 
-                   returnclass = "sf")
+                   dst = puybrun)
 osm <- get_tiles(route, crop = TRUE)
 plot_tiles(osm)
 plot(st_geometry(route), col = "grey10", lwd = 6, add = T)
@@ -250,10 +249,10 @@ adresses <- data.frame(ad = c("3 rue Montaudié, Cahors, France",
                               "5 rue Albert Camus, Cahors, France")
                        )
 places <- tidygeocoder::geocode(.tbl = adresses,address = ad)
-places
-
+places <- as.data.frame(places)
+row.names(places) <- places$ad
 # Calcul de la matrice de distance entre les 2 adresses et les restaurants de Cahors
-mat <- osrmTable(src = places[, c(1,3,2)], 
+mat <- osrmTable(src = places[c(3, 2)], 
                  dst = restaurant_cahors, 
                  osrm.profile = "foot")
 mat$durations[1:2,1:5]

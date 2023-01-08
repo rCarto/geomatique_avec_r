@@ -12,7 +12,7 @@ editor_options:
 
 Plusieurs packages permettent de géocoder des adresses. <img src="img/logo_tidygeocoder.png" align="right" width="120"/>
 Le package `tidygeocoder` [@R-tidygeocoder] permet d'utiliser un [grand nombre de services de géocodage en ligne](https://jessecambon.github.io/tidygeocoder/articles/geocoder_services.html). 
-Le package `banR` [@R-banR], qui s'appuie sur la [Base Adresse Nationale](https://adresse.data.gouv.fr/), est particulièrement approprié pour géocoder des adresses en France. 
+<!-- Le package `banR` [@R-banR], qui s'appuie sur la [Base Adresse Nationale](https://adresse.data.gouv.fr/), est particulièrement approprié pour géocoder des adresses en France.  -->
 
 
 ### `tidygeocoder` 
@@ -21,10 +21,10 @@ Le package `banR` [@R-banR], qui s'appuie sur la [Base Adresse Nationale](https:
 library(tidygeocoder)
 mes_adresses <- data.frame(
   address = c("10 Emma Goldmanweg, 5032MN Tilburg, Netherlands", 
-              "Calle Mujeres Libres, 11510 Cadiz, Spain")
+              "19 rue Michel Bakounine, 29600 Morlaix, France")
 )
-places1 <- geocode(mes_adresses, address)
-places1
+places <- geocode(mes_adresses, address)
+places
 
 ```
 
@@ -35,23 +35,23 @@ Site web de `tidygeocoder` :
 
 
 
-### `banR` 
+<!-- ### `banR`  -->
 
-```{r banR, eval=TRUE}
-# remotes::install_github("joelgombin/banR")
-library(banR)
-mes_adresses <- data.frame(
-  address = c("19 rue Michel Bakounine, 29600 Morlaix, France",
-              "2 Allee Emile Pouget, 920128 Boulogne-Billancourt")
-)
-places2 <- geocode_tbl(tbl = mes_adresses, adresse = address)
-places2
-```
+<!-- ```{r banR, eval=TRUE} -->
+<!-- # remotes::install_github("joelgombin/banR") -->
+<!-- library(banR) -->
+<!-- mes_adresses <- data.frame( -->
+<!--   address = c("19 rue Michel Bakounine, 29600 Morlaix, France", -->
+<!--               "2 Allee Emile Pouget, 920128 Boulogne-Billancourt") -->
+<!-- ) -->
+<!-- places2 <- geocode_tbl(tbl = mes_adresses, adresse = address) -->
+<!-- places2 -->
+<!-- ``` -->
 
-```{block2, type='linky'}
-Site web de `banR` :   
-[An R client for the BAN API](http://joelgombin.github.io/banR/)
-```
+<!-- ```{block2, type='linky'} -->
+<!-- Site web de `banR` :    -->
+<!-- [An R client for the BAN API](http://joelgombin.github.io/banR/) -->
+<!-- ``` -->
 
 
 
@@ -70,7 +70,7 @@ La fonction `st_as_sf()` permet de transformer un `data.frame` contenant des coo
 
 ```{r build_sf, eval = TRUE, echo = TRUE, nm = TRUE, fig.width=8}
 library(sf)
-place_sf <- st_as_sf(places2, coords = c("longitude", "latitude"), crs = 4326)
+place_sf <- st_as_sf(places, coords = c("long", "lat"), crs = 4326)
 place_sf
 ```
 
@@ -86,7 +86,7 @@ mon_point
 Nous pouvons afficher cet objet `sf` sur un fond de carte [OpenStreetMap](https://www.openstreetmap.org/) avec le package `maptiles` [@R-maptiles]. 
 
 
-```{r display_sf, eval = TRUE, echo = TRUE, nm = TRUE, out.width="788px"}
+```{r display_sf, eval = TRUE, echo = TRUE, nm = TRUE, out.width="1152px"}
 library(maptiles)
 osm <- get_tiles(x = place_sf, zoom = 7)
 plot_tiles(osm)
