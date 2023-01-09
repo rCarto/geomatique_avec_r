@@ -730,9 +730,26 @@ First 10 features:
 <div id="calculer-le-nombre-de-restaurants-par-communes" class="section level3 hasAnchor" number="3.9.1">
 <h3><span class="header-section-number">3.9.1</span> Calculer le nombre de restaurants par communes<a href="les-données-vectorielles.html#calculer-le-nombre-de-restaurants-par-communes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li><p>Quelles communes ont plus de 10 restaurants et moins de 1000 habitants ?</p></li>
-<li><p>Créez une carte où vous afficherez toutes les communes en gris et les communes sélectionnées plus haut en rouge.</p></li>
+<li>Quelles communes ont plus de 10 restaurants et moins de 1000 habitants ?</li>
 </ul>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="les-données-vectorielles.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import des restaurants</span></span>
+<span id="cb54-2"><a href="les-données-vectorielles.html#cb54-2" aria-hidden="true" tabindex="-1"></a>restaurant <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/lot46.gpkg&quot;</span>, <span class="at">layer =</span> <span class="st">&quot;restaurant&quot;</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb54-3"><a href="les-données-vectorielles.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcul des intersections</span></span>
+<span id="cb54-4"><a href="les-données-vectorielles.html#cb54-4" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersects</span>(<span class="at">x =</span> com, <span class="at">y =</span> restaurant, <span class="at">sparse =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb54-5"><a href="les-données-vectorielles.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Parcourir la liste et compter le nombre d&quot;éléments</span></span>
+<span id="cb54-6"><a href="les-données-vectorielles.html#cb54-6" aria-hidden="true" tabindex="-1"></a>com<span class="sc">$</span>nb_restaurant <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="at">X =</span> inter, <span class="at">FUN =</span> length)</span>
+<span id="cb54-7"><a href="les-données-vectorielles.html#cb54-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-8"><a href="les-données-vectorielles.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(com[<span class="st">&quot;nb_restaurant&quot;</span>])</span></code></pre></div>
+<p><img src="Geomatique-avec-R_files/figure-html/exo1_1-1.png" width="460.8" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="les-données-vectorielles.html#cb55-1" aria-hidden="true" tabindex="-1"></a>com_sel <span class="ot">&lt;-</span> com[com<span class="sc">$</span>nb_restaurant <span class="sc">&gt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> com<span class="sc">$</span>POPULATION <span class="sc">&lt;=</span> <span class="dv">1000</span>,]</span>
+<span id="cb55-2"><a href="les-données-vectorielles.html#cb55-2" aria-hidden="true" tabindex="-1"></a>com_sel<span class="sc">$</span>NOM_COM</span></code></pre></div>
+<pre><code>[1] &quot;Rocamadour&quot;         &quot;Saint-Cirq-Lapopie&quot;</code></pre>
+<ul>
+<li>Créez une carte où vous afficherez toutes les communes en gris et les communes sélectionnées plus haut en rouge.</li>
+</ul>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="les-données-vectorielles.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(com), <span class="at">col =</span> <span class="st">&quot;grey&quot;</span>)</span>
+<span id="cb57-2"><a href="les-données-vectorielles.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(com_sel), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="Geomatique-avec-R_files/figure-html/exo1_2-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 </div>
 <div id="mesurer-la-densité-du-réseau-routier-par-commune" class="section level3 hasAnchor" number="3.9.2">
 <h3><span class="header-section-number">3.9.2</span> Mesurer la <a href="https://fr.wikipedia.org/wiki/Densit%C3%A9_du_r%C3%A9seau_routier_par_pays">densité du réseau routier</a> par commune<a href="les-données-vectorielles.html#mesurer-la-densité-du-réseau-routier-par-commune" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -743,6 +760,21 @@ Découper les routes par les communes. Chaque segment de route récupère l’id
 <blockquote>
 <p>st_intersection()</p>
 </blockquote>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="les-données-vectorielles.html#cb58-1" aria-hidden="true" tabindex="-1"></a>route_com <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(route, com[,<span class="st">&quot;INSEE_COM&quot;</span>])</span>
+<span id="cb58-2"><a href="les-données-vectorielles.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(route_com, <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>Simple feature collection with 1 feature and 20 fields
+Geometry type: LINESTRING
+Dimension:     XY
+Bounding box:  xmin: 559100.3 ymin: 6372557 xmax: 561184 ymax: 6373301
+Projected CRS: RGF93 / Lambert-93
+                           ID       VOCATION NB_CHAUSSE NB_VOIES   ETAT ACCES POS_SOL
+2572 BDCTRORO0000000021341618 Liaison locale 1 chaussée   1 voie Revêtu Libre  Au sol
+     RES_VERT        SENS NB_VOIES_M NB_VOIES_D TOPONYME                     USAGE
+2572      Non Double sens Sans objet Sans objet     &lt;NA&gt; Logique et cartographique
+           DATE NUM_ROUTE  CLASS_ADM GEST_ROUTE intersect_gramat within_gramat INSEE_COM
+2572 2021-05-07      &lt;NA&gt; Sans objet       &lt;NA&gt;            FALSE         FALSE     46001
+                               geom
+2572 LINESTRING (559100.3 637330...</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Calculer la longueur des segments de route<br />
 Rajouter une colonne <strong>longueur</strong> qui contient la longueur de chacun des segments.</li>
@@ -750,6 +782,7 @@ Rajouter une colonne <strong>longueur</strong> qui contient la longueur de chacu
 <blockquote>
 <p>st_length()</p>
 </blockquote>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="les-données-vectorielles.html#cb60-1" aria-hidden="true" tabindex="-1"></a>route_com<span class="sc">$</span>longueur <span class="ot">&lt;-</span> <span class="fu">st_length</span>(route_com)</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Calculer la longueur totale de route par commune<br />
 Aggreger les segments de routes par commune pour obtenir des longueurs totales par commune.</li>
@@ -757,29 +790,44 @@ Aggreger les segments de routes par commune pour obtenir des longueurs totales p
 <blockquote>
 <p>aggregate()</p>
 </blockquote>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="les-données-vectorielles.html#cb61-1" aria-hidden="true" tabindex="-1"></a>longueur_total <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="at">x =</span> <span class="fu">list</span>(<span class="at">longueur =</span> route_com<span class="sc">$</span>longueur), </span>
+<span id="cb61-2"><a href="les-données-vectorielles.html#cb61-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">by =</span> <span class="fu">list</span>(<span class="at">INSEE_COM =</span> route_com<span class="sc">$</span>INSEE_COM), </span>
+<span id="cb61-3"><a href="les-données-vectorielles.html#cb61-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">FUN =</span> sum)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>Joindre les longueurs à la table des communes</li>
 </ol>
 <blockquote>
 <p>merge()</p>
 </blockquote>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="les-données-vectorielles.html#cb62-1" aria-hidden="true" tabindex="-1"></a>com_dens <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> com[,<span class="fu">c</span>(<span class="st">&#39;INSEE_COM&#39;</span>, <span class="st">&quot;POPULATION&quot;</span>)], </span>
+<span id="cb62-2"><a href="les-données-vectorielles.html#cb62-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> longueur_total, </span>
+<span id="cb62-3"><a href="les-données-vectorielles.html#cb62-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">by =</span> <span class="st">&quot;INSEE_COM&quot;</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>Calculer les superficies des communes</li>
 </ol>
 <blockquote>
 <p>st_area()</p>
 </blockquote>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="les-données-vectorielles.html#cb63-1" aria-hidden="true" tabindex="-1"></a>com_dens<span class="sc">$</span>superficie <span class="ot">&lt;-</span> <span class="fu">st_area</span>(com_dens)</span></code></pre></div>
 <ol start="6" style="list-style-type: decimal">
 <li>Convertir les unités des différentes mesures</li>
 </ol>
 <blockquote>
 <p>units(…)&lt;-“km^2”</p>
 </blockquote>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="les-données-vectorielles.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">units</span>(com_dens<span class="sc">$</span>superficie) <span class="ot">&lt;-</span> <span class="st">&quot;km^2&quot;</span></span>
+<span id="cb64-2"><a href="les-données-vectorielles.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">units</span>(com_dens<span class="sc">$</span>longueur) <span class="ot">&lt;-</span> <span class="st">&quot;km&quot;</span></span></code></pre></div>
 <ol start="7" style="list-style-type: decimal">
 <li>Calculer les indicateurs<br />
 Le premier est le rapport entre la longueur des routes et la population des communes.<br />
 Le deuxième est le rapport entre la longueur des routes et la superficie des communes.</li>
 </ol>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="les-données-vectorielles.html#cb65-1" aria-hidden="true" tabindex="-1"></a>com_dens<span class="sc">$</span>dens_pop <span class="ot">&lt;-</span> com_dens<span class="sc">$</span>longueur <span class="sc">/</span> com_dens<span class="sc">$</span>POPULATION</span>
+<span id="cb65-2"><a href="les-données-vectorielles.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(com_dens[<span class="st">&quot;dens_pop&quot;</span>], <span class="at">main =</span> <span class="st">&quot;km / hab&quot;</span>)</span></code></pre></div>
+<p><img src="Geomatique-avec-R_files/figure-html/drr7-1.png" width="460.8" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="les-données-vectorielles.html#cb66-1" aria-hidden="true" tabindex="-1"></a>com_dens<span class="sc">$</span>dens_sup <span class="ot">&lt;-</span> com_dens<span class="sc">$</span>longueur <span class="sc">/</span> com_dens<span class="sc">$</span>superficie</span>
+<span id="cb66-2"><a href="les-données-vectorielles.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(com_dens[<span class="st">&quot;dens_sup&quot;</span>], <span class="at">main =</span> <span class="st">&quot;km / km²&quot;</span>)</span></code></pre></div>
+<p><img src="Geomatique-avec-R_files/figure-html/drr8-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
