@@ -2,11 +2,11 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
 - family-names: "Giraud"
-given-names: "Timothée"
-orcid: "https://orcid.org/0000-0002-1932-3323"
+  given-names: "Timothée"
+  orcid: "https://orcid.org/0000-0002-1932-3323"
 - family-names: "Pecout"
-given-names: "Hugues"
-orcid: "https://orcid.org/0000-0002-0246-0954"
+  given-names: "Hugues"
+  orcid: "https://orcid.org/0000-0002-0246-0954"
 title: "Géomatique avec R"
 version: 1.0.1
 doi: 10.5281/zenodo.7528145
