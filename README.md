@@ -22,3 +22,18 @@ Un deuxième manuel centré sur la cartographie est disponible ici :
 
 ![](img/by-nc-sa.png)  
 La version en ligne de ce document est sous licence [Creative Commons Attribution-NonCommercial-ShareAlike 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/). 
+
+--------
+Pour citer le document :  
+
+Giraud, T., & Pecout, H. (2023). Géomatique avec R (Version 1.0.1). https://doi.org/10.5281/zenodo.7528145  
+
+```
+@misc{Giraud_Geomatique_avec_R_2023,
+  author = {Giraud, Timothée and Pecout, Hugues},
+  doi = {10.5281/zenodo.7528145},
+  title = {{Géomatique avec R}},
+  url = {https://rcarto.github.io/geomatique_avec_r/},
+  year = {2023}
+}
+```

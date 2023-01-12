@@ -310,13 +310,13 @@ Le package <code>tidygeocoder</code> <span class="citation">(<a href="#ref-R-tid
 <!-- Le package `banR` [@R-banR], qui s'appuie sur la [Base Adresse Nationale](https://adresse.data.gouv.fr/), est particulièrement approprié pour géocoder des adresses en France.  --></p>
 <div id="tidygeocoder" class="section level3 hasAnchor" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> <code>tidygeocoder</code><a href="georéférencement.html#tidygeocoder" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="georéférencement.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygeocoder)</span>
-<span id="cb67-2"><a href="georéférencement.html#cb67-2" aria-hidden="true" tabindex="-1"></a>mes_adresses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb67-3"><a href="georéférencement.html#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">address =</span> <span class="fu">c</span>(<span class="st">&quot;10 Emma Goldmanweg, 5032MN Tilburg, Netherlands&quot;</span>, </span>
-<span id="cb67-4"><a href="georéférencement.html#cb67-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;19 rue Michel Bakounine, 29600 Morlaix, France&quot;</span>)</span>
-<span id="cb67-5"><a href="georéférencement.html#cb67-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb67-6"><a href="georéférencement.html#cb67-6" aria-hidden="true" tabindex="-1"></a>places <span class="ot">&lt;-</span> <span class="fu">geocode</span>(mes_adresses, address)</span>
-<span id="cb67-7"><a href="georéférencement.html#cb67-7" aria-hidden="true" tabindex="-1"></a>places</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="georéférencement.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygeocoder)</span>
+<span id="cb68-2"><a href="georéférencement.html#cb68-2" aria-hidden="true" tabindex="-1"></a>mes_adresses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb68-3"><a href="georéférencement.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">address =</span> <span class="fu">c</span>(<span class="st">&quot;10 Emma Goldmanweg, 5032MN Tilburg, Netherlands&quot;</span>, </span>
+<span id="cb68-4"><a href="georéférencement.html#cb68-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;19 rue Michel Bakounine, 29600 Morlaix, France&quot;</span>)</span>
+<span id="cb68-5"><a href="georéférencement.html#cb68-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb68-6"><a href="georéférencement.html#cb68-6" aria-hidden="true" tabindex="-1"></a>places <span class="ot">&lt;-</span> <span class="fu">geocode</span>(mes_adresses, address)</span>
+<span id="cb68-7"><a href="georéférencement.html#cb68-7" aria-hidden="true" tabindex="-1"></a>places</span></code></pre></div>
 <pre><code># A tibble: 2 × 3
   address                                           lat  long
   &lt;chr&gt;                                           &lt;dbl&gt; &lt;dbl&gt;
@@ -347,9 +347,9 @@ Site web de <code>tidygeocoder</code> :<br />
 <div id="transformer-les-données-longlat-en-objet-sf" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Transformer les données long/lat en objet <code>sf</code><a href="georéférencement.html#transformer-les-données-longlat-en-objet-sf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>La fonction <code>st_as_sf()</code> permet de transformer un <code>data.frame</code> contenant des coodonnées géographiques en objet <code>sf</code>. Ici nous utilisons le <code>data.frame</code> <code>places2</code> créé au point précédent.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="georéférencement.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb69-2"><a href="georéférencement.html#cb69-2" aria-hidden="true" tabindex="-1"></a>place_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(places, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;long&quot;</span>, <span class="st">&quot;lat&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<span id="cb69-3"><a href="georéférencement.html#cb69-3" aria-hidden="true" tabindex="-1"></a>place_sf</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="georéférencement.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb70-2"><a href="georéférencement.html#cb70-2" aria-hidden="true" tabindex="-1"></a>place_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(places, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;long&quot;</span>, <span class="st">&quot;lat&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb70-3"><a href="georéférencement.html#cb70-3" aria-hidden="true" tabindex="-1"></a>place_sf</span></code></pre></div>
 <pre><code>Simple feature collection with 2 features and 1 field
 Geometry type: POINT
 Dimension:     XY
@@ -361,9 +361,9 @@ Geodetic CRS:  WGS 84
 1 10 Emma Goldmanweg, 5032MN Tilburg, Netherlands  (5.038699 51.53649)
 2 19 rue Michel Bakounine, 29600 Morlaix, France  (-3.816435 48.59041)</code></pre>
 <p>Pour créer un objet <code>sf</code> de type POINT avec uniquement une paire de coordonnées (WGS84, longitude=0.5, latitude = 45.5) :</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="georéférencement.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb71-2"><a href="georéférencement.html#cb71-2" aria-hidden="true" tabindex="-1"></a>mon_point <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fl">45.5</span>), <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<span id="cb71-3"><a href="georéférencement.html#cb71-3" aria-hidden="true" tabindex="-1"></a>mon_point</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="georéférencement.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb72-2"><a href="georéférencement.html#cb72-2" aria-hidden="true" tabindex="-1"></a>mon_point <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fl">45.5</span>), <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb72-3"><a href="georéférencement.html#cb72-3" aria-hidden="true" tabindex="-1"></a>mon_point</span></code></pre></div>
 <pre><code>Simple feature collection with 1 feature and 0 fields
 Geometry type: POINT
 Dimension:     XY
@@ -372,10 +372,10 @@ Geodetic CRS:  WGS 84
           geometry
 1 POINT (0.5 45.5)</code></pre>
 <p>Nous pouvons afficher cet objet <code>sf</code> sur un fond de carte <a href="https://www.openstreetmap.org/">OpenStreetMap</a> avec le package <code>maptiles</code> <span class="citation">(<a href="#ref-R-maptiles" role="doc-biblioref">Giraud, 2021a</a>)</span>.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="georéférencement.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptiles)</span>
-<span id="cb73-2"><a href="georéférencement.html#cb73-2" aria-hidden="true" tabindex="-1"></a>osm <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="at">x =</span> place_sf, <span class="at">zoom =</span> <span class="dv">7</span>)</span>
-<span id="cb73-3"><a href="georéférencement.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_tiles</span>(osm)</span>
-<span id="cb73-4"><a href="georéférencement.html#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(place_sf), <span class="at">pch =</span> <span class="dv">4</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="georéférencement.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptiles)</span>
+<span id="cb74-2"><a href="georéférencement.html#cb74-2" aria-hidden="true" tabindex="-1"></a>osm <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="at">x =</span> place_sf, <span class="at">zoom =</span> <span class="dv">7</span>)</span>
+<span id="cb74-3"><a href="georéférencement.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_tiles</span>(osm)</span>
+<span id="cb74-4"><a href="georéférencement.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(place_sf), <span class="at">pch =</span> <span class="dv">4</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="Geomatique-avec-R_files/figure-html/display_sf-1.png" width="1152px" style="display: block; margin: auto;" /></p>
 
 <div class="linky">
