@@ -318,6 +318,8 @@ reporter la longueur de chacun de ces éléments.
 
 ```{r intersect3.4}
 grid$nb_restaurant <- sapply(X = inter, FUN = length)
+# autre écriture : 
+# grid$nb_restaurant <- lengths(inter)
 plot(grid["nb_restaurant"])
 ```
 

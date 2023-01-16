@@ -622,7 +622,9 @@ d’identifiants uniques.</p>
 <p>Pour compter le nombre de restaurants il suffit de parcourir la liste et de
 reporter la longueur de chacun de ces éléments.</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="les-données-vectorielles.html#cb46-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">$</span>nb_restaurant <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="at">X =</span> inter, <span class="at">FUN =</span> length)</span>
-<span id="cb46-2"><a href="les-données-vectorielles.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(grid[<span class="st">&quot;nb_restaurant&quot;</span>])</span></code></pre></div>
+<span id="cb46-2"><a href="les-données-vectorielles.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># autre écriture : </span></span>
+<span id="cb46-3"><a href="les-données-vectorielles.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># grid$nb_restaurant &lt;- lengths(inter)</span></span>
+<span id="cb46-4"><a href="les-données-vectorielles.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(grid[<span class="st">&quot;nb_restaurant&quot;</span>])</span></code></pre></div>
 <p><img src="Geomatique-avec-R_files/figure-html/intersect3.4-1.png" width="460.8" style="display: block; margin: auto;" /></p>
 </div>
 <div id="aggréger-les-valeurs-de-points-dans-des-polygones" class="section level3 hasAnchor" number="3.7.8">
