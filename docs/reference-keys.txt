@@ -12,9 +12,7 @@ consulter-le-système-de-coordonnées-dun-objet
 modifier-le-système-de-coordonnées-dun-objet
 sélection-par-attributs
 sélection-spatiale
-intersections
-différence-entre-sparse-true-et-sparse-false
-contains-within
+jointure-spatiale
 opérations-sur-les-géométries
 extraire-des-centroides
 agréger-des-polygones

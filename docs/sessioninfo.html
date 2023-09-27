@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 8 sessionInfo() | Géomatique avec R</title>
   <meta name="description" content="Chapitre 8 sessionInfo() | Géomatique avec R" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 8 sessionInfo() | Géomatique avec R" />
   <meta property="og:type" content="book" />
@@ -51,16 +51,16 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
 <script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
+<script src="libs/leaflet-binding-2.2.0/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.13.0/leaflet-providers_1.13.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.0/leaflet-providers-plugin.js"></script>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -135,6 +135,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
@@ -191,30 +195,27 @@ div.csl-indent {
 <li class="chapter" data-level="3.4.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#modifier-le-système-de-coordonnées-dun-objet"><i class="fa fa-check"></i><b>3.4.2</b> Modifier le système de coordonnées d’un objet</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#sélection-par-attributs"><i class="fa fa-check"></i><b>3.5</b> Sélection par attributs</a></li>
-<li class="chapter" data-level="3.6" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#sélection-spatiale"><i class="fa fa-check"></i><b>3.6</b> Sélection spatiale</a>
+<li class="chapter" data-level="3.6" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#sélection-spatiale"><i class="fa fa-check"></i><b>3.6</b> Sélection spatiale</a></li>
+<li class="chapter" data-level="3.7" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#jointure-spatiale"><i class="fa fa-check"></i><b>3.7</b> Jointure spatiale</a></li>
+<li class="chapter" data-level="3.8" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#opérations-sur-les-géométries"><i class="fa fa-check"></i><b>3.8</b> Opérations sur les géométries</a>
 <ul>
-<li class="chapter" data-level="3.6.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#intersections"><i class="fa fa-check"></i><b>3.6.1</b> Intersections</a></li>
-<li class="chapter" data-level="3.6.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#contains-within"><i class="fa fa-check"></i><b>3.6.2</b> Contains / Within</a></li>
+<li class="chapter" data-level="3.8.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#extraire-des-centroides"><i class="fa fa-check"></i><b>3.8.1</b> Extraire des centroides</a></li>
+<li class="chapter" data-level="3.8.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#agréger-des-polygones"><i class="fa fa-check"></i><b>3.8.2</b> Agréger des polygones</a></li>
+<li class="chapter" data-level="3.8.3" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#agréger-des-polygones-en-fonction-dune-variable"><i class="fa fa-check"></i><b>3.8.3</b> Agréger des polygones en fonction d’une variable</a></li>
+<li class="chapter" data-level="3.8.4" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#construire-une-zone-tampon"><i class="fa fa-check"></i><b>3.8.4</b> Construire une zone tampon</a></li>
+<li class="chapter" data-level="3.8.5" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#réaliser-une-intersection"><i class="fa fa-check"></i><b>3.8.5</b> Réaliser une intersection</a></li>
+<li class="chapter" data-level="3.8.6" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-grille-régulière"><i class="fa fa-check"></i><b>3.8.6</b> Créer une grille régulière</a></li>
+<li class="chapter" data-level="3.8.7" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#compter-des-points-dans-un-polygone"><i class="fa fa-check"></i><b>3.8.7</b> Compter des points dans un polygone</a></li>
+<li class="chapter" data-level="3.8.8" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#aggréger-les-valeurs-de-points-dans-des-polygones"><i class="fa fa-check"></i><b>3.8.8</b> Aggréger les valeurs de points dans des polygones</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#opérations-sur-les-géométries"><i class="fa fa-check"></i><b>3.7</b> Opérations sur les géométries</a>
+<li class="chapter" data-level="3.9" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesures"><i class="fa fa-check"></i><b>3.9</b> Mesures</a>
 <ul>
-<li class="chapter" data-level="3.7.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#extraire-des-centroides"><i class="fa fa-check"></i><b>3.7.1</b> Extraire des centroides</a></li>
-<li class="chapter" data-level="3.7.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#agréger-des-polygones"><i class="fa fa-check"></i><b>3.7.2</b> Agréger des polygones</a></li>
-<li class="chapter" data-level="3.7.3" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#agréger-des-polygones-en-fonction-dune-variable"><i class="fa fa-check"></i><b>3.7.3</b> Agréger des polygones en fonction d’une variable</a></li>
-<li class="chapter" data-level="3.7.4" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#construire-une-zone-tampon"><i class="fa fa-check"></i><b>3.7.4</b> Construire une zone tampon</a></li>
-<li class="chapter" data-level="3.7.5" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#réaliser-une-intersection"><i class="fa fa-check"></i><b>3.7.5</b> Réaliser une intersection</a></li>
-<li class="chapter" data-level="3.7.6" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-grille-régulière"><i class="fa fa-check"></i><b>3.7.6</b> Créer une grille régulière</a></li>
-<li class="chapter" data-level="3.7.7" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#compter-des-points-dans-un-polygone"><i class="fa fa-check"></i><b>3.7.7</b> Compter des points dans un polygone</a></li>
-<li class="chapter" data-level="3.7.8" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#aggréger-les-valeurs-de-points-dans-des-polygones"><i class="fa fa-check"></i><b>3.7.8</b> Aggréger les valeurs de points dans des polygones</a></li>
+<li class="chapter" data-level="3.9.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-matrice-de-distances"><i class="fa fa-check"></i><b>3.9.1</b> Créer une matrice de distances</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesures"><i class="fa fa-check"></i><b>3.8</b> Mesures</a>
+<li class="chapter" data-level="3.10" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#exercices"><i class="fa fa-check"></i><b>3.10</b> Exercices</a>
 <ul>
-<li class="chapter" data-level="3.8.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-matrice-de-distances"><i class="fa fa-check"></i><b>3.8.1</b> Créer une matrice de distances</a></li>
-</ul></li>
-<li class="chapter" data-level="3.9" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#exercices"><i class="fa fa-check"></i><b>3.9</b> Exercices</a>
-<ul>
-<li class="chapter" data-level="3.9.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#calculer-le-nombre-de-restaurants-par-communes"><i class="fa fa-check"></i><b>3.9.1</b> Calculer le nombre de restaurants par communes</a></li>
-<li class="chapter" data-level="3.9.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesurer-la-densité-du-réseau-routier-par-commune"><i class="fa fa-check"></i><b>3.9.2</b> Mesurer la densité du réseau routier par commune</a></li>
+<li class="chapter" data-level="3.10.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#calculer-le-nombre-de-restaurants-par-communes"><i class="fa fa-check"></i><b>3.10.1</b> Calculer le nombre de restaurants par communes</a></li>
+<li class="chapter" data-level="3.10.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesurer-la-densité-du-réseau-routier-par-commune"><i class="fa fa-check"></i><b>3.10.2</b> Mesurer la densité du réseau routier par commune</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="georéférencement.html"><a href="georéférencement.html"><i class="fa fa-check"></i><b>4</b> Georéférencement</a>
@@ -303,13 +304,13 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="sessioninfo" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">Chapitre 8</span> <code>sessionInfo()</code><a href="sessioninfo.html#sessioninfo" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<pre><code>R version 4.2.2 (2022-10-31)
+<pre><code>R version 4.3.1 (2023-06-16)
 Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Debian GNU/Linux 11 (bullseye)
+Running under: Debian GNU/Linux 12 (bookworm)
 
 Matrix products: default
-BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
-LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.11.0 
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.11.0
 
 locale:
  [1] LC_CTYPE=fr_FR.UTF-8       LC_NUMERIC=C               LC_TIME=fr_FR.UTF-8       
@@ -317,43 +318,44 @@ locale:
  [7] LC_PAPER=fr_FR.UTF-8       LC_NAME=C                  LC_ADDRESS=C              
 [10] LC_TELEPHONE=C             LC_MEASUREMENT=fr_FR.UTF-8 LC_IDENTIFICATION=C       
 
+time zone: Europe/Paris
+tzcode source: system (glibc)
+
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] osrm_4.0.1         osmdata_0.1.10     mapview_2.11.0     leaflet_2.1.1     
- [5] terra_1.6-47       maptiles_0.4.0     tidygeocoder_1.0.5 mapsf_0.6.1       
- [9] sf_1.0-9           knitr_1.41        
+ [1] osrm_4.1.1         osmdata_0.2.5      mapview_2.11.0     leaflet_2.2.0     
+ [5] terra_1.7-46       maptiles_0.7.0.0   tidygeocoder_1.0.5 dplyr_1.1.3       
+ [9] sf_1.0-14          knitr_1.44        
 
 loaded via a namespace (and not attached):
- [1] httr_1.4.4              sass_0.4.4              jsonlite_1.8.4         
- [4] bslib_0.4.2             assertthat_0.2.1        sp_1.5-1               
- [7] highr_0.10              stats4_4.2.2            yaml_2.3.6             
-[10] pillar_1.8.1            lattice_0.20-45         glue_1.6.2             
-[13] uuid_1.1-0              digest_0.6.31           RColorBrewer_1.1-3     
-[16] colorspace_2.0-3        leaflet.providers_1.9.0 htmltools_0.5.4        
-[19] slippymath_0.3.1        pkgconfig_2.0.3         raster_3.6-13          
-[22] s2_1.1.1                bookdown_0.31           purrr_1.0.0            
-[25] scales_1.2.1            webshot_0.5.4           brew_1.0-8             
-[28] svglite_2.1.0           satellite_1.0.4         timechange_0.1.1       
-[31] tibble_3.1.8            proxy_0.4-27            generics_0.1.3         
-[34] ellipsis_0.3.2          googlePolylines_0.8.2   cachem_1.0.6           
-[37] cli_3.6.0               magrittr_2.0.3          evaluate_0.19          
-[40] fansi_1.0.3             xml2_1.3.3              class_7.3-20           
-[43] httr2_0.2.2             tools_4.2.2             mapiso_0.2.0           
-[46] lifecycle_1.0.3         stringr_1.5.0           munsell_0.5.0          
-[49] isoband_0.2.7           compiler_4.2.2          jquerylib_0.1.4        
-[52] e1071_1.7-12            systemfonts_1.0.4       rlang_1.0.6            
-[55] classInt_0.4-8          units_0.8-1             grid_4.2.2             
-[58] leafpop_0.1.0           rstudioapi_0.14         rappdirs_0.3.3         
-[61] htmlwidgets_1.6.1       crosstalk_1.2.0         leafem_0.2.0           
-[64] base64enc_0.1-3         rmarkdown_2.19          wk_0.7.1               
-[67] codetools_0.2-18        DBI_1.1.3               curl_4.3.3             
-[70] RcppSimdJson_0.1.8      R6_2.5.1                lubridate_1.9.0        
-[73] dplyr_1.0.10            fastmap_1.1.0           utf8_1.2.2             
-[76] KernSmooth_2.23-20      stringi_1.7.8           Rcpp_1.0.9             
-[79] vctrs_0.5.1             png_0.1-8               tidyselect_1.2.0       
-[82] xfun_0.36              </code></pre>
+ [1] httr2_0.2.3              xfun_0.40                bslib_0.5.1             
+ [4] raster_3.6-23            htmlwidgets_1.6.2        lattice_0.21-8          
+ [7] leaflet.providers_1.13.0 vctrs_0.6.3              tools_4.3.1             
+[10] crosstalk_1.2.0          generics_0.1.3           stats4_4.3.1            
+[13] curl_5.0.2               tibble_3.2.1             proxy_0.4-27            
+[16] fansi_1.0.4              pkgconfig_2.0.3          KernSmooth_2.23-22      
+[19] satellite_1.0.4          RColorBrewer_1.1-3       uuid_1.1-1              
+[22] webshot_0.5.5            lifecycle_1.0.3          compiler_4.3.1          
+[25] googlePolylines_0.8.4    munsell_0.5.0            codetools_0.2-19        
+[28] htmltools_0.5.6          class_7.3-22             sass_0.4.7              
+[31] yaml_2.3.7               pillar_1.9.0             jquerylib_0.1.4         
+[34] ellipsis_0.3.2           classInt_0.4-10          slippymath_0.3.1        
+[37] cachem_1.0.8             wk_0.8.0                 brew_1.0-8              
+[40] tidyselect_1.2.0         digest_0.6.33            purrr_1.0.2             
+[43] bookdown_0.35            fastmap_1.1.1            grid_4.3.1              
+[46] colorspace_2.1-0         cli_3.6.1                magrittr_2.0.3          
+[49] base64enc_0.1-3          utf8_1.2.3               leafem_0.2.3            
+[52] e1071_1.7-13             RcppSimdJson_0.1.10      rappdirs_0.3.3          
+[55] scales_1.2.1             sp_2.0-0                 timechange_0.2.0        
+[58] lubridate_1.9.2          rmarkdown_2.25           httr_1.4.7              
+[61] png_0.1-8                evaluate_0.21            s2_1.1.4                
+[64] rlang_1.1.1              isoband_0.2.7            Rcpp_1.0.11             
+[67] leafpop_0.1.0            glue_1.6.2               DBI_1.1.3               
+[70] xml2_1.3.5               mapiso_0.3.0             svglite_2.1.1           
+[73] rstudioapi_0.15.0        jsonlite_1.8.7           R6_2.5.1                
+[76] systemfonts_1.0.4        units_0.8-4             </code></pre>
 
 </div>
             </section>

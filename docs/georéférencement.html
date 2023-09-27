@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 4 Georéférencement | Géomatique avec R</title>
   <meta name="description" content="Chapitre 4 Georéférencement | Géomatique avec R" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 4 Georéférencement | Géomatique avec R" />
   <meta property="og:type" content="book" />
@@ -51,16 +51,16 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
 <script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
+<script src="libs/leaflet-binding-2.2.0/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.13.0/leaflet-providers_1.13.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.0/leaflet-providers-plugin.js"></script>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
@@ -135,6 +135,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
@@ -191,30 +195,27 @@ div.csl-indent {
 <li class="chapter" data-level="3.4.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#modifier-le-système-de-coordonnées-dun-objet"><i class="fa fa-check"></i><b>3.4.2</b> Modifier le système de coordonnées d’un objet</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#sélection-par-attributs"><i class="fa fa-check"></i><b>3.5</b> Sélection par attributs</a></li>
-<li class="chapter" data-level="3.6" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#sélection-spatiale"><i class="fa fa-check"></i><b>3.6</b> Sélection spatiale</a>
+<li class="chapter" data-level="3.6" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#sélection-spatiale"><i class="fa fa-check"></i><b>3.6</b> Sélection spatiale</a></li>
+<li class="chapter" data-level="3.7" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#jointure-spatiale"><i class="fa fa-check"></i><b>3.7</b> Jointure spatiale</a></li>
+<li class="chapter" data-level="3.8" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#opérations-sur-les-géométries"><i class="fa fa-check"></i><b>3.8</b> Opérations sur les géométries</a>
 <ul>
-<li class="chapter" data-level="3.6.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#intersections"><i class="fa fa-check"></i><b>3.6.1</b> Intersections</a></li>
-<li class="chapter" data-level="3.6.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#contains-within"><i class="fa fa-check"></i><b>3.6.2</b> Contains / Within</a></li>
+<li class="chapter" data-level="3.8.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#extraire-des-centroides"><i class="fa fa-check"></i><b>3.8.1</b> Extraire des centroides</a></li>
+<li class="chapter" data-level="3.8.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#agréger-des-polygones"><i class="fa fa-check"></i><b>3.8.2</b> Agréger des polygones</a></li>
+<li class="chapter" data-level="3.8.3" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#agréger-des-polygones-en-fonction-dune-variable"><i class="fa fa-check"></i><b>3.8.3</b> Agréger des polygones en fonction d’une variable</a></li>
+<li class="chapter" data-level="3.8.4" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#construire-une-zone-tampon"><i class="fa fa-check"></i><b>3.8.4</b> Construire une zone tampon</a></li>
+<li class="chapter" data-level="3.8.5" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#réaliser-une-intersection"><i class="fa fa-check"></i><b>3.8.5</b> Réaliser une intersection</a></li>
+<li class="chapter" data-level="3.8.6" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-grille-régulière"><i class="fa fa-check"></i><b>3.8.6</b> Créer une grille régulière</a></li>
+<li class="chapter" data-level="3.8.7" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#compter-des-points-dans-un-polygone"><i class="fa fa-check"></i><b>3.8.7</b> Compter des points dans un polygone</a></li>
+<li class="chapter" data-level="3.8.8" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#aggréger-les-valeurs-de-points-dans-des-polygones"><i class="fa fa-check"></i><b>3.8.8</b> Aggréger les valeurs de points dans des polygones</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#opérations-sur-les-géométries"><i class="fa fa-check"></i><b>3.7</b> Opérations sur les géométries</a>
+<li class="chapter" data-level="3.9" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesures"><i class="fa fa-check"></i><b>3.9</b> Mesures</a>
 <ul>
-<li class="chapter" data-level="3.7.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#extraire-des-centroides"><i class="fa fa-check"></i><b>3.7.1</b> Extraire des centroides</a></li>
-<li class="chapter" data-level="3.7.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#agréger-des-polygones"><i class="fa fa-check"></i><b>3.7.2</b> Agréger des polygones</a></li>
-<li class="chapter" data-level="3.7.3" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#agréger-des-polygones-en-fonction-dune-variable"><i class="fa fa-check"></i><b>3.7.3</b> Agréger des polygones en fonction d’une variable</a></li>
-<li class="chapter" data-level="3.7.4" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#construire-une-zone-tampon"><i class="fa fa-check"></i><b>3.7.4</b> Construire une zone tampon</a></li>
-<li class="chapter" data-level="3.7.5" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#réaliser-une-intersection"><i class="fa fa-check"></i><b>3.7.5</b> Réaliser une intersection</a></li>
-<li class="chapter" data-level="3.7.6" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-grille-régulière"><i class="fa fa-check"></i><b>3.7.6</b> Créer une grille régulière</a></li>
-<li class="chapter" data-level="3.7.7" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#compter-des-points-dans-un-polygone"><i class="fa fa-check"></i><b>3.7.7</b> Compter des points dans un polygone</a></li>
-<li class="chapter" data-level="3.7.8" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#aggréger-les-valeurs-de-points-dans-des-polygones"><i class="fa fa-check"></i><b>3.7.8</b> Aggréger les valeurs de points dans des polygones</a></li>
+<li class="chapter" data-level="3.9.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-matrice-de-distances"><i class="fa fa-check"></i><b>3.9.1</b> Créer une matrice de distances</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesures"><i class="fa fa-check"></i><b>3.8</b> Mesures</a>
+<li class="chapter" data-level="3.10" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#exercices"><i class="fa fa-check"></i><b>3.10</b> Exercices</a>
 <ul>
-<li class="chapter" data-level="3.8.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#créer-une-matrice-de-distances"><i class="fa fa-check"></i><b>3.8.1</b> Créer une matrice de distances</a></li>
-</ul></li>
-<li class="chapter" data-level="3.9" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#exercices"><i class="fa fa-check"></i><b>3.9</b> Exercices</a>
-<ul>
-<li class="chapter" data-level="3.9.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#calculer-le-nombre-de-restaurants-par-communes"><i class="fa fa-check"></i><b>3.9.1</b> Calculer le nombre de restaurants par communes</a></li>
-<li class="chapter" data-level="3.9.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesurer-la-densité-du-réseau-routier-par-commune"><i class="fa fa-check"></i><b>3.9.2</b> Mesurer la densité du réseau routier par commune</a></li>
+<li class="chapter" data-level="3.10.1" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#calculer-le-nombre-de-restaurants-par-communes"><i class="fa fa-check"></i><b>3.10.1</b> Calculer le nombre de restaurants par communes</a></li>
+<li class="chapter" data-level="3.10.2" data-path="les-données-vectorielles.html"><a href="les-données-vectorielles.html#mesurer-la-densité-du-réseau-routier-par-commune"><i class="fa fa-check"></i><b>3.10.2</b> Mesurer la densité du réseau routier par commune</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="georéférencement.html"><a href="georéférencement.html"><i class="fa fa-check"></i><b>4</b> Georéférencement</a>
@@ -306,17 +307,17 @@ div.csl-indent {
 <div id="géocoder-des-adresses" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Géocoder des adresses<a href="georéférencement.html#géocoder-des-adresses" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Plusieurs packages permettent de géocoder des adresses. <img src="img/logo_tidygeocoder.png" align="right" width="120"/>
-Le package <code>tidygeocoder</code> <span class="citation">(<a href="#ref-R-tidygeocoder" role="doc-biblioref">Cambon et al., 2021</a>)</span> permet d’utiliser un <a href="https://jessecambon.github.io/tidygeocoder/articles/geocoder_services.html">grand nombre de services de géocodage en ligne</a>.
+Le package <code>tidygeocoder</code> <span class="citation">(<a href="#ref-R-tidygeocoder">Cambon et al., 2021</a>)</span> permet d’utiliser un <a href="https://jessecambon.github.io/tidygeocoder/articles/geocoder_services.html">grand nombre de services de géocodage en ligne</a>.
 <!-- Le package `banR` [@R-banR], qui s'appuie sur la [Base Adresse Nationale](https://adresse.data.gouv.fr/), est particulièrement approprié pour géocoder des adresses en France.  --></p>
 <div id="tidygeocoder" class="section level3 hasAnchor" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> <code>tidygeocoder</code><a href="georéférencement.html#tidygeocoder" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="georéférencement.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygeocoder)</span>
-<span id="cb68-2"><a href="georéférencement.html#cb68-2" aria-hidden="true" tabindex="-1"></a>mes_adresses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb68-3"><a href="georéférencement.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">address =</span> <span class="fu">c</span>(<span class="st">&quot;10 Emma Goldmanweg, 5032MN Tilburg, Netherlands&quot;</span>, </span>
-<span id="cb68-4"><a href="georéférencement.html#cb68-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;19 rue Michel Bakounine, 29600 Morlaix, France&quot;</span>)</span>
-<span id="cb68-5"><a href="georéférencement.html#cb68-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb68-6"><a href="georéférencement.html#cb68-6" aria-hidden="true" tabindex="-1"></a>places <span class="ot">&lt;-</span> <span class="fu">geocode</span>(mes_adresses, address)</span>
-<span id="cb68-7"><a href="georéférencement.html#cb68-7" aria-hidden="true" tabindex="-1"></a>places</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="georéférencement.html#cb62-1" tabindex="-1"></a><span class="fu">library</span>(tidygeocoder)</span>
+<span id="cb62-2"><a href="georéférencement.html#cb62-2" tabindex="-1"></a>mes_adresses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb62-3"><a href="georéférencement.html#cb62-3" tabindex="-1"></a>  <span class="at">address =</span> <span class="fu">c</span>(<span class="st">&quot;10 Emma Goldmanweg, 5032MN Tilburg, Netherlands&quot;</span>, </span>
+<span id="cb62-4"><a href="georéférencement.html#cb62-4" tabindex="-1"></a>              <span class="st">&quot;19 rue Michel Bakounine, 29600 Morlaix, France&quot;</span>)</span>
+<span id="cb62-5"><a href="georéférencement.html#cb62-5" tabindex="-1"></a>)</span>
+<span id="cb62-6"><a href="georéférencement.html#cb62-6" tabindex="-1"></a>places <span class="ot">&lt;-</span> <span class="fu">geocode</span>(mes_adresses, address)</span>
+<span id="cb62-7"><a href="georéférencement.html#cb62-7" tabindex="-1"></a>places</span></code></pre></div>
 <pre><code># A tibble: 2 × 3
   address                                           lat  long
   &lt;chr&gt;                                           &lt;dbl&gt; &lt;dbl&gt;
@@ -347,9 +348,9 @@ Site web de <code>tidygeocoder</code> :<br />
 <div id="transformer-les-données-longlat-en-objet-sf" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Transformer les données long/lat en objet <code>sf</code><a href="georéférencement.html#transformer-les-données-longlat-en-objet-sf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>La fonction <code>st_as_sf()</code> permet de transformer un <code>data.frame</code> contenant des coodonnées géographiques en objet <code>sf</code>. Ici nous utilisons le <code>data.frame</code> <code>places2</code> créé au point précédent.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="georéférencement.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb70-2"><a href="georéférencement.html#cb70-2" aria-hidden="true" tabindex="-1"></a>place_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(places, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;long&quot;</span>, <span class="st">&quot;lat&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<span id="cb70-3"><a href="georéférencement.html#cb70-3" aria-hidden="true" tabindex="-1"></a>place_sf</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="georéférencement.html#cb64-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb64-2"><a href="georéférencement.html#cb64-2" tabindex="-1"></a>place_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(places, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;long&quot;</span>, <span class="st">&quot;lat&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb64-3"><a href="georéférencement.html#cb64-3" tabindex="-1"></a>place_sf</span></code></pre></div>
 <pre><code>Simple feature collection with 2 features and 1 field
 Geometry type: POINT
 Dimension:     XY
@@ -361,9 +362,9 @@ Geodetic CRS:  WGS 84
 1 10 Emma Goldmanweg, 5032MN Tilburg, Netherlands  (5.038699 51.53649)
 2 19 rue Michel Bakounine, 29600 Morlaix, France  (-3.816435 48.59041)</code></pre>
 <p>Pour créer un objet <code>sf</code> de type POINT avec uniquement une paire de coordonnées (WGS84, longitude=0.5, latitude = 45.5) :</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="georéférencement.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb72-2"><a href="georéférencement.html#cb72-2" aria-hidden="true" tabindex="-1"></a>mon_point <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fl">45.5</span>), <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<span id="cb72-3"><a href="georéférencement.html#cb72-3" aria-hidden="true" tabindex="-1"></a>mon_point</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="georéférencement.html#cb66-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb66-2"><a href="georéférencement.html#cb66-2" tabindex="-1"></a>mon_point <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fl">45.5</span>), <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb66-3"><a href="georéférencement.html#cb66-3" tabindex="-1"></a>mon_point</span></code></pre></div>
 <pre><code>Simple feature collection with 1 feature and 0 fields
 Geometry type: POINT
 Dimension:     XY
@@ -371,11 +372,11 @@ Bounding box:  xmin: 0.5 ymin: 45.5 xmax: 0.5 ymax: 45.5
 Geodetic CRS:  WGS 84
           geometry
 1 POINT (0.5 45.5)</code></pre>
-<p>Nous pouvons afficher cet objet <code>sf</code> sur un fond de carte <a href="https://www.openstreetmap.org/">OpenStreetMap</a> avec le package <code>maptiles</code> <span class="citation">(<a href="#ref-R-maptiles" role="doc-biblioref">Giraud, 2021a</a>)</span>.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="georéférencement.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptiles)</span>
-<span id="cb74-2"><a href="georéférencement.html#cb74-2" aria-hidden="true" tabindex="-1"></a>osm <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="at">x =</span> place_sf, <span class="at">zoom =</span> <span class="dv">7</span>)</span>
-<span id="cb74-3"><a href="georéférencement.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_tiles</span>(osm)</span>
-<span id="cb74-4"><a href="georéférencement.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(place_sf), <span class="at">pch =</span> <span class="dv">4</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Nous pouvons afficher cet objet <code>sf</code> sur un fond de carte <a href="https://www.openstreetmap.org/">OpenStreetMap</a> avec le package <code>maptiles</code> <span class="citation">(<a href="#ref-R-maptiles">Giraud, 2021a</a>)</span>.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="georéférencement.html#cb68-1" tabindex="-1"></a><span class="fu">library</span>(maptiles)</span>
+<span id="cb68-2"><a href="georéférencement.html#cb68-2" tabindex="-1"></a>osm <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="at">x =</span> place_sf, <span class="at">zoom =</span> <span class="dv">7</span>)</span>
+<span id="cb68-3"><a href="georéférencement.html#cb68-3" tabindex="-1"></a><span class="fu">plot_tiles</span>(osm)</span>
+<span id="cb68-4"><a href="georéférencement.html#cb68-4" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(place_sf), <span class="at">pch =</span> <span class="dv">4</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="Geomatique-avec-R_files/figure-html/display_sf-1.png" width="1152px" style="display: block; margin: auto;" /></p>
 
 <div class="linky">
@@ -384,11 +385,11 @@ Geodetic CRS:  WGS 84
 </div>
 <div id="digitalisation" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Digitalisation<a href="georéférencement.html#digitalisation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Le package <code>mapedit</code> <span class="citation">(<a href="#ref-R-mapedit" role="doc-biblioref">Appelhans et al., 2020</a>)</span> permet de digitaliser des fonds de carte directement dans R.
+<p>Le package <code>mapedit</code> <span class="citation">(<a href="#ref-R-mapedit">Appelhans et al., 2020</a>)</span> permet de digitaliser des fonds de carte directement dans R.
 Bien que pouvant se révéler pratique dans certains cas, ce package ne saurait se substituer aux fonctionnalités d’un SIG pour les tâches de digitalisation importantes.</p>
-<div class="figure">
-<img src="img/mapedit-leafpm-1.gif" alt="" />
-<p class="caption"><small>Gif taken from <a href="https://r-spatial.org/r/2019/03/31/mapedit_leafpm.html"><code>mapedit</code> website</a></small></p>
+<div class="float">
+<img src="img/mapedit-leafpm-1.gif" alt="Gif taken from mapedit website" />
+<div class="figcaption"><small>Gif taken from <a href="https://r-spatial.org/r/2019/03/31/mapedit_leafpm.html"><code>mapedit</code> website</a></small></div>
 </div>
 
 </div>

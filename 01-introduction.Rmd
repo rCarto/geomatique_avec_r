@@ -47,9 +47,9 @@ Historiquement, 4 packages permettent d'importer, de manipuler et de transformer
 - Le package `rgdal` [@R-rgdal] qui est une interface entre R et les librairies [GDAL](http://www.gdal.org/) [@GDAL] et [PROJ](https://proj.org/) [@PROJ] permet d'importer et d'exporter les données spatiales (les shapefiles par exemple) et aussi de gérer les projections cartographiques  
 - Le package `sp` [@R-sp] fournit des classes et méthodes pour les données spatiales vectorielles dans R. Il permet afficher des fond de cartes, d'inspecter une table attributaire etc.  
 - Le package `rgeos` [@R-rgeos] donne accès à la librairie d'opérations spatiales [GEOS](http://trac.osgeo.org/geos/) et rend donc disponible les opérations SIG classiques : calcul de surfaces ou de périmètres, calcul de distances, agrégations spatiales, zones tampons, intersections etc.  
-- Le package `raster` [@R-raster] est dédié à l'import, la mabipulation et la modélisation des données raster.   
+- Le package `raster` [@R-raster] est dédié à l'import, la manipulation et la modélisation des données raster.   
 
-Aujourd'hui, les principaux développements concernants les données vectorielles se sont détachés des 3 anciens (`sp`, `rgdal`, `rgeos`) pour se reposer principalement sur le package `sf` ([@R-sf], [@Pebesma18]). Dans ce manuel nous nous appuierons exclusivement sur ce package pour manipuler les données vectorielles. 
+Aujourd'hui, les principaux développements concernant les données vectorielles se sont détachés des 3 anciens (`sp`, `rgdal`, `rgeos`) pour se reposer principalement sur le package `sf` ([@R-sf], [@Pebesma18]). Dans ce manuel nous nous appuierons exclusivement sur ce package pour manipuler les données vectorielles. 
    
 Les packages `stars` [@R-stars] et `terra`[@R-terra] sont venus quand à eux remplacer le package `raster` pour le traitement des données raster. Nous avons choisi d'utiliser ici le package `terra` pour sa proximité avec le package `raster`.
 

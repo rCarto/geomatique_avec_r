@@ -123,95 +123,38 @@ com[com$NOM_COM == "Gramat", 1:4]
 
 ## Sélection spatiale
 
+La fonction `st_filter()` permet d'effectuer des sélections spatiales. 
 
-### Intersections
-Sélection des routes intesectant la commune de Gramat. 
-
-```{r intersects, nm=TRUE}
+Nous allons ici sélectionner les routes qui intersectent la commune de Gramat
+```{r sel_spat_inter, nm=TRUE}
 route <- st_read("data/lot46.gpkg", layer = "route", quiet = TRUE)
 gramat <-  com[com$NOM_COM == "Gramat", ]
-inter <- st_intersects(x = route, y = gramat, sparse = FALSE)
-head(inter)
-dim(inter)
+route_gramat <-  st_filter(x = route,
+                           y = gramat,
+                           .predicate = st_intersects)
 ```
 
-L'objet **inter** est une matrice qui indique pour chacun des éléments de l'objet **route** (16096 éléments) si il  
-intersecte chacun des élément de l'objet **gramat** (1 élément). 
-La dimension de la matrice est donc bien 16096 lignes * 1 colonne.  
-Notez l'utilisation du paramètre `sparse = FALSE` ici. 
-Il est ensuite possible de créer une colonne à partir de cet objet :
-
 ```{r intersects2, nm=TRUE}
-route$intersect_gramat <- inter
 plot(st_geometry(gramat), col = "lightblue")
 plot(st_geometry(route), add = TRUE)
-plot(st_geometry(route[route$intersect_gramat, ]), 
+plot(st_geometry(route_gramat), 
      col = "tomato", lwd = 2, add = TRUE)
 ```
 
 
-#### Différence entre `sparse = TRUE` et `sparse = FALSE`
+## Jointure spatiale
 
-```{r st_intersparse, echo =FALSE, eval = TRUE}
-library(sf)
-set.seed(41)
-x <- mapsf::mf_get_mtq()
-grid <- st_make_grid(x = x, n = c(2,2))
-grid <- st_sf(id = 1:4, geom = grid)
-pt <- st_sample(grid, size = 8)
-pt <- st_sf(id = letters[1:length(pt)], geom = pt)
+La fonction `st_join()` permet de réaliser des jointures spatiales.
 
-library(mapsf)
-mf_init(grid, expandBB = c(0, 0, 0, .3))
-mf_map(grid, add = T)
-mf_label(grid, "id", cex = 2, pos = 3)
-mf_map(pt, add = T, pch = 4, cex = 1.2, lwd = 2, col = "red")
-mf_label(pt, "id", cex = 1, col = "red", font = 3, pos = 2, overlap = F)
-legend(x = "topright", 
-       col = c("black", NA, "red"), 
-       legend = 
-         c("    grid  ", NA, "    pt  "), 
-       pch = c(22,NA,4), 
-       pt.bg = "grey", 
-       pt.cex = c(6,NA, 1.2), 
-       bty = "n")
-mf_title("st_intersects()", tab = FALSE, pos = "center")
+
+```{r intersects, nm=TRUE}
+route <- st_read("data/lot46.gpkg", layer = "route", quiet = TRUE)
+gramat <-  com[com$NOM_COM == "Gramat", ]
+(route_gramat <-  st_join(x = route,
+                         y = gramat,
+                         join = st_intersects,
+                         left = FALSE))
 ```
-
-
-* `sparse = TRUE`
-```{r st_intersparse2}
-inter <- st_intersects(x = grid, y = pt, sparse = TRUE)
-inter
-```
-
-* `sparse = FALSE`
-```{r st_intersparse3}
-inter <- st_intersects(x = grid, y = pt, sparse = FALSE)
-rownames(inter) <- grid$id
-colnames(inter) <- pt$id
-inter
-```
-
-
-
-### Contains / Within
-Sélection des routes contenues dans la commune de Gramat. 
-La fonctin `st_within()` fonctionne comme la fonction `st_intersects()`
-
-```{r within, nm = TRUE}
-route$within_gramat <- st_within(route, gramat, sparse = FALSE)
-plot(st_geometry(gramat), col = "lightblue")
-plot(st_geometry(route), add = TRUE)
-plot(st_geometry(route[route$within_gramat, ]), col = "tomato", 
-     lwd = 2, add = TRUE)
-
-```
-
-
-
-
-
 
 ## Opérations sur les géométries
 
@@ -235,11 +178,23 @@ plot(st_geometry(dep_46), add = TRUE, lwd = 2, border = "red")
 
 ### Agréger des polygones en fonction d'une variable
 
+* Avec `dplyr`
 ```{r aggreg2, nm=TRUE}
-com_u <- aggregate(x = com[,c("POPULATION")],
-                   by = list(STATUT = com$STATUT),
-                   FUN = "sum")
-plot(com_u)
+library(dplyr)
+com_u <- com |>
+  group_by(STATUT) |>
+  summarise(POPULATION = sum(POPULATION))
+```
+
+* Sans `dplyr`
+```{r aggreg3, nm=TRUE}
+i <- com$STATUT 
+com_u <- st_sf(
+  STATUT     = tapply(X = i               , INDEX = i, FUN = head, 1),
+  POPULATION = tapply(X = com$POPULATION  , INDEX = i, FUN = sum), 
+  geometry   = tapply(X = st_geometry(com), INDEX = i, FUN = st_union), 
+  crs        = st_crs(com)
+) 
 ```
 
 
@@ -290,64 +245,66 @@ plot(st_geometry(com), border = "grey50", add = TRUE)
 
 ### Compter des points dans un polygone
 
+Sélection des carreaux de la grille qui intersectent le département (`st_filter()`).
+
 ```{r intersect3.1, nm=TRUE}
-# selection des carreaux de la grille qui intersectent le département 
-inter <- st_intersects(grid, dep_46, sparse = FALSE)
-grid <- grid[inter, ]
+grid <- st_filter(grid, dep_46)
 restaurant <- st_read("data/lot46.gpkg", layer = "restaurant", quiet = TRUE)
 plot(st_geometry(grid), col = "grey", border = "white")
 plot(st_geometry(restaurant), pch = 20, col = "red", add = TRUE, cex = .2)
+```
+
+Nous utilisons ensuite la fonction `st_intersects(..., sparse = TRUE)` qui nous 
+permettra d'avoir pour chaque élément de l'objet **grid** la liste des éléments (via leurs indexes)
+de l'objet **restaurant** qui se trouvent à l'intérieur. 
+
+```{r intersect3.2, nm=TRUE}
 inter <- st_intersects(grid, restaurant, sparse = TRUE)
-length(inter)
+length(inter) == nrow(grid)
 ```
 
-Ici nous utilisons l'argument `sparse = TRUE`. L'objet **inter** est une liste de la longueur de l'objet **grid** et chaque élément de la liste contient l'index des éléments de l'objet **restaurant** qu'il intersecte. 
-
-Par exemple le carreau 795 intersecte les restaurants 2716 et 2718 : 
-
-```{r intersect3.3, nm=TRUE}
-inter[795]
-plot(st_geometry(grid[795, ]))
-plot(st_geometry(restaurant), add = T)
-plot(st_geometry(restaurant[c(2716, 2718), ]), 
-     col = "red", pch = 19, add = TRUE)
-```
-
-Pour compter le nombre de restaurants il suffit de parcourir la liste et de 
-reporter la longueur de chacun de ces éléments. 
+Pour compter le nombre de restaurants il suffit donc de reporter 
+la longueur de chacun des éléments de cette liste.
 
 ```{r intersect3.4}
-grid$nb_restaurant <- sapply(X = inter, FUN = length)
-# autre écriture : 
-# grid$nb_restaurant <- lengths(inter)
+grid$nb_restaurant <- lengths(inter)
 plot(grid["nb_restaurant"])
 ```
 
 ### Aggréger les valeurs de points dans des polygones
 
-Dans cet exemple nous importons un fichier csv qui contient les données d'une grille de population.  
+Dans cet exemple nous importons un fichier csv (**pop.csv**) qui contient les
+données d’une grille de population (x et y longitude et latitude, EPSG:3035; Ind, la population).
+
 Une fois importé nous transformons le `data.frame` en objet `sf`. 
-
-L'objectif est d'aggréger les valeur de ces points (les populations contenues dans le champ "Ind")
-dans les communes du Lot. 
-
 
 ```{r agval}
 # Import du ficier
 pop_raw <- read.csv("data/pop.csv")
-# ajout d'un identifiant unique
-pop_raw$id <- 1:nrow(pop_raw)
+
 # transformation en objet sf
 pop <- st_as_sf(pop_raw, coords = c("x", "y"), crs = 3035)
 # gestion de la projection
 pop <- st_transform(pop, st_crs(com))
-# intersection
-inter <- st_intersection(pop, com)
-inter
+```
+
+L'objectif est d'aggréger les valeur de ces points (les populations contenues dans le champ "Ind")
+dans les communes du Lot. 
+
+```{r agval1.1, nm=TRUE}
+plot(st_geometry(com))
+plot(st_geometry(pop), bg = "red", pch = 21, cex = .5, add = TRUE)
 ```
 
 
-En utilisant la fonction `st_intersection()` nous rajoutons à chacun des point de la grille l'ensemble des information sur la commune dans lequel il se trouve. 
+
+En utilisant la fonction `st_join()` nous rajoutons à chacun des point de la grille le code de la commune dans lequel il se trouve. 
+
+```{r agval1.33}
+# intersection
+inter <- st_join(pop, com[,"INSEE_COM"])
+head(inter, 10)
+```
 
 Nous pouvons ensuite utiliser la fonction `aggregate()` pour aggreger la population par communes. 
 
