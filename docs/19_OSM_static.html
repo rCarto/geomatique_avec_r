@@ -361,6 +361,12 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Acquisition de données spatiales</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2002_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Données utilisées</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -394,7 +400,7 @@ div.csl-indent {
 <p>Le package <code>maptiles</code> <span class="citation" data-cites="R-maptiles">(<a href="2000_references.html#ref-R-maptiles" role="doc-biblioref">Giraud, 2023</a>)</span> permet de télécharger et d’afficher des fonds de cartes raster. La fonction <code>get_tiles()</code> permet de télécharger des fonds de cartes OSM au format <code>SpatRaster</code> du package <code>terra</code>.<br>
 Dans cette exemple nous utilisons le package <code>mapsf</code> pour afficher la carte.<br>
 Les rendus sont meilleurs si les données en entrée utilisent le même système de coordonnées que les tuiles (<a href="https://github.com/riatelab/maptiles#projection">EPSG:3857</a>).</p>
-<div class="cell" data-hash="cache/display_point_e21ade4ba58f8a5ceadcc856b5832be6">
+<div class="cell" data-hash="cache/display_point_18ce021dd6cc32cd7345368292f932d6">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptiles)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
@@ -404,7 +410,7 @@ Les rendus sont meilleurs si les données en entrée utilisent le même système
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_theme</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_raster</span>(osm_tiles)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com, <span class="at">border =</span> <span class="st">"grey20"</span>, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">lwd =</span> .<span class="dv">7</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_credits</span>(<span class="fu">get_credit</span>(<span class="st">"OpenStreetMap"</span>), <span class="at">col=</span><span class="st">"#ffffff80"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_credits</span>(<span class="fu">get_credit</span>(<span class="st">"OpenStreetMap"</span>), <span class="at">bg =</span> <span class="st">"#ffffff80"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/display_point-1.png" class="img-fluid" width="448"></p>
 </div>

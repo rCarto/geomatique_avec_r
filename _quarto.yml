@@ -84,6 +84,7 @@ book:
     - 2000_references.qmd
   appendices:
     - 2001_donnees.qmd
+    - 2002_data.qmd
   
 knitr:
   opts_chunk: 

@@ -1,32 +1,31 @@
 # Exercices
 
-### Calculer le nombre de restaurants par communes
+## Exercice 1
+**Calculer le nombre de restaurants par commune.**
 
 * Quelles communes ont plus de 10 restaurants et moins de 1000 habitants ?
 * Créez une carte où vous afficherez toutes les communes en gris et les communes sélectionnées plus haut en rouge. 
 
-### Mesurer la [densité du réseau routier](https://fr.wikipedia.org/wiki/Densit%C3%A9_du_r%C3%A9seau_routier_par_pays) par commune 
+
+
+## Exercice 2
+
+**Mesurer la [densité du réseau routier](https://fr.wikipedia.org/wiki/Densit%C3%A9_du_r%C3%A9seau_routier_par_pays) par commune.** 
 
 1. Intersecter les routes par les communes  
-Découper les routes par les communes. Chaque segment de route récupère l'identifiant de la commune dans laquelle il se trouve. 
-> st_intersection()
+Découper les routes par les communes. Chaque segment de route récupère l'identifiant de la commune dans laquelle il se trouve. `st_intersection()`
 
 2. Calculer la longueur des segments de route  
-Rajouter une colonne **longueur** qui contient la longueur de chacun des segments. 
-> st_length()
+Rajouter une colonne **longueur** qui contient la longueur de chacun des segments. `st_length()`
 
 3. Calculer la longueur totale de route par commune  
-Aggreger les segments de routes par commune pour obtenir des longueurs totales par commune. 
-> aggregate()
+Aggreger les segments de routes par commune pour obtenir des longueurs totales par commune. `aggregate()`
 
-4. Joindre les longueurs à la table des communes
-> merge()
+4. Joindre les longueurs à la table des communes. `merge()`
 
-5. Calculer les superficies des communes
-> st_area()
+5. Calculer les superficies des communes. `st_area()`
 
-6. Convertir les unités des différentes mesures
-> units(...)<-"km^2" 
+6. Convertir les unités des différentes mesures. `units(...)<-"km^2"` 
 
 7. Calculer les indicateurs  
 Le premier est le rapport entre la longueur des routes et la population des communes.    

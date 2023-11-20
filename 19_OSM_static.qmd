@@ -19,5 +19,5 @@ osm_tiles <- get_tiles(x = com, zoom = 9, crop = TRUE)
 mf_theme(mar = c(0,0,0,0))
 mf_raster(osm_tiles)
 mf_map(com, border = "grey20", col = NA, lwd = .7, add = TRUE)
-mf_credits(get_credit("OpenStreetMap"), col="#ffffff80")
+mf_credits(get_credit("OpenStreetMap"), bg = "#ffffff80")
 ```

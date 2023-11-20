@@ -305,6 +305,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Acquisition de données spatiales</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2002_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Données utilisées</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -317,8 +323,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#calculer-le-nombre-de-restaurants-par-communes" id="toc-calculer-le-nombre-de-restaurants-par-communes" class="nav-link active" data-scroll-target="#calculer-le-nombre-de-restaurants-par-communes"><span class="header-section-number">9.0.1</span> Calculer le nombre de restaurants par communes</a></li>
-  <li><a href="#mesurer-la-densité-du-réseau-routier-par-commune" id="toc-mesurer-la-densité-du-réseau-routier-par-commune" class="nav-link" data-scroll-target="#mesurer-la-densité-du-réseau-routier-par-commune"><span class="header-section-number">9.0.2</span> Mesurer la densité du réseau routier par commune</a></li>
+  <li><a href="#exercice-1" id="toc-exercice-1" class="nav-link active" data-scroll-target="#exercice-1"><span class="header-section-number">9.1</span> Exercice 1</a></li>
+  <li><a href="#exercice-2" id="toc-exercice-2" class="nav-link" data-scroll-target="#exercice-2"><span class="header-section-number">9.2</span> Exercice 2</a></li>
   </ul>
 </nav>
     </div>
@@ -342,25 +348,27 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="calculer-le-nombre-de-restaurants-par-communes" class="level3" data-number="9.0.1">
-<h3 data-number="9.0.1" class="anchored" data-anchor-id="calculer-le-nombre-de-restaurants-par-communes"><span class="header-section-number">9.0.1</span> Calculer le nombre de restaurants par communes</h3>
+<section id="exercice-1" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="exercice-1"><span class="header-section-number">9.1</span> Exercice 1</h2>
+<p><strong>Calculer le nombre de restaurants par commune.</strong></p>
 <ul>
 <li>Quelles communes ont plus de 10 restaurants et moins de 1000 habitants ?</li>
 <li>Créez une carte où vous afficherez toutes les communes en gris et les communes sélectionnées plus haut en rouge.</li>
 </ul>
 </section>
-<section id="mesurer-la-densité-du-réseau-routier-par-commune" class="level3" data-number="9.0.2">
-<h3 data-number="9.0.2" class="anchored" data-anchor-id="mesurer-la-densité-du-réseau-routier-par-commune"><span class="header-section-number">9.0.2</span> Mesurer la <a href="https://fr.wikipedia.org/wiki/Densit%C3%A9_du_r%C3%A9seau_routier_par_pays">densité du réseau routier</a> par commune</h3>
+<section id="exercice-2" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="exercice-2"><span class="header-section-number">9.2</span> Exercice 2</h2>
+<p><strong>Mesurer la <a href="https://fr.wikipedia.org/wiki/Densit%C3%A9_du_r%C3%A9seau_routier_par_pays">densité du réseau routier</a> par commune.</strong></p>
 <ol type="1">
 <li><p>Intersecter les routes par les communes<br>
-Découper les routes par les communes. Chaque segment de route récupère l’identifiant de la commune dans laquelle il se trouve. &gt; st_intersection()</p></li>
+Découper les routes par les communes. Chaque segment de route récupère l’identifiant de la commune dans laquelle il se trouve. <code>st_intersection()</code></p></li>
 <li><p>Calculer la longueur des segments de route<br>
-Rajouter une colonne <strong>longueur</strong> qui contient la longueur de chacun des segments. &gt; st_length()</p></li>
+Rajouter une colonne <strong>longueur</strong> qui contient la longueur de chacun des segments. <code>st_length()</code></p></li>
 <li><p>Calculer la longueur totale de route par commune<br>
-Aggreger les segments de routes par commune pour obtenir des longueurs totales par commune. &gt; aggregate()</p></li>
-<li><p>Joindre les longueurs à la table des communes &gt; merge()</p></li>
-<li><p>Calculer les superficies des communes &gt; st_area()</p></li>
-<li><p>Convertir les unités des différentes mesures &gt; units(…)&lt;-“km^2”</p></li>
+Aggreger les segments de routes par commune pour obtenir des longueurs totales par commune. <code>aggregate()</code></p></li>
+<li><p>Joindre les longueurs à la table des communes. <code>merge()</code></p></li>
+<li><p>Calculer les superficies des communes. <code>st_area()</code></p></li>
+<li><p>Convertir les unités des différentes mesures. <code>units(...)&lt;-"km^2"</code></p></li>
 <li><p>Calculer les indicateurs<br>
 Le premier est le rapport entre la longueur des routes et la population des communes.<br>
 Le deuxième est le rapport entre la longueur des routes et la superficie des communes.</p></li>

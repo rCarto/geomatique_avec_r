@@ -1,13 +1,14 @@
 # *Préambule* {.unnumbered}
 
-<!-- <div style="float: right"><img src="img/layer-group-solid.svg" width="150px" padding="1em"/></div> -->
 Ce manuel est destiné tant aux utilisateurs de R souhaitant mettre en place des traitements de données spatiales qu'aux utilisateurs souhaitant utiliser R pour réaliser les taches qu'ils réalisent habituellement avec un SIG.   
 Les principales étapes du traitement de l'information géographiques y sont abordées. 
 L'accent est porté sur le traitement des données vectorielles mais une partie est tout de même dédiée aux données raster. 
 
 **Comment utiliser le manuel**  
-Le projet RStudio contenant l'ensemble des données utilisées dans le manuel est disponible [ici](https://github.com/rCarto/geodata/archive/refs/heads/main.zip). 
-Une fois le dossier décompressé il est possible de tester l'ensemble des manipulations proposées dans le projet RStudio.  
+Les données utilisées dans ce document sont stockées dans un projet RStudio. 
+Vous devez le télécharger puis le décompresser sur votre machine. Il vous sera ensuite possible de tester l'ensemble des manipulations proposées dans ce document au sein du projet **geodata**.  
+[Télécharger le projet](geodata.zip){.btn .btn-primary .btn-sm role="button"}  
+
 
 **Contribution et feedback**  
 Vous pouvez nous envoyer vos remarques et suggestions en [postant une *issue*](https://github.com/rCarto/geomatique_avec_r/issues) sur le [dépôt GitHub](https://github.com/rCarto/geomatique_avec_r) de ce document. 
