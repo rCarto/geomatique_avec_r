@@ -1,0 +1,28 @@
+# Le package terra
+
+
+## Présentation
+<img src="img/logo_terra.png" align="right" width="150"/> 
+L'objectif du package `terra` [@R-terra] est de proposer des méthodes de traitement et d'analyse de données rasrer.
+Ce package est très similaire au package `raster`; mais il propose plus de fonctionnalités, il est plus facile à utiliser et il est plus rapide. 
+
+Ce chapitre est largement inspiré de deux présentations [@MmadelinSIGR ; @JNowosadSIGR] 
+réalisées dans le cadre de l'école thématique 
+"Science de l'Information Géographique Reproductibles 2021" ([SIGR2021](https://sigr2021.github.io/site/index.html)). 
+
+
+:::{.callout-note}
+## Site web du package `terra` :  
+[Spatial Data Science with R and "terra"](https://rspatial.org/terra/)
+:::
+
+
+## Format des objets `SpatRaster`
+
+Le package `terra` [@R-terra] permet de gérer des données vectorielles et raster. Pour manipuler ces données spatiales, `terra` les stockent dans des objets de type `SpatVector` et `SpatRaster`. Dans ce document, nous nous focalisons sur la manipulation de données raster (`SpatRaster`) à partir de fonctions proposées par ce package.
+
+Un objet `SpatRaster` représente des données matricielles, en une ou plusieurs couches (variables). Cet objet stocke également un certain nombre de paramètres fondamentaux qui le décrivent (nombre de colonnes, de lignes, étendue spatiale, système de référence des coordonnées...).
+
+
+![@RasterCheatSheet](img/raster.png){width="50%"}
+

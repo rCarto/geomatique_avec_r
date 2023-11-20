@@ -1,0 +1,23 @@
+## Importer les fonds de carte raster
+
+Le package `maptiles` [@R-maptiles] permet de télécharger et d'afficher des fonds de cartes raster.
+La fonction `get_tiles()` permet de télécharger des fonds de cartes OSM 
+au format `SpatRaster` du package `terra`.  
+Dans cette exemple nous utilisons le package `mapsf` pour afficher la carte.  
+Les rendus sont meilleurs si les données en entrée utilisent le même système de coordonnées que les tuiles ([EPSG:3857](https://github.com/riatelab/maptiles#projection)).
+
+
+```{r display_point}
+#| fig-width: 4.67
+#| fig-height: 4.51
+library(sf)
+library(maptiles)
+library(mapsf)
+com <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE)
+com <- st_transform(com, 3857)
+osm_tiles <- get_tiles(x = com, zoom = 9, crop = TRUE)
+mf_theme(mar = c(0,0,0,0))
+mf_raster(osm_tiles)
+mf_map(com, border = "grey20", col = NA, lwd = .7, add = TRUE)
+mf_credits(get_credit("OpenStreetMap"), col="#ffffff80")
+```

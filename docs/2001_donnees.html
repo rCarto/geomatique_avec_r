@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Timothée Giraud et Hugues Pecout">
+<meta name="description" content="Géomatique avec R: pour la réalisation de traitements reproductibles de l’information géographique. Ce manuel est destiné tant aux utilisateurs de R souhaitant mettre en place des traitements de données spatiales qu’aux utilisateurs souhaitant utiliser R pour réaliser les taches qu’ils réalisent habituellement avec un SIG. Les principales étapes du traitement de l’information géographiques y sont abordées.">
+
+<title>Géomatique avec R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./2000_references.html" rel="prev">
+<link href="./img/layer-group-solid.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+
+
+<meta property="og:title" content="Géomatique avec R">
+<meta property="og:description" content="Pour la réalisation de traitements reproductibles de l’information géographique.">
+<meta property="og:image" content="https://rcarto.github.io/rcarto/geomatique_avec_r/img/geom.svg">
+<meta property="og:site-name" content="Géomatique avec R">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2001_donnees.html">Appendices</a></li><li class="breadcrumb-item"><a href="./2001_donnees.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Acquisition de données spatiales</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Géomatique avec R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/rcarto/geomatique_avec_r/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Recherche"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><em>Préambule</em></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>Les données vectorielles : le package sf</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_package_sf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Le package sf</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_import_sf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Import et export</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_affichage_sf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploration et affichage</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_projection_sf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Les systèmes de coordonnées</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_selection_attrib_sf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sélection par attributs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_selection_jointure_spatiale_sf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sélection et jointure spatiales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_operation_geom_sf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Opérations sur les géométries</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_mesures_sf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mesures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09_exercices_sf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercices</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Géoréférencement</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_georeferencement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Géocoder des adresses</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text"><strong>Les données raster : le package terra</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_package_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Le package terra</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_import_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Import et export</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_affichage_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Affichage</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Modifications de la zone d’étude</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Algèbre spatial</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16_transformation_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Conversions</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text"><strong>Focus sur OpenStreetMap</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17_OSM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18_OSM_interactif.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19_OSM_static.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Importer les fonds de carte raster</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20_OSM_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Importer des données OSM</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21_OSM_routing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Utiliser un engin de routage</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2000_references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2001_donnees.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Acquisition de données spatiales</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#à-léchelle-mondiale" id="toc-à-léchelle-mondiale" class="nav-link active" data-scroll-target="#à-léchelle-mondiale"><span class="header-section-number">A.1</span> À l’échelle mondiale</a></li>
+  <li><a href="#à-léchelle-européenne" id="toc-à-léchelle-européenne" class="nav-link" data-scroll-target="#à-léchelle-européenne"><span class="header-section-number">A.2</span> À l’échelle européenne</a></li>
+  <li><a href="#à-léchelle-national" id="toc-à-léchelle-national" class="nav-link" data-scroll-target="#à-léchelle-national"><span class="header-section-number">A.3</span> À l’échelle national</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Annexe A — Acquisition de données spatiales</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Depuis l’apparition du package <code>sf</code>, qui a très largement contribué à la popularisation de la manipulation de données spatiales avec R, de nombreux packages de mise à disposition de données géographiques (géométries et/ou attributs) ont été développés. Il s’agit le plus souvent de packages d’API qui permettent d’interroger des données mises à disposition sur le Web, directement avec R. <strong>Ce chapitre en présente une liste non-exhaustive</strong>.</p>
+<section id="à-léchelle-mondiale" class="level2" data-number="A.1">
+<h2 data-number="A.1" class="anchored" data-anchor-id="à-léchelle-mondiale"><span class="header-section-number">A.1</span> À l’échelle mondiale</h2>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>rnaturalearth</code> <span class="citation" data-cites="R-rnaturalearth">(<a href="2000_references.html#ref-R-rnaturalearth" role="doc-biblioref"><strong>R-rnaturalearth?</strong></a>)</span> : permet de récupérer les données cartographiques <a href="https://www.naturalearthdata.com/">Natural Earth</a>.<br>
+</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>gadmr</code> <span class="citation" data-cites="R-gadmr">(<a href="2000_references.html#ref-R-gadmr" role="doc-biblioref"><strong>R-gadmr?</strong></a>)</span> : permet de récupérer les données du <a href="https://gadm.org/index.html">GADM</a> (découpages administratifs nationaux et infra-nationaux de l’ensemble des pays du monde).<br>
+</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>rgeoboundaries</code> <span class="citation" data-cites="R-rgeoboundaries">(<a href="2000_references.html#ref-R-rgeoboundaries" role="doc-biblioref"><strong>R-rgeoboundaries?</strong></a>)</span> : client R pour l’API <a href="https://www.geoboundaries.org/index.html">geoBoundaries</a>, fournissant les frontières administratives politiques des pays.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>cshapes</code> <span class="citation" data-cites="R-cshapes">(<a href="2000_references.html#ref-R-cshapes" role="doc-biblioref"><strong>R-cshapes?</strong></a>)</span> : met à disposition les frontières nationales, de 1886 à aujourd’hui.<br>
+</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>osmextract</code> <span class="citation" data-cites="R-osmextract">(<a href="2000_references.html#ref-R-osmextract" role="doc-biblioref">Gilardi et Lovelace, 2023</a>)</span> : permet d’importer des données <a href="https://www.openstreetmap.org/">OpenStreetMap</a>.<br>
+</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>osmdata</code> <span class="citation" data-cites="osmdata2017">(<a href="2000_references.html#ref-osmdata2017" role="doc-biblioref"><strong>osmdata2017?</strong></a>)</span> : pour télécharger et utiliser les données d’OpenStreetMap.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>maptiles</code> <span class="citation" data-cites="R-maptiles">(<a href="2000_references.html#ref-R-maptiles" role="doc-biblioref">Giraud, 2023</a>)</span> : Ce package télécharge, compose et affiche des tuiles à partir d’un grand nombre de fournisseurs (<em>OpenStreetMap</em>, <em>Stamen</em>, <em>Esri</em>, <em>CARTO</em> ou <em>Thunderforest</em>…).<br>
+</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>geonames</code> <span class="citation" data-cites="R-geonames">(<a href="2000_references.html#ref-R-geonames" role="doc-biblioref"><strong>R-geonames?</strong></a>)</span> : permet d’interroger la BD <a href="http://www.geonames.org/">geonames</a>, qui fournit notamment des localisations.</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>wbstats</code> <span class="citation" data-cites="wbstats2020">(<a href="2000_references.html#ref-wbstats2020" role="doc-biblioref"><strong>wbstats2020?</strong></a>)</span> et <code>WDI</code> <span class="citation" data-cites="R-WDI">(<a href="2000_references.html#ref-R-WDI" role="doc-biblioref"><strong>R-WDI?</strong></a>)</span> : donnent accès aux données et statistiques de la Banque mondiale.<br>
+</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>sen2r</code> <span class="citation" data-cites="R-sen2r">(<a href="2000_references.html#ref-R-sen2r" role="doc-biblioref"><strong>R-sen2r?</strong></a>)</span> : permet de télécharger et prétraiter automatiquement les données du satellite Sentinel-2.<br>
+</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>MODIStsp</code> <span class="citation" data-cites="MODIStsp2016">(<a href="2000_references.html#ref-MODIStsp2016" role="doc-biblioref"><strong>MODIStsp2016?</strong></a>)</span> : permet de trouver, télécharger et traiter des images <em>MODIS</em>.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geodata</code> <span class="citation" data-cites="R-geodata">(<a href="2000_references.html#ref-R-geodata" role="doc-biblioref"><strong>R-geodata?</strong></a>)</span> : founit un accès à des <a href="https://github.com/rspatial/geodata">données</a> sur le climat, l’altitude, le sol, la présence d’espèces et les limites administratives.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>elevatr</code> <span class="citation" data-cites="R-elevatr">(<a href="2000_references.html#ref-R-elevatr" role="doc-biblioref"><strong>R-elevatr?</strong></a>)</span> : donne accès à des données d’élévation mises à disposition par <a href="https://registry.opendata.aws/terrain-tiles/"><em>Amazon Web Services Terrain Tiles</em></a>, l’<a href="https://opentopography.org/developers/"><em>Open Topography Global Datasets API</em></a> et l’<a href="https://nationalmap.gov/epqs/"><em>USGS Elevation Point Query Service</em></a>.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>rgee</code> <span class="citation" data-cites="R-rgee">(<a href="2000_references.html#ref-R-rgee" role="doc-biblioref"><strong>R-rgee?</strong></a>)</span> : permet d’utiliser l’API de <a href="https://www.google.com/intl/fr_in/earth/education/tools/google-earth-engine/">Google Earth Engine</a>, catalogue de données publiques et infrastructure de calcul pour les images satellites.<br>
+</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>nasapower</code> <span class="citation" data-cites="nasapower2018">(<a href="2000_references.html#ref-nasapower2018" role="doc-biblioref"><strong>nasapower2018?</strong></a>)</span> : API client <em>NASA</em> (prévision des ressources énergétiques mondiales, météorologie, énergie solaire de surface et climatologie).</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geoknife</code> <span class="citation" data-cites="geoknife2015">(<a href="2000_references.html#ref-geoknife2015" role="doc-biblioref"><strong>geoknife2015?</strong></a>)</span> : permet de traiter (en ligne) des données matricielles volumineuses issuent du <em>Geo Data Portal</em> de l’<em>U.S. Geological Survey</em>.</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>wopr</code> <span class="citation" data-cites="R-wopr">(<a href="2000_references.html#ref-R-wopr" role="doc-biblioref"><strong>R-wopr?</strong></a>)</span> : fournit un accès API à la base de données <a href="https://wopr.worldpop.org/"><em>WorldPop Open Population Repository</em></a>.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>rdhs</code> <span class="citation" data-cites="rdhs2019">(<a href="2000_references.html#ref-rdhs2019" role="doc-biblioref"><strong>rdhs2019?</strong></a>)</span> : API client et gestions de données de l’<a href="https://dhsprogram.com/">enquête démographique et de santé (DHS)</a>.</li>
+</ul>
+</section>
+<section id="à-léchelle-européenne" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="à-léchelle-européenne"><span class="header-section-number">A.2</span> À l’échelle européenne</h2>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>giscoR</code> <span class="citation" data-cites="R-giscoR">(<a href="2000_references.html#ref-R-giscoR" role="doc-biblioref"><strong>R-giscoR?</strong></a>)</span> : permet de télécharger des données cartographiques mondiales et européennes de la BD <a href="https://ec.europa.eu/eurostat/web/gisco">GISCO</a> d’Eurostat (système d’information géographique de la Commission).</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>eurostat</code> <span class="citation" data-cites="eurostat2017">(<a href="2000_references.html#ref-eurostat2017" role="doc-biblioref"><strong>eurostat2017?</strong></a>)</span> : permet de télécharger des données de la BD <a href="https://ec.europa.eu/eurostat">Eurostat</a>.</li>
+</ul>
+</section>
+<section id="à-léchelle-national" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="à-léchelle-national"><span class="header-section-number">A.3</span> À l’échelle national</h2>
+<ul>
+<li><strong>Brésil</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geobr</code> <span class="citation" data-cites="R-geobr">(<a href="2000_references.html#ref-R-geobr" role="doc-biblioref"><strong>R-geobr?</strong></a>)</span> : fournit un accès facile aux séries de données spatiales officielles du Brésil pour différentes années et découpage administratifs.</li>
+</ul></li>
+<li><strong>Chili</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>chilemapas</code> <span class="citation" data-cites="R-chilemapas">(<a href="2000_references.html#ref-R-chilemapas" role="doc-biblioref"><strong>R-chilemapas?</strong></a>)</span> : donne accès aux divisions politiques et administratives du Chili.</li>
+</ul></li>
+<li><strong>Espagne</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>mapSpain</code> <span class="citation" data-cites="R-mapSpain">(<a href="2000_references.html#ref-R-mapSpain" role="doc-biblioref"><strong>R-mapSpain?</strong></a>)</span> : propose les limites administratives de l’Espagne à plusieurs niveaux (Communautés autonomes, Provinces, Municipalités), ainsi que des tuiles.</li>
+</ul></li>
+<li><strong>États-Unis</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>tidycensus</code> <span class="citation" data-cites="R-tidycensus">(<a href="2000_references.html#ref-R-tidycensus" role="doc-biblioref"><strong>R-tidycensus?</strong></a>)</span> : permet de charger des données et géométries du recensement américain en format <code>sf` et `tidyverse</code></li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>tigris</code> <span class="citation" data-cites="R-tigris">(<a href="2000_references.html#ref-R-tigris" role="doc-biblioref"><strong>R-tigris?</strong></a>)</span> : donne accès aux éléments cartographiques fournis par le US Census Bureau TIGER, y compris les limites cartographiques, les routes et l’eau.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>FedData</code> <span class="citation" data-cites="R-FedData">(<a href="2000_references.html#ref-R-FedData" role="doc-biblioref"><strong>R-FedData?</strong></a>)</span> : automatise le téléchargement de données géospatiales disponibles à partir de plusieurs sources de données fédérées.</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>acs</code> <span class="citation" data-cites="R-acs">(<a href="2000_references.html#ref-R-acs" role="doc-biblioref"><strong>R-acs?</strong></a>)</span> : permet de télécharger et manipuler les données de l’<em>American Community Survey</em> et les données décennales du recensement des États-Unis.</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>censusapi</code> <span class="citation" data-cites="R-censusapi">(<a href="2000_references.html#ref-R-censusapi" role="doc-biblioref"><strong>R-censusapi?</strong></a>)</span> : wrapper pour les API du <em>Census Bureau</em> des États-Unis.</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>censusGeography</code> <span class="citation" data-cites="R-censusGeography">(<a href="2000_references.html#ref-R-censusGeography" role="doc-biblioref"><strong>R-censusGeography?</strong></a>)</span> : Permet de convertir les codes géographiques du recensement des États-Unis en nom de lieu.</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>idbr</code> <span class="citation" data-cites="R-idbr">(<a href="2000_references.html#ref-R-idbr" role="doc-biblioref"><strong>R-idbr?</strong></a>)</span> : interface avec l’API de la base de données internationale du US Census Bureau.<br>
+</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>ipumsr</code> <span class="citation" data-cites="R-ipumsr">(<a href="2000_references.html#ref-R-ipumsr" role="doc-biblioref"><strong>R-ipumsr?</strong></a>)</span> : Permet d’importer des données de recensement, d’enquête et géographiques fournies par l’<a href="https://www.ipums.org/">IPUMS</a>.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>SeerMapper</code> &amp; co <span class="citation" data-cites="R-SeerMapper">(<a href="2000_references.html#ref-R-SeerMapper" role="doc-biblioref"><strong>R-SeerMapper?</strong></a>)</span> : permettent de cartographier des données par États, comtés, secteurs de recensement ou des registres <em>Seer</em> (découpage du recensement 2000 et 2010).</li>
+<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>totalcensus</code> <span class="citation" data-cites="R-totalcensus">(<a href="2000_references.html#ref-R-totalcensus" role="doc-biblioref"><strong>R-totalcensus?</strong></a>)</span> : permet d’extraire les données du recensement décennal et de l’<em>American Community Survey</em> au niveaux des <em>block</em>, <em>block group</em> et <em>tract</em>.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>UScensus2010</code> <span class="citation" data-cites="R-UScensus2010">(<a href="2000_references.html#ref-R-UScensus2010" role="doc-biblioref"><strong>R-UScensus2010?</strong></a>)</span>, <code>UScensus2000cdp</code> <span class="citation" data-cites="R-UScensus2000cdp">(<a href="2000_references.html#ref-R-UScensus2000cdp" role="doc-biblioref"><strong>R-UScensus2000cdp?</strong></a>)</span> et <code>UScensus2000tract</code> <span class="citation" data-cites="R-UScensus2000tract">(<a href="2000_references.html#ref-R-UScensus2000tract" role="doc-biblioref"><strong>R-UScensus2000tract?</strong></a>)</span> : fournissent les géométries du recensement des États-Unis en 2000/2010, ainsi que des données démographiques supplémentaires.</li>
+</ul></li>
+<li><strong>Finland</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>mapsFinland</code> <span class="citation" data-cites="R-mapsFinland">(<a href="2000_references.html#ref-R-mapsFinland" role="doc-biblioref"><strong>R-mapsFinland?</strong></a>)</span> : donne un accès à des cartes et données concernant la Finland.</li>
+</ul></li>
+<li><strong>France</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>inseeLocalData</code> <span class="citation" data-cites="R-inseeLocalData">(<a href="2000_references.html#ref-R-inseeLocalData" role="doc-biblioref"><strong>R-inseeLocalData?</strong></a>)</span> : client R pour l’<a href="https://api.insee.fr/catalogue/site/themes/wso2/subthemes/insee/pages/item-info.jag?name=DonneesLocales&amp;version=V0.1&amp;provider=insee">API Données Locales</a> de l’Insee.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>insee</code> <span class="citation" data-cites="R-insee">(<a href="2000_references.html#ref-R-insee" role="doc-biblioref"><strong>R-insee?</strong></a>)</span> : pour télécharger facilement les données de la base BDM (<a href="https://www.data.gouv.fr/fr/reuses/insee-package-r/">Banque de Données Macroéconomiques</a>) de l’INSEE.</li>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>COGugaison</code> <span class="citation" data-cites="COGugaison2022">(<a href="2000_references.html#ref-COGugaison2022" role="doc-biblioref"><strong>COGugaison2022?</strong></a>)</span> et <code>CARTElette</code> <span class="citation" data-cites="R-CARTElette">(<a href="2000_references.html#ref-R-CARTElette" role="doc-biblioref"><strong>R-CARTElette?</strong></a>)</span> : Manipulation, agrégation de données communales françaises et création de couches cartographiques à partir du code officiel géographique (COG) et des couches IGN.</li>
+</ul></li>
+<li><strong>Pologne</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>rgugik</code> <span class="citation" data-cites="rgugik2021">(<a href="2000_references.html#ref-rgugik2021" role="doc-biblioref"><strong>rgugik2021?</strong></a>)</span> : permet l’acquisition automatique de données ouvertes à partir des ressources du Bureau central polonais de la géodésie et de la cartographie (<a href="https://www.gov.pl/web/gugik">Główny Urząd Geodezji i Kartografii</a> ).<br>
+</li>
+</ul></li>
+<li><strong>Royaume-Uni</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geographr</code> <span class="citation" data-cites="R-geographr">(<a href="2000_references.html#ref-R-geographr" role="doc-biblioref"><strong>R-geographr?</strong></a>)</span> : pour manipuler et cartographier les limites géographiques et administratives du Royaume-Uni.</li>
+</ul></li>
+<li><strong>Uruguay</strong>
+<ul>
+<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geouy</code> <span class="citation" data-cites="R-geouy">(<a href="2000_references.html#ref-R-geouy" role="doc-biblioref"><strong>R-geouy?</strong></a>)</span> : permet le chargement d’informations géographiques sur l’Uruguay.</li>
+</ul></li>
+<li>…</li>
+</ul>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-R-osmextract" class="csl-entry" role="listitem">
+Gilardi, A. et Lovelace, R. (2023). <em>osmextract: Download and Import Open Street Map Data Extracts</em>. <a href="https://CRAN.R-project.org/package=osmextract">https://CRAN.R-project.org/package=osmextract</a>
+</div>
+<div id="ref-R-maptiles" class="csl-entry" role="listitem">
+Giraud, T. (2023). <em>maptiles: Download and Display Map Tiles</em>. <a href="https://CRAN.R-project.org/package=maptiles">https://CRAN.R-project.org/package=maptiles</a>
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copié");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copié");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./2000_references.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">References</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="img/by-nc-sa.png" class="img-fluid" alt="CreativeCommonsLicense"></a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right"><img src="img/logos-footer.png" width="290px"></div>
+  </div>
+</footer>
+
+
+
+</body></html>

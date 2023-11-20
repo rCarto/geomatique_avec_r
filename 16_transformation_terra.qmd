@@ -1,0 +1,43 @@
+# Conversions
+
+
+## Rasterisation
+
+Transformer des polygones en format raster.
+```{r Raster_vec1}
+commune <- vect("data/lot.gpkg", layer = "communes")
+elev <- rast("data/elev.tif") 
+
+raster_commune <- rasterize(x = commune, y = elev , field = "NOM_COM")
+plot(raster_commune)
+```
+
+Transformer des points en format raster.
+```{r Raster_vec2, eval=TRUE}
+# Rasterisation des centroïdes des communes
+raster_com_centroide <- rasterize(x = centroids(commune), 
+                                  y = elev, fun = sum)
+plot(raster_com_centroide)
+```
+
+Transformer des lignes format raster.
+```{r Raster_vec3, eval=TRUE}
+# Rasterisation des limites communales
+raster_com_line <- rasterize(x = as.lines(commune), y = elev, fun=sum)
+plot(raster_com_line)
+```
+
+###  Vectorisation
+
+Transformer un raster en polygones vectoriels.
+```{r Raster_vec4, eval=TRUE}
+clc <- rast("data/clc.tif")
+Polygone_Elevation <- as.polygons(clc)
+plot(Polygone_Elevation, y = 1)
+```
+
+Transformer un raster en points vectoriels.
+```{r Raster_vec5, eval=TRUE}
+Points_Elevation <- as.points(clc)
+plot(Points_Elevation, y = 1, cex = 0.3)
+```

@@ -1,0 +1,1 @@
+Sitemap: https://rcarto.github.io/rcarto/geomatique_avec_r/sitemap.xml

@@ -1,0 +1,63 @@
+
+## Utiliser un engin de routage
+
+<img src="img/logo_osrm.svg" align="right" width="120"/>
+Le package `osrm` [@R-osrm] sert d'interface entre R et le service de calcul d'itinéraire [OSRM](http://project-osrm.org/) [@luxen-vetter-2011].
+Ce package permet de calculer des matrices de temps et de distances, des itinéraires routiers, des isochrones.
+Le package utilise par défaut le serveur de démo d'OSRM. En cas d'utilisation intensive il est fortement recommandé d'[utiliser sa propre instance d'OSRM avec Docker](https://rcarto.github.io/posts/build_osrm_server/).
+
+
+### Calcul d'un itinéraire
+La fonction `osrmRoute()` permet de calculer des itinéraires.
+```{r osrmroute}
+#| fig-width: 3
+#| fig-height: 5.3
+#| warning: false
+#| 
+library(sf)
+library(osrm)
+library(maptiles)
+com_raw <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE)
+com <- st_transform(com_raw, 3857)
+# Itinéraire entre Cahors et Puybrun
+cahors  <- st_centroid(com[com$INSEE_COM == "46042", ])
+puybrun <- st_centroid(com[com$INSEE_COM == "46229", ])
+route <- osrmRoute(src = cahors,
+                   dst = puybrun)
+osm <- get_tiles(st_buffer(route, 2000), crop = TRUE)
+mf_theme(mar = c(0,0,0,0))
+mf_raster(osm)
+mf_map(route, col = "grey10", lwd = 6, add = T)
+mf_map(route, col = "grey90", lwd = 1, add = T)
+```
+
+
+### Calcul d'une matrice de temps
+La fonction `osrmTable()` permet de calculer des matrices de distances ou de temps par la route.
+
+Dans cet exemple nous calculons une matrice de temps entre 2 adresses et les restaurants de Cahors à pied.
+```{r osrmtable}
+library(sf)
+library(tidygeocoder)
+restaurant <- st_read("data/lot.gpkg", layer = "restaurants", quiet = TRUE)
+# Sélection des restaurants de Cahors
+restaurant_cahors <- st_filter(restaurant, com_raw[com_raw$INSEE_COM == "46042", ])
+# geocodage de 2 adresses à Cahors
+adresses <- data.frame(
+  ad = c("3 rue Montaudié, Cahors, France",
+         "5 rue Albert Camus, Cahors, France")
+)
+places <- geocode(.tbl = adresses,address = ad, quiet = TRUE)
+places <- as.data.frame(places)
+row.names(places) <- c("Rue Montaudié", "Rue Albert Camus")
+# Calcul de la matrice de distance entre les 2 adresses et les restaurants de Cahors
+mat <- osrmTable(src = places[c(3, 2)],
+                 dst = restaurant_cahors,
+                 osrm.profile = "foot")
+mat$durations[, 1:5]
+# Quelle adresse possède une meilleurs accessibilité aux restaurants de Cahors?
+boxplot(t(mat$durations), cex.axis = .7, horizontal = TRUE)
+```
+
+
+

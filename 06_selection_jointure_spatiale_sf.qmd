@@ -1,0 +1,42 @@
+# Sélection et jointure spatiales
+
+```{r initsel}
+#| include: false
+#| eval: true
+library(mapsf)
+library(sf)
+com <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE)
+mf_theme(mar = rep(.5,4))
+```
+
+## Sélection spatiale
+
+La fonction `st_filter()` permet d'effectuer des sélections spatiales. 
+L'argument `.predicate` permet de choisir sur quel critère se fait la 
+selection en utilisant l'une des fonctions de "predicat géométrique" 
+(par exemple `st_intersects()`, `st_within()`, `st_crosses()`...).  
+Nous allons ici sélectionner les routes qui intersectent la commune de Gramat
+```{r sel_spat_inter}
+route <- st_read("data/lot.gpkg", layer = "routes", quiet = TRUE)
+gramat <-  com[com$NOM_COM == "Gramat", ]
+route_gramat <-  st_filter(x = route, y = gramat,
+                           .predicate = st_intersects)
+mf_map(gramat, col = "lightblue")
+mf_map(route, add = TRUE)
+mf_map(route_gramat, col = "tomato", lwd = 2, add = TRUE)  
+```
+
+
+## Jointure spatiale
+
+La fonction `st_join()` permet de réaliser des jointures spatiales. 
+Cette fois-ci c'est l'argument `join` qui utilise une fonction de 
+prédicat géométrique.
+
+```{r intersects}
+route_gramat <-  st_join(x = route,
+                         y = com[, c("INSEE_COM","NOM_COM")],
+                         join = st_intersects,
+                         left = FALSE)
+route_gramat
+```

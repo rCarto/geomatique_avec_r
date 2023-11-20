@@ -1,0 +1,61 @@
+# Importer des données OSM
+
+## `osmdata`
+<img src="img/logo_osmdata.png" align="right"  height=140 width=122/>
+Le package `osmdata` [@R-osmdata] permet d'extraire des données vectorielles depuis OSM en utilisant l'API [Overpass turbo](https://wiki.openstreetmap.org/wiki/Overpass_turbo).
+
+```{r osmdata}
+library(sf)
+library(osmdata)
+library(sf)
+com <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE)
+# Sélection de la commune de Cahors
+cahors <- com[com$INSEE_COM == "46042", ]
+# Définition d'une bounding box
+q <- opq(bbox = st_bbox(st_transform(cahors, 4326)))
+# Extraction des restaurants
+req <- add_osm_feature(opq = q, key = 'amenity', value = "restaurant")
+res <- osmdata_sf(req)
+# Reductcion du resultats
+# (les points composant les polygones sont supprimés)
+res <- unique_osmdata(res)
+```
+
+Le résultat contient une couche de points et une couche de polygones.
+La couche de polygones contient des polygones qui représentent des restaurants.
+Pour obtenir une couche de points cohérente nous pouvons utiliser les centroides des polygones.
+
+```{r osmdata2}
+resto_point <- res$osm_points
+# extraire les centroides des polygones
+resto_poly <- res$osm_polygons
+resto_poly_point <- st_centroid(resto_poly)
+# identifier les champs en commun
+chps <- intersect(names(resto_point), names(resto_poly_point))
+# rassembler les 2 objets
+resto <- rbind(resto_point[, chps], resto_poly_point[, chps])
+```
+
+**Affichage des résultats**
+
+```{r osmdatadisplay, cache=FALSE}
+library(mapview)
+mapview(cahors) + mapview(resto)
+```
+
+:::{.callout-note}
+## Site web d'`osmdata`
+[`osmdata`](https://docs.ropensci.org/osmdata/)
+:::
+
+
+
+## `osmextract`
+
+<img src="img/logo_osmextract.svg" align="right" width="120"/>
+Le package `osmextract` [@R-osmextract] permet d'extraire des données depuis une base de données OSM directement. Ce package permet de travailler sur des volumes de données très importants.
+
+:::{.callout-note}
+## Site web d'`osmextract`
+[osmextract](https://docs.ropensci.org/osmextract/)
+:::

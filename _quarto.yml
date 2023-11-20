@@ -1,0 +1,98 @@
+project:
+  type: book
+  output-dir: docs
+  resources: 
+    - "geodata.zip"
+
+format:
+  html:
+    callout-appearance: simple
+    callout-icon: false
+    theme: cosmo
+    pagetitle: "Géomatique avec R"
+    author-meta: "Timothée Giraud et Hugues Pecout"
+    description-meta: 
+      "Géomatique avec R: pour la réalisation de traitements reproductibles de l'information géographique.
+      Ce manuel est destiné tant aux utilisateurs de R souhaitant mettre en place des traitements de données
+      spatiales qu’aux utilisateurs souhaitant utiliser R pour réaliser les taches qu’ils réalisent habituellement
+      avec un SIG. Les principales étapes du traitement de l’information géographiques y sont abordées."
+    bibliography: [book.bib]
+    lang: fr
+    csl: "universite-de-montreal-apa.csl"
+
+
+
+book:
+  title: "Géomatique avec R"
+  description: "Pour la réalisation de traitements reproductibles de l'information géographique."
+  author:
+    - name: Timothée Giraud
+      orcid: 0000-0001-5679-6536
+      email: timothee.giraud@cnrs.fr
+      url: https://rcarto.github.io
+      affiliation:
+          name: RIATE (CNRS)
+          url: https://riate.cnrs.fr
+    - name: Hugues Pecout
+      orcid: 0000-0002-0246-0954
+      affiliation:
+          name: Géographie-cités (CNRS)
+          url: https://geographie-cites.cnrs.fr/       
+  date: last-modified
+  date-format: "D MMM YYYY"
+  doi: 10.5281/zenodo.5906212
+  search: true
+  repo-url: https://github.com/rcarto/geomatique_avec_r/
+  cover-image: img/layer-group-solid.svg
+  page-footer: 
+    right: "<img src='img/logos-footer.png' width=290px />"
+    left: "[![CreativeCommonsLicense](img/by-nc-sa.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
+  favicon: img/layer-group-solid.svg
+  site-url: https://rcarto.github.io/rcarto/geomatique_avec_r/
+  open-graph: true
+  chapters:
+    - index.qmd
+    - part: "**Les données vectorielles : le package sf**"
+      chapters: 
+        - 01_package_sf.qmd
+        - 02_import_sf.qmd
+        - 03_affichage_sf.qmd
+        - 04_projection_sf.qmd
+        - 05_selection_attrib_sf.qmd
+        - 06_selection_jointure_spatiale_sf.qmd
+        - 07_operation_geom_sf.qmd
+        - 08_mesures_sf.qmd
+        - 09_exercices_sf.qmd
+    - part: "**Géoréférencement**"
+      chapters: 
+        - 10_georeferencement.qmd
+    - part: "**Les données raster : le package terra**"
+      chapters: 
+        - 11_package_terra.qmd
+        - 12_import_terra.qmd
+        - 13_affichage_terra.qmd
+        - 14_modif_zone_terra.qmd
+        - 15_algebre_spatial_terra.qmd
+        - 16_transformation_terra.qmd
+    - part: "**Focus sur OpenStreetMap**"
+      chapters: 
+        - 17_OSM.qmd
+        - 18_OSM_interactif.qmd
+        - 19_OSM_static.qmd
+        - 20_OSM_data.qmd
+        - 21_OSM_routing.qmd
+    - 2000_references.qmd
+  appendices:
+    - 2001_donnees.qmd
+  
+knitr:
+  opts_chunk: 
+    collapse: false
+    comment: "#>" 
+    fig.height: 5.74
+    fig.width: 6
+    cache: true
+    crop: true
+    fig.path: "figs/"
+    cache.path: "cache/"
+

@@ -1,0 +1,33 @@
+# Le package sf
+
+
+## Présentation
+
+<img src="img/sf.gif" align="right" width="150"/> 
+Le package `sf` [@R-sf] a été publié fin 2016 par Edzer Pebesma.
+Ce package permet l'import, l'export, la manipulation et l'affichage de données spatiales vectorielles. Pour cela `sf` s'appuie sur une série de bibliothèques spatiales : GDAL [@GDAL] et PROJ [@PROJ] pour les opérations d'import, d'export et de projection, et GEOS [@GEOS] pour les opérations de géotraitement (buffer, intersection...).   
+Ce package propose des objets simples (suivant le standard [*simple feature*](https://en.wikipedia.org/wiki/Simple_Features)) dont la manipulation est assez aisée. Une attention particulière a été portée à la compatibilité du package avec la syntaxe *pipe* (`|>` ou `%>%`) et les opérateurs du `tidyverse` [@R-tidyverse].
+
+
+![@pebesma2023](img/sf_deps.png)
+
+
+
+:::{.callout-note}
+## Historique
+Le package `sf` est venu remplacer les packages `sp` [@R-sp], `rgeos` [@R-rgeos] et `rgdal` [@R-rgdal] en combinant leurs fonctionnalités dans un package unique plus ergonomique. 
+:::
+
+
+## Format des objets `sf`
+
+![](img/sf.png)
+
+Les objets `sf` sont des `data.frame` dont l'une des colonnes contient des géométries. Cette colonne est de la classe **sfc** (*simple feature column*) et chaque individu de la colonne est un **sfg** (*simple feature geometry)*.   
+Ce format est très pratique dans la mesure ou les données et les géométries sont intrinsèquement liées dans un même objet. 
+
+:::{.callout-note}
+## Vignette décrivant le format simple feature
+[Simple Features for R](https://r-spatial.github.io/sf/articles/sf1.html)
+:::
+

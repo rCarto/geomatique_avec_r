@@ -1,0 +1,45 @@
+# Les systèmes de coordonnées
+
+
+```{r explor}
+#| echo: false
+#| eval: true
+#| results: hide
+#| include: false
+library(sf)
+library(mapsf)
+com <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE)
+```
+
+
+## Consulter le système de coordonnées d'un objet
+La fonction `st_crs()` permet de consulter le système de coordonnées utilisé par un objet `sf`.
+
+```{r proj1}
+library(sf) 
+st_crs(com)
+```
+
+## Modifier le système de coordonnées d'un objet 
+
+La fonction `st_transform()` permet de changer le système de coordonnées d'un objet `sf`, de le reprojeter. 
+
+```{r, proj2}
+#| layout-ncol: 2
+#| fig-width: 4
+#| fig-height: 4
+mf_map(com, expandBB = c(0, .12, 0, 0))
+mf_graticule(x = com)
+mf_title("RGF93 / Lambert-93")
+
+com_reproj <- st_transform(com, "EPSG:3035")
+mf_map(com_reproj, expandBB = c(0, .12, .0, 0))
+mf_graticule(x = com_reproj)
+mf_title("ETRS89-extended / LAEA Europe")
+```
+
+
+::: {.callout-note}
+Le site [Spatial Reference](http://spatialreference.org/) met à disposition les références de très nombreux systèmes coordonnées.   
+Si l'on souhaite projeter un objet spatial, intialement en coordonnées géographiques (lon/lat), le package `crsuggest` [@R-crsuggest] propose des projections adaptées à l'emprise de l'objet.
+:::

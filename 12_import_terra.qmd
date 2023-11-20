@@ -1,0 +1,26 @@
+# Import et export
+
+Le package `terra` permet d'importer et d'exporter des fichiers raster. Il repose sur la bibliothèque GDAL [@GDAL] qui permet de lire et de traiter un très grand nombre de format d'images géographiques.
+
+```{r terra}
+library(terra)
+```
+
+## Import
+
+La fonction `rast()` permet de créer et/ou d'importer des données raster. 
+Les lignes suivantes importent le fichier raster **elevation.tif** ([*Tagged Image File Format*](https://fr.wikipedia.org/wiki/Tagged_Image_File_Format)) au format d'objet `SpatRaster`.
+
+```{r import_raster}
+elev <- rast("data/elevation.tif") 
+elev
+```
+
+
+## Export
+La fonction `writeRaster()` permet d'enregistrer un objet `SpatRaster` sur votre machine, dans le format de votre choix.
+```{r export_raster}
+#| eval: false
+writeRaster(x = elev, filename = "data/new_elevation_Lot.tif")
+```
+
