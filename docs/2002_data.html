@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2001_donnees.html">Appendices</a></li><li class="breadcrumb-item"><a href="./2002_data.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Données utilisées</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1999_georeferencement.html">Appendices</a></li><li class="breadcrumb-item"><a href="./2002_data.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Données utilisées</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -170,18 +170,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mesures</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./09_exercices_sf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercices</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text"><strong>Géoréférencement</strong></span></a>
+ <span class="menu-text"><strong>Les données raster : le package terra</strong></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Basculer la section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -189,8 +183,38 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_georeferencement.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Géocoder des adresses</span></span></a>
+  <a href="./11_package_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Le package terra</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_import_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Import et export</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_affichage_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Affichage</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Modifications de la zone d’étude</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Algèbre spatial</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16_transformation_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Conversions</span></span></a>
   </div>
 </li>
       </ul>
@@ -198,7 +222,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text"><strong>Les données raster : le package terra</strong></span></a>
+ <span class="menu-text"><strong>Focus sur OpenStreetMap</strong></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Basculer la section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -206,79 +230,32 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_package_terra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Le package terra</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./12_import_terra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Import et export</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./13_affichage_terra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Affichage</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./14_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Modifications de la zone d’étude</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./15_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Algèbre spatial</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./16_transformation_terra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Conversions</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text"><strong>Focus sur OpenStreetMap</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Basculer la section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./17_OSM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./18_OSM_interactif.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./19_OSM_static.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Importer les fonds de carte raster</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importer les fonds de carte raster</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./20_OSM_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Importer des données OSM</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Importer des données OSM</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./21_OSM_routing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Utiliser un engin de routage</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Utiliser un engin de routage</span></span></a>
   </div>
 </li>
       </ul>
@@ -291,23 +268,29 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Basculer la section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Basculer la section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1999_georeferencement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Géoréferencement</span></span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2001_donnees.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Acquisition de données spatiales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Sources de données spatiales</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2002_data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Données utilisées</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Données utilisées</span></span></a>
   </div>
 </li>
       </ul>
@@ -322,11 +305,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#lot.gpkg" id="toc-lot.gpkg" class="nav-link active" data-scroll-target="#lot.gpkg"><span class="header-section-number">B.1</span> lot.gpkg</a></li>
-  <li><a href="#com.csv" id="toc-com.csv" class="nav-link" data-scroll-target="#com.csv"><span class="header-section-number">B.2</span> com.csv</a></li>
-  <li><a href="#elevation.tif" id="toc-elevation.tif" class="nav-link" data-scroll-target="#elevation.tif"><span class="header-section-number">B.3</span> elevation.tif</a></li>
-  <li><a href="#clc_2018.tif" id="toc-clc_2018.tif" class="nav-link" data-scroll-target="#clc_2018.tif"><span class="header-section-number">B.4</span> clc_2018.tif</a></li>
-  <li><a href="#sentinel2a.tif" id="toc-sentinel2a.tif" class="nav-link" data-scroll-target="#sentinel2a.tif"><span class="header-section-number">B.5</span> Sentinel2A.tif</a></li>
+  <li><a href="#lot.gpkg" id="toc-lot.gpkg" class="nav-link active" data-scroll-target="#lot.gpkg"><span class="header-section-number">C.1</span> lot.gpkg</a></li>
+  <li><a href="#com.csv" id="toc-com.csv" class="nav-link" data-scroll-target="#com.csv"><span class="header-section-number">C.2</span> com.csv</a></li>
+  <li><a href="#elevation.tif" id="toc-elevation.tif" class="nav-link" data-scroll-target="#elevation.tif"><span class="header-section-number">C.3</span> elevation.tif</a></li>
+  <li><a href="#clc_2018.tif" id="toc-clc_2018.tif" class="nav-link" data-scroll-target="#clc_2018.tif"><span class="header-section-number">C.4</span> clc_2018.tif</a></li>
+  <li><a href="#sentinel2a.tif" id="toc-sentinel2a.tif" class="nav-link" data-scroll-target="#sentinel2a.tif"><span class="header-section-number">C.5</span> Sentinel2A.tif</a></li>
   </ul>
 </nav>
     </div>
@@ -335,7 +318,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Annexe B — Données utilisées</h1>
+<h1 class="title">Annexe C — Données utilisées</h1>
 </div>
 
 
@@ -352,8 +335,8 @@ ul.task-list li input[type="checkbox"] {
 
 <p>Les données utilisées dans ce document sont stockées dans un projet RStudio. Vous devez le télécharger puis le décompresser sur votre machine. Il vous sera ensuite possible de tester l’ensemble des manipulations proposées dans ce document au sein du projet <strong>geodata</strong>.<br>
 <a href="geodata.zip" class="btn btn-primary btn-sm" role="button">Télécharger le projet</a></p>
-<section id="lot.gpkg" class="level2" data-number="B.1">
-<h2 data-number="B.1" class="anchored" data-anchor-id="lot.gpkg"><span class="header-section-number">B.1</span> lot.gpkg</h2>
+<section id="lot.gpkg" class="level2" data-number="C.1">
+<h2 data-number="C.1" class="anchored" data-anchor-id="lot.gpkg"><span class="header-section-number">C.1</span> lot.gpkg</h2>
 <p>Ce fichier contient plusieurs couches d’informations.</p>
 <ul>
 <li><strong>departements</strong> : les départements français métropolitains, <a href="https://geoservices.ign.fr/adminexpress">Admin Express COG Carto 3.0, IGN - 2021</a>;</li>
@@ -363,8 +346,8 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>elevations</strong> : une grille régulière de points d’altitude (pas d’1 km), <a href="http://srtm.csi.cgiar.org">Jarvis A., H.I. Reuter, A. Nelson, E. Guevara, 2008, Hole-filled seamless SRTM data V4, International Centre for Tropical Agriculture (CIAT)</a>.</li>
 </ul>
 </section>
-<section id="com.csv" class="level2" data-number="B.2">
-<h2 data-number="B.2" class="anchored" data-anchor-id="com.csv"><span class="header-section-number">B.2</span> com.csv</h2>
+<section id="com.csv" class="level2" data-number="C.2">
+<h2 data-number="C.2" class="anchored" data-anchor-id="com.csv"><span class="header-section-number">C.2</span> com.csv</h2>
 <p>Ce fichier tabulaire contient des informations complémentaire sur la population active occupée âgée de 25 à 54 ans, par secteur d’activité et sexe, au lieu de résidence, en 2017, <a href="https://www.insee.fr/fr/statistiques/1893185">Recensements harmonisés - Séries départementales et communales, INSEE - 2020</a>.</p>
 <ul>
 <li>le nombre d’actifs (ACT);</li>
@@ -373,18 +356,18 @@ ul.task-list li input[type="checkbox"] {
 <li>la part des actifs dans l’industrie dans le total des actifs (SACT_IND).</li>
 </ul>
 </section>
-<section id="elevation.tif" class="level2" data-number="B.3">
-<h2 data-number="B.3" class="anchored" data-anchor-id="elevation.tif"><span class="header-section-number">B.3</span> elevation.tif</h2>
+<section id="elevation.tif" class="level2" data-number="C.3">
+<h2 data-number="C.3" class="anchored" data-anchor-id="elevation.tif"><span class="header-section-number">C.3</span> elevation.tif</h2>
 <p>Une grille régulière de points d’altitude (pas de 30 mètres environ), <a href="http://srtm.csi.cgiar.org">Jarvis A., H.I. Reuter, A. Nelson, E. Guevara, 2008, Hole-filled seamless SRTM data V4, International Centre for Tropical Agriculture (CIAT)</a>.<br>
 <strong>elev.tif</strong> est une version reprojetée en Lambert 93 de <strong>elevation.tif</strong></p>
 </section>
-<section id="clc_2018.tif" class="level2" data-number="B.4">
-<h2 data-number="B.4" class="anchored" data-anchor-id="clc_2018.tif"><span class="header-section-number">B.4</span> clc_2018.tif</h2>
+<section id="clc_2018.tif" class="level2" data-number="C.4">
+<h2 data-number="C.4" class="anchored" data-anchor-id="clc_2018.tif"><span class="header-section-number">C.4</span> clc_2018.tif</h2>
 <p>Données CORINE Land Cover, <a href="https://land.copernicus.eu/pan-european/corine-land-cover/clc2018?tab=download">Corine Land Cover (CLC) 2018, Version 2020_20u1 - Copernicus Programme</a>.<br>
 <strong>clc.tif</strong> est une version reprojetée en Lambert 93 de <strong>clc_2018.tif</strong></p>
 </section>
-<section id="sentinel2a.tif" class="level2" data-number="B.5">
-<h2 data-number="B.5" class="anchored" data-anchor-id="sentinel2a.tif"><span class="header-section-number">B.5</span> Sentinel2A.tif</h2>
+<section id="sentinel2a.tif" class="level2" data-number="C.5">
+<h2 data-number="C.5" class="anchored" data-anchor-id="sentinel2a.tif"><span class="header-section-number">C.5</span> Sentinel2A.tif</h2>
 <p>Données Sentinel, <a href="https://scihub.copernicus.eu/dhus/#/home">Sentinel, <em>Sentinel-2A</em>, S2A_OPER_MSI_L2A_DS_VGS2_20211012T140548_S20211012T105447_N03.01, 12 Octobre 2021 - Copernicus Programme</a>, téléchargé le 28 décembre 2021.</p>
 
 
@@ -627,7 +610,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./2001_donnees.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Acquisition de données spatiales</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Sources de données spatiales</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

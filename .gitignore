@@ -44,3 +44,4 @@ data/com*
 /figs/
 *_cache/
 /cache/
+/_freeze/

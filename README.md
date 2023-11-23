@@ -5,8 +5,8 @@ Les principales étapes du traitement de l'information géographiques y sont abo
 L'accent est porté sur le traitement des données vectorielles mais une partie est tout de même dédiée aux données raster. 
 
 **Comment utiliser le manuel**  
-Le projet RStudio contenant l'ensemble des données utilisées dans le manuel est disponible [ici](https://github.com/rCarto/geodata/archive/refs/heads/main.zip). 
-Une fois le dossier décompressé il est possible de tester l'ensemble des manipulations proposées dans le projet RStudio.  
+Les données utilisées dans ce document sont stockées dans un projet RStudio ([ici](https://github.com/rCarto/geomatique_avec_r/raw/main/docs/geodata.zip). 
+Vous devez le télécharger puis le décompresser sur votre machine. Il vous sera ensuite possible de tester l'ensemble des manipulations proposées dans ce document au sein du projet **geodata**.  
 
 **Contribution et feedback**  
 Vous pouvez nous envoyer vos remarques et suggestions en [postant une *issue*](https://github.com/rCarto/geomatique_avec_r/issues) sur le [dépôt GitHub](https://github.com/rCarto/geomatique_avec_r) de ce document. 
@@ -25,7 +25,7 @@ La version en ligne de ce document est sous licence [Creative Commons Attributio
 
 
 --------
-<small>
+
 **Pour citer le document :**  
 
 Giraud, T. et Pecout, H. (2023). Géomatique avec R. https://doi.org/10.5281/zenodo.5906212
@@ -39,4 +39,3 @@ Giraud, T. et Pecout, H. (2023). Géomatique avec R. https://doi.org/10.5281/zen
   year = {2023}
 }
 ```
-</small>

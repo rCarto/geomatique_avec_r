@@ -52,7 +52,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./2002_data.html" rel="next">
-<link href="./2000_references.html" rel="prev">
+<link href="./1999_georeferencement.html" rel="prev">
 <link href="./img/layer-group-solid.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -63,6 +63,8 @@ div.csl-indent {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -87,7 +89,6 @@ div.csl-indent {
 
 <meta property="og:title" content="Géomatique avec R">
 <meta property="og:description" content="Pour la réalisation de traitements reproductibles de l’information géographique.">
-<meta property="og:image" content="https://rcarto.github.io/rcarto/geomatique_avec_r/img/geom.svg">
 <meta property="og:site-name" content="Géomatique avec R">
 </head>
 
@@ -100,7 +101,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2001_donnees.html">Appendices</a></li><li class="breadcrumb-item"><a href="./2001_donnees.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Acquisition de données spatiales</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1999_georeferencement.html">Appendices</a></li><li class="breadcrumb-item"><a href="./2001_donnees.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Sources de données spatiales</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -191,18 +192,12 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mesures</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./09_exercices_sf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercices</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text"><strong>Géoréférencement</strong></span></a>
+ <span class="menu-text"><strong>Les données raster : le package terra</strong></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Basculer la section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -210,8 +205,38 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_georeferencement.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Géocoder des adresses</span></span></a>
+  <a href="./11_package_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Le package terra</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_import_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Import et export</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_affichage_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Affichage</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Modifications de la zone d’étude</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Algèbre spatial</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16_transformation_terra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Conversions</span></span></a>
   </div>
 </li>
       </ul>
@@ -219,7 +244,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text"><strong>Les données raster : le package terra</strong></span></a>
+ <span class="menu-text"><strong>Focus sur OpenStreetMap</strong></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Basculer la section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -227,79 +252,32 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_package_terra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Le package terra</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./12_import_terra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Import et export</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./13_affichage_terra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Affichage</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./14_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Modifications de la zone d’étude</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./15_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Algèbre spatial</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./16_transformation_terra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Conversions</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text"><strong>Focus sur OpenStreetMap</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Basculer la section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./17_OSM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./18_OSM_interactif.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./19_OSM_static.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Importer les fonds de carte raster</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importer les fonds de carte raster</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./20_OSM_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Importer des données OSM</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Importer des données OSM</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./21_OSM_routing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Utiliser un engin de routage</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Utiliser un engin de routage</span></span></a>
   </div>
 </li>
       </ul>
@@ -312,23 +290,29 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Basculer la section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Basculer la section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1999_georeferencement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Géoréferencement</span></span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2001_donnees.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Acquisition de données spatiales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Sources de données spatiales</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2002_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Données utilisées</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Données utilisées</span></span></a>
   </div>
 </li>
       </ul>
@@ -343,9 +327,9 @@ div.csl-indent {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#à-léchelle-mondiale" id="toc-à-léchelle-mondiale" class="nav-link active" data-scroll-target="#à-léchelle-mondiale"><span class="header-section-number">A.1</span> À l’échelle mondiale</a></li>
-  <li><a href="#à-léchelle-européenne" id="toc-à-léchelle-européenne" class="nav-link" data-scroll-target="#à-léchelle-européenne"><span class="header-section-number">A.2</span> À l’échelle européenne</a></li>
-  <li><a href="#à-léchelle-national" id="toc-à-léchelle-national" class="nav-link" data-scroll-target="#à-léchelle-national"><span class="header-section-number">A.3</span> À l’échelle national</a></li>
+  <li><a href="#à-léchelle-mondiale" id="toc-à-léchelle-mondiale" class="nav-link active" data-scroll-target="#à-léchelle-mondiale"><span class="header-section-number">B.1</span> À l’échelle mondiale</a></li>
+  <li><a href="#à-léchelle-européenne" id="toc-à-léchelle-européenne" class="nav-link" data-scroll-target="#à-léchelle-européenne"><span class="header-section-number">B.2</span> À l’échelle européenne</a></li>
+  <li><a href="#à-léchelle-national" id="toc-à-léchelle-national" class="nav-link" data-scroll-target="#à-léchelle-national"><span class="header-section-number">B.3</span> À l’échelle national</a></li>
   </ul>
 </nav>
     </div>
@@ -354,7 +338,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Annexe A — Acquisition de données spatiales</h1>
+<h1 class="title">Annexe B — Sources de données spatiales</h1>
 </div>
 
 
@@ -370,107 +354,191 @@ div.csl-indent {
 </header>
 
 <p>Depuis l’apparition du package <code>sf</code>, qui a très largement contribué à la popularisation de la manipulation de données spatiales avec R, de nombreux packages de mise à disposition de données géographiques (géométries et/ou attributs) ont été développés. Il s’agit le plus souvent de packages d’API qui permettent d’interroger des données mises à disposition sur le Web, directement avec R. <strong>Ce chapitre en présente une liste non-exhaustive</strong>.</p>
-<section id="à-léchelle-mondiale" class="level2" data-number="A.1">
-<h2 data-number="A.1" class="anchored" data-anchor-id="à-léchelle-mondiale"><span class="header-section-number">A.1</span> À l’échelle mondiale</h2>
+<section id="à-léchelle-mondiale" class="level2" data-number="B.1">
+<h2 data-number="B.1" class="anchored" data-anchor-id="à-léchelle-mondiale"><span class="header-section-number">B.1</span> À l’échelle mondiale</h2>
 <ul>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>rnaturalearth</code> <span class="citation" data-cites="R-rnaturalearth">(<a href="2000_references.html#ref-R-rnaturalearth" role="doc-biblioref"><strong>R-rnaturalearth?</strong></a>)</span> : permet de récupérer les données cartographiques <a href="https://www.naturalearthdata.com/">Natural Earth</a>.<br>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>rnaturalearth</code> <span class="citation" data-cites="R-rnaturalearth">(<a href="2000_references.html#ref-R-rnaturalearth" role="doc-biblioref">Massicotte et South, 2023</a>)</span> : permet de récupérer les données cartographiques <a href="https://www.naturalearthdata.com/">Natural Earth</a>.<br>
 </li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>gadmr</code> <span class="citation" data-cites="R-gadmr">(<a href="2000_references.html#ref-R-gadmr" role="doc-biblioref"><strong>R-gadmr?</strong></a>)</span> : permet de récupérer les données du <a href="https://gadm.org/index.html">GADM</a> (découpages administratifs nationaux et infra-nationaux de l’ensemble des pays du monde).<br>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>cshapes</code> <span class="citation" data-cites="R-cshapes">(<a href="2000_references.html#ref-R-cshapes" role="doc-biblioref">Weidmann et al., 2021</a>)</span> : met à disposition les frontières nationales, de 1886 à aujourd’hui.<br>
 </li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>rgeoboundaries</code> <span class="citation" data-cites="R-rgeoboundaries">(<a href="2000_references.html#ref-R-rgeoboundaries" role="doc-biblioref"><strong>R-rgeoboundaries?</strong></a>)</span> : client R pour l’API <a href="https://www.geoboundaries.org/index.html">geoBoundaries</a>, fournissant les frontières administratives politiques des pays.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>cshapes</code> <span class="citation" data-cites="R-cshapes">(<a href="2000_references.html#ref-R-cshapes" role="doc-biblioref"><strong>R-cshapes?</strong></a>)</span> : met à disposition les frontières nationales, de 1886 à aujourd’hui.<br>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>osmextract</code> <span class="citation" data-cites="R-osmextract">(<a href="2000_references.html#ref-R-osmextract" role="doc-biblioref">Gilardi et Lovelace, 2023</a>)</span> : permet d’importer des données <a href="https://www.openstreetmap.org/">OpenStreetMap</a>.<br>
 </li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>osmextract</code> <span class="citation" data-cites="R-osmextract">(<a href="2000_references.html#ref-R-osmextract" role="doc-biblioref">Gilardi et Lovelace, 2023</a>)</span> : permet d’importer des données <a href="https://www.openstreetmap.org/">OpenStreetMap</a>.<br>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>osmdata</code> <span class="citation" data-cites="R-osmdata">(<a href="2000_references.html#ref-R-osmdata" role="doc-biblioref">Mark Padgham et al., 2017</a>)</span> : pour télécharger et utiliser les données d’OpenStreetMap.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>maptiles</code> <span class="citation" data-cites="R-maptiles">(<a href="2000_references.html#ref-R-maptiles" role="doc-biblioref">Giraud, 2023</a>)</span> : Ce package télécharge, compose et affiche des tuiles à partir d’un grand nombre de fournisseurs (<em>OpenStreetMap</em>, <em>Stamen</em>, <em>Esri</em>, <em>CARTO</em> ou <em>Thunderforest</em>…).<br>
 </li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>osmdata</code> <span class="citation" data-cites="osmdata2017">(<a href="2000_references.html#ref-osmdata2017" role="doc-biblioref"><strong>osmdata2017?</strong></a>)</span> : pour télécharger et utiliser les données d’OpenStreetMap.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>maptiles</code> <span class="citation" data-cites="R-maptiles">(<a href="2000_references.html#ref-R-maptiles" role="doc-biblioref">Giraud, 2023</a>)</span> : Ce package télécharge, compose et affiche des tuiles à partir d’un grand nombre de fournisseurs (<em>OpenStreetMap</em>, <em>Stamen</em>, <em>Esri</em>, <em>CARTO</em> ou <em>Thunderforest</em>…).<br>
+<li><i class="fa-solid fa-table" aria-label="table"></i> <code>geonames</code> <span class="citation" data-cites="R-geonames">(<a href="2000_references.html#ref-R-geonames" role="doc-biblioref">Rowlingson, 2019</a>)</span> : permet d’interroger la BD <a href="http://www.geonames.org/">geonames</a>, qui fournit notamment des localisations.</li>
+<li><i class="fa-solid fa-table" aria-label="table"></i> <code>wbstats</code> <span class="citation" data-cites="R-wbstats">(<a href="2000_references.html#ref-R-wbstats" role="doc-biblioref">Piburn, 2020</a>)</span> et <code>WDI</code> <span class="citation" data-cites="R-WDI">(<a href="2000_references.html#ref-R-WDI" role="doc-biblioref">Arel-Bundock, 2022</a>)</span> : donnent accès aux données et statistiques de la Banque mondiale.<br>
 </li>
-<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>geonames</code> <span class="citation" data-cites="R-geonames">(<a href="2000_references.html#ref-R-geonames" role="doc-biblioref"><strong>R-geonames?</strong></a>)</span> : permet d’interroger la BD <a href="http://www.geonames.org/">geonames</a>, qui fournit notamment des localisations.</li>
-<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>wbstats</code> <span class="citation" data-cites="wbstats2020">(<a href="2000_references.html#ref-wbstats2020" role="doc-biblioref"><strong>wbstats2020?</strong></a>)</span> et <code>WDI</code> <span class="citation" data-cites="R-WDI">(<a href="2000_references.html#ref-R-WDI" role="doc-biblioref"><strong>R-WDI?</strong></a>)</span> : donnent accès aux données et statistiques de la Banque mondiale.<br>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>sen2r</code> <span class="citation" data-cites="R-sen2r">(<a href="2000_references.html#ref-R-sen2r" role="doc-biblioref">Ranghetti et al., 2020</a>)</span> : permet de télécharger et prétraiter automatiquement les données du satellite Sentinel-2.<br>
 </li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>sen2r</code> <span class="citation" data-cites="R-sen2r">(<a href="2000_references.html#ref-R-sen2r" role="doc-biblioref"><strong>R-sen2r?</strong></a>)</span> : permet de télécharger et prétraiter automatiquement les données du satellite Sentinel-2.<br>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>MODIStsp</code> <span class="citation" data-cites="R-MODIStsp">(<a href="2000_references.html#ref-R-MODIStsp" role="doc-biblioref">Busetto et Ranghetti, 2016</a>)</span> : permet de trouver, télécharger et traiter des images <em>MODIS</em>.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>geodata</code> <span class="citation" data-cites="R-geodata">(<a href="2000_references.html#ref-R-geodata" role="doc-biblioref">Hijmans et al., 2023</a>)</span> : founit un accès à des <a href="https://github.com/rspatial/geodata">données</a> sur le climat, l’altitude, le sol, la présence d’espèces et les limites administratives.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>elevatr</code> <span class="citation" data-cites="R-elevatr">(<a href="2000_references.html#ref-R-elevatr" role="doc-biblioref">Hollister et al., 2023</a>)</span> : donne accès à des données d’élévation mises à disposition par <a href="https://registry.opendata.aws/terrain-tiles/"><em>Amazon Web Services Terrain Tiles</em></a>, l’<a href="https://opentopography.org/developers/"><em>Open Topography Global Datasets API</em></a> et l’<a href="https://nationalmap.gov/epqs/"><em>USGS Elevation Point Query Service</em></a>.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>rgee</code> <span class="citation" data-cites="R-rgee">(<a href="2000_references.html#ref-R-rgee" role="doc-biblioref">Aybar, 2023</a>)</span> : permet d’utiliser l’API de <a href="https://www.google.com/intl/fr_in/earth/education/tools/google-earth-engine/">Google Earth Engine</a>, catalogue de données publiques et infrastructure de calcul pour les images satellites.<br>
 </li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>MODIStsp</code> <span class="citation" data-cites="MODIStsp2016">(<a href="2000_references.html#ref-MODIStsp2016" role="doc-biblioref"><strong>MODIStsp2016?</strong></a>)</span> : permet de trouver, télécharger et traiter des images <em>MODIS</em>.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geodata</code> <span class="citation" data-cites="R-geodata">(<a href="2000_references.html#ref-R-geodata" role="doc-biblioref"><strong>R-geodata?</strong></a>)</span> : founit un accès à des <a href="https://github.com/rspatial/geodata">données</a> sur le climat, l’altitude, le sol, la présence d’espèces et les limites administratives.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>elevatr</code> <span class="citation" data-cites="R-elevatr">(<a href="2000_references.html#ref-R-elevatr" role="doc-biblioref"><strong>R-elevatr?</strong></a>)</span> : donne accès à des données d’élévation mises à disposition par <a href="https://registry.opendata.aws/terrain-tiles/"><em>Amazon Web Services Terrain Tiles</em></a>, l’<a href="https://opentopography.org/developers/"><em>Open Topography Global Datasets API</em></a> et l’<a href="https://nationalmap.gov/epqs/"><em>USGS Elevation Point Query Service</em></a>.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>rgee</code> <span class="citation" data-cites="R-rgee">(<a href="2000_references.html#ref-R-rgee" role="doc-biblioref"><strong>R-rgee?</strong></a>)</span> : permet d’utiliser l’API de <a href="https://www.google.com/intl/fr_in/earth/education/tools/google-earth-engine/">Google Earth Engine</a>, catalogue de données publiques et infrastructure de calcul pour les images satellites.<br>
-</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>nasapower</code> <span class="citation" data-cites="nasapower2018">(<a href="2000_references.html#ref-nasapower2018" role="doc-biblioref"><strong>nasapower2018?</strong></a>)</span> : API client <em>NASA</em> (prévision des ressources énergétiques mondiales, météorologie, énergie solaire de surface et climatologie).</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geoknife</code> <span class="citation" data-cites="geoknife2015">(<a href="2000_references.html#ref-geoknife2015" role="doc-biblioref"><strong>geoknife2015?</strong></a>)</span> : permet de traiter (en ligne) des données matricielles volumineuses issuent du <em>Geo Data Portal</em> de l’<em>U.S. Geological Survey</em>.</li>
-<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>wopr</code> <span class="citation" data-cites="R-wopr">(<a href="2000_references.html#ref-R-wopr" role="doc-biblioref"><strong>R-wopr?</strong></a>)</span> : fournit un accès API à la base de données <a href="https://wopr.worldpop.org/"><em>WorldPop Open Population Repository</em></a>.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>rdhs</code> <span class="citation" data-cites="rdhs2019">(<a href="2000_references.html#ref-rdhs2019" role="doc-biblioref"><strong>rdhs2019?</strong></a>)</span> : API client et gestions de données de l’<a href="https://dhsprogram.com/">enquête démographique et de santé (DHS)</a>.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>nasapower</code> <span class="citation" data-cites="R-nasapower">(<a href="2000_references.html#ref-R-nasapower" role="doc-biblioref">Sparks, 2018</a>)</span> : API client <em>NASA</em> (prévision des ressources énergétiques mondiales, météorologie, énergie solaire de surface et climatologie).</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>geoknife</code> <span class="citation" data-cites="R-geoknife">(<a href="2000_references.html#ref-R-geoknife" role="doc-biblioref">Read et al., 2015</a>)</span> : permet de traiter (en ligne) des données matricielles volumineuses issuent du <em>Geo Data Portal</em> de l’<em>U.S. Geological Survey</em>.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <i class="fa-solid fa-table" aria-label="table"></i> <code>rdhs</code> <span class="citation" data-cites="R-rdhs">(<a href="2000_references.html#ref-R-rdhs" role="doc-biblioref">Watson et al., 2019</a>)</span> : API client et gestions de données de l’<a href="https://dhsprogram.com/">enquête démographique et de santé (DHS)</a>.</li>
 </ul>
 </section>
-<section id="à-léchelle-européenne" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="à-léchelle-européenne"><span class="header-section-number">A.2</span> À l’échelle européenne</h2>
+<section id="à-léchelle-européenne" class="level2" data-number="B.2">
+<h2 data-number="B.2" class="anchored" data-anchor-id="à-léchelle-européenne"><span class="header-section-number">B.2</span> À l’échelle européenne</h2>
 <ul>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>giscoR</code> <span class="citation" data-cites="R-giscoR">(<a href="2000_references.html#ref-R-giscoR" role="doc-biblioref"><strong>R-giscoR?</strong></a>)</span> : permet de télécharger des données cartographiques mondiales et européennes de la BD <a href="https://ec.europa.eu/eurostat/web/gisco">GISCO</a> d’Eurostat (système d’information géographique de la Commission).</li>
-<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>eurostat</code> <span class="citation" data-cites="eurostat2017">(<a href="2000_references.html#ref-eurostat2017" role="doc-biblioref"><strong>eurostat2017?</strong></a>)</span> : permet de télécharger des données de la BD <a href="https://ec.europa.eu/eurostat">Eurostat</a>.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>giscoR</code> <span class="citation" data-cites="R-giscoR">(<a href="2000_references.html#ref-R-giscoR" role="doc-biblioref">Hernangómez, 2023a</a>)</span> : permet de télécharger des données cartographiques mondiales et européennes de la BD <a href="https://ec.europa.eu/eurostat/web/gisco">GISCO</a> d’Eurostat (système d’information géographique de la Commission).</li>
+<li><i class="fa-solid fa-table" aria-label="table"></i> <code>eurostat</code> <span class="citation" data-cites="R-eurostat">(<a href="2000_references.html#ref-R-eurostat" role="doc-biblioref">Lahti et al., 2017</a>)</span> : permet de télécharger des données de la BD <a href="https://ec.europa.eu/eurostat">Eurostat</a>.</li>
 </ul>
 </section>
-<section id="à-léchelle-national" class="level2" data-number="A.3">
-<h2 data-number="A.3" class="anchored" data-anchor-id="à-léchelle-national"><span class="header-section-number">A.3</span> À l’échelle national</h2>
+<section id="à-léchelle-national" class="level2" data-number="B.3">
+<h2 data-number="B.3" class="anchored" data-anchor-id="à-léchelle-national"><span class="header-section-number">B.3</span> À l’échelle national</h2>
 <ul>
 <li><strong>Brésil</strong>
 <ul>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geobr</code> <span class="citation" data-cites="R-geobr">(<a href="2000_references.html#ref-R-geobr" role="doc-biblioref"><strong>R-geobr?</strong></a>)</span> : fournit un accès facile aux séries de données spatiales officielles du Brésil pour différentes années et découpage administratifs.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>geobr</code> <span class="citation" data-cites="R-geobr">(<a href="2000_references.html#ref-R-geobr" role="doc-biblioref">Pereira et Goncalves, 2023</a>)</span> : fournit un accès facile aux séries de données spatiales officielles du Brésil pour différentes années et découpage administratifs.</li>
 </ul></li>
 <li><strong>Chili</strong>
 <ul>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>chilemapas</code> <span class="citation" data-cites="R-chilemapas">(<a href="2000_references.html#ref-R-chilemapas" role="doc-biblioref"><strong>R-chilemapas?</strong></a>)</span> : donne accès aux divisions politiques et administratives du Chili.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>chilemapas</code> <span class="citation" data-cites="R-chilemapas">(<a href="2000_references.html#ref-R-chilemapas" role="doc-biblioref">Vargas, 2022</a>)</span> : donne accès aux divisions politiques et administratives du Chili.</li>
 </ul></li>
 <li><strong>Espagne</strong>
 <ul>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>mapSpain</code> <span class="citation" data-cites="R-mapSpain">(<a href="2000_references.html#ref-R-mapSpain" role="doc-biblioref"><strong>R-mapSpain?</strong></a>)</span> : propose les limites administratives de l’Espagne à plusieurs niveaux (Communautés autonomes, Provinces, Municipalités), ainsi que des tuiles.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>mapSpain</code> <span class="citation" data-cites="R-mapSpain">(<a href="2000_references.html#ref-R-mapSpain" role="doc-biblioref">Hernangómez, 2023b</a>)</span> : propose les limites administratives de l’Espagne à plusieurs niveaux (Communautés autonomes, Provinces, Municipalités), ainsi que des tuiles.</li>
 </ul></li>
 <li><strong>États-Unis</strong>
 <ul>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>tidycensus</code> <span class="citation" data-cites="R-tidycensus">(<a href="2000_references.html#ref-R-tidycensus" role="doc-biblioref"><strong>R-tidycensus?</strong></a>)</span> : permet de charger des données et géométries du recensement américain en format <code>sf` et `tidyverse</code></li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>tigris</code> <span class="citation" data-cites="R-tigris">(<a href="2000_references.html#ref-R-tigris" role="doc-biblioref"><strong>R-tigris?</strong></a>)</span> : donne accès aux éléments cartographiques fournis par le US Census Bureau TIGER, y compris les limites cartographiques, les routes et l’eau.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>FedData</code> <span class="citation" data-cites="R-FedData">(<a href="2000_references.html#ref-R-FedData" role="doc-biblioref"><strong>R-FedData?</strong></a>)</span> : automatise le téléchargement de données géospatiales disponibles à partir de plusieurs sources de données fédérées.</li>
-<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>acs</code> <span class="citation" data-cites="R-acs">(<a href="2000_references.html#ref-R-acs" role="doc-biblioref"><strong>R-acs?</strong></a>)</span> : permet de télécharger et manipuler les données de l’<em>American Community Survey</em> et les données décennales du recensement des États-Unis.</li>
-<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>censusapi</code> <span class="citation" data-cites="R-censusapi">(<a href="2000_references.html#ref-R-censusapi" role="doc-biblioref"><strong>R-censusapi?</strong></a>)</span> : wrapper pour les API du <em>Census Bureau</em> des États-Unis.</li>
-<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>censusGeography</code> <span class="citation" data-cites="R-censusGeography">(<a href="2000_references.html#ref-R-censusGeography" role="doc-biblioref"><strong>R-censusGeography?</strong></a>)</span> : Permet de convertir les codes géographiques du recensement des États-Unis en nom de lieu.</li>
-<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>idbr</code> <span class="citation" data-cites="R-idbr">(<a href="2000_references.html#ref-R-idbr" role="doc-biblioref"><strong>R-idbr?</strong></a>)</span> : interface avec l’API de la base de données internationale du US Census Bureau.<br>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <i class="fa-solid fa-table" aria-label="table"></i> <code>tidycensus</code> <span class="citation" data-cites="R-tidycensus">(<a href="2000_references.html#ref-R-tidycensus" role="doc-biblioref">Walker et Herman, 2023</a>)</span> : permet de charger des données et géométries du recensement américain en format <code>sf</code> et <code>tidyverse</code></li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>tigris</code> <span class="citation" data-cites="R-tigris">(<a href="2000_references.html#ref-R-tigris" role="doc-biblioref">Walker, 2023</a>)</span> : donne accès aux éléments cartographiques fournis par le US Census Bureau TIGER, y compris les limites cartographiques, les routes et l’eau.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <i class="fa-solid fa-table" aria-label="table"></i> <code>FedData</code> <span class="citation" data-cites="R-FedData">(<a href="2000_references.html#ref-R-FedData" role="doc-biblioref">Bocinsky, 2023</a>)</span> : automatise le téléchargement de données géospatiales disponibles à partir de plusieurs sources de données fédérées.</li>
+<li><i class="fa-solid fa-table" aria-label="table"></i> <code>acs</code> <span class="citation" data-cites="R-acs">(<a href="2000_references.html#ref-R-acs" role="doc-biblioref">Glenn, 2019</a>)</span> : permet de télécharger et manipuler les données de l’<em>American Community Survey</em> et les données décennales du recensement des États-Unis.</li>
+<li><i class="fa-solid fa-table" aria-label="table"></i> <code>censusapi</code> <span class="citation" data-cites="R-censusapi">(<a href="2000_references.html#ref-R-censusapi" role="doc-biblioref">Recht, 2022</a>)</span> : wrapper pour les API du <em>Census Bureau</em> des États-Unis.</li>
+<li><i class="fa-solid fa-table" aria-label="table"></i> <code>idbr</code> <span class="citation" data-cites="R-idbr">(<a href="2000_references.html#ref-R-idbr" role="doc-biblioref">Walker, 2021</a>)</span> : interface avec l’API de la base de données internationale du US Census Bureau.<br>
 </li>
-<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>ipumsr</code> <span class="citation" data-cites="R-ipumsr">(<a href="2000_references.html#ref-R-ipumsr" role="doc-biblioref"><strong>R-ipumsr?</strong></a>)</span> : Permet d’importer des données de recensement, d’enquête et géographiques fournies par l’<a href="https://www.ipums.org/">IPUMS</a>.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>SeerMapper</code> &amp; co <span class="citation" data-cites="R-SeerMapper">(<a href="2000_references.html#ref-R-SeerMapper" role="doc-biblioref"><strong>R-SeerMapper?</strong></a>)</span> : permettent de cartographier des données par États, comtés, secteurs de recensement ou des registres <em>Seer</em> (découpage du recensement 2000 et 2010).</li>
-<li><img src="img/table.svg" alt="données attributaires" width="20"> <code>totalcensus</code> <span class="citation" data-cites="R-totalcensus">(<a href="2000_references.html#ref-R-totalcensus" role="doc-biblioref"><strong>R-totalcensus?</strong></a>)</span> : permet d’extraire les données du recensement décennal et de l’<em>American Community Survey</em> au niveaux des <em>block</em>, <em>block group</em> et <em>tract</em>.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <img src="img/table.svg" alt="données attributaires" width="20"> <code>UScensus2010</code> <span class="citation" data-cites="R-UScensus2010">(<a href="2000_references.html#ref-R-UScensus2010" role="doc-biblioref"><strong>R-UScensus2010?</strong></a>)</span>, <code>UScensus2000cdp</code> <span class="citation" data-cites="R-UScensus2000cdp">(<a href="2000_references.html#ref-R-UScensus2000cdp" role="doc-biblioref"><strong>R-UScensus2000cdp?</strong></a>)</span> et <code>UScensus2000tract</code> <span class="citation" data-cites="R-UScensus2000tract">(<a href="2000_references.html#ref-R-UScensus2000tract" role="doc-biblioref"><strong>R-UScensus2000tract?</strong></a>)</span> : fournissent les géométries du recensement des États-Unis en 2000/2010, ainsi que des données démographiques supplémentaires.</li>
+<li><i class="fa-solid fa-table" aria-label="table"></i> <code>ipumsr</code> <span class="citation" data-cites="R-ipumsr">(<a href="2000_references.html#ref-R-ipumsr" role="doc-biblioref">Greg Freedman Ellis et al., 2023</a>)</span> : Permet d’importer des données de recensement, d’enquête et géographiques fournies par l’<a href="https://www.ipums.org/">IPUMS</a>.</li>
+<li><i class="fa-solid fa-table" aria-label="table"></i> <code>totalcensus</code> <span class="citation" data-cites="R-totalcensus">(<a href="2000_references.html#ref-R-totalcensus" role="doc-biblioref">Li, 2021</a>)</span> : permet d’extraire les données du recensement décennal et de l’<em>American Community Survey</em> au niveaux des <em>block</em>, <em>block group</em> et <em>tract</em>.</li>
 </ul></li>
 <li><strong>Finland</strong>
 <ul>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>mapsFinland</code> <span class="citation" data-cites="R-mapsFinland">(<a href="2000_references.html#ref-R-mapsFinland" role="doc-biblioref"><strong>R-mapsFinland?</strong></a>)</span> : donne un accès à des cartes et données concernant la Finland.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>mapsFinland</code> <span class="citation" data-cites="R-mapsFinland">(<a href="2000_references.html#ref-R-mapsFinland" role="doc-biblioref">Haukka, 2023</a>)</span> : donne un accès à des cartes et données concernant la Finland.</li>
 </ul></li>
 <li><strong>France</strong>
 <ul>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>inseeLocalData</code> <span class="citation" data-cites="R-inseeLocalData">(<a href="2000_references.html#ref-R-inseeLocalData" role="doc-biblioref"><strong>R-inseeLocalData?</strong></a>)</span> : client R pour l’<a href="https://api.insee.fr/catalogue/site/themes/wso2/subthemes/insee/pages/item-info.jag?name=DonneesLocales&amp;version=V0.1&amp;provider=insee">API Données Locales</a> de l’Insee.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>insee</code> <span class="citation" data-cites="R-insee">(<a href="2000_references.html#ref-R-insee" role="doc-biblioref"><strong>R-insee?</strong></a>)</span> : pour télécharger facilement les données de la base BDM (<a href="https://www.data.gouv.fr/fr/reuses/insee-package-r/">Banque de Données Macroéconomiques</a>) de l’INSEE.</li>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>COGugaison</code> <span class="citation" data-cites="COGugaison2022">(<a href="2000_references.html#ref-COGugaison2022" role="doc-biblioref"><strong>COGugaison2022?</strong></a>)</span> et <code>CARTElette</code> <span class="citation" data-cites="R-CARTElette">(<a href="2000_references.html#ref-R-CARTElette" role="doc-biblioref"><strong>R-CARTElette?</strong></a>)</span> : Manipulation, agrégation de données communales françaises et création de couches cartographiques à partir du code officiel géographique (COG) et des couches IGN.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>happign</code> <span class="citation" data-cites="R-happign">(<a href="2000_references.html#ref-R-happign" role="doc-biblioref">Carteron, 2023</a>)</span> : accès à certaines données de l’IGN.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>insee</code> <span class="citation" data-cites="R-insee">(<a href="2000_references.html#ref-R-insee" role="doc-biblioref">Leclerc, 2022</a>)</span> : pour télécharger facilement les données de la base BDM (<a href="https://www.data.gouv.fr/fr/reuses/insee-package-r/">Banque de Données Macroéconomiques</a>) de l’INSEE.</li>
 </ul></li>
 <li><strong>Pologne</strong>
 <ul>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>rgugik</code> <span class="citation" data-cites="rgugik2021">(<a href="2000_references.html#ref-rgugik2021" role="doc-biblioref"><strong>rgugik2021?</strong></a>)</span> : permet l’acquisition automatique de données ouvertes à partir des ressources du Bureau central polonais de la géodésie et de la cartographie (<a href="https://www.gov.pl/web/gugik">Główny Urząd Geodezji i Kartografii</a> ).<br>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>rgugik</code> <span class="citation" data-cites="R-rgugik">(<a href="2000_references.html#ref-R-rgugik" role="doc-biblioref">Dyba et Nowosad, 2021</a>)</span> : permet l’acquisition automatique de données ouvertes à partir des ressources du Bureau central polonais de la géodésie et de la cartographie (<a href="https://www.gov.pl/web/gugik">Główny Urząd Geodezji i Kartografii</a> ).<br>
 </li>
-</ul></li>
-<li><strong>Royaume-Uni</strong>
-<ul>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geographr</code> <span class="citation" data-cites="R-geographr">(<a href="2000_references.html#ref-R-geographr" role="doc-biblioref"><strong>R-geographr?</strong></a>)</span> : pour manipuler et cartographier les limites géographiques et administratives du Royaume-Uni.</li>
 </ul></li>
 <li><strong>Uruguay</strong>
 <ul>
-<li><img src="img/geom.svg" alt="Géométries" width="20"> <code>geouy</code> <span class="citation" data-cites="R-geouy">(<a href="2000_references.html#ref-R-geouy" role="doc-biblioref"><strong>R-geouy?</strong></a>)</span> : permet le chargement d’informations géographiques sur l’Uruguay.</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> <code>geouy</code> <span class="citation" data-cites="R-geouy">(<a href="2000_references.html#ref-R-geouy" role="doc-biblioref">Detomasi, 2023</a>)</span> : permet le chargement d’informations géographiques sur l’Uruguay.</li>
 </ul></li>
 <li>…</li>
 </ul>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-R-WDI" class="csl-entry" role="listitem">
+Arel-Bundock, V. (2022). <em>WDI: World Development Indicators and Other World Bank Data</em>. <a href="https://CRAN.R-project.org/package=WDI">https://CRAN.R-project.org/package=WDI</a>
+</div>
+<div id="ref-R-rgee" class="csl-entry" role="listitem">
+Aybar, C. (2023). <em>rgee: R Bindings for Calling the ’Earth Engine’ API</em>. <a href="https://CRAN.R-project.org/package=rgee">https://CRAN.R-project.org/package=rgee</a>
+</div>
+<div id="ref-R-FedData" class="csl-entry" role="listitem">
+Bocinsky, R. K. (2023). <em>FedData: Functions to Automate Downloading Geospatial Data Available from Several Federated Data Sources</em>. <a href="https://CRAN.R-project.org/package=FedData">https://CRAN.R-project.org/package=FedData</a>
+</div>
+<div id="ref-R-MODIStsp" class="csl-entry" role="listitem">
+Busetto, L. et Ranghetti, L. (2016). MODIStsp: an R package for preprocessing of MODIS Land Products time series. <em>Computers &amp; Geosciences</em>, <em>97</em>, 40‑48. <a href="https://doi.org/10.1016/j.cageo.2016.08.020">https://doi.org/10.1016/j.cageo.2016.08.020</a>
+</div>
+<div id="ref-R-happign" class="csl-entry" role="listitem">
+Carteron, P. (2023). <em>happign: R Interface to ’IGN’ Web Services</em>. <a href="https://CRAN.R-project.org/package=happign">https://CRAN.R-project.org/package=happign</a>
+</div>
+<div id="ref-R-geouy" class="csl-entry" role="listitem">
+Detomasi, R. (2023). <span>geouy</span>: Geographic Information of Uruguay. <a href="https://github.com/RichDeto/geouy">https://github.com/RichDeto/geouy</a>
+</div>
+<div id="ref-R-rgugik" class="csl-entry" role="listitem">
+Dyba, K. et Nowosad, J. (2021). rgugik: Search and Retrieve Spatial Data from the Polish Head Office of Geodesy and Cartography in R. <em>Journal of Open Source Software</em>, <em>6</em>(59), 2948. <a href="https://doi.org/10.21105/joss.02948">https://doi.org/10.21105/joss.02948</a>
+</div>
 <div id="ref-R-osmextract" class="csl-entry" role="listitem">
 Gilardi, A. et Lovelace, R. (2023). <em>osmextract: Download and Import Open Street Map Data Extracts</em>. <a href="https://CRAN.R-project.org/package=osmextract">https://CRAN.R-project.org/package=osmextract</a>
 </div>
 <div id="ref-R-maptiles" class="csl-entry" role="listitem">
 Giraud, T. (2023). <em>maptiles: Download and Display Map Tiles</em>. <a href="https://CRAN.R-project.org/package=maptiles">https://CRAN.R-project.org/package=maptiles</a>
+</div>
+<div id="ref-R-acs" class="csl-entry" role="listitem">
+Glenn, E. H. (2019). <em>acs: Download, Manipulate, and Present American Community Survey and Decennial Data from the US Census</em>. <a href="https://CRAN.R-project.org/package=acs">https://CRAN.R-project.org/package=acs</a>
+</div>
+<div id="ref-R-ipumsr" class="csl-entry" role="listitem">
+Greg Freedman Ellis, Derek Burk et Finn Roberts. (2023). <em>ipumsr: An R Interface for Downloading, Reading, and Handling IPUMS Data</em>. <a href="https://CRAN.R-project.org/package=ipumsr">https://CRAN.R-project.org/package=ipumsr</a>
+</div>
+<div id="ref-R-mapsFinland" class="csl-entry" role="listitem">
+Haukka, J. (2023). <em>mapsFinland: Maps of Finland</em>. <a href="https://CRAN.R-project.org/package=mapsFinland">https://CRAN.R-project.org/package=mapsFinland</a>
+</div>
+<div id="ref-R-giscoR" class="csl-entry" role="listitem">
+Hernangómez, D. (2023a). <em><span>giscoR</span>: Download Map Data from GISCO API - Eurostat</em> (version 0.4.0). <a href="https://doi.org/10.5281/zenodo.4317946">https://doi.org/10.5281/zenodo.4317946</a>
+</div>
+<div id="ref-R-mapSpain" class="csl-entry" role="listitem">
+Hernangómez, D. (2023b). <em><span>mapSpain</span>: Administrative Boundaries of Spain</em> (version 0.8.0). <a href="https://doi.org/10.5281/zenodo.5366622">https://doi.org/10.5281/zenodo.5366622</a>
+</div>
+<div id="ref-R-geodata" class="csl-entry" role="listitem">
+Hijmans, R. J., Barbosa, M., Ghosh, A. et Mandel, A. (2023). <em>geodata: Download Geographic Data</em>. <a href="https://CRAN.R-project.org/package=geodata">https://CRAN.R-project.org/package=geodata</a>
+</div>
+<div id="ref-R-elevatr" class="csl-entry" role="listitem">
+Hollister, J., Shah, T., Nowosad, J., Robitaille, A. L., Beck, M. W. et Johnson, M. (2023). <em>elevatr: Access Elevation Data from Various APIs</em>. <a href="https://doi.org/10.5281/zenodo.8335450">https://doi.org/10.5281/zenodo.8335450</a>
+</div>
+<div id="ref-R-eurostat" class="csl-entry" role="listitem">
+Lahti, L., Huovari, J., Kainu, M. et Biecek, P. (2017). Retrieval and Analysis of Eurostat Open Data with the eurostat Package. <em>The R Journal</em>, <em>9</em>(1), 385‑392. <a href="https://doi.org/10.32614/RJ-2017-019">https://doi.org/10.32614/RJ-2017-019</a>
+</div>
+<div id="ref-R-insee" class="csl-entry" role="listitem">
+Leclerc, H. (2022). <em>insee: Tools to Easily Download Data from INSEE BDM Database</em>. <a href="https://CRAN.R-project.org/package=insee">https://CRAN.R-project.org/package=insee</a>
+</div>
+<div id="ref-R-totalcensus" class="csl-entry" role="listitem">
+Li, G. (2021). <em>totalcensus: Extract Decennial Census and American Community Survey Data</em>. <a href="https://CRAN.R-project.org/package=totalcensus">https://CRAN.R-project.org/package=totalcensus</a>
+</div>
+<div id="ref-R-osmdata" class="csl-entry" role="listitem">
+Mark Padgham, Bob Rudis, Robin Lovelace et Maëlle Salmon. (2017). osmdata. <em>Journal of Open Source Software</em>, <em>2</em>(14), 305. <a href="https://doi.org/10.21105/joss.00305">https://doi.org/10.21105/joss.00305</a>
+</div>
+<div id="ref-R-rnaturalearth" class="csl-entry" role="listitem">
+Massicotte, P. et South, A. (2023). <em>rnaturalearth: World Map Data from Natural Earth</em>. <a href="https://CRAN.R-project.org/package=rnaturalearth">https://CRAN.R-project.org/package=rnaturalearth</a>
+</div>
+<div id="ref-R-geobr" class="csl-entry" role="listitem">
+Pereira, R. H. M. et Goncalves, C. N. (2023). <em>geobr: Download Official Spatial Data Sets of Brazil</em>. <a href="https://CRAN.R-project.org/package=geobr">https://CRAN.R-project.org/package=geobr</a>
+</div>
+<div id="ref-R-wbstats" class="csl-entry" role="listitem">
+Piburn, J. (2020). <em>wbstats: Programmatic Access to the World Bank API</em>. Oak Ridge National Laboratory. <a href="https://doi.org/10.11578/dc.20171025.1827">https://doi.org/10.11578/dc.20171025.1827</a>
+</div>
+<div id="ref-R-sen2r" class="csl-entry" role="listitem">
+Ranghetti, L., Boschetti, M., Nutini, F. et Busetto, L. (2020). sen2r: An R toolbox for automatically downloading and preprocessing Sentinel-2 satellite data. <em>Computers &amp; Geosciences</em>, <em>139</em>, 104473. <a href="https://doi.org/10.1016/j.cageo.2020.104473">https://doi.org/10.1016/j.cageo.2020.104473</a>
+</div>
+<div id="ref-R-geoknife" class="csl-entry" role="listitem">
+Read, J. S., Walker, J. I., Appling, A., Blodgett, D. L., Read, E. K. et Winslow, L. A. (2015). geoknife: Reproducible web-processing of large gridded datasets. <em>Ecography</em>. <a href="https://doi.org/10.1111/ecog.01880">https://doi.org/10.1111/ecog.01880</a>
+</div>
+<div id="ref-R-censusapi" class="csl-entry" role="listitem">
+Recht, H. (2022). <em>censusapi: Retrieve Data from the Census APIs</em>. <a href="https://CRAN.R-project.org/package=censusapi">https://CRAN.R-project.org/package=censusapi</a>
+</div>
+<div id="ref-R-geonames" class="csl-entry" role="listitem">
+Rowlingson, B. (2019). <em>geonames: Interface to the "Geonames" Spatial Query Web Service</em>. <a href="https://CRAN.R-project.org/package=geonames">https://CRAN.R-project.org/package=geonames</a>
+</div>
+<div id="ref-R-nasapower" class="csl-entry" role="listitem">
+Sparks, A. H. (2018). nasapower: A NASA POWER Global Meteorology, Surface Solar Energy and Climatology Data Client for R. <em>The Journal of Open Source Software</em>, <em>3</em>(30), 1035. <a href="https://doi.org/10.21105/joss.01035">https://doi.org/10.21105/joss.01035</a>
+</div>
+<div id="ref-R-chilemapas" class="csl-entry" role="listitem">
+Vargas, M. (2022). <em>chilemapas: Mapas de las Divisiones Politicas y Administrativas de Chile (Maps of the Political and Administrative Divisions of Chile)</em>. <a href="https://CRAN.R-project.org/package=chilemapas">https://CRAN.R-project.org/package=chilemapas</a>
+</div>
+<div id="ref-R-idbr" class="csl-entry" role="listitem">
+Walker, K. (2021). <em>idbr: R Interface to the US Census Bureau International Data Base API</em>. <a href="https://CRAN.R-project.org/package=idbr">https://CRAN.R-project.org/package=idbr</a>
+</div>
+<div id="ref-R-tigris" class="csl-entry" role="listitem">
+Walker, K. (2023). <em>tigris: Load Census TIGER/Line Shapefiles</em>. <a href="https://CRAN.R-project.org/package=tigris">https://CRAN.R-project.org/package=tigris</a>
+</div>
+<div id="ref-R-tidycensus" class="csl-entry" role="listitem">
+Walker, K. et Herman, M. (2023). <em>tidycensus: Load US Census Boundary and Attribute Data as ’tidyverse’ and ’sf’-Ready Data Frames</em>. <a href="https://CRAN.R-project.org/package=tidycensus">https://CRAN.R-project.org/package=tidycensus</a>
+</div>
+<div id="ref-R-rdhs" class="csl-entry" role="listitem">
+Watson, O. J., FitzJohn, R. et Eaton, J. W. (2019). rdhs: an R package to interact with The Demographic and Health Surveys (DHS) Program datasets. <em>Wellcome Open Research</em>, <em>4</em>, 103. <a href="https://doi.org/10.12688/wellcomeopenres.15311.1">https://doi.org/10.12688/wellcomeopenres.15311.1</a>
+</div>
+<div id="ref-R-cshapes" class="csl-entry" role="listitem">
+Weidmann, N. B., Schvitz, G. et Girardin, L. (2021). <em>cshapes: The CShapes 2.0 Dataset and Utilities</em>. <a href="https://CRAN.R-project.org/package=cshapes">https://CRAN.R-project.org/package=cshapes</a>
 </div>
 </div>
 </section>
@@ -711,13 +779,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./2000_references.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">References</span>
+      <a href="./1999_georeferencement.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Géoréferencement</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./2002_data.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Données utilisées</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Données utilisées</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

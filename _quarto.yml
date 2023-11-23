@@ -3,6 +3,8 @@ project:
   output-dir: docs
   resources: 
     - "geodata.zip"
+execute: 
+  freeze: auto
 
 format:
   html:
@@ -62,10 +64,7 @@ book:
         - 06_selection_jointure_spatiale_sf.qmd
         - 07_operation_geom_sf.qmd
         - 08_mesures_sf.qmd
-        - 09_exercices_sf.qmd
-    - part: "**Géoréférencement**"
-      chapters: 
-        - 10_georeferencement.qmd
+        # - 09_exercices_sf.qmd
     - part: "**Les données raster : le package terra**"
       chapters: 
         - 11_package_terra.qmd
@@ -83,6 +82,7 @@ book:
         - 21_OSM_routing.qmd
     - 2000_references.qmd
   appendices:
+    - 1999_georeferencement.qmd
     - 2001_donnees.qmd
     - 2002_data.qmd
   

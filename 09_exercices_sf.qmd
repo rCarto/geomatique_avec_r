@@ -1,4 +1,4 @@
-# Exercices
+# Exercices {.unnumbered}
 
 ## Exercice 1
 **Calculer le nombre de restaurants par commune.**
