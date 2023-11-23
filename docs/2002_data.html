@@ -43,6 +43,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -79,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1999_georeferencement.html">Appendices</a></li><li class="breadcrumb-item"><a href="./2002_data.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Données utilisées</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1999_georeferencement.html">Appendices</a></li><li class="breadcrumb-item"><a href="./2002_data.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Les données du projet</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -290,7 +292,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2002_data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Données utilisées</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Les données du projet</span></span></a>
   </div>
 </li>
       </ul>
@@ -301,24 +303,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table des matières</h2>
-   
-  <ul>
-  <li><a href="#lot.gpkg" id="toc-lot.gpkg" class="nav-link active" data-scroll-target="#lot.gpkg"><span class="header-section-number">C.1</span> lot.gpkg</a></li>
-  <li><a href="#com.csv" id="toc-com.csv" class="nav-link" data-scroll-target="#com.csv"><span class="header-section-number">C.2</span> com.csv</a></li>
-  <li><a href="#elevation.tif" id="toc-elevation.tif" class="nav-link" data-scroll-target="#elevation.tif"><span class="header-section-number">C.3</span> elevation.tif</a></li>
-  <li><a href="#clc_2018.tif" id="toc-clc_2018.tif" class="nav-link" data-scroll-target="#clc_2018.tif"><span class="header-section-number">C.4</span> clc_2018.tif</a></li>
-  <li><a href="#sentinel2a.tif" id="toc-sentinel2a.tif" class="nav-link" data-scroll-target="#sentinel2a.tif"><span class="header-section-number">C.5</span> Sentinel2A.tif</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Annexe C — Données utilisées</h1>
+<h1 class="title">Annexe C — Les données du projet</h1>
 </div>
 
 
@@ -335,8 +327,7 @@ ul.task-list li input[type="checkbox"] {
 
 <p>Les données utilisées dans ce document sont stockées dans un projet RStudio. Vous devez le télécharger puis le décompresser sur votre machine. Il vous sera ensuite possible de tester l’ensemble des manipulations proposées dans ce document au sein du projet <strong>geodata</strong>.<br>
 <a href="geodata.zip" class="btn btn-primary btn-sm" role="button">Télécharger le projet</a></p>
-<section id="lot.gpkg" class="level2" data-number="C.1">
-<h2 data-number="C.1" class="anchored" data-anchor-id="lot.gpkg"><span class="header-section-number">C.1</span> lot.gpkg</h2>
+<p><i class="fa-solid fa-layer-group" aria-label="layer-group"></i> <strong>lot.gpkg</strong></p>
 <p>Ce fichier contient plusieurs couches d’informations.</p>
 <ul>
 <li><strong>departements</strong> : les départements français métropolitains, <a href="https://geoservices.ign.fr/adminexpress">Admin Express COG Carto 3.0, IGN - 2021</a>;</li>
@@ -345,9 +336,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>restaurants</strong> : les restaurants du Lot, <a href="https://www.insee.fr/fr/statistiques/3568638?sommaire=3568656">Base permanente des équipements (BPE), INSEE - 2021</a>;</li>
 <li><strong>elevations</strong> : une grille régulière de points d’altitude (pas d’1 km), <a href="http://srtm.csi.cgiar.org">Jarvis A., H.I. Reuter, A. Nelson, E. Guevara, 2008, Hole-filled seamless SRTM data V4, International Centre for Tropical Agriculture (CIAT)</a>.</li>
 </ul>
-</section>
-<section id="com.csv" class="level2" data-number="C.2">
-<h2 data-number="C.2" class="anchored" data-anchor-id="com.csv"><span class="header-section-number">C.2</span> com.csv</h2>
+<p><i class="fa-solid fa-file-csv" aria-label="file-csv"></i> <strong>com.csv</strong></p>
 <p>Ce fichier tabulaire contient des informations complémentaire sur la population active occupée âgée de 25 à 54 ans, par secteur d’activité et sexe, au lieu de résidence, en 2017, <a href="https://www.insee.fr/fr/statistiques/1893185">Recensements harmonisés - Séries départementales et communales, INSEE - 2020</a>.</p>
 <ul>
 <li>le nombre d’actifs (ACT);</li>
@@ -355,23 +344,16 @@ ul.task-list li input[type="checkbox"] {
 <li>la part des actifs dans la population totale (SACT);</li>
 <li>la part des actifs dans l’industrie dans le total des actifs (SACT_IND).</li>
 </ul>
-</section>
-<section id="elevation.tif" class="level2" data-number="C.3">
-<h2 data-number="C.3" class="anchored" data-anchor-id="elevation.tif"><span class="header-section-number">C.3</span> elevation.tif</h2>
+<p><i class="fa-solid fa-satellite" aria-label="satellite"></i> <strong>elevation.tif</strong></p>
 <p>Une grille régulière de points d’altitude (pas de 30 mètres environ), <a href="http://srtm.csi.cgiar.org">Jarvis A., H.I. Reuter, A. Nelson, E. Guevara, 2008, Hole-filled seamless SRTM data V4, International Centre for Tropical Agriculture (CIAT)</a>.<br>
 <strong>elev.tif</strong> est une version reprojetée en Lambert 93 de <strong>elevation.tif</strong></p>
-</section>
-<section id="clc_2018.tif" class="level2" data-number="C.4">
-<h2 data-number="C.4" class="anchored" data-anchor-id="clc_2018.tif"><span class="header-section-number">C.4</span> clc_2018.tif</h2>
+<p><i class="fa-solid fa-satellite" aria-label="satellite"></i> <strong>clc_2018.tif</strong></p>
 <p>Données CORINE Land Cover, <a href="https://land.copernicus.eu/pan-european/corine-land-cover/clc2018?tab=download">Corine Land Cover (CLC) 2018, Version 2020_20u1 - Copernicus Programme</a>.<br>
 <strong>clc.tif</strong> est une version reprojetée en Lambert 93 de <strong>clc_2018.tif</strong></p>
-</section>
-<section id="sentinel2a.tif" class="level2" data-number="C.5">
-<h2 data-number="C.5" class="anchored" data-anchor-id="sentinel2a.tif"><span class="header-section-number">C.5</span> Sentinel2A.tif</h2>
+<p><i class="fa-solid fa-satellite" aria-label="satellite"></i> <strong>Sentinel2A.tif</strong></p>
 <p>Données Sentinel, <a href="https://scihub.copernicus.eu/dhus/#/home">Sentinel, <em>Sentinel-2A</em>, S2A_OPER_MSI_L2A_DS_VGS2_20211012T140548_S20211012T105447_N03.01, 12 Octobre 2021 - Copernicus Programme</a>, téléchargé le 28 décembre 2021.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

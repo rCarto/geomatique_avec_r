@@ -1,10 +1,10 @@
-# Données utilisées
+# Les données du projet
 
 Les données utilisées dans ce document sont stockées dans un projet RStudio. 
 Vous devez le télécharger puis le décompresser sur votre machine. Il vous sera ensuite possible de tester l'ensemble des manipulations proposées dans ce document au sein du projet **geodata**.  
 [Télécharger le projet](geodata.zip){.btn .btn-primary .btn-sm role="button"}  
 
-## lot.gpkg
+{{< fa layer-group >}} **lot.gpkg**
 
 Ce fichier contient plusieurs couches d'informations.
 
@@ -14,7 +14,7 @@ Ce fichier contient plusieurs couches d'informations.
 - **restaurants** : les restaurants du Lot, [Base permanente des équipements (BPE), INSEE - 2021](https://www.insee.fr/fr/statistiques/3568638?sommaire=3568656);
 - **elevations** : une grille régulière de points d'altitude (pas d'1 km), [Jarvis A., H.I. Reuter, A. Nelson, E. Guevara, 2008, Hole-filled seamless SRTM data V4, International Centre for Tropical Agriculture (CIAT)](http://srtm.csi.cgiar.org).
 
-## com.csv
+{{< fa file-csv >}} **com.csv** 
 
 Ce fichier tabulaire contient des informations complémentaire sur la population active occupée âgée de 25 à 54 ans, par secteur d'activité et sexe, au lieu de résidence, en 2017, [Recensements harmonisés - Séries départementales et communales, INSEE - 2020](https://www.insee.fr/fr/statistiques/1893185).
 
@@ -23,16 +23,16 @@ Ce fichier tabulaire contient des informations complémentaire sur la population
 - la part des actifs dans la population totale (SACT);
 - la part des actifs dans l’industrie dans le total des actifs (SACT_IND).
 
-## elevation.tif
+{{< fa satellite >}} **elevation.tif**
 
 Une grille régulière de points d'altitude (pas de 30 mètres environ), [Jarvis A., H.I. Reuter, A. Nelson, E. Guevara, 2008, Hole-filled seamless SRTM data V4, International Centre for Tropical Agriculture (CIAT)](http://srtm.csi.cgiar.org).   
 **elev.tif** est une version reprojetée en Lambert 93 de **elevation.tif**
 
-## clc_2018.tif
+{{< fa satellite >}} **clc_2018.tif**
 
 Données CORINE Land Cover, [Corine Land Cover (CLC) 2018, Version 2020_20u1 - Copernicus Programme](https://land.copernicus.eu/pan-european/corine-land-cover/clc2018?tab=download).  
 **clc.tif** est une version reprojetée en Lambert 93 de **clc_2018.tif**
 
-## Sentinel2A.tif
+{{< fa satellite >}} **Sentinel2A.tif**
 
 Données Sentinel, [Sentinel, *Sentinel-2A*, S2A_OPER_MSI_L2A_DS_VGS2_20211012T140548_S20211012T105447_N03.01, 12 Octobre 2021 - Copernicus Programme](https://scihub.copernicus.eu/dhus/#/home), téléchargé le 28 décembre 2021.
