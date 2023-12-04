@@ -20,19 +20,25 @@ l'Université Paris 8 Vincennes - Saint-Denis.
 Un deuxième manuel centré sur la cartographie est disponible ici :
 [Cartographie avec R](https://rcarto.github.io/cartographie_avec_r/).
 
+**Voir aussi en anglais : **
+
+::: {layout="[[1,1,1,1,1], [1,1,1]]"}
+
+![@lovelace2019](img/r2.png)
+
+
+![@pebesma2023](img/r1.png)
+
+
+![@hijmans](img/r3.png)
+
+:::
+
+
 --------
 <small>
 **Pour citer le document :**  
 
 Giraud, T. et Pecout, H. (2023). Géomatique avec R. https://doi.org/10.5281/zenodo.5906212
 
-```
-@misc{
-  author = {Giraud, Timothée and Pecout, Hugues},
-  doi = {10.5281/zenodo.5906212},
-  title = {{Géomatique avec R}},
-  url = {https://rcarto.github.io/geomatique_avec_r/},
-  year = {2023}
-}
-```
 </small>

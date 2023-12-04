@@ -35,7 +35,7 @@ vignettes/*.pdf
 .Renviron
 
 
-data/com*
+data/com.gpkg
 
 /.quarto/
 

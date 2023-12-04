@@ -22,7 +22,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -356,7 +375,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">23 nov. 2023</p>
+      <p class="date">4 déc. 2023</p>
     </div>
   </div>
   
@@ -386,19 +405,52 @@ Les données utilisées dans ce document sont stockées dans un projet RStudio. 
 Vous pouvez nous envoyer vos remarques et suggestions en <a href="https://github.com/rCarto/geomatique_avec_r/issues">postant une <em>issue</em></a> sur le <a href="https://github.com/rCarto/geomatique_avec_r">dépôt GitHub</a> de ce document.</p>
 <p><strong>Contexte</strong><br>
 Ce manuel a été initialement conçu pour accompagner le cours “Cartographie avec R” du Master 2 Géomatique, géodécisionnel, géomarketing et multimédia (G2M) de l’Université Paris 8 Vincennes - Saint-Denis. Un deuxième manuel centré sur la cartographie est disponible ici : <a href="https://rcarto.github.io/cartographie_avec_r/">Cartographie avec R</a>.</p>
+<p><strong>Voir aussi en anglais : </strong></p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 20.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/r2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><span class="citation" data-cites="lovelace2019">Lovelace et al. (<a href="2000_references.html#ref-lovelace2019" role="doc-biblioref">2019</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 20.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/r1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><span class="citation" data-cites="pebesma2023">Pebesma et Bivand (<a href="2000_references.html#ref-pebesma2023" role="doc-biblioref">2023</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 20.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/r3.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><span class="citation" data-cites="hijmans">Hijmans (<a href="2000_references.html#ref-hijmans" role="doc-biblioref">2023</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <hr>
 <p><small> <strong>Pour citer le document :</strong></small></p><small>
 <p>Giraud, T. et Pecout, H. (2023). Géomatique avec R. https://doi.org/10.5281/zenodo.5906212</p>
-<pre><code>@misc{
-  author = {Giraud, Timothée and Pecout, Hugues},
-  doi = {10.5281/zenodo.5906212},
-  title = {{Géomatique avec R}},
-  url = {https://rcarto.github.io/geomatique_avec_r/},
-  year = {2023}
-}</code></pre>
 </small><p><small></small></p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-hijmans" class="csl-entry" role="listitem">
+Hijmans, R. J. (2023). <em><span>Spatial Data Science with R and "terra"</span></em>. <a href="https://rspatial.org">https://rspatial.org</a>
+</div>
+<div id="ref-lovelace2019" class="csl-entry" role="listitem">
+Lovelace, R., Nowosad, J. et Muenchow, J. (2019). <em>Geocomputation with <span>R</span></em>. CRC Press. <a href="https://r.geocompx.org/">https://r.geocompx.org/</a>
+</div>
+<div id="ref-pebesma2023" class="csl-entry" role="listitem">
+Pebesma, E. et Bivand, R. (2023). <em><span>Spatial Data Science: With applications in R</span></em> (p. 352). <span>Chapman and Hall/CRC</span>. <a href="https://r-spatial.org/book/">https://r-spatial.org/book/</a>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
