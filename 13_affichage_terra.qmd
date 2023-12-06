@@ -11,26 +11,23 @@ plot(elev)
 ```
 
 
-Un raster contient toujours des données numériques, mais il peut aussi bien s'agir de données quantitatives que de données qualitatives (catégorielles) codées numériquement (ex: type d'occupation du sol).
+Un raster contient toujours des données numériques, mais il peut aussi bien s'agir de données quantitatives que de données qualitatives (catégorielles) codées numériquement.
 
 Précisez le type de données stockées avec l'argument `type` (`type = "continuous"` par défaut), pour les afficher correctement.
 
-Import et affichage d'un raster contenant des données catégorielles : CORINE Land Cover 2018 (type d'occupation du sol) avec une résolution de 100m : 
+Import et affichage d'un raster contenant des données catégorielles : CORINE Land Cover 2018 (type d'occupation du sol) avec une résolution de 100m. Ces données ont été récupérées sur le [site de Copernicus](https://land.copernicus.eu/pan-european/corine-land-cover/clc2018?tab=download), le programme européen de surveillance de la Terre qui collecte et met à disposition des données issues de ses propres satellites (*Sentinelles*) d'observation. Une extraction centrée sur la commune de Cahors a ensuite été réalisée.
 
 ```{r import_raster_2}
 #| cache: false
-# Import des données CORINE Land Cover 2018 
-# Type d'occupation du sol, résolution de 100m
+
 clc <- rast("data/clc_2018.tif")
-```
 
-Ces données ont été récupérées sur le [site de Copernicus](https://land.copernicus.eu/pan-european/corine-land-cover/clc2018?tab=download), le programme européen de surveillance de la Terre qui collecte et met à disposition des données issues de ses propres satellites (*Sentinelles*) d'observation. Une extraction centrée sur la commune de Cahors a ensuite été réalisée.
-
-```{r affichage_raster_2}
+# Affichage
 plot(clc, type="classes")
 ```
 
-Pour afficher les intitulés réels des types d'occupation du sol, ainsi que les couleurs officielles de la nomenclature CORINE Land Cover (consultables [ici](https://www.statistiques.developpement-durable.gouv.fr/corine-land-cover-0)), vous pouvez procéder de la manière suivante.
+
+Pour afficher les intitulés réels des types d'occupation du sol, ainsi que les couleurs officielles de la nomenclature CORINE Land Cover (consultables [ici](https://www.statistiques.developpement-durable.gouv.fr/corine-land-cover-0)), vous pouvez procéder de la manière suivante :
 
 ```{r affichage_raster_3}
 #| fig-width: 7

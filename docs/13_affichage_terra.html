@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -365,7 +365,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>#&gt; terra 1.7.55</code></pre>
+<pre><code>#&gt; terra 1.7.29</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>elev <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"data/elevation.tif"</span>) </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elev)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -373,51 +373,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="figs/affichage_1_raster-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
-<p>Un raster contient toujours des données numériques, mais il peut aussi bien s’agir de données quantitatives que de données qualitatives (catégorielles) codées numériquement (ex: type d’occupation du sol).</p>
+<p>Un raster contient toujours des données numériques, mais il peut aussi bien s’agir de données quantitatives que de données qualitatives (catégorielles) codées numériquement.</p>
 <p>Précisez le type de données stockées avec l’argument <code>type</code> (<code>type = "continuous"</code> par défaut), pour les afficher correctement.</p>
-<p>Import et affichage d’un raster contenant des données catégorielles : CORINE Land Cover 2018 (type d’occupation du sol) avec une résolution de 100m :</p>
+<p>Import et affichage d’un raster contenant des données catégorielles : CORINE Land Cover 2018 (type d’occupation du sol) avec une résolution de 100m. Ces données ont été récupérées sur le <a href="https://land.copernicus.eu/pan-european/corine-land-cover/clc2018?tab=download">site de Copernicus</a>, le programme européen de surveillance de la Terre qui collecte et met à disposition des données issues de ses propres satellites (<em>Sentinelles</em>) d’observation. Une extraction centrée sur la commune de Cahors a ensuite été réalisée.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import des données CORINE Land Cover 2018 </span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Type d'occupation du sol, résolution de 100m</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>clc <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"data/clc_2018.tif"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Ces données ont été récupérées sur le <a href="https://land.copernicus.eu/pan-european/corine-land-cover/clc2018?tab=download">site de Copernicus</a>, le programme européen de surveillance de la Terre qui collecte et met à disposition des données issues de ses propres satellites (<em>Sentinelles</em>) d’observation. Une extraction centrée sur la commune de Cahors a ensuite été réalisée.</p>
-<div class="cell" data-hash="cache/affichage_raster_2_91efcce638f6682505f1f93d1d6210b7">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clc, <span class="at">type=</span><span class="st">"classes"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clc <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"data/clc_2018.tif"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Affichage</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clc, <span class="at">type=</span><span class="st">"classes"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="figs/affichage_raster_2-1.png" class="img-fluid" width="576"></p>
+<p><img src="figs/import_raster_2-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
-<p>Pour afficher les intitulés réels des types d’occupation du sol, ainsi que les couleurs officielles de la nomenclature CORINE Land Cover (consultables <a href="https://www.statistiques.developpement-durable.gouv.fr/corine-land-cover-0">ici</a>), vous pouvez procéder de la manière suivante.</p>
+<p>Pour afficher les intitulés réels des types d’occupation du sol, ainsi que les couleurs officielles de la nomenclature CORINE Land Cover (consultables <a href="https://www.statistiques.developpement-durable.gouv.fr/corine-land-cover-0">ici</a>), vous pouvez procéder de la manière suivante :</p>
 <div class="cell" data-hash="cache/affichage_raster_3_2e90219145bcc5bcedff66629adae340">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>intitule_poste <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Tissu urbain continu"</span>, <span class="st">"Tissu urbain discontinu"</span>,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Zones industrielles ou commerciales et installations publiques"</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Réseaux routier et ferroviaire et espaces associés"</span>, </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Aéroports"</span>,<span class="st">"Extraction de matériaux"</span>, </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Equipements sportifs et de loisirs"</span>, </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Terres arables hors périmètres d'irrigation"</span>, <span class="st">"Vignobles"</span>, </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Vergers et petits fruits"</span>, </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Prairies et autres surfaces toujours en herbe à usage agricole"</span>, </span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Systèmes culturaux et parcellaires complexes"</span>, </span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Surfaces essentiellement agricoles (interrompues par espaces nat.)"</span>, </span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Forêts de feuillus"</span>, <span class="st">"Forêts de conifères"</span>, <span class="st">"Forêts mélangées"</span>,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Pelouses et pâturages naturels"</span>, </span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Landes et broussailles"</span>, <span class="st">"Végétation sclérophylle"</span>, </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Forêt et végétation arbustive en mutation"</span>, </span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Cours et voies d'eau"</span>, <span class="st">"Plans d'eau"</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>couleur_off <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#E6004D"</span>, <span class="st">"#FF0000"</span>, <span class="st">"#CC4DF2"</span>, <span class="st">"#CC0000"</span>, <span class="st">"#E6CCE6"</span>, <span class="st">"#A600CC"</span>, </span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"#FFE6FF"</span>, <span class="st">"#FFFFA8"</span>, <span class="st">"#E68000"</span>, <span class="st">"#F2A64D"</span>, <span class="st">"#E6E64D"</span>, <span class="st">"#FFE64D"</span>, </span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"#E6CC4D"</span>, <span class="st">"#80FF00"</span>, <span class="st">"#00A600"</span>, <span class="st">"#4DFF00"</span>, <span class="st">"#CCF24D"</span>, <span class="st">"#A6FF80"</span>, </span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"#A6E64D"</span>, <span class="st">"#A6F200"</span>, <span class="st">"#00CCF2"</span>, <span class="st">"#80F2E6"</span>)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clc, </span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"classes"</span>, </span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">levels =</span> intitule_poste,</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> couleur_off, </span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">plg =</span> <span class="fu">list</span>(<span class="at">cex =</span> <span class="fl">0.7</span>),</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>     <span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">3.1</span>, <span class="fl">1.1</span>, <span class="fl">1.1</span>, <span class="dv">10</span>)</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>     )</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>intitule_poste <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Tissu urbain continu"</span>, <span class="st">"Tissu urbain discontinu"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Zones industrielles ou commerciales et installations publiques"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Réseaux routier et ferroviaire et espaces associés"</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Aéroports"</span>,<span class="st">"Extraction de matériaux"</span>, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Equipements sportifs et de loisirs"</span>, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Terres arables hors périmètres d'irrigation"</span>, <span class="st">"Vignobles"</span>, </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Vergers et petits fruits"</span>, </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Prairies et autres surfaces toujours en herbe à usage agricole"</span>, </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Systèmes culturaux et parcellaires complexes"</span>, </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Surfaces essentiellement agricoles (interrompues par espaces nat.)"</span>, </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Forêts de feuillus"</span>, <span class="st">"Forêts de conifères"</span>, <span class="st">"Forêts mélangées"</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Pelouses et pâturages naturels"</span>, </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Landes et broussailles"</span>, <span class="st">"Végétation sclérophylle"</span>, </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Forêt et végétation arbustive en mutation"</span>, </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Cours et voies d'eau"</span>, <span class="st">"Plans d'eau"</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>couleur_off <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#E6004D"</span>, <span class="st">"#FF0000"</span>, <span class="st">"#CC4DF2"</span>, <span class="st">"#CC0000"</span>, <span class="st">"#E6CCE6"</span>, <span class="st">"#A600CC"</span>, </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"#FFE6FF"</span>, <span class="st">"#FFFFA8"</span>, <span class="st">"#E68000"</span>, <span class="st">"#F2A64D"</span>, <span class="st">"#E6E64D"</span>, <span class="st">"#FFE64D"</span>, </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"#E6CC4D"</span>, <span class="st">"#80FF00"</span>, <span class="st">"#00A600"</span>, <span class="st">"#4DFF00"</span>, <span class="st">"#CCF24D"</span>, <span class="st">"#A6FF80"</span>, </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"#A6E64D"</span>, <span class="st">"#A6F200"</span>, <span class="st">"#00CCF2"</span>, <span class="st">"#80F2E6"</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clc, </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"classes"</span>, </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">levels =</span> intitule_poste,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> couleur_off, </span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">plg =</span> <span class="fu">list</span>(<span class="at">cex =</span> <span class="fl">0.7</span>),</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>     <span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">3.1</span>, <span class="fl">1.1</span>, <span class="fl">1.1</span>, <span class="dv">10</span>)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>     )</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/affichage_raster_3-1.png" class="img-fluid" width="672"></p>
 </div>

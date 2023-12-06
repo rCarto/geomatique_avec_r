@@ -33,8 +33,10 @@ clc <- rast("data/clc.tif")
 #| eval: false
 # Remplace les valeurs -9999 par NA
 elev[elev[[1]]== -9999] <- NA
+
 # Remplace les valeurs < 1500 par NA
 elev[elev < 1500]  <- NA
+
 # Remplace les valeurs NA par 0
 elev[is.na(elev )] <- 0
 ```
@@ -44,6 +46,7 @@ elev[is.na(elev )] <- 0
 ```{r op_local_1, eval=TRUE}
 # Ajout de 1000 à la valeur de chaque cellule
 elev_1000 <-  elev + 1000
+
 # Suppression de l'altitude médiane à la valeur de chaque cellule
 elev_med <-  elev - global(x = elev, fun = median, na.rm = TRUE)[[1]]
 ```
@@ -64,14 +67,15 @@ plot(elev_med, main = "Elevation - median value")
 
 La reclassification des valeurs d'un raster peut aussi bien être utilisée pour discrétiser des données quantitatives que pour catégoriser des modalités qualitatives.
 
-Cela permet par exemple de répartir les [44 postes de la nomenclature CLC](https://www.statistiques.developpement-durable.gouv.fr/corine-land-cover-0) selon les 5 grands types d'occupation du territoire : territoires artificialisés, agricoles, forêts et milieux semi-naturels, zones humides et surfaces en eau. Pour cela, il est d'abord nécessaire de construire la table (matrice) de correspondance.
+Cela permet par exemple de répartir les [44 postes de la nomenclature CLC](https://www.statistiques.developpement-durable.gouv.fr/corine-land-cover-0) selon les 5 grands types d'occupation du territoire : territoires artificialisés, agricoles, forêts et milieux semi-naturels, zones humides et surfaces en eau. Pour cela, il est d'abord nécessaire de construire la table (matrice) de correspondance avec la fonction `matrix()`.
 ```{r reclass_2}
 reclassif <- matrix(c(100, 199, 1,
                       200, 299, 2,
                       300, 399, 3,
                       400, 499, 4,
                       500, 599, 5),
-                    ncol = 3, byrow = TRUE)
+                    ncol = 3, 
+                    byrow = TRUE)
 reclassif
 ```
 Les valeurs comprises entre 100 et 199 seront remplacées par la valeur 1.
@@ -83,6 +87,7 @@ Les valeurs comprises entre 300 et 399 seront remplacées par la valeur 3.
 La fonction `classify()` permet de réaliser la reclassification.
 ```{r reclass_4}
 clc_5 <- classify(clc, rcl = reclassif)
+
 plot(clc_5, type = "classes")
 ```
 
@@ -90,34 +95,29 @@ Affichage avec les intitulés et couleurs officiels des différentes catégories
 ```{r reclass_6}
 #| fig-width: 6
 #| fig.height: 4.5
-plot(
-  clc_5,
-  type = "classes",
-  levels = c(
-    "Territoires artificialisés",
-    "Territoires agricoles",
-    "Forêts et milieux semi-naturels",
-    "Surfaces en eau"
-  ),
-  col = c("#E6004D",
-          "#FFFFA8",
-          "#80FF00",
-          "#00CCF2"), 
-  plg = list(cex = 0.7)
-)
+plot(clc_5,
+     type = "classes",
+     levels = c("Territoires artificialisés",
+                "Territoires agricoles",
+                "Forêts et milieux semi-naturels",
+                "Surfaces en eau"),
+     col = c("#E6004D", "#FFFFA8", "#80FF00", "#00CCF2"), 
+     plg = list(cex = 0.7))
 ```
 
 
 
 ### Opération sur plusieurs couches (ex: NDVI)
 
-Il est possible de calculer la valeur d'une cellule à partir de ses valeurs stockées dans différentes couches d'un objet `SpatRaster`.
+Il est possible de calculer une valeur de cellule à partir de différentes valeurs stockées dans plusieurs couches d'un objet `SpatRaster`.
 
 L'exemple le plus courant est sans doute le calcul de l'[indice de végétation normalisé (*NDVI*)](http://www.trameverteetbleue.fr/outils-methodes/donnees-mobilisables/indice-vegetation-modis). Pour chaque cellule, on calcule une valeur à partir de deux couches de données matricielles d'une image satellite multispectrale.
 
 ```{r NDVI, eval=TRUE}
 # Import d'une image satellite multispectrale
 Sentinel2a <- rast("data/Sentinel2A.tif")
+
+Sentinel2a
 ```
 Cette image satellite multispectrale (résolution de 10m) datée du 12/10/2021, a été produite par le satellite *Sentinel-2* et a été récupéré sur la [plateforme Copernicus Open Access Hub](https://scihub.copernicus.eu/dhus/#/home). Une extraction des bandes spectrales Rouge et proche infrarouge, centrée sur le département du Lot a ensuite été réalisée.
 
@@ -128,10 +128,11 @@ plot(Sentinel2a)
 ```
 
 
-Pour alléger le code, on assigne les deux couches matricielles dans des objets `SpatRaster` différents.
+Pour alléger le code, on assigne les couches matricielles dans deux objets `SpatRaster` différents.
 ```{r NDVI_2}
 # Bande spectrale rouge
 B04_Red <- Sentinel2a[[1]]
+
 # Bande spectrale proche infrarouge
 B08_NIR <-Sentinel2a[[2]]
 ```
@@ -155,12 +156,12 @@ L'analyse focale considère une cellule plus ses voisins directs de manière con
 La première étape consiste à construire une matrice qui détermine le bloc de cellules qui sera pris en compte autour de chaque cellule.
 
 ```{r op_focal_1}
-# Matrice 9 x 9, où chaque cellule présente la même pondération
+# Matrice 9 x 9, où chaque cellule présente la même pondération (1)
 mon_focal <- matrix(1, nrow = 9, ncol = 9)
 mon_focal
 ```
 
-La fonction `focal()` permet de ensuite de réaliser l'analyse souhaitée. Par exemple : le calcul de la moyenne des valeurs de toutes les cellules contiguës, pour chaque cellule du raster.
+La fonction `focal()` permet de ensuite de réaliser l'analyse souhaitée. Par exemple : le calcul de la moyenne des valeurs de fenêtre spatiale determinée, pour chaque cellule du raster.
 
 ```{r op_focal_3}
 elev_focal_mean <- focal(elev, w = mon_focal, fun = mean)
@@ -169,7 +170,7 @@ elev_focal_mean <- focal(elev, w = mon_focal, fun = mean)
 ```{r op_focal_5}
 #| layout-ncol: 2
 plot(elev, main = "raster de départ")
-plot(elev_focal_mean, main="résultat : focal 9 x 9)")
+plot(elev_focal_mean, main="résultat : focal 9 x 9, sans pondération particulière")
 ```
 
 
@@ -186,13 +187,13 @@ La fonction `terrain()` permet de réaliser des analyses focales spécifiques au
 - ***TRI*** = calcul de l'indice de la variabilité de l'élévation;
 - ***flowdir*** = calcul du sens d'écoulement de l'eau.
 
-Exemples avec le calcul des pentes (*slope*).
+Exemples avec le calcul des pentes (*slope*), c'est à dire leur inclinaison en degré.
 ```{r op_focal_6}
-# Calcul de la pente (slope)
+
 slope <- terrain(elev, "slope",
                  neighbors = 8, # 8 (ou 4) cellules autour pris en compte
                  unit = "degrees") # Unité en sortie
-# Inclinaison des pentes, en degré
+
 plot(slope)
 ```
 
@@ -200,7 +201,7 @@ plot(slope)
 
 ## Opérations globales
 
-![https://gisgeography.com/map-algebra-global-zonal-focal-local/](img/op_global.png)
+![source : [https://gisgeography.com/map-algebra-global-zonal-focal-local/](https://gisgeography.com/map-algebra-global-zonal-focal-local/)](img/op_global.png)
 
 Les opérations globales permettent de résumer les valeurs matricielles d'une ou plusieurs matrices.
 
@@ -236,13 +237,18 @@ Les opérations zonales permettent de résumer les valeurs matricielles de certa
 
 La fonction `extract()` permet d'extraire et de manipuler les valeurs des cellules qui intersectent des données vectorielles.
 
-Exemple à partir de polygones :
+Exemple à partir des limites communales :
 ```{r op_zonal_poly, eval=TRUE}
 commune <- vect("data/lot.gpkg", layer = "communes")
+
 # Moyenne d'élévation pour chaque polygone (commune) 
 elev_by_com <-  extract(elev, commune, fun = mean, na.rm = FALSE)
 head(elev_by_com, n = 3)
+
+# Suppression des valeurs NaN
 elev_by_com <- elev_by_com[!is.nan(elev_by_com$altitude),]
+
+# Remplacement des identifiants uniques par le nom des communes
 elev_by_com$ID <- commune[elev_by_com$ID]$NOM_COM
 head(elev_by_com, n = 6)
 ```
@@ -250,7 +256,7 @@ head(elev_by_com, n = 6)
 
 ### Opération zonale à partir d'un raster
 
-Les opérations zonales peuvent être réaliser par zone délimitée par les valeurs catégorielles d'un second raster. Pour cela, les deux rasters doivent avoir exactement le même étendue et la même résolution.
+Les opérations zonales peuvent être réalisées par zone délimitée par les valeurs catégorielles d'un second raster avec la fonction `zonal()`. **Pour cela, les deux rasters doivent avoir exactement le même étendue et la même résolution**.
 
 ```{r op_zonal_3,}
 # Élévation moyenne pour chaque zone de clc

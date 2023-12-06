@@ -6,11 +6,10 @@ cache: false
 
 ## Projections {#sec-proj}
 
-Pour modifier le système de projection d'un raster, utilisez la fonction `project()`. Il est alors nécessaire de **fournir un modèle** et d'indiquer la **méthode d'estimation** des nouvelles valeurs des cellules.
+Pour modifier le système de projection d'un raster, nous pouvons utiliser la fonction `project()`. Il est alors nécessaire de **fournir un modèle** et d'indiquer la **méthode d'estimation** des nouvelles valeurs des cellules.
 
 Le modèle est un nouveau raster sur lequel aligner/projeter les données. 
-Pour construire un model vous pouvez d'abord faire `project(x, crs)` et ensuite manipuler la sortie pour obtenir le modèle que vous voulez. Par exemple, dans la mesure du possible, utilisez des nombres entiers pour l'étendue et la résolution. 
-Vous pouvez utiliser des commandes telles que `dim(z) = c(180, 360)` ou `res(z) <- 100000`. (voir `?project`)
+Pour construire un model, nous utilisons dans un premier temps la fonction `project(x, crs)`, puis la fonction `res()` (ou `dim()`) pour définir la résolution de ce nouveau raster (voir `?project`). La fonction `project()` peut ensuite être réutiliser pour projeter les valeurs dans le nouveau raster, en précisant la méthode d'estimation à utiliser. 
 
 Quatre méthodes d'estimation sont disponibles :   
 
@@ -24,18 +23,24 @@ Quatre méthodes d'estimation sont disponibles :
 library(terra)
 elev_raw <- rast("data/elevation.tif") 
 clc_raw <- rast("data/clc_2018.tif")
+
 # Création d'un modele de raster en 2154
-model_proj <- project(x = elev_raw, y =  "EPSG:2154")
-# ajustement de la résolution du modèle
+model_proj <- project(x = elev_raw, y = "EPSG:2154")
+
+# Ajustement de la résolution du modèle
+# dim(z) = c(180, 360) / OU :
 res(model_proj) <- 100
-# projection dans le modèle
+
+# Projection dans le modèle
 elev <- project(x = elev_raw, y = model_proj, method = "bilinear")
 clc <- project(x = clc_raw, y = model_proj, method = "near")
+
 plot(elev, main = "Altitudes - RGF93 v1 / Lambert-93" )
 plot(clc, type = "classes",  main = "CLC - RGF93 v1 / Lambert-93")
 ```
 
-Sauvegarde des rasters reprojetés :
+Pour sauvegarder les rasters reprojetés :
+
 ```{r save_rast_proj}
 #| eval: false
 writeRaster(elev, filename = "data/elev.tif")
@@ -53,19 +58,21 @@ Le découpage d'un raster en fonction de l'étendue d'un autre objet, `SpatVecto
 ![](img/crop2.png)
 :::
 
-Import de données vectorielles (découpages communaux) avec la fonction `vect`. Ces données seront stockées dans un objet `SpatVector`.
+Import de données vectorielles (découpages communaux) avec la fonction `vect` du package `terra`. Ces données seront stockées dans un objet `SpatVector`.
 ```{r crop_raster}
 commune <- vect("data/lot.gpkg", layer="communes")
 ```
 
-Extraction des limites communales de Cahors (code INSEE : 46042).
+Extraction des limites communales de Cahors (code INSEE = 46042).
 ```{r crop_raster_1}
 cahors <- subset(commune, commune$INSEE_COM == "46042") 
 ```
 
-Utilisation de la fonction `crop()`. Les deux couches de données doivent être dans la même projection. 
+
+Pour utiliser la fonction `crop()`, les deux couches de données doivent être dans la même projection. 
 ```{r crop_raster_3}
 crop_cahors <- crop(elev, cahors)
+
 plot(crop_cahors)
 plot(cahors, add = TRUE)
 ```
@@ -74,9 +81,10 @@ plot(cahors, add = TRUE)
 
 Pour afficher uniquement les valeurs d'un raster contenu dans un polygone, utilisez la fonction `mask()`.
 
-Création d'un masque sur le raster **crop_cahors** en fonction des limites communales (polygone) de **cahors**.
+Création d'un masque sur le raster **crop_cahors** en fonction des limites communales (polygone) de **cahors** :
 ```{r mask_raster, eval=TRUE, fig.align='center', fig.width=6}
 mask_cahors <- mask(crop_cahors, cahors)
+
 plot(mask_cahors)
 ```
 
@@ -84,8 +92,8 @@ plot(mask_cahors)
 
 ::: {.callout-note}
 ## Mask vs. Crop
-**Masquer** un raster (mask) signifie remplacer les valeurs de pixels en dehors d'une zone d'intérêt en NA. Les dimensions du raster ne sont pas modifiées.   
-**Recadrer** un raster (crop) signifie supprimer les lignes et/ou les colonnes qui se trouvent en dehors d'une zone d'intéret. Les dimensions du raster sont modifiées.
+**Masquer** un raster (**mask**) signifie remplacer les valeurs de pixels en dehors d'une zone d'intérêt en NA. Les dimensions du raster ne sont pas modifiées.   
+**Recadrer** un raster (**crop**) signifie supprimer les lignes et/ou les colonnes qui se trouvent en dehors d'une zone d'intéret. Les dimensions du raster sont modifiées.
 :::
 
 
@@ -99,20 +107,21 @@ plot(mask_cahors)
 ![](img/agr_raster_2.png)
 :::
 
-Le ré-échantillonnage d'un raster dans une résolution différente se fait en deux étapes.
+Le ré-échantillonnage d'un raster dans une résolution différente se fait en plusieurs étapes.
 
 1. Afficher la résolution d'un raster avec la fonction `res()`.
 ```{r agr_raster}
-# Taille des cellules ?
 res(elev) 
 ```
 
 2. Créer une grille de même étendue, puis en diminuer la résolution spatiale (plus grosses cellules).
 ```{r agr_raster_1}
+
 elev_lower_model  <- elev
+
 # Tailles des cellules = 1000 mètres
 res(elev_lower_model) <- 1000
-# res(elev_lower_model) <- 10
+
 elev_lower_model
 ```
 
@@ -121,6 +130,7 @@ elev_lower_model
 elev_lower <- resample(x = elev,
                        y = elev_lower_model, 
                        method = "bilinear") 
+
 plot(elev_lower, 
      main = "Taille des cellules = 1000m\nMéthode de ré-échantillonnage bilinéaire")
 ```
@@ -128,7 +138,7 @@ plot(elev_lower,
 
 ## Fusion de raster
 
-Fusionner plusieurs objets `SpatRaster` en un seul avec `merge()` ou `mosaic()`.
+Il est possible de fusionner plusieurs objets `SpatRaster` en un seul avec `merge()` ou `mosaic()`.
 
 ![[Site web ESRI](https://desktop.arcgis.com/fr/arcmap/10.3/manage-data/raster-and-images/what-is-a-mosaic.htm)](img/mosaic.png)
 
@@ -137,7 +147,8 @@ Après un découpage du raster d'élévation par la limite communale de Cahors (
 ```{r merge_raster}
 # Extraction des limites communales de Bellefont-La Rauze
 bellefont <- subset(commune, commune$INSEE_COM == "46156") 
-# Découpage du raster d'élévation en fonction des limites communales
+
+# Découpage du raster d'élévation en fonction des limites de Bellefont-La Rauze
 crop_bellefont <- crop(elev, bellefont)
 ```
 
@@ -159,6 +170,7 @@ La différence entre les fonctions `merge()` ou `mosaic()` concerne les valeurs 
 # Dans cet exemple, merge() et mosaic() donnent le même résultat
 merge_raster <- merge(crop_cahors, crop_bellefont)
 mosaic_raster <- mosaic(crop_cahors, crop_bellefont)
+
 plot(merge_raster)
 plot(bellefont, add = TRUE)
 plot(cahors, add = TRUE)
@@ -167,10 +179,10 @@ plot(cahors, add = TRUE)
 
 ## Segregate
 
-Décomposer un raster par valeur (ou modalité) en différentes couches matricielles avec la fonction `segregate()`.
+La fonction `segregate()`permet de décomposer un raster par valeur (ou modalité) en différentes couches matricielles.
 
 ```{r segregate}
-# Création d'une couche matricielle par modalité
 clc_by_class <- segregate(clc, keep = TRUE, other = NA)
+
 plot(clc_by_class)
 ```

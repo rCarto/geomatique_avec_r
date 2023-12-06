@@ -24,7 +24,7 @@ Le package `sf` est venu remplacer les packages `sp` [@R-sp], `rgeos` [@R-rgeos]
 ![](img/sf.png)
 
 Les objets `sf` sont des `data.frame` dont l'une des colonnes contient des géométries. Cette colonne est de la classe **sfc** (*simple feature column*) et chaque individu de la colonne est un **sfg** (*simple feature geometry)*.   
-Ce format est très pratique dans la mesure ou les données et les géométries sont intrinsèquement liées dans un même objet. 
+Ce format est très pratique dans la mesure où les données et les géométries sont intrinsèquement liées dans un même objet. 
 
 :::{.callout-note}
 ## Vignette décrivant le format simple feature

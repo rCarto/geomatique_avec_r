@@ -13,9 +13,13 @@ Les rendus sont meilleurs si les données en entrée utilisent le même système
 library(sf)
 library(maptiles)
 library(mapsf)
+
 com <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE)
 com <- st_transform(com, 3857)
+
+# Récupération d'un fond de carte OSM
 osm_tiles <- get_tiles(x = com, zoom = 9, crop = TRUE)
+
 mf_theme(mar = c(0,0,0,0))
 mf_raster(osm_tiles)
 mf_map(com, border = "grey20", col = NA, lwd = .7, add = TRUE)

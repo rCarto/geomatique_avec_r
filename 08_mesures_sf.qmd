@@ -2,15 +2,19 @@
 
 ## Créer une matrice de distances
 
-Si le système de projection du jeu de données est renseigné les distances sont exprimées dans l'unité de mesure de la projection (en mètres le plus souvent).
+Si le système de projection du jeu de données est renseigné, les distances sont exprimées dans l'unité de mesure de la projection (le plus souvent en mètres).
 ```{r distance, nm=TRUE}
 library(sf)
 com <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE)
 com_c <- st_centroid(com)
+```
+
+La fonction `st_distance()` permet de calculer une matrice de distance entre deux couches de points.
+
+```{r distance2, nm=TRUE}
 mat <- st_distance(x = com_c, y = com_c)
 mat[1:5,1:5]
 ```
-
 
 ## Calcul de superficies
 

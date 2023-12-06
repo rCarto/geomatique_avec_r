@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -397,14 +397,15 @@ div.csl-indent {
 <p>Plusieurs packages permettent de géocoder des adresses. <img src="img/logo_tidygeocoder.png" align="right" width="120"> Le package <code>tidygeocoder</code> <span class="citation" data-cites="R-tidygeocoder">(<a href="2000_references.html#ref-R-tidygeocoder" role="doc-biblioref">Cambon et al., 2021</a>)</span> permet d’utiliser un grand nombre de <a href="https://jessecambon.github.io/tidygeocoder/articles/geocoder_services.html">services de géocodage en ligne</a>.</p>
 <section id="géocodage-dadresse-avec-tidygeocoder" class="level3" data-number="A.1.1">
 <h3 data-number="A.1.1" class="anchored" data-anchor-id="géocodage-dadresse-avec-tidygeocoder"><span class="header-section-number">A.1.1</span> Géocodage d’adresse avec <code>tidygeocoder</code></h3>
-<div class="cell" data-hash="cache/tidygeocoder_7c1c52023a4da4a14d4d1d4e44b819ed">
+<div class="cell" data-hash="cache/tidygeocoder_0a808e824bf6a0be2032d3360dec986f">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygeocoder)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>address_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">address =</span> <span class="fu">c</span>(<span class="st">"10 Emma Goldmanweg, 5032MN Tilburg, Netherlands"</span>, </span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">"19 rue Michel Bakounine, 29600 Morlaix, France"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>places <span class="ot">&lt;-</span> <span class="fu">geocode</span>(<span class="at">.tbl =</span> address_df, <span class="at">address =</span> <span class="st">"address"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>places</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>places <span class="ot">&lt;-</span> <span class="fu">geocode</span>(<span class="at">.tbl =</span> address_df, <span class="at">address =</span> <span class="st">"address"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>places</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 2 × 3
 #&gt;   address                                           lat  long
@@ -416,8 +417,8 @@ div.csl-indent {
 </section>
 <section id="transformer-des-données-longlat-en-objet-sf" class="level3" data-number="A.1.2">
 <h3 data-number="A.1.2" class="anchored" data-anchor-id="transformer-des-données-longlat-en-objet-sf"><span class="header-section-number">A.1.2</span> Transformer des données long/lat en objet <code>sf</code></h3>
-<p>La fonction <code>st_as_sf()</code> permet de créer un objet sf à partir d’un <code>data.frame</code> contenant des coordonnées géographiques.<br>
-Ici nous utilisons le <code>data.frame</code> <strong>places</strong> créé au point précédent :</p>
+<p>La fonction <code>st_as_sf()</code> permet de créer un objet sf à partir d’un <code>data.frame</code> contenant des coordonnées géographiques.</p>
+<p>Ici nous utilisons le <code>data.frame</code> <strong>places</strong> créé précédement :</p>
 <div class="cell" data-hash="cache/build_sf_5e7edaa41393e96e53a1c08068e36ec2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>place_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(places, </span>
@@ -437,7 +438,7 @@ Ici nous utilisons le <code>data.frame</code> <strong>places</strong> créé au 
 #&gt; 2 19 rue Michel Bakounine, 29600 Morlaix, France  (-3.816435 48.59041)</code></pre>
 </div>
 </div>
-<p>Pour créer un objet <code>sf</code> de type POINT à partir d’une paire de coordonnées, ici le point de longitude 0.5 et de latitude 45.5 en WGS84 (EPSG:4326), il faut créer le <code>data.frame</code> au préalable :</p>
+<p>Pour créer un objet <code>sf</code> de type POINT à partir d’une paire de coordonnées, ici le point de longitude 0.5 et de latitude 45.5 en WGS84 (EPSG:4326), il est nécessaire de créer le <code>data.frame</code> au préalable :</p>
 <div class="cell" data-hash="cache/build_sf2_7fd66646e2d581d0d9597f3d9ec3113e">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_pt <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fl">45.5</span>)</span>
@@ -457,13 +458,17 @@ Ici nous utilisons le <code>data.frame</code> <strong>places</strong> créé au 
 <section id="affichage-sur-un-fond-openstreetmap" class="level3" data-number="A.1.3">
 <h3 data-number="A.1.3" class="anchored" data-anchor-id="affichage-sur-un-fond-openstreetmap"><span class="header-section-number">A.1.3</span> Affichage sur un fond OpenStreetMap</h3>
 <p>Nous pouvons afficher cet objet <code>sf</code> sur un fond de carte <a href="https://www.openstreetmap.org/">OpenStreetMap</a> avec le package <code>maptiles</code> <span class="citation" data-cites="R-maptiles">(<a href="2000_references.html#ref-R-maptiles" role="doc-biblioref">Giraud, 2023</a>)</span>.</p>
-<div class="cell" data-hash="cache/display_sf_39098b18fe9a145e25f0f39270742d1d">
+<div class="cell" data-hash="cache/display_sf_387fe4a9ebca2830e99ced2db4c3e5d9">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptiles)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>osm <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="at">x =</span> place_sf, <span class="at">zoom =</span> <span class="dv">7</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_raster</span>(osm)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(place_sf, <span class="at">pch =</span> <span class="dv">4</span>, <span class="at">cex =</span> <span class="dv">2</span>, </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Récupération d'un fond de carte OSM</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>osm <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="at">x =</span> place_sf, <span class="at">zoom =</span> <span class="dv">7</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Affichage</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_raster</span>(osm)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(place_sf, <span class="at">pch =</span> <span class="dv">4</span>, <span class="at">cex =</span> <span class="dv">2</span>, </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/display_sf-1.png" class="img-fluid" width="576"></p>
 </div>

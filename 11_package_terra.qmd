@@ -3,8 +3,8 @@
 
 ## Présentation
 <img src="img/logo_terra.png" align="right" width="150"/> 
-L'objectif du package `terra` [@R-terra] est de proposer des méthodes de traitement et d'analyse de données rasrer.
-Ce package est très similaire au package `raster`; mais il propose plus de fonctionnalités, il est plus facile à utiliser et il est plus rapide. 
+L'objectif du package `terra` [@R-terra] est de proposer des méthodes de traitement et d'analyse de données raster.
+Ce package est très similaire au package `raster`, mais il propose plus de fonctionnalités. Il est plus rapide et plus facile à utiliser. 
 
 Ce chapitre est largement inspiré de deux présentations [@MmadelinSIGR ; @JNowosadSIGR] 
 réalisées dans le cadre de l'école thématique 

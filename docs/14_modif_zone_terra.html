@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -393,8 +393,8 @@ div.csl-indent {
 
 <section id="sec-proj" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="sec-proj"><span class="header-section-number">12.1</span> Projections</h2>
-<p>Pour modifier le système de projection d’un raster, utilisez la fonction <code>project()</code>. Il est alors nécessaire de <strong>fournir un modèle</strong> et d’indiquer la <strong>méthode d’estimation</strong> des nouvelles valeurs des cellules.</p>
-<p>Le modèle est un nouveau raster sur lequel aligner/projeter les données. Pour construire un model vous pouvez d’abord faire <code>project(x, crs)</code> et ensuite manipuler la sortie pour obtenir le modèle que vous voulez. Par exemple, dans la mesure du possible, utilisez des nombres entiers pour l’étendue et la résolution. Vous pouvez utiliser des commandes telles que <code>dim(z) = c(180, 360)</code> ou <code>res(z) &lt;- 100000</code>. (voir <code>?project</code>)</p>
+<p>Pour modifier le système de projection d’un raster, nous pouvons utiliser la fonction <code>project()</code>. Il est alors nécessaire de <strong>fournir un modèle</strong> et d’indiquer la <strong>méthode d’estimation</strong> des nouvelles valeurs des cellules.</p>
+<p>Le modèle est un nouveau raster sur lequel aligner/projeter les données. Pour construire un model, nous utilisons dans un premier temps la fonction <code>project(x, crs)</code>, puis la fonction <code>res()</code> (ou <code>dim()</code>) pour définir la résolution de ce nouveau raster (voir <code>?project</code>). La fonction <code>project()</code> peut ensuite être réutiliser pour projeter les valeurs dans le nouveau raster, en précisant la méthode d’estimation à utiliser.</p>
 <p>Quatre méthodes d’estimation sont disponibles :</p>
 <ul>
 <li><strong><em>near</em></strong> : plus proche voisin. Méthode rapide et par défaut pour les données qualitatives;<br>
@@ -408,19 +408,24 @@ div.csl-indent {
 <div>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>#&gt; terra 1.7.55</code></pre>
+<pre><code>#&gt; terra 1.7.29</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>elev_raw <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"data/elevation.tif"</span>) </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>clc_raw <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"data/clc_2018.tif"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Création d'un modele de raster en 2154</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>model_proj <span class="ot">&lt;-</span> <span class="fu">project</span>(<span class="at">x =</span> elev_raw, <span class="at">y =</span>  <span class="st">"EPSG:2154"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ajustement de la résolution du modèle</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(model_proj) <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># projection dans le modèle</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>elev <span class="ot">&lt;-</span> <span class="fu">project</span>(<span class="at">x =</span> elev_raw, <span class="at">y =</span> model_proj, <span class="at">method =</span> <span class="st">"bilinear"</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>clc <span class="ot">&lt;-</span> <span class="fu">project</span>(<span class="at">x =</span> clc_raw, <span class="at">y =</span> model_proj, <span class="at">method =</span> <span class="st">"near"</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elev, <span class="at">main =</span> <span class="st">"Altitudes - RGF93 v1 / Lambert-93"</span> )</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clc, <span class="at">type =</span> <span class="st">"classes"</span>,  <span class="at">main =</span> <span class="st">"CLC - RGF93 v1 / Lambert-93"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Création d'un modele de raster en 2154</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>model_proj <span class="ot">&lt;-</span> <span class="fu">project</span>(<span class="at">x =</span> elev_raw, <span class="at">y =</span> <span class="st">"EPSG:2154"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajustement de la résolution du modèle</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># dim(z) = c(180, 360) / OU :</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(model_proj) <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Projection dans le modèle</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>elev <span class="ot">&lt;-</span> <span class="fu">project</span>(<span class="at">x =</span> elev_raw, <span class="at">y =</span> model_proj, <span class="at">method =</span> <span class="st">"bilinear"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>clc <span class="ot">&lt;-</span> <span class="fu">project</span>(<span class="at">x =</span> clc_raw, <span class="at">y =</span> model_proj, <span class="at">method =</span> <span class="st">"near"</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elev, <span class="at">main =</span> <span class="st">"Altitudes - RGF93 v1 / Lambert-93"</span> )</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clc, <span class="at">type =</span> <span class="st">"classes"</span>,  <span class="at">main =</span> <span class="st">"CLC - RGF93 v1 / Lambert-93"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -432,7 +437,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Sauvegarde des rasters reprojetés :</p>
+<p>Pour sauvegarder les rasters reprojetés :</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(elev, <span class="at">filename =</span> <span class="st">"data/elev.tif"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(clc, <span class="at">filename =</span> <span class="st">"data/clc.tif"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -456,19 +461,20 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Import de données vectorielles (découpages communaux) avec la fonction <code>vect</code>. Ces données seront stockées dans un objet <code>SpatVector</code>.</p>
+<p>Import de données vectorielles (découpages communaux) avec la fonction <code>vect</code> du package <code>terra</code>. Ces données seront stockées dans un objet <code>SpatVector</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">"data/lot.gpkg"</span>, <span class="at">layer=</span><span class="st">"communes"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Extraction des limites communales de Cahors (code INSEE : 46042).</p>
+<p>Extraction des limites communales de Cahors (code INSEE = 46042).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cahors <span class="ot">&lt;-</span> <span class="fu">subset</span>(commune, commune<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">"46042"</span>) </span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Utilisation de la fonction <code>crop()</code>. Les deux couches de données doivent être dans la même projection.</p>
+<p>Pour utiliser la fonction <code>crop()</code>, les deux couches de données doivent être dans la même projection.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>crop_cahors <span class="ot">&lt;-</span> <span class="fu">crop</span>(elev, cahors)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(crop_cahors)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cahors, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(crop_cahors)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cahors, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/crop_raster_3-1.png" class="img-fluid" width="576"></p>
 </div>
@@ -477,10 +483,11 @@ div.csl-indent {
 <section id="mask" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="mask"><span class="header-section-number">12.3</span> Mask</h2>
 <p>Pour afficher uniquement les valeurs d’un raster contenu dans un polygone, utilisez la fonction <code>mask()</code>.</p>
-<p>Création d’un masque sur le raster <strong>crop_cahors</strong> en fonction des limites communales (polygone) de <strong>cahors</strong>.</p>
+<p>Création d’un masque sur le raster <strong>crop_cahors</strong> en fonction des limites communales (polygone) de <strong>cahors</strong> :</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mask_cahors <span class="ot">&lt;-</span> <span class="fu">mask</span>(crop_cahors, cahors)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mask_cahors)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mask_cahors)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -499,8 +506,8 @@ Mask vs.&nbsp;Crop
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Masquer</strong> un raster (mask) signifie remplacer les valeurs de pixels en dehors d’une zone d’intérêt en NA. Les dimensions du raster ne sont pas modifiées.<br>
-<strong>Recadrer</strong> un raster (crop) signifie supprimer les lignes et/ou les colonnes qui se trouvent en dehors d’une zone d’intéret. Les dimensions du raster sont modifiées.</p>
+<p><strong>Masquer</strong> un raster (<strong>mask</strong>) signifie remplacer les valeurs de pixels en dehors d’une zone d’intérêt en NA. Les dimensions du raster ne sont pas modifiées.<br>
+<strong>Recadrer</strong> un raster (<strong>crop</strong>) signifie supprimer les lignes et/ou les colonnes qui se trouvent en dehors d’une zone d’intéret. Les dimensions du raster sont modifiées.</p>
 </div>
 </div>
 </section>
@@ -532,13 +539,12 @@ Mask vs.&nbsp;Crop
 </div>
 </div>
 </div>
-<p>Le ré-échantillonnage d’un raster dans une résolution différente se fait en deux étapes.</p>
+<p>Le ré-échantillonnage d’un raster dans une résolution différente se fait en plusieurs étapes.</p>
 <ol type="1">
 <li>Afficher la résolution d’un raster avec la fonction <code>res()</code>.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Taille des cellules ?</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(elev) </span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(elev) </span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 100 100</code></pre>
 </div>
@@ -548,10 +554,11 @@ Mask vs.&nbsp;Crop
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>elev_lower_model  <span class="ot">&lt;-</span> elev</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Tailles des cellules = 1000 mètres</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(elev_lower_model) <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># res(elev_lower_model) &lt;- 10</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>elev_lower_model</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Tailles des cellules = 1000 mètres</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(elev_lower_model) <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>elev_lower_model</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; class       : SpatRaster 
 #&gt; dimensions  : 33, 31, 1  (nrow, ncol, nlyr)
@@ -567,8 +574,9 @@ Mask vs.&nbsp;Crop
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>elev_lower <span class="ot">&lt;-</span> <span class="fu">resample</span>(<span class="at">x =</span> elev,</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">y =</span> elev_lower_model, </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">method =</span> <span class="st">"bilinear"</span>) </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elev_lower, </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Taille des cellules = 1000m</span><span class="sc">\n</span><span class="st">Méthode de ré-échantillonnage bilinéaire"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elev_lower, </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Taille des cellules = 1000m</span><span class="sc">\n</span><span class="st">Méthode de ré-échantillonnage bilinéaire"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/agr_raster_2-1.png" class="img-fluid" width="576"></p>
 </div>
@@ -576,7 +584,7 @@ Mask vs.&nbsp;Crop
 </section>
 <section id="fusion-de-raster" class="level2" data-number="12.5">
 <h2 data-number="12.5" class="anchored" data-anchor-id="fusion-de-raster"><span class="header-section-number">12.5</span> Fusion de raster</h2>
-<p>Fusionner plusieurs objets <code>SpatRaster</code> en un seul avec <code>merge()</code> ou <code>mosaic()</code>.</p>
+<p>Il est possible de fusionner plusieurs objets <code>SpatRaster</code> en un seul avec <code>merge()</code> ou <code>mosaic()</code>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/mosaic.png" class="img-fluid figure-img"></p>
@@ -587,8 +595,9 @@ Mask vs.&nbsp;Crop
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraction des limites communales de Bellefont-La Rauze</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>bellefont <span class="ot">&lt;-</span> <span class="fu">subset</span>(commune, commune<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">"46156"</span>) </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Découpage du raster d'élévation en fonction des limites communales</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>crop_bellefont <span class="ot">&lt;-</span> <span class="fu">crop</span>(elev, bellefont)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Découpage du raster d'élévation en fonction des limites de Bellefont-La Rauze</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>crop_bellefont <span class="ot">&lt;-</span> <span class="fu">crop</span>(elev, bellefont)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Les rasters d’élévation <strong>crop_cahors</strong> et <strong>crop_bellefont</strong> se chevauchent spatialement :</p>
 <div>
@@ -614,9 +623,10 @@ Mask vs.&nbsp;Crop
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dans cet exemple, merge() et mosaic() donnent le même résultat</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>merge_raster <span class="ot">&lt;-</span> <span class="fu">merge</span>(crop_cahors, crop_bellefont)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mosaic_raster <span class="ot">&lt;-</span> <span class="fu">mosaic</span>(crop_cahors, crop_bellefont)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(merge_raster)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bellefont, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cahors, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(merge_raster)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bellefont, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cahors, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/merge_raster_2-1.png" class="img-fluid" width="576"></p>
 </div>
@@ -624,10 +634,10 @@ Mask vs.&nbsp;Crop
 </section>
 <section id="segregate" class="level2" data-number="12.6">
 <h2 data-number="12.6" class="anchored" data-anchor-id="segregate"><span class="header-section-number">12.6</span> Segregate</h2>
-<p>Décomposer un raster par valeur (ou modalité) en différentes couches matricielles avec la fonction <code>segregate()</code>.</p>
+<p>La fonction <code>segregate()</code>permet de décomposer un raster par valeur (ou modalité) en différentes couches matricielles.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Création d'une couche matricielle par modalité</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>clc_by_class <span class="ot">&lt;-</span> <span class="fu">segregate</span>(clc, <span class="at">keep =</span> <span class="cn">TRUE</span>, <span class="at">other =</span> <span class="cn">NA</span>)</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>clc_by_class <span class="ot">&lt;-</span> <span class="fu">segregate</span>(clc, <span class="at">keep =</span> <span class="cn">TRUE</span>, <span class="at">other =</span> <span class="cn">NA</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clc_by_class)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/segregate-1.png" class="img-fluid" width="576"></p>

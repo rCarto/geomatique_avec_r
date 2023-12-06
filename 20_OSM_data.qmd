@@ -9,15 +9,19 @@ library(sf)
 library(osmdata)
 library(sf)
 com <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE)
+
 # Sélection de la commune de Cahors
 cahors <- com[com$INSEE_COM == "46042", ]
+
 # Définition d'une bounding box
 q <- opq(bbox = st_bbox(st_transform(cahors, 4326)))
+
 # Extraction des restaurants
 req <- add_osm_feature(opq = q, key = 'amenity', value = "restaurant")
 res <- osmdata_sf(req)
-# Reductcion du resultats
-# (les points composant les polygones sont supprimés)
+
+# Reduction du resultats :
+# les points composant les polygones sont supprimés
 res <- unique_osmdata(res)
 ```
 
@@ -27,12 +31,14 @@ Pour obtenir une couche de points cohérente nous pouvons utiliser les centroide
 
 ```{r osmdata2}
 resto_point <- res$osm_points
+
 # extraire les centroides des polygones
-resto_poly <- res$osm_polygons
-resto_poly_point <- st_centroid(resto_poly)
+resto_poly_point <- st_centroid(res$osm_polygons)
+
 # identifier les champs en commun
 chps <- intersect(names(resto_point), names(resto_poly_point))
-# rassembler les 2 objets
+
+# Union des deux couches
 resto <- rbind(resto_point[, chps], resto_poly_point[, chps])
 ```
 

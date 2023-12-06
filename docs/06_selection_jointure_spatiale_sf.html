@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -372,14 +372,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="6.1" class="anchored" data-anchor-id="sélection-spatiale"><span class="header-section-number">6.1</span> Sélection spatiale</h2>
 <p>La fonction <code>st_filter()</code> permet d’effectuer des sélections spatiales. L’argument <code>.predicate</code> permet de choisir sur quel critère se fait la selection en utilisant l’une des fonctions de “predicat géométrique” (par exemple <code>st_intersects()</code>, <code>st_within()</code>, <code>st_crosses()</code>…).<br>
 Nous allons ici sélectionner les routes qui intersectent la commune de Gramat</p>
-<div class="cell" data-hash="cache/sel_spat_inter_4f41f724002006504f0c7fb5dbe386ca">
+<div class="cell" data-hash="cache/sel_spat_inter_c436b459a8e8cfcb734fd7827bfca85a">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>route <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/lot.gpkg"</span>, <span class="at">layer =</span> <span class="st">"routes"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>gramat <span class="ot">&lt;-</span>  com[com<span class="sc">$</span>NOM_COM <span class="sc">==</span> <span class="st">"Gramat"</span>, ]</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>route_gramat <span class="ot">&lt;-</span>  <span class="fu">st_filter</span>(<span class="at">x =</span> route, <span class="at">y =</span> gramat,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.predicate =</span> st_intersects)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(gramat, <span class="at">col =</span> <span class="st">"lightblue"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(route, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(route_gramat, <span class="at">col =</span> <span class="st">"tomato"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)  </span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>route_gramat <span class="ot">&lt;-</span>  <span class="fu">st_filter</span>(<span class="at">x =</span> route, </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">y =</span> gramat,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.predicate =</span> st_intersects)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Affichage     </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(gramat, <span class="at">col =</span> <span class="st">"lightblue"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(route, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(route_gramat, <span class="at">col =</span> <span class="st">"tomato"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)  </span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/sel_spat_inter-1.png" class="img-fluid" width="576"></p>
 </div>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -389,22 +389,29 @@ div.csl-indent {
 <section id="calcul-dun-itinéraire" class="level3" data-number="19.0.1">
 <h3 data-number="19.0.1" class="anchored" data-anchor-id="calcul-dun-itinéraire"><span class="header-section-number">19.0.1</span> Calcul d’un itinéraire</h3>
 <p>La fonction <code>osrmRoute()</code> permet de calculer des itinéraires.</p>
-<div class="cell" data-hash="cache/osrmroute_895e68a508169b800851971270860c07">
+<div class="cell" data-hash="cache/osrmroute_d7d9a4b6e1f85bbfc9d993b4ef74a025">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(osrm)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptiles)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>com_raw <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/lot.gpkg"</span>, <span class="at">layer =</span> <span class="st">"communes"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>com <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(com_raw, <span class="dv">3857</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Itinéraire entre Cahors et Puybrun</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>cahors  <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(com[com<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">"46042"</span>, ])</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>puybrun <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(com[com<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">"46229"</span>, ])</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>route <span class="ot">&lt;-</span> <span class="fu">osrmRoute</span>(<span class="at">src =</span> cahors,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">dst =</span> puybrun)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>osm <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="fu">st_buffer</span>(route, <span class="dv">2000</span>), <span class="at">crop =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_theme</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_raster</span>(osm)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(route, <span class="at">col =</span> <span class="st">"grey10"</span>, <span class="at">lwd =</span> <span class="dv">6</span>, <span class="at">add =</span> T)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(route, <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">lwd =</span> <span class="dv">1</span>, <span class="at">add =</span> T)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>com_raw <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/lot.gpkg"</span>, <span class="at">layer =</span> <span class="st">"communes"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>com <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(com_raw, <span class="dv">3857</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Itinéraire entre les centroïdes de Cahors et de Puybrun</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>cahors  <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(com[com<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">"46042"</span>, ])</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>puybrun <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(com[com<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">"46229"</span>, ])</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>route <span class="ot">&lt;-</span> <span class="fu">osrmRoute</span>(<span class="at">src =</span> cahors,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                   <span class="at">dst =</span> puybrun)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Récupération d'un fond de carte OSM</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>osm <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="fu">st_buffer</span>(route, <span class="dv">2000</span>), <span class="at">crop =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Affichage</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_theme</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_raster</span>(osm)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(route, <span class="at">col =</span> <span class="st">"grey10"</span>, <span class="at">lwd =</span> <span class="dv">6</span>, <span class="at">add =</span> T)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(route, <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">lwd =</span> <span class="dv">1</span>, <span class="at">add =</span> T)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/osrmroute-1.png" class="img-fluid" width="288"></p>
 </div>
@@ -414,34 +421,52 @@ div.csl-indent {
 <h3 data-number="19.0.2" class="anchored" data-anchor-id="calcul-dune-matrice-de-temps"><span class="header-section-number">19.0.2</span> Calcul d’une matrice de temps</h3>
 <p>La fonction <code>osrmTable()</code> permet de calculer des matrices de distances ou de temps par la route.</p>
 <p>Dans cet exemple nous calculons une matrice de temps entre 2 adresses et les restaurants de Cahors à pied.</p>
-<div class="cell" data-hash="cache/osrmtable_3dfcb715e76183695338b58f9492823d">
+<div class="cell" data-hash="cache/osrmtable_539b8f2850f6caf699958864a869e771">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygeocoder)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>restaurant <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/lot.gpkg"</span>, <span class="at">layer =</span> <span class="st">"restaurants"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sélection des restaurants de Cahors</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>restaurant_cahors <span class="ot">&lt;-</span> <span class="fu">st_filter</span>(restaurant, com_raw[com_raw<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">"46042"</span>, ])</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># geocodage de 2 adresses à Cahors</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>adresses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ad =</span> <span class="fu">c</span>(<span class="st">"3 rue Montaudié, Cahors, France"</span>,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>         <span class="st">"5 rue Albert Camus, Cahors, France"</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>places <span class="ot">&lt;-</span> <span class="fu">geocode</span>(<span class="at">.tbl =</span> adresses,<span class="at">address =</span> ad, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>places <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(places)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(places) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Rue Montaudié"</span>, <span class="st">"Rue Albert Camus"</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcul de la matrice de distance entre les 2 adresses et les restaurants de Cahors</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">osrmTable</span>(<span class="at">src =</span> places[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>)],</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dst =</span> restaurant_cahors,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                 <span class="at">osrm.profile =</span> <span class="st">"foot"</span>)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>mat<span class="sc">$</span>durations[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>restaurant <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/lot.gpkg"</span>, <span class="at">layer =</span> <span class="st">"restaurants"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Sélection des restaurants de Cahors</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>restaurant_cahors <span class="ot">&lt;-</span> <span class="fu">st_filter</span>(restaurant, com_raw[com_raw<span class="sc">$</span>INSEE_COM <span class="sc">==</span> <span class="st">"46042"</span>, ])</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Construction d'un data.frame contenant deux adresses</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>adresses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ad =</span> <span class="fu">c</span>(<span class="st">"3 rue Montaudié, Cahors, France"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"5 rue Albert Camus, Cahors, France"</span>))</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Geocodage de 2 adresses à Cahors</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>places <span class="ot">&lt;-</span> <span class="fu">geocode</span>(<span class="at">.tbl =</span> adresses,<span class="at">address =</span> ad, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>places <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(places)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(places) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Rue Montaudié"</span>, <span class="st">"Rue Albert Camus"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcul de la matrice de distance entre les 2 adresses et les restaurants de Cahors</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">osrmTable</span>(<span class="at">src =</span> places[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>)],</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dst =</span> restaurant_cahors,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>                 <span class="at">osrm.profile =</span> <span class="st">"foot"</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>mat<span class="sc">$</span>durations[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;                     1    2    3    4    5
 #&gt; Rue Montaudié    18.1 21.3 22.2 22.7 14.5
 #&gt; Rue Albert Camus 31.4 63.0 35.4 23.0 32.6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quelle adresse possède une meilleurs accessibilité aux restaurants de Cahors?</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quelle adresse possède une meilleurs accessibilité aux restaurants ?</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">t</span>(mat<span class="sc">$</span>durations), <span class="at">cex.axis =</span> .<span class="dv">7</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/osrmtable-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Géoréférencement d’adresses ?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Voir l’<a href="./1999_georeferencement.html">annexe A</a> pour le géocodage d’adresse avec R</p>
 </div>
 </div>
 

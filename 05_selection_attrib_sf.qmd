@@ -9,14 +9,14 @@ com <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE)
 
 ## Sélection par attributs
 
-Les objets `sf` **sont** des `data.frame`, on peut donc sélectionner leur lignes et leur colonnes de la même manière que les `data.frame`. 
+Les objets `sf` sont des `data.frame`, on peut donc sélectionner leur lignes et leur colonnes de la même manière que les `data.frame`. 
 
 ```{r selectAttr}
 # sélection de lignes
 com[1:2, ]
 com[com$NOM_COM == "Gramat", ]
 # sélection de colonnes
-com[com$NOM_COM == "Gramat", 1:4]
 com[, "POPULATION"]
+com[com$NOM_COM == "Gramat", 1:4]
 ```
 

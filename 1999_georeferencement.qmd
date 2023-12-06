@@ -16,6 +16,7 @@ address_df <- data.frame(
   address = c("10 Emma Goldmanweg, 5032MN Tilburg, Netherlands", 
               "19 rue Michel Bakounine, 29600 Morlaix, France")
 )
+
 places <- geocode(.tbl = address_df, address = "address", quiet = TRUE)
 places
 ```
@@ -24,7 +25,8 @@ places
 ### Transformer des données long/lat en objet `sf`
 
 La fonction `st_as_sf()` permet de créer un objet sf à partir d'un `data.frame` contenant des coordonnées géographiques.  
-Ici nous utilisons le `data.frame` **places** créé au point précédent :
+
+Ici nous utilisons le `data.frame` **places** créé précédement :
 ```{r build_sf}
 library(sf)
 place_sf <- st_as_sf(places, 
@@ -33,7 +35,7 @@ place_sf <- st_as_sf(places,
 place_sf
 ```
 
-Pour créer un objet `sf` de type POINT à partir d'une paire de coordonnées, ici le point de longitude 0.5 et de latitude 45.5 en WGS84 (EPSG:4326), il faut créer le `data.frame` au préalable :
+Pour créer un objet `sf` de type POINT à partir d'une paire de coordonnées, ici le point de longitude 0.5 et de latitude 45.5 en WGS84 (EPSG:4326), il est nécessaire de créer le `data.frame` au préalable :
 ```{r build_sf2}
 library(sf)
 df_pt <- data.frame(x = 0.5, y = 45.5)
@@ -51,7 +53,11 @@ Nous pouvons afficher cet objet `sf` sur un fond de carte [OpenStreetMap](https:
 #| fig.height: 4.635
 library(mapsf)
 library(maptiles)
+
+# Récupération d'un fond de carte OSM
 osm <- get_tiles(x = place_sf, zoom = 7)
+
+# Affichage
 mf_raster(osm)
 mf_map(place_sf, pch = 4, cex = 2, 
        lwd = 2, col = "red", add = TRUE)

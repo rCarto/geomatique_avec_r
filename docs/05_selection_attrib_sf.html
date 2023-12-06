@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -358,8 +358,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Les objets <code>sf</code> <strong>sont</strong> des <code>data.frame</code>, on peut donc sélectionner leur lignes et leur colonnes de la même manière que les <code>data.frame</code>.</p>
-<div class="cell" data-hash="cache/selectAttr_69197ed5dc7df660deee2dbdca69ef04">
+<p>Les objets <code>sf</code> sont des <code>data.frame</code>, on peut donc sélectionner leur lignes et leur colonnes de la même manière que les <code>data.frame</code>.</p>
+<div class="cell" data-hash="cache/selectAttr_519a38ec2dfa62f74bcbe8440fa96ada">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sélection de lignes</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>com[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, ]</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -388,17 +388,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #&gt; 119 107.0862 56.09275     0 260.0664 304.1941 MULTIPOLYGON (((594713.1 64...</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sélection de colonnes</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>com[com<span class="sc">$</span>NOM_COM <span class="sc">==</span> <span class="st">"Gramat"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; Simple feature collection with 1 feature and 4 fields
-#&gt; Geometry type: MULTIPOLYGON
-#&gt; Dimension:     XY
-#&gt; Bounding box:  xmin: 593605.6 ymin: 6402330 xmax: 602624.6 ymax: 6413784
-#&gt; Projected CRS: RGF93 v1 / Lambert-93
-#&gt;     INSEE_COM NOM_COM         STATUT POPULATION                           geom
-#&gt; 119     46128  Gramat Commune simple       3468 MULTIPOLYGON (((594713.1 64...</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>com[, <span class="st">"POPULATION"</span>]</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>com[, <span class="st">"POPULATION"</span>]</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Simple feature collection with 313 features and 1 field
 #&gt; Geometry type: MULTIPOLYGON
@@ -417,6 +407,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #&gt; 8         203 MULTIPOLYGON (((558216 6389...
 #&gt; 9         642 MULTIPOLYGON (((612729.6 63...
 #&gt; 10        367 MULTIPOLYGON (((581404 6370...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>com[com<span class="sc">$</span>NOM_COM <span class="sc">==</span> <span class="st">"Gramat"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Simple feature collection with 1 feature and 4 fields
+#&gt; Geometry type: MULTIPOLYGON
+#&gt; Dimension:     XY
+#&gt; Bounding box:  xmin: 593605.6 ymin: 6402330 xmax: 602624.6 ymax: 6413784
+#&gt; Projected CRS: RGF93 v1 / Lambert-93
+#&gt;     INSEE_COM NOM_COM         STATUT POPULATION                           geom
+#&gt; 119     46128  Gramat Commune simple       3468 MULTIPOLYGON (((594713.1 64...</code></pre>
 </div>
 </div>
 

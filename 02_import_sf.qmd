@@ -8,14 +8,18 @@ Les fonctions `st_read()` et `st_write()` permettent d'importer et d'exporter de
 
 
 ## Import
-Les lignes suivantes importent la couche des communes du département du Lot situé dans le fichier [geopackage](https://www.geopackage.org/) **lot.gpkg**.
+Les lignes suivantes importent la couche des communes du département du Lot mise à disposition dans le fichier [geopackage](https://www.geopackage.org/) **lot.gpkg**.
 
 ```{r import}
 library(sf)
 com <- st_read("data/lot.gpkg", layer = "communes")
 ```
 
+```{r class_sf}
+class(com)
+```
 
+Une couche géographique assignée dans un un objet avec la fonction `st_read()` est automatiquement stockée dans un objet `sf`.
 
 ::: {.callout-note}
 ## Geopackage

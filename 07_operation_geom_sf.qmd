@@ -23,23 +23,27 @@ mf_map(com_c, add = TRUE, cex = 1.2, col = "red", pch = 20)
 
 ```{r aggreg}
 dep_46 <- st_union(com)
+    
 mf_map(com, col = "lightblue")
 mf_map(dep_46, col = NA, border = "red", lwd = 2, add = TRUE)
 ```
 
 ## Agréger des polygones en fonction d'une variable
 
-* Avec `dplyr`
-```{r aggreg2, nm=TRUE}
+* Avec la librairie `dplyr`
+```{r aggreg2, nm=TRUE, message = FALSE}
 library(dplyr)
+
 com_u <- com |>
-  group_by(STATUT) |>
-  summarise(POPULATION = sum(POPULATION))
+          group_by(STATUT) |>
+          summarise(POPULATION = sum(POPULATION))
 ```
 
 * Sans `dplyr`
+
 ```{r aggreg3, nm=TRUE}
 i <- com$STATUT 
+
 com_u <- st_sf(
   STATUT     = tapply(X = i               , INDEX = i, FUN = head, 1),
   POPULATION = tapply(X = com$POPULATION  , INDEX = i, FUN = sum), 
@@ -54,24 +58,29 @@ com_u <- st_sf(
 
 ```{r buffers}
 gramat <- com[com$NOM_COM == "Gramat", ]
+    
 gramat_b <- st_buffer(x = gramat, dist = 5000)
+     
 mf_map(gramat_b, col = "lightblue", lwd=2, border = "red")
 mf_map(gramat, add = TRUE, lwd = 2)
 ```
 
 ## Réaliser une intersection 
 
-En utilisant la fonction `st_intersection()` on va découper une couche par une autre. 
+En utilisant la fonction `st_intersection()`, on peut découper une couche par une autre. 
 
 ```{r intersect2}
 # création d'une zone tampon autour du centroid de la commune de Gramat
 # en utilisant le pipe
 zone <- st_geometry(gramat) |>
-  st_centroid() |>
-  st_buffer(10000)
+             st_centroid() |>
+             st_buffer(10000)
+    
 mf_map(com)
 mf_map(zone, border = "red", col = NA, lwd = 2, add = TRUE)
+    
 com_z <- st_intersection(x = com, y = zone)
+    
 mf_map(com)
 mf_map(com_z, col = "red", border = "green", add = TRUE)
 mf_map(com_z)
@@ -88,8 +97,12 @@ cet objet `sfc` en objet `sf`. Lors de cette transformation nous rajoutons ici u
 d'identifiants uniques.   
 
 ```{r grid}
+# Création de la grille
 grid <- st_make_grid(x = com, cellsize = 5000)
+
+# Ajout d'un identifiant unique
 grid <- st_sf(ID = 1:length(grid), geom = grid)
+
 mf_map(grid, col = "grey", border = "white")
 mf_map(com, col = NA, border = "grey50", add = TRUE)
 ```
@@ -102,7 +115,10 @@ Sélection des carreaux de la grille qui intersectent le département avec `st_f
 
 ```{r intersect3.1, nm=TRUE}
 grid <- st_filter(grid, dep_46, .predicate = st_intersects)
+
+# Import d'une couche géographique ponctuelle des restaurants du Lot
 restaurant <- st_read("data/lot.gpkg", layer = "restaurants", quiet = TRUE)
+
 mf_map(grid, col = "grey", border = "white")
 mf_map(restaurant, pch = 20, col = "red", cex = .5, add = TRUE)
 ```
@@ -113,6 +129,7 @@ de l'objet **restaurant** qui se trouvent à l'intérieur.
 
 ```{r intersect3.2, nm=TRUE}
 inter <- st_intersects(grid, restaurant, sparse = TRUE)
+
 length(inter) == nrow(grid)
 ```
 
@@ -121,6 +138,7 @@ la longueur de chacun des éléments de cette liste.
 
 ```{r intersect3.4}
 grid$nb_restaurant <- lengths(inter)
+
 mf_map(grid)
 mf_map(grid, var = "nb_restaurant", type = "prop")
 ```
@@ -128,7 +146,7 @@ mf_map(grid, var = "nb_restaurant", type = "prop")
 ## Aggréger les valeurs de points dans des polygones
 
 Ici nous voulons résumer l'information contenue dans une couche de points dans des polygones. Nous voulons connaître l'altitude minimale et maximale de chaque communes.  
-Nous pouvons commencer par importer une couche de points d'altitude (la couche **elevations** du fichier **lot.gpkg**) 
+Nous commencons par importer une couche de points d'altitude, la couche **elevations** du fichier **lot.gpkg**. 
 
 ```{r}
 elev <- st_read("data/lot.gpkg", "elevations", quiet = TRUE)
@@ -159,14 +177,16 @@ Nous pouvons ensuite utiliser la fonction `aggregate()` pour agréger les altitu
 alti_min <- aggregate(x = list(alt_min = inter$elevation),
                       by = list(INSEE_COM = inter$INSEE_COM),
                       FUN = "min")
+
 alti_max <- aggregate(x = list(alt_max = inter$elevation),
                       by = list(INSEE_COM = inter$INSEE_COM),
                       FUN = "max")
+
 head(alti_max, n = 3)
 
 ```
 
-On peut ensuite combiner ces résultat à la couche des communes (avec la fonction `merge()`).
+On peut ensuite combiner ces résultats à la couche des communes (avec la fonction `merge()`).
 
 ```{r agval3}
 com <- merge(com, alti_min, by = "INSEE_COM", all.x = TRUE)
@@ -179,6 +199,7 @@ head(com, n = 3)
 #| fig-height: 5
 bks <- c(80, seq(100, 700, by = 100), 742)
 cols <- hcl.colors(8, "Terrain2")
+
 mf_map(com, "alt_min", "choro", breaks = bks, pal = cols)
 mf_map(com, "alt_max", "choro", breaks = bks, pal = cols)
 

@@ -13,18 +13,25 @@ La fonction `osrmRoute()` permet de calculer des itinéraires.
 #| fig-width: 3
 #| fig-height: 5.3
 #| warning: false
-#| 
+
 library(sf)
 library(osrm)
 library(maptiles)
+
 com_raw <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE)
 com <- st_transform(com_raw, 3857)
-# Itinéraire entre Cahors et Puybrun
+
+# Itinéraire entre les centroïdes de Cahors et de Puybrun
 cahors  <- st_centroid(com[com$INSEE_COM == "46042", ])
 puybrun <- st_centroid(com[com$INSEE_COM == "46229", ])
+
 route <- osrmRoute(src = cahors,
                    dst = puybrun)
+
+# Récupération d'un fond de carte OSM
 osm <- get_tiles(st_buffer(route, 2000), crop = TRUE)
+
+# Affichage
 mf_theme(mar = c(0,0,0,0))
 mf_raster(osm)
 mf_map(route, col = "grey10", lwd = 6, add = T)
@@ -39,25 +46,33 @@ Dans cet exemple nous calculons une matrice de temps entre 2 adresses et les res
 ```{r osrmtable}
 library(sf)
 library(tidygeocoder)
+
 restaurant <- st_read("data/lot.gpkg", layer = "restaurants", quiet = TRUE)
+
 # Sélection des restaurants de Cahors
 restaurant_cahors <- st_filter(restaurant, com_raw[com_raw$INSEE_COM == "46042", ])
-# geocodage de 2 adresses à Cahors
-adresses <- data.frame(
-  ad = c("3 rue Montaudié, Cahors, France",
-         "5 rue Albert Camus, Cahors, France")
-)
+
+# Construction d'un data.frame contenant deux adresses
+adresses <- data.frame(ad = c("3 rue Montaudié, Cahors, France",
+                              "5 rue Albert Camus, Cahors, France"))
+
+# Geocodage de 2 adresses à Cahors
 places <- geocode(.tbl = adresses,address = ad, quiet = TRUE)
 places <- as.data.frame(places)
 row.names(places) <- c("Rue Montaudié", "Rue Albert Camus")
+
 # Calcul de la matrice de distance entre les 2 adresses et les restaurants de Cahors
 mat <- osrmTable(src = places[c(3, 2)],
                  dst = restaurant_cahors,
                  osrm.profile = "foot")
+
 mat$durations[, 1:5]
-# Quelle adresse possède une meilleurs accessibilité aux restaurants de Cahors?
+# Quelle adresse possède une meilleurs accessibilité aux restaurants ?
 boxplot(t(mat$durations), cex.axis = .7, horizontal = TRUE)
 ```
 
 
-
+:::{.callout-note}
+## Géoréférencement d'adresses ?
+Voir l'[annexe A](1999_georeferencement.qmd) pour le géocodage d'adresse avec R
+:::

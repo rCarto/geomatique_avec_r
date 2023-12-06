@@ -13,10 +13,13 @@ library(sf)
 library(leaflet)
 com <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE)
 restaurant <- st_read("data/lot.gpkg", layer = "restaurants", quiet = TRUE)
+
 # Sélection de la commune de Cahors
 cahors <- com[com$INSEE_COM == "46042", ]
+
 # Sélection des restaurants de Cahors
 restaurant_cahors <- st_filter(restaurant, cahors)
+
 # transformation du système de coordonnées en WGS84
 cahors <- st_transform(cahors, 4326)
 restaurant_cahors <- st_transform(restaurant_cahors, 4326)

@@ -19,8 +19,12 @@ Nous allons ici sélectionner les routes qui intersectent la commune de Gramat
 ```{r sel_spat_inter}
 route <- st_read("data/lot.gpkg", layer = "routes", quiet = TRUE)
 gramat <-  com[com$NOM_COM == "Gramat", ]
-route_gramat <-  st_filter(x = route, y = gramat,
+      
+route_gramat <-  st_filter(x = route, 
+                           y = gramat,
                            .predicate = st_intersects)
+
+# Affichage     
 mf_map(gramat, col = "lightblue")
 mf_map(route, add = TRUE)
 mf_map(route_gramat, col = "tomato", lwd = 2, add = TRUE)  

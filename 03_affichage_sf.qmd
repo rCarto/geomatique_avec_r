@@ -16,7 +16,7 @@ summary(com)
 
 ::: {.callout-note}
 ## Supprimer la colonne de géométrie d'un objet sf
-Pour transformer un objet `sf` en `data.frame` "pur" nous pouvons utiliser les fonctions `st_set_geometry()` ou `st_drop_geometry()`. 
+Pour transformer un objet `sf` en simple `data.frame` (sans géométries), nous pouvons utiliser les fonctions `st_set_geometry()` ou `st_drop_geometry()`. 
 
 ```{r drop}
 com_df1 <- st_set_geometry(com, NULL)
@@ -45,7 +45,7 @@ Affichage de la géométrie seule :
 plot(st_geometry(com), col = "ivory4", border = "ivory")
 ```
 
-Il est aussi possible d'utiliser le package `mapsf` [@R-mapsf] pour afficher les objets `sf`
+Il est aussi possible d'utiliser le package `mapsf` [@R-mapsf] pour afficher les objets `sf`.
 
 ```{r affichage_mapsff}
 library(mapsf)

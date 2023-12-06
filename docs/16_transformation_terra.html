@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -372,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="rasterisation" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="rasterisation"><span class="header-section-number">14.1</span> Rasterisation</h2>
-<p>Transformer des polygones en format raster.</p>
+<p>Transformer des polygones en format raster avec la fonction <code>rasterize()</code>.</p>
 <div class="cell" data-hash="cache/Raster_vec1_3baec17db12686aee897f575550c4182">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>commune <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">"data/lot.gpkg"</span>, <span class="at">layer =</span> <span class="st">"communes"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>elev <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"data/elev.tif"</span>) </span>
@@ -383,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="figs/Raster_vec1-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
-<p>Transformer des points en format raster.</p>
+<p>Transformer des points en format raster :</p>
 <div class="cell" data-hash="cache/Raster_vec2_c3ae0a317f15853d168dc40f7eee35a0">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rasterisation des centroïdes des communes</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>raster_com_centroide <span class="ot">&lt;-</span> <span class="fu">rasterize</span>(<span class="at">x =</span> <span class="fu">centroids</span>(commune), </span>
@@ -393,7 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="figs/Raster_vec2-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
-<p>Transformer des lignes format raster.</p>
+<p>Transformer des lignes format raster :</p>
 <div class="cell" data-hash="cache/Raster_vec3_f40aa0d63a1a725496e57a453e80e09d">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rasterisation des limites communales</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>raster_com_line <span class="ot">&lt;-</span> <span class="fu">rasterize</span>(<span class="at">x =</span> <span class="fu">as.lines</span>(commune), <span class="at">y =</span> elev, <span class="at">fun=</span>sum)</span>
@@ -404,7 +404,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="vectorisation" class="level3" data-number="14.1.1">
 <h3 data-number="14.1.1" class="anchored" data-anchor-id="vectorisation"><span class="header-section-number">14.1.1</span> Vectorisation</h3>
-<p>Transformer un raster en polygones vectoriels.</p>
+<p>Transformer un raster en polygones vectoriels avec la fonction <code>as.polygons()</code>.</p>
 <div class="cell" data-hash="cache/Raster_vec4_162638be5109564b56fec83283ef2e8f">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clc <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"data/clc.tif"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Polygone_Elevation <span class="ot">&lt;-</span> <span class="fu">as.polygons</span>(clc)</span>
@@ -413,7 +413,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="figs/Raster_vec4-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
-<p>Transformer un raster en points vectoriels.</p>
+<p>Transformer un raster en points vectoriels avec la fonction <code>as.points()</code>.</p>
 <div class="cell" data-hash="cache/Raster_vec5_c0f71d6525be942cf83d26d001068c14">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Points_Elevation <span class="ot">&lt;-</span> <span class="fu">as.points</span>(clc)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Points_Elevation, <span class="at">y =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.3</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>

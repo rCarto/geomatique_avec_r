@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -390,10 +390,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="agréger-des-polygones" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="agréger-des-polygones"><span class="header-section-number">7.2</span> Agréger des polygones</h2>
-<div class="cell" data-hash="cache/aggreg_7ae3304dd1a5dad1699d6fca2accd78f">
+<div class="cell" data-hash="cache/aggreg_0eccf8c888ed2e471e173976027a2e71">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dep_46 <span class="ot">&lt;-</span> <span class="fu">st_union</span>(com)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com, <span class="at">col =</span> <span class="st">"lightblue"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(dep_46, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com, <span class="at">col =</span> <span class="st">"lightblue"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(dep_46, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/aggreg-1.png" class="img-fluid" width="576"></p>
 </div>
@@ -402,48 +403,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="agréger-des-polygones-en-fonction-dune-variable" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="agréger-des-polygones-en-fonction-dune-variable"><span class="header-section-number">7.3</span> Agréger des polygones en fonction d’une variable</h2>
 <ul>
-<li>Avec <code>dplyr</code></li>
+<li>Avec la librairie <code>dplyr</code></li>
 </ul>
-<div class="cell" data-nm="true" data-hash="cache/aggreg2_845686602b4569b3dd73789168cbf02c">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#&gt; 
-#&gt; Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#&gt; The following objects are masked from 'package:stats':
-#&gt; 
-#&gt;     filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#&gt; The following objects are masked from 'package:base':
-#&gt; 
-#&gt;     intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>com_u <span class="ot">&lt;-</span> com <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(STATUT) <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">POPULATION =</span> <span class="fu">sum</span>(POPULATION))</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-nm="true" data-hash="cache/aggreg2_4dd5664ca90ae1781cab10cbd9404540">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>com_u <span class="ot">&lt;-</span> com <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>          <span class="fu">group_by</span>(STATUT) <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>          <span class="fu">summarise</span>(<span class="at">POPULATION =</span> <span class="fu">sum</span>(POPULATION))</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Sans <code>dplyr</code></li>
 </ul>
-<div class="cell" data-nm="true" data-hash="cache/aggreg3_111596ff7a9d3ac4040b11a4824e5e20">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> com<span class="sc">$</span>STATUT </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>com_u <span class="ot">&lt;-</span> <span class="fu">st_sf</span>(</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">STATUT     =</span> <span class="fu">tapply</span>(<span class="at">X =</span> i               , <span class="at">INDEX =</span> i, <span class="at">FUN =</span> head, <span class="dv">1</span>),</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">POPULATION =</span> <span class="fu">tapply</span>(<span class="at">X =</span> com<span class="sc">$</span>POPULATION  , <span class="at">INDEX =</span> i, <span class="at">FUN =</span> sum), </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">geometry   =</span> <span class="fu">tapply</span>(<span class="at">X =</span> <span class="fu">st_geometry</span>(com), <span class="at">INDEX =</span> i, <span class="at">FUN =</span> st_union), </span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">crs        =</span> <span class="fu">st_crs</span>(com)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>) </span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-nm="true" data-hash="cache/aggreg3_fa22a67614704a5886bd17fc4f329f52">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> com<span class="sc">$</span>STATUT </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>com_u <span class="ot">&lt;-</span> <span class="fu">st_sf</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">STATUT     =</span> <span class="fu">tapply</span>(<span class="at">X =</span> i               , <span class="at">INDEX =</span> i, <span class="at">FUN =</span> head, <span class="dv">1</span>),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">POPULATION =</span> <span class="fu">tapply</span>(<span class="at">X =</span> com<span class="sc">$</span>POPULATION  , <span class="at">INDEX =</span> i, <span class="at">FUN =</span> sum), </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">geometry   =</span> <span class="fu">tapply</span>(<span class="at">X =</span> <span class="fu">st_geometry</span>(com), <span class="at">INDEX =</span> i, <span class="at">FUN =</span> st_union), </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">crs        =</span> <span class="fu">st_crs</span>(com)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>) </span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="construire-une-zone-tampon" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="construire-une-zone-tampon"><span class="header-section-number">7.4</span> Construire une zone tampon</h2>
-<div class="cell" data-hash="cache/buffers_7e2ba3b899b7ba117cfa54b0e0f9cfb2">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>gramat <span class="ot">&lt;-</span> com[com<span class="sc">$</span>NOM_COM <span class="sc">==</span> <span class="st">"Gramat"</span>, ]</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>gramat_b <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="at">x =</span> gramat, <span class="at">dist =</span> <span class="dv">5000</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(gramat_b, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">border =</span> <span class="st">"red"</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(gramat, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="cache/buffers_8534515a39158e88ab0862a7726e40d8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gramat <span class="ot">&lt;-</span> com[com<span class="sc">$</span>NOM_COM <span class="sc">==</span> <span class="st">"Gramat"</span>, ]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>gramat_b <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(<span class="at">x =</span> gramat, <span class="at">dist =</span> <span class="dv">5000</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(gramat_b, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">border =</span> <span class="st">"red"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(gramat, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/buffers-1.png" class="img-fluid" width="576"></p>
 </div>
@@ -451,29 +442,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="réaliser-une-intersection" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="réaliser-une-intersection"><span class="header-section-number">7.5</span> Réaliser une intersection</h2>
-<p>En utilisant la fonction <code>st_intersection()</code> on va découper une couche par une autre.</p>
-<div class="cell" data-hash="cache/intersect2_ad67583d0c0a0874ffd619a4889d8ce3">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># création d'une zone tampon autour du centroid de la commune de Gramat</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># en utilisant le pipe</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>zone <span class="ot">&lt;-</span> <span class="fu">st_geometry</span>(gramat) <span class="sc">|&gt;</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_centroid</span>() <span class="sc">|&gt;</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_buffer</span>(<span class="dv">10000</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(zone, <span class="at">border =</span> <span class="st">"red"</span>, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>En utilisant la fonction <code>st_intersection()</code>, on peut découper une couche par une autre.</p>
+<div class="cell" data-hash="cache/intersect2_facf5378620493ff2b3d15b5945261bd">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># création d'une zone tampon autour du centroid de la commune de Gramat</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># en utilisant le pipe</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>zone <span class="ot">&lt;-</span> <span class="fu">st_geometry</span>(gramat) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>             <span class="fu">st_centroid</span>() <span class="sc">|&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>             <span class="fu">st_buffer</span>(<span class="dv">10000</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(zone, <span class="at">border =</span> <span class="st">"red"</span>, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/intersect2-1.png" class="img-fluid" width="576"></p>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>com_z <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(<span class="at">x =</span> com, <span class="at">y =</span> zone)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>com_z <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(<span class="at">x =</span> com, <span class="at">y =</span> zone)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Warning: attribute variables are assumed to be spatially constant throughout
 #&gt; all geometries</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com_z, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">border =</span> <span class="st">"green"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com_z, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">border =</span> <span class="st">"green"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/intersect2-2.png" class="img-fluid" width="576"></p>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com_z)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com_z)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/intersect2-3.png" class="img-fluid" width="576"></p>
 </div>
@@ -482,11 +474,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="créer-une-grille-régulière" class="level2" data-number="7.6">
 <h2 data-number="7.6" class="anchored" data-anchor-id="créer-une-grille-régulière"><span class="header-section-number">7.6</span> Créer une grille régulière</h2>
 <p>La fonction <code>st_make_grid()</code> permet de créer une grille régulière. La fonction produit un objet <code>sfc</code>, il faut ensuite utiliser la fonction <code>st_sf()</code> pour transformer cet objet <code>sfc</code> en objet <code>sf</code>. Lors de cette transformation nous rajoutons ici une colonne d’identifiants uniques.</p>
-<div class="cell" data-hash="cache/grid_e2935ab1e22568f05deb17bfb031058c">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">st_make_grid</span>(<span class="at">x =</span> com, <span class="at">cellsize =</span> <span class="dv">5000</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">st_sf</span>(<span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(grid), <span class="at">geom =</span> grid)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(grid, <span class="at">col =</span> <span class="st">"grey"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">"grey50"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="cache/grid_15490ff568457245521bdca3a20706d0">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Création de la grille</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">st_make_grid</span>(<span class="at">x =</span> com, <span class="at">cellsize =</span> <span class="dv">5000</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout d'un identifiant unique</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">st_sf</span>(<span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(grid), <span class="at">geom =</span> grid)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(grid, <span class="at">col =</span> <span class="st">"grey"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">"grey50"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/grid-1.png" class="img-fluid" width="576"></p>
 </div>
@@ -495,28 +491,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="compter-des-points-dans-un-polygone" class="level2" data-number="7.7">
 <h2 data-number="7.7" class="anchored" data-anchor-id="compter-des-points-dans-un-polygone"><span class="header-section-number">7.7</span> Compter des points dans un polygone</h2>
 <p>Sélection des carreaux de la grille qui intersectent le département avec <code>st_filter()</code>.</p>
-<div class="cell" data-nm="true" data-hash="cache/intersect3.1_8980edf2a5bb581fc821f534b3e983fc">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">st_filter</span>(grid, dep_46, <span class="at">.predicate =</span> st_intersects)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>restaurant <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/lot.gpkg"</span>, <span class="at">layer =</span> <span class="st">"restaurants"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(grid, <span class="at">col =</span> <span class="st">"grey"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(restaurant, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">cex =</span> .<span class="dv">5</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-nm="true" data-hash="cache/intersect3.1_dbc84132662f000c7df7585f4571d261">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">st_filter</span>(grid, dep_46, <span class="at">.predicate =</span> st_intersects)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Import d'une couche géographique ponctuelle des restaurants du Lot</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>restaurant <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/lot.gpkg"</span>, <span class="at">layer =</span> <span class="st">"restaurants"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(grid, <span class="at">col =</span> <span class="st">"grey"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(restaurant, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">cex =</span> .<span class="dv">5</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/intersect3.1-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <p>Nous utilisons ensuite la fonction <code>st_intersects(..., sparse = TRUE)</code> qui nous permettra d’avoir pour chaque élément de l’objet <strong>grid</strong> la liste des éléments (via leurs indexes) de l’objet <strong>restaurant</strong> qui se trouvent à l’intérieur.</p>
-<div class="cell" data-nm="true" data-hash="cache/intersect3.2_19ad42dd2279df1673a8b59cd2e68168">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersects</span>(grid, restaurant, <span class="at">sparse =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(inter) <span class="sc">==</span> <span class="fu">nrow</span>(grid)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-nm="true" data-hash="cache/intersect3.2_a5f63c66486059253f6cdd270dd02815">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_intersects</span>(grid, restaurant, <span class="at">sparse =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(inter) <span class="sc">==</span> <span class="fu">nrow</span>(grid)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] TRUE</code></pre>
 </div>
 </div>
 <p>Pour compter le nombre de restaurants il suffit donc de reporter la longueur de chacun des éléments de cette liste.</p>
-<div class="cell" data-hash="cache/intersect3.4_4e05512ea68fa5b5b12df2c91dd27529">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">$</span>nb_restaurant <span class="ot">&lt;-</span> <span class="fu">lengths</span>(inter)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(grid)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(grid, <span class="at">var =</span> <span class="st">"nb_restaurant"</span>, <span class="at">type =</span> <span class="st">"prop"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="cache/intersect3.4_4d49b627229e105132ad8b721643bbff">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">$</span>nb_restaurant <span class="ot">&lt;-</span> <span class="fu">lengths</span>(inter)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(grid)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(grid, <span class="at">var =</span> <span class="st">"nb_restaurant"</span>, <span class="at">type =</span> <span class="st">"prop"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; 94 '0' values are not plotted on the map.</code></pre>
 </div>
@@ -528,14 +529,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="aggréger-les-valeurs-de-points-dans-des-polygones" class="level2" data-number="7.8">
 <h2 data-number="7.8" class="anchored" data-anchor-id="aggréger-les-valeurs-de-points-dans-des-polygones"><span class="header-section-number">7.8</span> Aggréger les valeurs de points dans des polygones</h2>
 <p>Ici nous voulons résumer l’information contenue dans une couche de points dans des polygones. Nous voulons connaître l’altitude minimale et maximale de chaque communes.<br>
-Nous pouvons commencer par importer une couche de points d’altitude (la couche <strong>elevations</strong> du fichier <strong>lot.gpkg</strong>)</p>
+Nous commencons par importer une couche de points d’altitude, la couche <strong>elevations</strong> du fichier <strong>lot.gpkg</strong>.</p>
 <div class="cell" data-hash="cache/unnamed-chunk-1_ee6786292f3f048e35780ad740d6d252">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>elev <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/lot.gpkg"</span>, <span class="st">"elevations"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(elev, <span class="st">"elevation"</span>, <span class="st">"choro"</span>, </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">700</span>, <span class="at">by =</span> <span class="dv">100</span>), <span class="dv">742</span>),</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">pal =</span> <span class="fu">hcl.colors</span>(<span class="dv">8</span>, <span class="st">"Terrain2"</span>), </span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">leg_pos =</span> <span class="st">"topleft"</span>, <span class="at">cex =</span> .<span class="dv">75</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>elev <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/lot.gpkg"</span>, <span class="st">"elevations"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(elev, <span class="st">"elevation"</span>, <span class="st">"choro"</span>, </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">700</span>, <span class="at">by =</span> <span class="dv">100</span>), <span class="dv">742</span>),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">pal =</span> <span class="fu">hcl.colors</span>(<span class="dv">8</span>, <span class="st">"Terrain2"</span>), </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">leg_pos =</span> <span class="st">"topleft"</span>, <span class="at">cex =</span> .<span class="dv">75</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/unnamed-chunk-1-1.png" class="img-fluid" width="576"></p>
 </div>
@@ -543,8 +544,8 @@ Nous pouvons commencer par importer une couche de points d’altitude (la couche
 <p>L’objectif est d’agréger les valeurs de ces points (les altitudes contenues dans le champ <strong>elevation</strong>) dans les communes du Lot.</p>
 <p>En utilisant la fonction <code>st_join()</code> nous pouvons récupérer les attributs des communes dans lesquelles se trouvent les points.</p>
 <div class="cell" data-hash="cache/intersection_768968ed8adbc7114ffe44fd3f10011d">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_join</span>(<span class="at">x =</span> elev, <span class="at">y =</span> com[, <span class="st">"INSEE_COM"</span>])</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>inter</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>inter <span class="ot">&lt;-</span> <span class="fu">st_join</span>(<span class="at">x =</span> elev, <span class="at">y =</span> com[, <span class="st">"INSEE_COM"</span>])</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>inter</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Simple feature collection with 5228 features and 2 fields
 #&gt; Geometry type: POINT
@@ -566,14 +567,16 @@ Nous pouvons commencer par importer une couche de points d’altitude (la couche
 </div>
 </div>
 <p>Nous pouvons ensuite utiliser la fonction <code>aggregate()</code> pour agréger les altitudes par communes, d’abord l’altitude minimal, puis l’altitude maximale.</p>
-<div class="cell" data-hash="cache/agval2_a7382998e7f2f3b8777da39ad5ef9627">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>alti_min <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="at">x =</span> <span class="fu">list</span>(<span class="at">alt_min =</span> inter<span class="sc">$</span>elevation),</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">by =</span> <span class="fu">list</span>(<span class="at">INSEE_COM =</span> inter<span class="sc">$</span>INSEE_COM),</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">FUN =</span> <span class="st">"min"</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>alti_max <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="at">x =</span> <span class="fu">list</span>(<span class="at">alt_max =</span> inter<span class="sc">$</span>elevation),</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">by =</span> <span class="fu">list</span>(<span class="at">INSEE_COM =</span> inter<span class="sc">$</span>INSEE_COM),</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">FUN =</span> <span class="st">"max"</span>)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(alti_max, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="cache/agval2_cc308b36776f05dce57586f66c5b5e48">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>alti_min <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="at">x =</span> <span class="fu">list</span>(<span class="at">alt_min =</span> inter<span class="sc">$</span>elevation),</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">by =</span> <span class="fu">list</span>(<span class="at">INSEE_COM =</span> inter<span class="sc">$</span>INSEE_COM),</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">FUN =</span> <span class="st">"min"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>alti_max <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="at">x =</span> <span class="fu">list</span>(<span class="at">alt_max =</span> inter<span class="sc">$</span>elevation),</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">by =</span> <span class="fu">list</span>(<span class="at">INSEE_COM =</span> inter<span class="sc">$</span>INSEE_COM),</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">FUN =</span> <span class="st">"max"</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(alti_max, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;   INSEE_COM  alt_max
 #&gt; 1     46001 302.4913
@@ -581,11 +584,11 @@ Nous pouvons commencer par importer une couche de points d’altitude (la couche
 #&gt; 3     46003 376.6632</code></pre>
 </div>
 </div>
-<p>On peut ensuite combiner ces résultat à la couche des communes (avec la fonction <code>merge()</code>).</p>
+<p>On peut ensuite combiner ces résultats à la couche des communes (avec la fonction <code>merge()</code>).</p>
 <div class="cell" data-hash="cache/agval3_62e98ed541dea152278d600b3d2b9675">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>com <span class="ot">&lt;-</span> <span class="fu">merge</span>(com, alti_min, <span class="at">by =</span> <span class="st">"INSEE_COM"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>com <span class="ot">&lt;-</span> <span class="fu">merge</span>(com, alti_max, <span class="at">by =</span> <span class="st">"INSEE_COM"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(com, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>com <span class="ot">&lt;-</span> <span class="fu">merge</span>(com, alti_min, <span class="at">by =</span> <span class="st">"INSEE_COM"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>com <span class="ot">&lt;-</span> <span class="fu">merge</span>(com, alti_max, <span class="at">by =</span> <span class="st">"INSEE_COM"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(com, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Simple feature collection with 3 features and 14 fields
 #&gt; Geometry type: MULTIPOLYGON
@@ -607,11 +610,12 @@ Nous pouvons commencer par importer une couche de points d’altitude (la couche
 </div>
 </div>
 <div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>bks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">700</span>, <span class="at">by =</span> <span class="dv">100</span>), <span class="dv">742</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">hcl.colors</span>(<span class="dv">8</span>, <span class="st">"Terrain2"</span>)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com, <span class="st">"alt_min"</span>, <span class="st">"choro"</span>, <span class="at">breaks =</span> bks, <span class="at">pal =</span> cols)</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com, <span class="st">"alt_max"</span>, <span class="st">"choro"</span>, <span class="at">breaks =</span> bks, <span class="at">pal =</span> cols)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel" data-hash="cache/popcompare_a2365b2bfe74f41123dc28f418d5d6fc">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>bks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">700</span>, <span class="at">by =</span> <span class="dv">100</span>), <span class="dv">742</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">hcl.colors</span>(<span class="dv">8</span>, <span class="st">"Terrain2"</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com, <span class="st">"alt_min"</span>, <span class="st">"choro"</span>, <span class="at">breaks =</span> bks, <span class="at">pal =</span> cols)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com, <span class="st">"alt_max"</span>, <span class="st">"choro"</span>, <span class="at">breaks =</span> bks, <span class="at">pal =</span> cols)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-hash="cache/popcompare_f20d9c2b025020b721bf43fa5ebbc39a">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="figs/popcompare-1.png" class="img-fluid" width="576"></p>
