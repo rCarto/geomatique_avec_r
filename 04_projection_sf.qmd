@@ -24,17 +24,17 @@ st_crs(com)
 
 La fonction `st_transform()` permet de changer le système de coordonnées d'un objet `sf`, de le reprojeter. 
 
-```{r, proj2}
+```{r proj2}
 #| layout-ncol: 2
 #| fig-width: 4
 #| fig-height: 4
-
 mf_map(com, expandBB = c(0, .12, 0, 0))
 mf_graticule(x = com)
-mf_title("RGF93 / Lambert-93")     
-    
+mf_title("RGF93 / Lambert-93")
+
+# changement de projection
 com_reproj <- st_transform(com, "EPSG:3035")
-    
+
 mf_map(com_reproj, expandBB = c(0, .12, .0, 0))
 mf_graticule(x = com_reproj)
 mf_title("ETRS89-extended / LAEA Europe")

@@ -67,7 +67,8 @@ plot(elev_med, main = "Elevation - median value")
 
 La reclassification des valeurs d'un raster peut aussi bien être utilisée pour discrétiser des données quantitatives que pour catégoriser des modalités qualitatives.
 
-Cela permet par exemple de répartir les [44 postes de la nomenclature CLC](https://www.statistiques.developpement-durable.gouv.fr/corine-land-cover-0) selon les 5 grands types d'occupation du territoire : territoires artificialisés, agricoles, forêts et milieux semi-naturels, zones humides et surfaces en eau. Pour cela, il est d'abord nécessaire de construire la table (matrice) de correspondance avec la fonction `matrix()`.
+Cela permet par exemple de répartir les [44 postes de la nomenclature CLC](https://www.statistiques.developpement-durable.gouv.fr/corine-land-cover-0) selon les 5 grands types d'occupation du territoire : territoires artificialisés, agricoles, forêts et milieux semi-naturels, zones humides et surfaces en eau. Pour cela, il est d'abord nécessaire de construire une table de correspondance avec la fonction `matrix()`.
+
 ```{r reclass_2}
 reclassif <- matrix(c(100, 199, 1,
                       200, 299, 2,
@@ -161,7 +162,7 @@ mon_focal <- matrix(1, nrow = 9, ncol = 9)
 mon_focal
 ```
 
-La fonction `focal()` permet de ensuite de réaliser l'analyse souhaitée. Par exemple : le calcul de la moyenne des valeurs de fenêtre spatiale determinée, pour chaque cellule du raster.
+La fonction `focal()` permet ensuite de réaliser l'analyse souhaitée. Par exemple : le calcul de la moyenne des valeurs dans une fenêtre spatiale determinée, pour chaque cellule du raster.
 
 ```{r op_focal_3}
 elev_focal_mean <- focal(elev, w = mon_focal, fun = mean)
@@ -170,7 +171,7 @@ elev_focal_mean <- focal(elev, w = mon_focal, fun = mean)
 ```{r op_focal_5}
 #| layout-ncol: 2
 plot(elev, main = "raster de départ")
-plot(elev_focal_mean, main="résultat : focal 9 x 9, sans pondération particulière")
+plot(elev_focal_mean, main="résultat : focal 9 x 9, pondération uniforme")
 ```
 
 
@@ -187,7 +188,7 @@ La fonction `terrain()` permet de réaliser des analyses focales spécifiques au
 - ***TRI*** = calcul de l'indice de la variabilité de l'élévation;
 - ***flowdir*** = calcul du sens d'écoulement de l'eau.
 
-Exemples avec le calcul des pentes (*slope*), c'est à dire leur inclinaison en degré.
+Exemples avec le calcul des pentes (*slope*), c'est à dire leur inclinaison en degrés.
 ```{r op_focal_6}
 
 slope <- terrain(elev, "slope",
@@ -201,7 +202,7 @@ plot(slope)
 
 ## Opérations globales
 
-![source : [https://gisgeography.com/map-algebra-global-zonal-focal-local/](https://gisgeography.com/map-algebra-global-zonal-focal-local/)](img/op_global.png)
+![[gisgeography.com](https://gisgeography.com/map-algebra-global-zonal-focal-local/)](img/op_global.png)
 
 Les opérations globales permettent de résumer les valeurs matricielles d'une ou plusieurs matrices.
 

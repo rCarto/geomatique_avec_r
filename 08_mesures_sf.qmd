@@ -2,16 +2,13 @@
 
 ## Créer une matrice de distances
 
+La fonction `st_distance()` permet de calculer une matrice de distance entre deux couches de points.  
 Si le système de projection du jeu de données est renseigné, les distances sont exprimées dans l'unité de mesure de la projection (le plus souvent en mètres).
-```{r distance, nm=TRUE}
+```{r distance}
 library(sf)
-com <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE)
+com <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE, agr = "constant")
+# transformation de la couche com en couche de points
 com_c <- st_centroid(com)
-```
-
-La fonction `st_distance()` permet de calculer une matrice de distance entre deux couches de points.
-
-```{r distance2, nm=TRUE}
 mat <- st_distance(x = com_c, y = com_c)
 mat[1:5,1:5]
 ```

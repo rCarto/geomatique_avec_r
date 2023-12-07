@@ -132,7 +132,7 @@ elev_lower <- resample(x = elev,
                        method = "bilinear") 
 
 plot(elev_lower, 
-     main = "Taille des cellules = 1000m\nMéthode de ré-échantillonnage bilinéaire")
+     main = "cellsize = 1000m - ré-échantillonnage bilinéaire")
 ```
 
 

@@ -19,7 +19,7 @@ com <- st_read("data/lot.gpkg", layer = "communes")
 class(com)
 ```
 
-Une couche géographique assignée dans un un objet avec la fonction `st_read()` est automatiquement stockée dans un objet `sf`.
+La fonction `st_read()` importe les couches géographiques au format `sf`.
 
 ::: {.callout-note}
 ## Geopackage

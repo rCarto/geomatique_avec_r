@@ -30,27 +30,48 @@ mf_map(dep_46, col = NA, border = "red", lwd = 2, add = TRUE)
 
 ## Agréger des polygones en fonction d'une variable
 
-* Avec la librairie `dplyr`
+* Avec la bibliothèque `dplyr`
 ```{r aggreg2, nm=TRUE, message = FALSE}
 library(dplyr)
 
 com_u <- com |>
-          group_by(STATUT) |>
-          summarise(POPULATION = sum(POPULATION))
+  group_by(STATUT) |>
+  summarise(POPULATION = sum(POPULATION))
 ```
 
 * Sans `dplyr`
 
 ```{r aggreg3, nm=TRUE}
+# variable servant à agréger les polygones
 i <- com$STATUT 
 
 com_u <- st_sf(
-  STATUT     = tapply(X = i               , INDEX = i, FUN = head, 1),
-  POPULATION = tapply(X = com$POPULATION  , INDEX = i, FUN = sum), 
-  geometry   = tapply(X = st_geometry(com), INDEX = i, FUN = st_union), 
+  STATUT     = tapply(X = com$STATUT     , INDEX = i, FUN = head, 1),
+  POPULATION = tapply(X = com$POPULATION , INDEX = i, FUN = sum), 
+  geometry   = tapply(X = com            , INDEX = i, FUN = st_union), 
   crs        = st_crs(com)
 ) 
 ```
+
+
+:::{.callout-note}
+## Explication de la méthode d'agrégation
+
+`tapply(X, INDEX, FUN)` permet d'aggréger une variable en fonction d'une autre.   
+Il faut indiquer la variable à agréger **X**, la variable servant à agréger **INDEX** et la manière d'agréger (une fonction) **FUN**.
+
+Ici par exemple nous calculons la somme des population des communes en fonction de leur statut :
+```{r tapply1}
+tapply(X = com$POPULATION, INDEX = com$STATUT, FUN = sum)
+```
+
+`tapply()` fonctionne également avec les objets `sf` et `sfc`:
+```{r}
+st_sfc(tapply(com, com$STATUT, st_union))
+```
+
+Nous pouvons ensuite combiner plusieurs appels `tapply()` à l'interieur d'un appel à `st_sf()` en ajoutant également les informations sur le système de coordonnées. 
+:::
 
 
 
@@ -72,9 +93,7 @@ En utilisant la fonction `st_intersection()`, on peut découper une couche par u
 ```{r intersect2}
 # création d'une zone tampon autour du centroid de la commune de Gramat
 # en utilisant le pipe
-zone <- st_geometry(gramat) |>
-             st_centroid() |>
-             st_buffer(10000)
+zone <- st_geometry(gramat) |> st_centroid() |> st_buffer(10000)
     
 mf_map(com)
 mf_map(zone, border = "red", col = NA, lwd = 2, add = TRUE)
@@ -174,12 +193,15 @@ Nous pouvons ensuite utiliser la fonction `aggregate()` pour agréger les altitu
 
 
 ```{r agval2}
-alti_min <- aggregate(x = list(alt_min = inter$elevation),
-                      by = list(INSEE_COM = inter$INSEE_COM),
+# x   : la variable que l'on veut agréger
+# by  : la variable qui servira à agréger 
+# FUN : la fonction à utiliser lors de l'agrégation
+alti_min <- aggregate(x   = list(alt_min   = inter$elevation),    
+                      by  = list(INSEE_COM = inter$INSEE_COM),
                       FUN = "min")
 
-alti_max <- aggregate(x = list(alt_max = inter$elevation),
-                      by = list(INSEE_COM = inter$INSEE_COM),
+alti_max <- aggregate(x   = list(alt_max   = inter$elevation),
+                      by  = list(INSEE_COM = inter$INSEE_COM),
                       FUN = "max")
 
 head(alti_max, n = 3)
