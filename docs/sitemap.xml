@@ -2,98 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/index.html</loc>
-    <lastmod>2023-12-07T16:38:28.936Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.880Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/01_package_sf.html</loc>
-    <lastmod>2023-12-07T16:38:28.944Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.880Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/02_import_sf.html</loc>
-    <lastmod>2023-12-07T16:38:28.948Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.888Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/03_affichage_sf.html</loc>
-    <lastmod>2023-12-07T16:38:28.956Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.896Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/04_projection_sf.html</loc>
-    <lastmod>2023-12-07T16:38:28.964Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.900Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/05_selection_attrib_sf.html</loc>
-    <lastmod>2023-12-07T16:38:28.968Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.904Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/06_selection_jointure_spatiale_sf.html</loc>
-    <lastmod>2023-12-07T16:38:28.976Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.912Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/07_operation_geom_sf.html</loc>
-    <lastmod>2023-12-07T16:38:28.988Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.932Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/08_mesures_sf.html</loc>
-    <lastmod>2023-12-07T16:38:28.996Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.936Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/11_package_terra.html</loc>
-    <lastmod>2023-12-07T16:38:29.000Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.936Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/12_import_terra.html</loc>
-    <lastmod>2023-12-07T16:38:29.004Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.944Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/13_affichage_terra.html</loc>
-    <lastmod>2023-12-07T16:38:29.012Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.952Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/14_modif_zone_terra.html</loc>
-    <lastmod>2023-12-07T16:38:29.024Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.964Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/15_algebre_spatial_terra.html</loc>
-    <lastmod>2023-12-07T16:38:29.036Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.980Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/16_transformation_terra.html</loc>
-    <lastmod>2023-12-07T16:38:29.044Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.984Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/17_OSM.html</loc>
-    <lastmod>2023-12-07T16:38:29.052Z</lastmod>
+    <lastmod>2023-12-12T15:41:42.992Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/18_OSM_interactif.html</loc>
-    <lastmod>2023-12-07T16:38:29.064Z</lastmod>
+    <lastmod>2023-12-12T15:41:43.000Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/19_OSM_static.html</loc>
-    <lastmod>2023-12-07T16:38:29.072Z</lastmod>
+    <lastmod>2023-12-12T15:41:43.012Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/20_OSM_data.html</loc>
-    <lastmod>2023-12-07T16:38:29.084Z</lastmod>
+    <lastmod>2023-12-12T15:41:43.032Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/21_OSM_routing.html</loc>
-    <lastmod>2023-12-07T16:38:29.092Z</lastmod>
+    <lastmod>2023-12-12T15:41:43.040Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/2000_references.html</loc>
-    <lastmod>2023-12-07T16:38:29.100Z</lastmod>
+    <lastmod>2023-12-12T15:41:43.048Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/1999_georeferencement.html</loc>
-    <lastmod>2023-12-07T16:38:29.108Z</lastmod>
+    <lastmod>2023-12-12T15:41:43.056Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/2001_donnees.html</loc>
-    <lastmod>2023-12-07T16:38:29.116Z</lastmod>
+    <lastmod>2023-12-12T15:41:43.064Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/2002_data.html</loc>
-    <lastmod>2023-12-07T16:38:29.120Z</lastmod>
+    <lastmod>2023-12-12T15:41:43.072Z</lastmod>
   </url>
 </urlset>

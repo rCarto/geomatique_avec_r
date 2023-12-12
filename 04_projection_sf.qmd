@@ -42,6 +42,10 @@ mf_title("ETRS89-extended / LAEA Europe")
 
 
 ::: {.callout-note}
-Le site [Spatial Reference](http://spatialreference.org/) met à disposition les références de très nombreux systèmes coordonnées.   
-Si l'on souhaite projeter un objet spatial, intialement en coordonnées géographiques (lon/lat), le package `crsuggest` [@R-crsuggest] propose des projections adaptées à l'emprise de l'objet.
+Si l'on souhaite projeter un objet spatial utilisant des coordonnées géographiques (lon/lat), le package `crsuggest` [@R-crsuggest] propose des projections adaptées à l'emprise de l'objet.
+
+
+[CRS Explorer](https://crs-explorer.proj.org) met à disposition les références de très nombreux systèmes coordonnées (voir aussi [epsg.io](https://epsg.io/) et [epsg.org](https://epsg.org))
+
+
 :::
