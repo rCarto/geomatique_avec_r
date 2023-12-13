@@ -240,37 +240,37 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_package_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./09_package_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Le package terra</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12_import_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./10_import_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Import et export</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13_affichage_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./11_affichage_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Affichage</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./12_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Modifications de la zone d’étude</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./13_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Algèbre spatial</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16_transformation_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./14_transformation_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Conversions</span></span></a>
   </div>
 </li>
@@ -287,31 +287,31 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17_OSM.html" class="sidebar-item-text sidebar-link">
+  <a href="./15_OSM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./18_OSM_interactif.html" class="sidebar-item-text sidebar-link">
+  <a href="./16_OSM_interactif.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./19_OSM_static.html" class="sidebar-item-text sidebar-link">
+  <a href="./17_OSM_static.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importer les fonds de carte raster</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./20_OSM_data.html" class="sidebar-item-text sidebar-link">
+  <a href="./18_OSM_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Importer des données OSM</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./21_OSM_routing.html" class="sidebar-item-text sidebar-link">
+  <a href="./19_OSM_routing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Utiliser un engin de routage</span></span></a>
   </div>
 </li>
@@ -364,6 +364,7 @@ div.csl-indent {
   <ul>
   <li><a href="#aperçu-des-variables" id="toc-aperçu-des-variables" class="nav-link active" data-scroll-target="#aperçu-des-variables"><span class="header-section-number">3.1</span> Aperçu des variables</a></li>
   <li><a href="#affichage" id="toc-affichage" class="nav-link" data-scroll-target="#affichage"><span class="header-section-number">3.2</span> Affichage</a></li>
+  <li><a href="#exercice" id="toc-exercice" class="nav-link" data-scroll-target="#exercice">Exercice</a></li>
   </ul>
 </nav>
     </div>
@@ -392,9 +393,12 @@ div.csl-indent {
 <p>Les objets <code>sf</code> <strong>sont</strong> des <code>data.frame</code>.<br>
 Nous pouvons utiliser les fonctions <code>head()</code> ou <code>summary()</code>.</p>
 <div class="cell" data-hash="cache/explor_ddb0eb1df01489003743319cf5972c32">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>com <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/lot.gpkg"</span>, <span class="at">layer =</span> <span class="st">"communes"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(com, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Linking to GEOS 3.11.1, GDAL 3.6.2, PROJ 9.1.1; sf_use_s2() is TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>com <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/lot.gpkg"</span>, <span class="at">layer =</span> <span class="st">"communes"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(com, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Simple feature collection with 3 features and 12 fields
 #&gt; Geometry type: MULTIPOLYGON
@@ -410,7 +414,7 @@ Nous pouvons utiliser les fonctions <code>head()</code> ou <code>summary()</code
 #&gt; 2 0.000000  4.794521     0  4.794521  9.589041 MULTIPOLYGON (((605540.7 64...
 #&gt; 3 5.209841 10.419682     0 57.308249 78.147612 MULTIPOLYGON (((593707.7 64...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(com)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(com)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;   INSEE_COM           NOM_COM             STATUT            POPULATION     
 #&gt;  Length:313         Length:313         Length:313         Min.   :   49.0  
@@ -454,13 +458,13 @@ Supprimer la colonne de géométrie d’un objet sf
 <div class="callout-body-container callout-body">
 <p>Pour transformer un objet <code>sf</code> en simple <code>data.frame</code> (sans géométries), nous pouvons utiliser les fonctions <code>st_set_geometry()</code> ou <code>st_drop_geometry()</code>.</p>
 <div class="cell" data-hash="cache/drop_08b15eb6d008d9c6f4353d10d64bda8f">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>com_df1 <span class="ot">&lt;-</span> <span class="fu">st_set_geometry</span>(com, <span class="cn">NULL</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>com_df2 <span class="ot">&lt;-</span> <span class="fu">st_drop_geometry</span>(com)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(com_df1, com_df2)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>com_df1 <span class="ot">&lt;-</span> <span class="fu">st_set_geometry</span>(com, <span class="cn">NULL</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>com_df2 <span class="ot">&lt;-</span> <span class="fu">st_drop_geometry</span>(com)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(com_df1, com_df2)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(com_df1, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(com_df1, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;   INSEE_COM  NOM_COM         STATUT POPULATION     AGR_H    AGR_F     IND_H
 #&gt; 1     46001    Albas Commune simple        522  4.978581 0.000000  4.936153
@@ -479,7 +483,7 @@ Supprimer la colonne de géométrie d’un objet sf
 <h2 data-number="3.2" class="anchored" data-anchor-id="affichage"><span class="header-section-number">3.2</span> Affichage</h2>
 <p>Aperçu des variables avec <code>plot()</code> :</p>
 <div class="cell" data-hash="cache/affichage_complet_683400ff501e81ef3c5a08b1f1b514b3">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(com)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(com)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Warning: plotting the first 9 out of 12 attributes; use max.plot = 12 to plot
 #&gt; all</code></pre>
@@ -490,26 +494,30 @@ Supprimer la colonne de géométrie d’un objet sf
 </div>
 <p>Affichage d’une seule variable :</p>
 <div class="cell" data-hash="cache/affi_geom2_7e8338bb0a3108217db4a58458eabee7">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(com[<span class="st">"POPULATION"</span>])</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(com[<span class="st">"POPULATION"</span>])</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/affi_geom2-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <p>Affichage de la géométrie seule :</p>
 <div class="cell" data-hash="cache/affi_geom3_d5ac61e6b9f358f379e7b9ac3e26c303">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(com), <span class="at">col =</span> <span class="st">"ivory4"</span>, <span class="at">border =</span> <span class="st">"ivory"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(com), <span class="at">col =</span> <span class="st">"ivory4"</span>, <span class="at">border =</span> <span class="st">"ivory"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/affi_geom3-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <p>Il est aussi possible d’utiliser le package <code>mapsf</code> <span class="citation" data-cites="R-mapsf">(<a href="2000_references.html#ref-R-mapsf" role="doc-biblioref">Giraud, 2023</a>)</span> pour afficher les objets <code>sf</code>.</p>
 <div class="cell" data-hash="cache/affichage_mapsff_dc503c492e1c84351314fe1fd5f61045">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com, <span class="at">col =</span> <span class="st">"ivory4"</span>, <span class="at">border =</span> <span class="st">"ivory"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com, <span class="at">col =</span> <span class="st">"ivory4"</span>, <span class="at">border =</span> <span class="st">"ivory"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/affichage_mapsff-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
+</section>
+<section id="exercice" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercice">Exercice</h2>
+<p>Affichez les communes et les restaurants sur une même carte.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">

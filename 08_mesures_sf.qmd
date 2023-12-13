@@ -21,3 +21,40 @@ La fonction `st_area()` permet de calculer des superficies.
 st_area(com[1:5, ])
 ```
 
+## Convertir des unités 
+
+Le package `units` [@R-units] permet de définir et convertir facilement des unités de mesure.  
+Le package peut se révéler assez utile quand nous manipulons différentes unités de mesures régulièrement. 
+
+
+```{r}
+library(units)
+
+distances <- c(1, 2, 3, 5, 0.5)
+surfaces <- c(500, 1000, 10000, 20000)
+
+# définition des unités de mesure initiales
+distances <- set_units(distances, "km")
+distances
+
+surfaces <- set_units(surfaces, "m2")
+surfaces
+
+# transformation des unités de mesure
+distances <- set_units(distances, "m")
+distances
+
+surfaces <- set_units(surfaces, "ha")
+surfaces
+
+## Suppression des unités
+distances <- set_units(distances, NULL)
+distances
+
+surfaces <- set_units(surfaces, NULL)
+surfaces
+```
+
+
+
+

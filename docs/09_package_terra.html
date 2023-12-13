@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -85,8 +51,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./20_OSM_data.html" rel="next">
-<link href="./18_OSM_interactif.html" rel="prev">
+<link href="./10_import_terra.html" rel="next">
+<link href="./08_mesures_sf.html" rel="prev">
 <link href="./img/layer-group-solid.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -121,10 +87,10 @@ div.csl-indent {
 
 <meta property="og:title" content="Géomatique avec R">
 <meta property="og:description" content="Pour la réalisation de traitements reproductibles de l’information géographique.">
-<meta property="og:image" content="https://rcarto.github.io/rcarto/geomatique_avec_r/figs/display_point-1.png">
+<meta property="og:image" content="https://rcarto.github.io/rcarto/geomatique_avec_r/img/logo_terra.png">
 <meta property="og:site-name" content="Géomatique avec R">
-<meta property="og:image:height" content="865">
-<meta property="og:image:width" content="896">
+<meta property="og:image:height" content="881">
+<meta property="og:image:width" content="785">
 </head>
 
 <body class="nav-sidebar floating">
@@ -136,7 +102,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./17_OSM.html"><strong>Focus sur OpenStreetMap</strong></a></li><li class="breadcrumb-item"><a href="./19_OSM_static.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importer les fonds de carte raster</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_package_terra.html"><strong>Les données raster : le package terra</strong></a></li><li class="breadcrumb-item"><a href="./09_package_terra.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Le package terra</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -240,37 +206,37 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_package_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./09_package_terra.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Le package terra</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12_import_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./10_import_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Import et export</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13_affichage_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./11_affichage_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Affichage</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./12_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Modifications de la zone d’étude</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./13_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Algèbre spatial</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16_transformation_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./14_transformation_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Conversions</span></span></a>
   </div>
 </li>
@@ -287,31 +253,31 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17_OSM.html" class="sidebar-item-text sidebar-link">
+  <a href="./15_OSM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./18_OSM_interactif.html" class="sidebar-item-text sidebar-link">
+  <a href="./16_OSM_interactif.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./19_OSM_static.html" class="sidebar-item-text sidebar-link active">
+  <a href="./17_OSM_static.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importer les fonds de carte raster</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./20_OSM_data.html" class="sidebar-item-text sidebar-link">
+  <a href="./18_OSM_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Importer des données OSM</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./21_OSM_routing.html" class="sidebar-item-text sidebar-link">
+  <a href="./19_OSM_routing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Utiliser un engin de routage</span></span></a>
   </div>
 </li>
@@ -358,14 +324,21 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#présentation" id="toc-présentation" class="nav-link active" data-scroll-target="#présentation"><span class="header-section-number">9.1</span> Présentation</a></li>
+  <li><a href="#format-des-objets-spatraster" id="toc-format-des-objets-spatraster" class="nav-link" data-scroll-target="#format-des-objets-spatraster"><span class="header-section-number">9.2</span> Format des objets <code>SpatRaster</code></a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importer les fonds de carte raster</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Le package terra</span></h1>
 </div>
 
 
@@ -380,35 +353,51 @@ div.csl-indent {
 
 </header>
 
-<p>Le package <code>maptiles</code> <span class="citation" data-cites="R-maptiles">(<a href="2000_references.html#ref-R-maptiles" role="doc-biblioref">Giraud, 2023</a>)</span> permet de télécharger et d’afficher des fonds de cartes raster. La fonction <code>get_tiles()</code> permet de télécharger des fonds de cartes OSM au format <code>SpatRaster</code> du package <code>terra</code>.<br>
-Dans cette exemple nous utilisons le package <code>mapsf</code> pour afficher la carte.<br>
-Les rendus sont meilleurs si les données en entrée utilisent le même système de coordonnées que les tuiles (<a href="https://github.com/riatelab/maptiles#projection">EPSG:3857</a>).</p>
-<div class="cell" data-hash="cache/display_point_26013ae33920fe0d5bced4b405f724ea">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptiles)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>com <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/lot.gpkg"</span>, <span class="at">layer =</span> <span class="st">"communes"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>com <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(com, <span class="dv">3857</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Récupération d'un fond de carte OSM</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>osm_tiles <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="at">x =</span> com, <span class="at">zoom =</span> <span class="dv">9</span>, <span class="at">crop =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_theme</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_raster</span>(osm_tiles)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com, <span class="at">border =</span> <span class="st">"grey20"</span>, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">lwd =</span> .<span class="dv">7</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_credits</span>(<span class="fu">get_credit</span>(<span class="st">"OpenStreetMap"</span>), <span class="at">bg =</span> <span class="st">"#ffffff80"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="figs/display_point-1.png" class="img-fluid" width="448"></p>
+<section id="présentation" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="présentation"><span class="header-section-number">9.1</span> Présentation</h2>
+<p><img src="img/logo_terra.png" align="right" width="150"> L’objectif du package <code>terra</code> <span class="citation" data-cites="R-terra">(<a href="2000_references.html#ref-R-terra" role="doc-biblioref">Hijmans, 2023</a>)</span> est de proposer des méthodes de traitement et d’analyse de données raster. Ce package est très similaire au package <code>raster</code>, mais il propose plus de fonctionnalités. Il est plus rapide et plus facile à utiliser.</p>
+<p>Ce chapitre est largement inspiré de deux présentations <span class="citation" data-cites="MmadelinSIGR JNowosadSIGR">(<a href="2000_references.html#ref-MmadelinSIGR" role="doc-biblioref">Madelin, 2021</a> ; <a href="2000_references.html#ref-JNowosadSIGR" role="doc-biblioref">Nowosad, 2021</a>)</span> réalisées dans le cadre de l’école thématique “Science de l’Information Géographique Reproductibles 2021” (<a href="https://sigr2021.github.io/site/index.html">SIGR2021</a>).</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+Site web du package <code>terra</code> :
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://rspatial.org/terra/">Spatial Data Science with R and “terra”</a></p>
+</div>
+</div>
+</section>
+<section id="format-des-objets-spatraster" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="format-des-objets-spatraster"><span class="header-section-number">9.2</span> Format des objets <code>SpatRaster</code></h2>
+<p>Le package <code>terra</code> <span class="citation" data-cites="R-terra">(<a href="2000_references.html#ref-R-terra" role="doc-biblioref">Hijmans, 2023</a>)</span> permet de gérer des données vectorielles et raster. Pour manipuler ces données spatiales, <code>terra</code> les stockent dans des objets de type <code>SpatVector</code> et <code>SpatRaster</code>. Dans ce document, nous nous focalisons sur la manipulation de données raster (<code>SpatRaster</code>) à partir de fonctions proposées par ce package.</p>
+<p>Un objet <code>SpatRaster</code> représente des données matricielles, en une ou plusieurs couches (variables). Cet objet stocke également un certain nombre de paramètres fondamentaux qui le décrivent (nombre de colonnes, de lignes, étendue spatiale, système de référence des coordonnées…).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/raster.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="figure-caption"><span class="citation" data-cites="RasterCheatSheet">Racine (<a href="2000_references.html#ref-RasterCheatSheet" role="doc-biblioref">2016</a>)</span></figcaption>
+</figure>
 </div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
-<div id="ref-R-maptiles" class="csl-entry" role="listitem">
-Giraud, T. (2023). <em>maptiles: Download and Display Map Tiles</em>. <a href="https://CRAN.R-project.org/package=maptiles">https://CRAN.R-project.org/package=maptiles</a>
+<div id="ref-R-terra" class="csl-entry" role="listitem">
+Hijmans, R. J. (2023). <em>terra: Spatial Data Analysis</em>. <a href="https://CRAN.R-project.org/package=terra">https://CRAN.R-project.org/package=terra</a>
+</div>
+<div id="ref-MmadelinSIGR" class="csl-entry" role="listitem">
+Madelin, M. (2021). Analyse d’images raster (et télédétection). <a href="https://mmadelin.github.io/sigr2021/SIGR2021_raster_MM.html" class="uri">https://mmadelin.github.io/sigr2021/SIGR2021_raster_MM.html</a>.
+</div>
+<div id="ref-JNowosadSIGR" class="csl-entry" role="listitem">
+Nowosad, J. (2021). Image processing and all things raster. <a href="https://nowosad.github.io/SIGR2021/workshop2/workshop2.html" class="uri">https://nowosad.github.io/SIGR2021/workshop2/workshop2.html</a>.
+</div>
+<div id="ref-RasterCheatSheet" class="csl-entry" role="listitem">
+Racine, E. B. (2016). The Visual Raster Cheat Sheet. <a href="https://rpubs.com/etiennebr/visualraster" class="uri">https://rpubs.com/etiennebr/visualraster</a>.
 </div>
 </div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -646,13 +635,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./18_OSM_interactif.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span>
+      <a href="./08_mesures_sf.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mesures</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./20_OSM_data.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Importer des données OSM</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./10_import_terra.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Import et export</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

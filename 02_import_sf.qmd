@@ -45,3 +45,7 @@ st_write(obj = com, dsn = "data/com.gpkg", layer = "communes")
 #| results: hide
 file.remove("data/com.gpkg")
 ```
+
+## Exercice {.unnumbered}
+
+Importez la couche des restaurants depuis le fichier **lot.gpkg** dans un objet nommé "resto".

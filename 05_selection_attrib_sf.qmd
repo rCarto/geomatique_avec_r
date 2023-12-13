@@ -20,3 +20,4 @@ com[, "POPULATION"]
 com[com$NOM_COM == "Gramat", 1:4]
 ```
 
+

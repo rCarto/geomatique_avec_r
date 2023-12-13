@@ -221,37 +221,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_package_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./09_package_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Le package terra</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12_import_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./10_import_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Import et export</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13_affichage_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./11_affichage_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Affichage</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./12_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Modifications de la zone d’étude</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./13_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Algèbre spatial</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16_transformation_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./14_transformation_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Conversions</span></span></a>
   </div>
 </li>
@@ -268,31 +268,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17_OSM.html" class="sidebar-item-text sidebar-link">
+  <a href="./15_OSM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./18_OSM_interactif.html" class="sidebar-item-text sidebar-link">
+  <a href="./16_OSM_interactif.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./19_OSM_static.html" class="sidebar-item-text sidebar-link">
+  <a href="./17_OSM_static.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importer les fonds de carte raster</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./20_OSM_data.html" class="sidebar-item-text sidebar-link">
+  <a href="./18_OSM_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Importer des données OSM</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./21_OSM_routing.html" class="sidebar-item-text sidebar-link">
+  <a href="./19_OSM_routing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Utiliser un engin de routage</span></span></a>
   </div>
 </li>
@@ -345,6 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#sélection-spatiale" id="toc-sélection-spatiale" class="nav-link active" data-scroll-target="#sélection-spatiale"><span class="header-section-number">6.1</span> Sélection spatiale</a></li>
   <li><a href="#jointure-spatiale" id="toc-jointure-spatiale" class="nav-link" data-scroll-target="#jointure-spatiale"><span class="header-section-number">6.2</span> Jointure spatiale</a></li>
+  <li><a href="#exercice" id="toc-exercice" class="nav-link" data-scroll-target="#exercice">Exercice</a></li>
   </ul>
 </nav>
     </div>
@@ -392,32 +393,39 @@ Nous allons ici sélectionner les routes qui intersectent la commune de Gramat</
 <section id="jointure-spatiale" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="jointure-spatiale"><span class="header-section-number">6.2</span> Jointure spatiale</h2>
 <p>La fonction <code>st_join()</code> permet de réaliser des jointures spatiales. Cette fois-ci c’est l’argument <code>join</code> qui utilise une fonction de prédicat géométrique.</p>
-<div class="cell" data-hash="cache/intersects_6ad5e440639c98bac041c4c3f78e8edf">
+<div class="cell" data-hash="cache/intersects_57f9d49fd6eeccae55b3978078c91503">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>route_gramat <span class="ot">&lt;-</span>  <span class="fu">st_join</span>(<span class="at">x =</span> route,</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">y =</span> com[, <span class="fu">c</span>(<span class="st">"INSEE_COM"</span>,<span class="st">"NOM_COM"</span>)],</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">y =</span> com[, <span class="st">"INSEE_COM"</span>],</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">join =</span> st_intersects,</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">left =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>route_gramat</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; Simple feature collection with 1247 features and 4 fields
+<pre><code>#&gt; Simple feature collection with 1247 features and 3 fields
 #&gt; Geometry type: LINESTRING
 #&gt; Dimension:     XY
 #&gt; Bounding box:  xmin: 587147.6 ymin: 6394844 xmax: 608194.7 ymax: 6420006
 #&gt; Projected CRS: RGF93 v1 / Lambert-93
 #&gt; First 10 features:
-#&gt;     ID      CLASS_ADM INSEE_COM        NOM_COM                           geom
-#&gt; 1    1 Départementale     46240     Rocamadour LINESTRING (590557.5 641181...
-#&gt; 2    2 Départementale     46240     Rocamadour LINESTRING (593733.2 641429...
-#&gt; 3    3 Départementale     46240     Rocamadour LINESTRING (590665 6412381,...
-#&gt; 4    4 Départementale     46128         Gramat LINESTRING (598940.9 640909...
-#&gt; 5    5 Départementale     46104   Flaujac-Gare LINESTRING (603201.9 640181...
-#&gt; 6    6     Sans objet     46235        Reilhac LINESTRING (598162.3 640108...
-#&gt; 7    7 Départementale     46090        Durbans LINESTRING (598887.3 639763...
-#&gt; 7.1  7 Départementale     46138 Cœur de Causse LINESTRING (598887.3 639763...
-#&gt; 7.2  7 Départementale     46233        Quissac LINESTRING (598887.3 639763...
-#&gt; 8    8 Départementale     46090        Durbans LINESTRING (601184.3 639697...</code></pre>
+#&gt;     ID      CLASS_ADM INSEE_COM                           geom
+#&gt; 1    1 Départementale     46240 LINESTRING (590557.5 641181...
+#&gt; 2    2 Départementale     46240 LINESTRING (593733.2 641429...
+#&gt; 3    3 Départementale     46240 LINESTRING (590665 6412381,...
+#&gt; 4    4 Départementale     46128 LINESTRING (598940.9 640909...
+#&gt; 5    5 Départementale     46104 LINESTRING (603201.9 640181...
+#&gt; 6    6     Sans objet     46235 LINESTRING (598162.3 640108...
+#&gt; 7    7 Départementale     46090 LINESTRING (598887.3 639763...
+#&gt; 7.1  7 Départementale     46138 LINESTRING (598887.3 639763...
+#&gt; 7.2  7 Départementale     46233 LINESTRING (598887.3 639763...
+#&gt; 8    8 Départementale     46090 LINESTRING (601184.3 639697...</code></pre>
 </div>
 </div>
+</section>
+<section id="exercice" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercice">Exercice</h2>
+<ol type="1">
+<li><p>Importez la couche des restaurants du Lot.</p></li>
+<li><p>Réaliser une jointure spatiale pour connaitre pour chaque restaurant le nom et l’identifiant de la commune dans laquelle il se trouve. <code>st_join()</code></p></li>
+</ol>
 
 
 </section>

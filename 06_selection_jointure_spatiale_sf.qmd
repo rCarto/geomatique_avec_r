@@ -39,8 +39,16 @@ prédicat géométrique.
 
 ```{r intersects}
 route_gramat <-  st_join(x = route,
-                         y = com[, c("INSEE_COM","NOM_COM")],
+                         y = com[, "INSEE_COM"],
                          join = st_intersects,
                          left = FALSE)
 route_gramat
 ```
+
+
+## Exercice {.unnumbered}
+
+1. Importez la couche des restaurants du Lot.
+
+2. Réaliser une jointure spatiale pour connaitre pour chaque restaurant le nom et l'identifiant de la commune dans laquelle il se trouve. `st_join()`
+

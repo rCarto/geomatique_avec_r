@@ -23,25 +23,16 @@ mf_map(com_c, add = TRUE, cex = 1.2, col = "red", pch = 20)
 
 ```{r aggreg}
 dep_46 <- st_union(com)
-    
+
 mf_map(com, col = "lightblue")
 mf_map(dep_46, col = NA, border = "red", lwd = 2, add = TRUE)
 ```
 
 ## Agréger des polygones en fonction d'une variable
 
-* Avec la bibliothèque `dplyr`
-```{r aggreg2, nm=TRUE, message = FALSE}
-library(dplyr)
+* Avec la fonction `tapply()`
 
-com_u <- com |>
-  group_by(STATUT) |>
-  summarise(POPULATION = sum(POPULATION))
-```
-
-* Sans `dplyr`
-
-```{r aggreg3, nm=TRUE}
+```{r aggreg1}
 # variable servant à agréger les polygones
 i <- com$STATUT 
 
@@ -54,11 +45,11 @@ com_u <- st_sf(
 ```
 
 
-:::{.callout-note}
+:::{.callout-note collapse="true"}
 ## Explication de la méthode d'agrégation
 
 `tapply(X, INDEX, FUN)` permet d'aggréger une variable en fonction d'une autre.   
-Il faut indiquer la variable à agréger **X**, la variable servant à agréger **INDEX** et la manière d'agréger (une fonction) **FUN**.
+Il faut indiquer la variable à agréger **X**, la variable servant à agréger **INDEX** et la manière d'agréger (la fonction d'agrégation) **FUN**.
 
 Ici par exemple nous calculons la somme des population des communes en fonction de leur statut :
 ```{r tapply1}
@@ -66,22 +57,60 @@ tapply(X = com$POPULATION, INDEX = com$STATUT, FUN = sum)
 ```
 
 `tapply()` fonctionne également avec les objets `sf` et `sfc`:
-```{r}
-st_sfc(tapply(com, com$STATUT, st_union))
+```{r tapply2}
+st_sf(geometry = st_sfc(tapply(com, com$STATUT, st_union)))
 ```
 
 Nous pouvons ensuite combiner plusieurs appels `tapply()` à l'interieur d'un appel à `st_sf()` en ajoutant également les informations sur le système de coordonnées. 
+
+```{r tapply3}
+st_sf(
+  STATUT     = tapply(com$STATUT    , com$STATUT, head, 1), # identifiants
+  POPULATION = tapply(com$POPULATION, com$STATUT, sum),     # somme des populations
+  geometry   = tapply(com           , com$STATUT, st_union),# union des géométries 
+  crs        = st_crs(com)                                  # information sur le CRS
+) 
+```
 :::
 
+:::{.callout-note }
+L'avantage de cette solution est qu'elle permet d'agréger les variables attributaires avec des fonctions d'agrégation différentes. Nous pouvons par exemple utiliser la somme pour une population (un stock) et la moyenne pour un taux de chômage (un ratio).
+:::
+
+* Avec la fonction `aggregate()`
+
+```{r aggreg2}
+com_u <- aggregate(
+  x = com["POPULATION"], 
+  by = list(STATUT = com$STATUT), 
+  FUN = sum
+)
+```
+
+
+:::{.callout-note}
+Cette solution ne permettra pas d'agréger les variables attributaires avec des fonctions d'agrégation différentes. Nous devons donc choisir avec précaution en amont les variable que l'on souhaite agréger et leur fonction d'agrégation. 
+:::
+
+
+* Avec la bibliothèque `dplyr`
+
+```{r aggreg3}
+library(dplyr)
+
+com_u <- com |>
+  group_by(STATUT) |>
+  summarise(POPULATION = sum(POPULATION))
+```
 
 
 ## Construire une zone tampon
 
 ```{r buffers}
 gramat <- com[com$NOM_COM == "Gramat", ]
-    
+
 gramat_b <- st_buffer(x = gramat, dist = 5000)
-     
+
 mf_map(gramat_b, col = "lightblue", lwd=2, border = "red")
 mf_map(gramat, add = TRUE, lwd = 2)
 ```
@@ -94,12 +123,12 @@ En utilisant la fonction `st_intersection()`, on peut découper une couche par u
 # création d'une zone tampon autour du centroid de la commune de Gramat
 # en utilisant le pipe
 zone <- st_geometry(gramat) |> st_centroid() |> st_buffer(10000)
-    
+
 mf_map(com)
 mf_map(zone, border = "red", col = NA, lwd = 2, add = TRUE)
-    
+
 com_z <- st_intersection(x = com, y = zone)
-    
+
 mf_map(com)
 mf_map(com_z, col = "red", border = "green", add = TRUE)
 mf_map(com_z)
@@ -189,7 +218,7 @@ inter
 ```
 
 
-Nous pouvons ensuite utiliser la fonction `aggregate()` pour agréger les altitudes par communes, d'abord l'altitude minimal, puis l'altitude maximale.
+Nous pouvons ensuite utiliser la fonction `aggregate()` pour agréger les altitudes par communes, d'abord l'altitude minimale, puis l'altitude maximale.
 
 
 ```{r agval2}
@@ -229,5 +258,13 @@ mf_map(com, "alt_max", "choro", breaks = bks, pal = cols)
 
 
 
+
+## Exercice {.unnumbered}
+
+1. Calculez le nombre de restaurants par commune.
+
+2. Quelles communes ont plus de 10 restaurants et moins de 1000 habitants ?
+
+3. Créez une carte où vous afficherez toutes les communes en gris et les communes sélectionnées plus haut en rouge.
 
 

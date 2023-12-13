@@ -15,7 +15,7 @@ Ce package propose des objets simples (suivant le standard [*simple feature*](ht
 
 :::{.callout-note}
 ## Historique
-Le package `sf` est venu remplacer les packages `sp` [@R-sp], `rgeos` [@R-rgeos] et `rgdal` [@R-rgdal] en combinant leurs fonctionnalités dans un package unique plus ergonomique. 
+Le package `sf` est venu remplacer les packages `sp` [@R-sp], `rgeos` [@R-rgeos] et `rgdal` [@R-rgdal] en combinant leurs fonctionnalités dans un package unique plus ergonomique. Sur ce sujet on peut lire avec profit l'article de @bivand2021 qui évoque l'évolution de l'écosystème spatial de R. 
 :::
 
 
@@ -30,4 +30,14 @@ Ce format est très pratique dans la mesure où les données et les géométries
 ## Vignette décrivant le format simple feature
 [Simple Features for R](https://r-spatial.github.io/sf/articles/sf1.html)
 :::
+
+
+## Exercice {.unnumbered}
+
+1. Les données utilisées dans ce document sont stockées dans un projet RStudio. 
+Vous devez le télécharger puis le décompresser sur votre machine. Il vous sera ensuite possible de tester l'ensemble des manipulations proposées dans ce document au sein du projet **geodata**.  
+[Télécharger le projet](geodata.zip){.btn .btn-primary .btn-sm role="button"}  
+
+2. Nous utiliserons principalement le package `sf` dans la suite de ce document.   
+Installez le en utilisant la fonction `install.packages()`.
 

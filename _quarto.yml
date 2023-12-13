@@ -64,22 +64,21 @@ book:
         - 06_selection_jointure_spatiale_sf.qmd
         - 07_operation_geom_sf.qmd
         - 08_mesures_sf.qmd
-        # - 09_exercices_sf.qmd
     - part: "**Les données raster : le package terra**"
       chapters: 
-        - 11_package_terra.qmd
-        - 12_import_terra.qmd
-        - 13_affichage_terra.qmd
-        - 14_modif_zone_terra.qmd
-        - 15_algebre_spatial_terra.qmd
-        - 16_transformation_terra.qmd
+        - 09_package_terra.qmd
+        - 10_import_terra.qmd
+        - 11_affichage_terra.qmd
+        - 12_modif_zone_terra.qmd
+        - 13_algebre_spatial_terra.qmd
+        - 14_transformation_terra.qmd
     - part: "**Focus sur OpenStreetMap**"
       chapters: 
-        - 17_OSM.qmd
-        - 18_OSM_interactif.qmd
-        - 19_OSM_static.qmd
-        - 20_OSM_data.qmd
-        - 21_OSM_routing.qmd
+        - 15_OSM.qmd
+        - 16_OSM_interactif.qmd
+        - 17_OSM_static.qmd
+        - 18_OSM_data.qmd
+        - 19_OSM_routing.qmd
     - 2000_references.qmd
   appendices:
     - 1999_georeferencement.qmd

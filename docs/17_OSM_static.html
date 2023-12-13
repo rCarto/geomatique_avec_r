@@ -56,7 +56,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -66,8 +85,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./14_modif_zone_terra.html" rel="next">
-<link href="./12_import_terra.html" rel="prev">
+<link href="./18_OSM_data.html" rel="next">
+<link href="./16_OSM_interactif.html" rel="prev">
 <link href="./img/layer-group-solid.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -102,10 +121,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="Géomatique avec R">
 <meta property="og:description" content="Pour la réalisation de traitements reproductibles de l’information géographique.">
-<meta property="og:image" content="https://rcarto.github.io/rcarto/geomatique_avec_r/figs/affichage_1_raster-1.png">
+<meta property="og:image" content="https://rcarto.github.io/rcarto/geomatique_avec_r/figs/display_point-1.png">
 <meta property="og:site-name" content="Géomatique avec R">
-<meta property="og:image:height" content="1102">
-<meta property="og:image:width" content="1152">
+<meta property="og:image:height" content="865">
+<meta property="og:image:width" content="896">
 </head>
 
 <body class="nav-sidebar floating">
@@ -117,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./11_package_terra.html"><strong>Les données raster : le package terra</strong></a></li><li class="breadcrumb-item"><a href="./13_affichage_terra.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Affichage</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./15_OSM.html"><strong>Focus sur OpenStreetMap</strong></a></li><li class="breadcrumb-item"><a href="./17_OSM_static.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importer les fonds de carte raster</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -221,37 +240,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_package_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./09_package_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Le package terra</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12_import_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./10_import_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Import et export</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13_affichage_terra.html" class="sidebar-item-text sidebar-link active">
+  <a href="./11_affichage_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Affichage</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./12_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Modifications de la zone d’étude</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./13_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Algèbre spatial</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16_transformation_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./14_transformation_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Conversions</span></span></a>
   </div>
 </li>
@@ -268,31 +287,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17_OSM.html" class="sidebar-item-text sidebar-link">
+  <a href="./15_OSM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./18_OSM_interactif.html" class="sidebar-item-text sidebar-link">
+  <a href="./16_OSM_interactif.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./19_OSM_static.html" class="sidebar-item-text sidebar-link">
+  <a href="./17_OSM_static.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importer les fonds de carte raster</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./20_OSM_data.html" class="sidebar-item-text sidebar-link">
+  <a href="./18_OSM_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Importer des données OSM</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./21_OSM_routing.html" class="sidebar-item-text sidebar-link">
+  <a href="./19_OSM_routing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Utiliser un engin de routage</span></span></a>
   </div>
 </li>
@@ -346,7 +365,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Affichage</span></h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importer les fonds de carte raster</span></h1>
 </div>
 
 
@@ -361,66 +380,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>La fonction <code>plot()</code> permet d’afficher un objet <code>SpatRaster</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#&gt; terra 1.7.55</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>elev <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"data/elevation.tif"</span>) </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elev)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Le package <code>maptiles</code> <span class="citation" data-cites="R-maptiles">(<a href="2000_references.html#ref-R-maptiles" role="doc-biblioref">Giraud, 2023</a>)</span> permet de télécharger et d’afficher des fonds de cartes raster. La fonction <code>get_tiles()</code> permet de télécharger des fonds de cartes OSM au format <code>SpatRaster</code> du package <code>terra</code>.<br>
+Dans cette exemple nous utilisons le package <code>mapsf</code> pour afficher la carte.<br>
+Les rendus sont meilleurs si les données en entrée utilisent le même système de coordonnées que les tuiles (<a href="https://github.com/riatelab/maptiles#projection">EPSG:3857</a>).</p>
+<div class="cell" data-hash="cache/display_point_26013ae33920fe0d5bced4b405f724ea">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptiles)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapsf)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>com <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/lot.gpkg"</span>, <span class="at">layer =</span> <span class="st">"communes"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>com <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(com, <span class="dv">3857</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Récupération d'un fond de carte OSM</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>osm_tiles <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="at">x =</span> com, <span class="at">zoom =</span> <span class="dv">9</span>, <span class="at">crop =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_theme</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_raster</span>(osm_tiles)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com, <span class="at">border =</span> <span class="st">"grey20"</span>, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">lwd =</span> .<span class="dv">7</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_credits</span>(<span class="fu">get_credit</span>(<span class="st">"OpenStreetMap"</span>), <span class="at">bg =</span> <span class="st">"#ffffff80"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="figs/affichage_1_raster-1.png" class="img-fluid" width="576"></p>
-</div>
-</div>
-<p>Un raster contient toujours des données numériques, mais il peut aussi bien s’agir de données quantitatives que de données qualitatives (catégorielles) codées numériquement.</p>
-<p>Précisez le type de données stockées avec l’argument <code>type</code> (<code>type = "continuous"</code> par défaut), pour les afficher correctement.</p>
-<p>Import et affichage d’un raster contenant des données catégorielles : CORINE Land Cover 2018 (type d’occupation du sol) avec une résolution de 100m. Ces données ont été récupérées sur le <a href="https://land.copernicus.eu/pan-european/corine-land-cover/clc2018?tab=download">site de Copernicus</a>, le programme européen de surveillance de la Terre qui collecte et met à disposition des données issues de ses propres satellites (<em>Sentinelles</em>) d’observation. Une extraction centrée sur la commune de Cahors a ensuite été réalisée.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clc <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"data/clc_2018.tif"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Affichage</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clc, <span class="at">type=</span><span class="st">"classes"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="figs/import_raster_2-1.png" class="img-fluid" width="576"></p>
-</div>
-</div>
-<p>Pour afficher les intitulés réels des types d’occupation du sol, ainsi que les couleurs officielles de la nomenclature CORINE Land Cover (consultables <a href="https://www.statistiques.developpement-durable.gouv.fr/corine-land-cover-0">ici</a>), vous pouvez procéder de la manière suivante :</p>
-<div class="cell" data-hash="cache/affichage_raster_3_2e90219145bcc5bcedff66629adae340">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>intitule_poste <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Tissu urbain continu"</span>, <span class="st">"Tissu urbain discontinu"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Zones industrielles ou commerciales et installations publiques"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Réseaux routier et ferroviaire et espaces associés"</span>, </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Aéroports"</span>,<span class="st">"Extraction de matériaux"</span>, </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Equipements sportifs et de loisirs"</span>, </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Terres arables hors périmètres d'irrigation"</span>, <span class="st">"Vignobles"</span>, </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Vergers et petits fruits"</span>, </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Prairies et autres surfaces toujours en herbe à usage agricole"</span>, </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Systèmes culturaux et parcellaires complexes"</span>, </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Surfaces essentiellement agricoles (interrompues par espaces nat.)"</span>, </span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Forêts de feuillus"</span>, <span class="st">"Forêts de conifères"</span>, <span class="st">"Forêts mélangées"</span>,</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Pelouses et pâturages naturels"</span>, </span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Landes et broussailles"</span>, <span class="st">"Végétation sclérophylle"</span>, </span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Forêt et végétation arbustive en mutation"</span>, </span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Cours et voies d'eau"</span>, <span class="st">"Plans d'eau"</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>couleur_off <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#E6004D"</span>, <span class="st">"#FF0000"</span>, <span class="st">"#CC4DF2"</span>, <span class="st">"#CC0000"</span>, <span class="st">"#E6CCE6"</span>, <span class="st">"#A600CC"</span>, </span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"#FFE6FF"</span>, <span class="st">"#FFFFA8"</span>, <span class="st">"#E68000"</span>, <span class="st">"#F2A64D"</span>, <span class="st">"#E6E64D"</span>, <span class="st">"#FFE64D"</span>, </span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"#E6CC4D"</span>, <span class="st">"#80FF00"</span>, <span class="st">"#00A600"</span>, <span class="st">"#4DFF00"</span>, <span class="st">"#CCF24D"</span>, <span class="st">"#A6FF80"</span>, </span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"#A6E64D"</span>, <span class="st">"#A6F200"</span>, <span class="st">"#00CCF2"</span>, <span class="st">"#80F2E6"</span>)</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clc, </span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"classes"</span>, </span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">levels =</span> intitule_poste,</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> couleur_off, </span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">plg =</span> <span class="fu">list</span>(<span class="at">cex =</span> <span class="fl">0.7</span>),</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>     <span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">3.1</span>, <span class="fl">1.1</span>, <span class="fl">1.1</span>, <span class="dv">10</span>)</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>     )</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="figs/affichage_raster_3-1.png" class="img-fluid" width="672"></p>
+<p><img src="figs/display_point-1.png" class="img-fluid" width="448"></p>
 </div>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-R-maptiles" class="csl-entry" role="listitem">
+Giraud, T. (2023). <em>maptiles: Download and Display Map Tiles</em>. <a href="https://CRAN.R-project.org/package=maptiles">https://CRAN.R-project.org/package=maptiles</a>
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -658,13 +646,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./12_import_terra.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Import et export</span></span>
+      <a href="./16_OSM_interactif.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./14_modif_zone_terra.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Modifications de la zone d’étude</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./18_OSM_data.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Importer des données OSM</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

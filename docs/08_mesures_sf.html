@@ -56,7 +56,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -66,7 +85,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./11_package_terra.html" rel="next">
+<link href="./09_package_terra.html" rel="next">
 <link href="./07_operation_geom_sf.html" rel="prev">
 <link href="./img/layer-group-solid.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -218,37 +237,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_package_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./09_package_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Le package terra</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12_import_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./10_import_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Import et export</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13_affichage_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./11_affichage_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Affichage</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./12_modif_zone_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Modifications de la zone d’étude</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./13_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Algèbre spatial</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16_transformation_terra.html" class="sidebar-item-text sidebar-link">
+  <a href="./14_transformation_terra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Conversions</span></span></a>
   </div>
 </li>
@@ -265,31 +284,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17_OSM.html" class="sidebar-item-text sidebar-link">
+  <a href="./15_OSM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./18_OSM_interactif.html" class="sidebar-item-text sidebar-link">
+  <a href="./16_OSM_interactif.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./19_OSM_static.html" class="sidebar-item-text sidebar-link">
+  <a href="./17_OSM_static.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importer les fonds de carte raster</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./20_OSM_data.html" class="sidebar-item-text sidebar-link">
+  <a href="./18_OSM_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Importer des données OSM</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./21_OSM_routing.html" class="sidebar-item-text sidebar-link">
+  <a href="./19_OSM_routing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Utiliser un engin de routage</span></span></a>
   </div>
 </li>
@@ -342,6 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#créer-une-matrice-de-distances" id="toc-créer-une-matrice-de-distances" class="nav-link active" data-scroll-target="#créer-une-matrice-de-distances"><span class="header-section-number">8.1</span> Créer une matrice de distances</a></li>
   <li><a href="#calcul-de-superficies" id="toc-calcul-de-superficies" class="nav-link" data-scroll-target="#calcul-de-superficies"><span class="header-section-number">8.2</span> Calcul de superficies</a></li>
+  <li><a href="#convertir-des-unités" id="toc-convertir-des-unités" class="nav-link" data-scroll-target="#convertir-des-unités"><span class="header-section-number">8.3</span> Convertir des unités</a></li>
   </ul>
 </nav>
     </div>
@@ -397,8 +417,64 @@ Si le système de projection du jeu de données est renseigné, les distances so
 #&gt; [1] 21721665  3813205 13024216  9993074  5540367</code></pre>
 </div>
 </div>
+</section>
+<section id="convertir-des-unités" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="convertir-des-unités"><span class="header-section-number">8.3</span> Convertir des unités</h2>
+<p>Le package <code>units</code> <span class="citation" data-cites="R-units">(<a href="2000_references.html#ref-R-units" role="doc-biblioref">Pebesma et al., 2016</a>)</span> permet de définir et convertir facilement des unités de mesure.<br>
+Le package peut se révéler assez utile quand nous manipulons différentes unités de mesures régulièrement.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-2_0f9d4280c4ace20794c282d573a32305">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(units)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; udunits database from /usr/share/xml/udunits/udunits2.xml</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>distances <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="fl">0.5</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>surfaces <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">500</span>, <span class="dv">1000</span>, <span class="dv">10000</span>, <span class="dv">20000</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># définition des unités de mesure initiales</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>distances <span class="ot">&lt;-</span> <span class="fu">set_units</span>(distances, <span class="st">"km"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>distances</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Units: [km]
+#&gt; [1] 1.0 2.0 3.0 5.0 0.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>surfaces <span class="ot">&lt;-</span> <span class="fu">set_units</span>(surfaces, <span class="st">"m2"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>surfaces</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Units: [m^2]
+#&gt; [1]   500  1000 10000 20000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transformation des unités de mesure</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>distances <span class="ot">&lt;-</span> <span class="fu">set_units</span>(distances, <span class="st">"m"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>distances</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Units: [m]
+#&gt; [1] 1000 2000 3000 5000  500</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>surfaces <span class="ot">&lt;-</span> <span class="fu">set_units</span>(surfaces, <span class="st">"ha"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>surfaces</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Units: [ha]
+#&gt; [1] 0.05 0.10 1.00 2.00</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Suppression des unités</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>distances <span class="ot">&lt;-</span> <span class="fu">set_units</span>(distances, <span class="cn">NULL</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>distances</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 1000 2000 3000 5000  500</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>surfaces <span class="ot">&lt;-</span> <span class="fu">set_units</span>(surfaces, <span class="cn">NULL</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>surfaces</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 0.05 0.10 1.00 2.00</code></pre>
+</div>
+</div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-R-units" class="csl-entry" role="listitem">
+Pebesma, E., Mailund, T. et Hiebert, J. (2016). Measurement Units in <span>R</span>. <em>R Journal</em>, <em>8</em>(2), 486‑494. <a href="https://doi.org/10.32614/RJ-2016-061">https://doi.org/10.32614/RJ-2016-061</a>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -642,7 +718,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./11_package_terra.html" class="pagination-link">
+      <a href="./09_package_terra.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Le package terra</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

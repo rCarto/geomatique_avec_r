@@ -51,3 +51,9 @@ Il est aussi possible d'utiliser le package `mapsf` [@R-mapsf] pour afficher les
 library(mapsf)
 mf_map(com, col = "ivory4", border = "ivory")
 ```
+
+
+
+## Exercice {.unnumbered}
+
+Affichez les communes et les restaurants sur une même carte. 
