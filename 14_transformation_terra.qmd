@@ -1,5 +1,11 @@
 # Conversions
 
+```{r}
+#| include: false
+#| cache: false
+library(terra)
+```
+
 
 ## Rasterisation
 
@@ -30,17 +36,50 @@ raster_com_line <- rasterize(x = as.lines(commune), y = elev, fun=sum)
 plot(raster_com_line)
 ```
 
-###  Vectorisation
+##  Vectorisation
 
-Transformer un raster en polygones vectoriels avec la fonction `as.polygons()`.
-```{r Raster_vec4, eval=TRUE}
-clc <- rast("data/clc.tif")
-Polygone_Elevation <- as.polygons(clc)
-plot(Polygone_Elevation, y = 1)
+Transformer un raster en polygones ou en points avec les fonctions `as.polygons()` et `as.points()`. Les objets créés sont dans le format `SpatVector` de `terra`.  
+Il est ensuite possible de les transformer en objets `sf` avec la fonction `st_as_sf()`.
+
+
+```{r Raster_vec4}
+#| cache: false
+#| fig-width: 7
+library(terra)
+library(sf)
+clc <- rast(x = "data/clc.tif")
+
+# Reclassifions le raster CLC
+reclassif <- matrix(c(100, 199, 1,
+                      200, 299, 2,
+                      300, 399, 3,
+                      400, 499, 4,
+                      500, 599, 5),
+                    ncol = 3, 
+                    byrow = TRUE)
+clc <- classify(clc, rcl = reclassif)
+
+# Changeons d'abord la résolution du raster CLC
+clc_lower_model <- clc
+res(clc_lower_model) <- 1000
+
+clc_lower <- resample(x = clc, y = clc_lower_model, method = "near") 
+
+# Transformation en polygones
+clc_poly <- as.polygons(clc_lower)
+clc_poly <- st_as_sf(clc_poly)
+
+# Affichage 
+clc_poly$clc <- as.factor(clc_poly$clc)
+plot(clc_poly["clc"])
 ```
 
-Transformer un raster en points vectoriels avec la fonction `as.points()`.
-```{r Raster_vec5, eval=TRUE}
-Points_Elevation <- as.points(clc)
-plot(Points_Elevation, y = 1, cex = 0.3)
+Transformer un raster en points vectoriels avec la fonction `as.points()`:
+```{r Raster_vec5}
+#| fig-width: 7
+clc_point <- as.points(clc_lower)
+clc_point <- st_as_sf(clc_point)
+clc_point$clc <- as.factor(clc_point$clc)
+plot(clc_point["clc"], pch = 20, cex = 2)
+
 ```
