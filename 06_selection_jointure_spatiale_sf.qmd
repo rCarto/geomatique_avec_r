@@ -1,4 +1,4 @@
-# Sélection et jointure spatiales
+# Sélection et jointure spatiale
 
 ```{r initsel}
 #| include: false

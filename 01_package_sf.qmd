@@ -26,10 +26,18 @@ Le package `sf` est venu remplacer les packages `sp` [@R-sp], `rgeos` [@R-rgeos]
 Les objets `sf` sont des `data.frame` dont l'une des colonnes contient des géométries. Cette colonne est de la classe **sfc** (*simple feature column*) et chaque individu de la colonne est un **sfg** (*simple feature geometry)*.   
 Ce format est très pratique dans la mesure où les données et les géométries sont intrinsèquement liées dans un même objet. 
 
-:::{.callout-note}
-## Vignette décrivant le format simple feature
-[Simple Features for R](https://r-spatial.github.io/sf/articles/sf1.html)
+
+## Ressources
+
+::: {layout="[[1,1], [1,1]]"}
+
+![[Site web de sf](https://r-spatial.github.io/sf/)](img/sf_web.png)
+
+![[Cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/4cfbc4c7ec5857b524473db219a1c4d402dd5e80/sf.pdf)](img/sf_cheatsheet.png)
+
 :::
+
+
 
 
 ## Exercice {.unnumbered}

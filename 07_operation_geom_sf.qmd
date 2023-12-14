@@ -106,6 +106,8 @@ com_u <- com |>
 
 ## Construire une zone tampon
 
+La fonction `st_buffer()` permet de construire des zones tampons. La distance est exprimée en unité de la projection utilisée (`st_crs(x)$units`).  
+
 ```{r buffers}
 gramat <- com[com$NOM_COM == "Gramat", ]
 
@@ -120,9 +122,10 @@ mf_map(gramat, add = TRUE, lwd = 2)
 En utilisant la fonction `st_intersection()`, on peut découper une couche par une autre. 
 
 ```{r intersect2}
-# création d'une zone tampon autour du centroid de la commune de Gramat
-# en utilisant le pipe
-zone <- st_geometry(gramat) |> st_centroid() |> st_buffer(10000)
+# création d'une zone tampon autour du centroide de la commune de Gramat
+zone <- st_geometry(gramat) |> 
+  st_centroid() |> 
+  st_buffer(10000)
 
 mf_map(com)
 mf_map(zone, border = "red", col = NA, lwd = 2, add = TRUE)
@@ -134,8 +137,9 @@ mf_map(com_z, col = "red", border = "green", add = TRUE)
 mf_map(com_z)
 ```
 
-
-
+:::{.callout-note}
+Dans cette exemple nous avons utilisé les pipes (`|>`). Les pipes permettent d’enchaîner une suite d'instructions.
+:::
 
 ## Créer une grille régulière
 
@@ -256,8 +260,20 @@ mf_map(com, "alt_max", "choro", breaks = bks, pal = cols)
 
 ```
 
+## Simplifier des géométries
+<img src="img/logo_rmapshapper.png" align="right" width="150"/>
+Le package `rmapshaper` [@R-mapshaper] s'appuie sur la bibliothèque JavaScript Mapshaper [@JS-mapshaper] pour proposer plusieurs méthodes de simplification des géométries qui respectent la topologie.  
+L'argument `keep` permet d'indiquer le niveau de simplification. L'argument `keep_shapes` permet de conserver tous les polygones quand le niveau de simplification est élevé. 
 
-
+```{r}
+#| layout-ncol: 3
+library("rmapshaper")
+com_simp1 <- ms_simplify(com, keep = 0.01 , keep_shapes = TRUE)
+com_simp2 <- ms_simplify(com, keep = 0.001, keep_shapes = TRUE)
+mf_map(com)
+mf_map(com_simp1)
+mf_map(com_simp2)
+```
 
 ## Exercice {.unnumbered}
 
