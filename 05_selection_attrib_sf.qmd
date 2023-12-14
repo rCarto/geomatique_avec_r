@@ -6,6 +6,7 @@ library(sf)
 com <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE)
 ```
 
+# Sélection et jointure attributaire 
 
 ## Sélection par attributs
 
@@ -19,5 +20,39 @@ com[com$NOM_COM == "Gramat", ]
 com[, "POPULATION"]
 com[com$NOM_COM == "Gramat", 1:4]
 ```
+
+
+## Jointure attributaire
+
+Nous pouvons joindre un `data.frame` à un objet `sf` en utilisant la fonction `merge()` et en s'appuyant sur des identifiants communs aux deux objets.   
+Attention à l'ordre des arguments, l'objet retourné sera du même type que `x`. Il n'est pas possible de faire une jointure attributaire en utilisant deux objets `sf`.
+
+```{r jointAttr}
+# import de données supplémentaire 
+com_df <- read.csv(file = "data/com.csv")
+
+# des identifiants en commun?
+names(com_df)
+names(com)
+
+
+# jointure attributaire 
+com_final <- merge(
+  x = com,             # l'objet sf
+  y = com_df,          # le data.frame
+  by.x = "INSEE_COM",  # identifiant dans x
+  by.y = "INSEE_COM",  # identifiant dans y
+  all.x = TRUE         # conserver toutes les lignes
+)
+
+# Les deux objets ont bien été joints
+head(com_final, 3)
+```
+
+
+
+## Exercice {.unnumbered}
+
+Sélectionnez les communes du Lot ayant plus de 500 actifs et dont la part des actifs dans la population totale est supérieure à 30%.
 
 
