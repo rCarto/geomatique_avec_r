@@ -1,5 +1,7 @@
 ## Importer les fonds de carte raster
 
+<img src="img/logo_maptiles.png" align="right" width="150"/>
+
 Le package `maptiles` [@R-maptiles] permet de télécharger et d'afficher des fonds de cartes raster.
 La fonction `get_tiles()` permet de télécharger des fonds de cartes OSM 
 au format `SpatRaster` du package `terra`.  
@@ -25,3 +27,29 @@ mf_raster(osm_tiles)
 mf_map(com, border = "grey20", col = NA, lwd = .7, add = TRUE)
 mf_credits(get_credit("OpenStreetMap"), bg = "#ffffff80")
 ```
+
+
+De nombreux styles de tuiles sont disponible avec le package. En voici quelque uns: 
+
+![](img/maptiles_bg.png)
+
+Certains styles ne contiennent que des labels et peuvent être utilisés en complément de données vectorielles:
+
+```{r}
+#| fig-width: 4.67
+#| fig-height: 4.51
+# Récupération d'un fond de carte OSM des labels
+mf_theme(mar = c(0,0,0,0))
+osm_labels <- get_tiles(x = com, provider = "CartoDB.PositronOnlyLabels")
+mf_map(com, col = 'ivory', border = 'ivory3')
+mf_raster(osm_labels, add = T)
+mf_credits(get_credit("CartoDB.PositronOnlyLabels"), bg = "#ffffff80")
+```
+
+
+:::{.callout-note}
+Pour certains styles, ceux fournis par Stadia ou Thunderforest par exemple, vous aurez besoin d'une clef d'API. Vous devez vous inscrire sur le site Web de ces fournisseurs pour obtenir une clef. 
+:::
+
+
+
