@@ -59,7 +59,60 @@ mapview(cahors) + mapview(resto)
 ## `osmextract`
 
 <img src="img/logo_osmextract.svg" align="right" width="120"/>
-Le package `osmextract` [@R-osmextract] permet d'extraire des données depuis une base de données OSM directement. Ce package permet de travailler sur des volumes de données très importants.
+Le package `osmextract` [@R-osmextract] permet d'extraire des données depuis une base de données OSM directement. Ce package permet de travailler en local sur des volumes de données très importants et ainsi d'éviter de surcharger un serveur Overpass turbo.
+
+La fonction `oe_get()` permet de télécharger un extrait de la base de données OSM sur une zone particulière et de sélectionner un type d'objet à importer.   
+L'argument `place` correspond au nom du fichier **\*.pbf** accessible sur le site [Geofabrik](http://download.geofabrik.de/). L'argument `extra_tag` permet de sélectionner les objets de la base OSM correspondant à une clef particulière (se référer à la [documentation d'OSM ](https://wiki.openstreetmap.org/wiki/FR:%C3%89l%C3%A9ments_cartographiques) pour choisir les clefs).
+
+Nous nous intéressons ici à l'ensemble des équipements (clef **amenity**) enregistrés dans la base OSM sous forme de points en Andorre. 
+
+```{r}
+library(osmextract)
+osm_pt <- oe_get(place = "Andorra",      
+                 layer = "points", 
+                 extra_tags = "amenity", 
+                 quiet = TRUE)
+```
+
+Des équipements de nature très variés sont saisis dans OSM: 
+
+```{r}
+unique(osm_pt$amenity)
+```
+
+Nous allons maintenant sélectionner les bars, cafés, pubs et restaurants et les visualiser sur une carte interactive. 
+
+```{r}
+poi <- c("bar", "cafe", "pub", "restaurant")
+osm_pt <- osm_pt[osm_pt$amenity %in% poi, ]
+
+library(leaflet)
+
+pal <- colorFactor(palette = c("navy", "red", "darkgreen", "gold"),
+                   domain = poi)
+
+leaflet(osm_pt) |>
+  addProviderTiles("OpenStreetMap.HOT") |>
+  addCircleMarkers(radius = 4,
+                   stroke = FALSE,
+                   color = ~ pal(amenity),
+                   fillOpacity = 1,
+                   popup = osm_pt$name) |>
+  addLegend(pal = pal,
+            values = poi,
+            opacity = 0.7,
+            title = "OSM amenity",
+            position = "bottomright"
+  ) 
+```
+
+
+
+
+
+
+
+
 
 :::{.callout-note}
 ## Site web d'`osmextract`
