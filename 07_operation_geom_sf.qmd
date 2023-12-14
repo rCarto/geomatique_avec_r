@@ -200,7 +200,7 @@ mf_map(grid, var = "nb_restaurant", type = "prop")
 Ici nous voulons résumer l'information contenue dans une couche de points dans des polygones. Nous voulons connaître l'altitude minimale et maximale de chaque communes.  
 Nous commencons par importer une couche de points d'altitude, la couche **elevations** du fichier **lot.gpkg**. 
 
-```{r}
+```{r ee}
 elev <- st_read("data/lot.gpkg", "elevations", quiet = TRUE)
 
 mf_map(elev, "elevation", "choro", 

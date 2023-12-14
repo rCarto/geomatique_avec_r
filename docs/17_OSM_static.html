@@ -121,10 +121,10 @@ div.csl-indent {
 
 <meta property="og:title" content="Géomatique avec R">
 <meta property="og:description" content="Pour la réalisation de traitements reproductibles de l’information géographique.">
-<meta property="og:image" content="https://rcarto.github.io/rcarto/geomatique_avec_r/figs/display_point-1.png">
+<meta property="og:image" content="https://rcarto.github.io/rcarto/geomatique_avec_r/img/logo_maptiles.png">
 <meta property="og:site-name" content="Géomatique avec R">
-<meta property="og:image:height" content="865">
-<meta property="og:image:width" content="896">
+<meta property="og:image:height" content="600">
+<meta property="og:image:width" content="518">
 </head>
 
 <body class="nav-sidebar floating">
@@ -206,13 +206,13 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_selection_attrib_sf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sélection par attributs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sélection et jointure attributaire</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06_selection_jointure_spatiale_sf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sélection et jointure spatiales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sélection et jointure spatiale</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -288,13 +288,13 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./15_OSM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">OpenStreetMap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./16_OSM_interactif.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Carte interactive avec tuiles OSM</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -380,6 +380,7 @@ div.csl-indent {
 
 </header>
 
+<p><img src="img/logo_maptiles.png" align="right" width="150"></p>
 <p>Le package <code>maptiles</code> <span class="citation" data-cites="R-maptiles">(<a href="2000_references.html#ref-R-maptiles" role="doc-biblioref">Giraud, 2023</a>)</span> permet de télécharger et d’afficher des fonds de cartes raster. La fonction <code>get_tiles()</code> permet de télécharger des fonds de cartes OSM au format <code>SpatRaster</code> du package <code>terra</code>.<br>
 Dans cette exemple nous utilisons le package <code>mapsf</code> pour afficher la carte.<br>
 Les rendus sont meilleurs si les données en entrée utilisent le même système de coordonnées que les tuiles (<a href="https://github.com/riatelab/maptiles#projection">EPSG:3857</a>).</p>
@@ -400,6 +401,30 @@ Les rendus sont meilleurs si les données en entrée utilisent le même système
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_credits</span>(<span class="fu">get_credit</span>(<span class="st">"OpenStreetMap"</span>), <span class="at">bg =</span> <span class="st">"#ffffff80"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="figs/display_point-1.png" class="img-fluid" width="448"></p>
+</div>
+</div>
+<p>De nombreux styles de tuiles sont disponible avec le package. En voici quelque uns:</p>
+<p><img src="img/maptiles_bg.png" class="img-fluid"></p>
+<p>Certains styles ne contiennent que des labels et peuvent être utilisés en complément de données vectorielles:</p>
+<div class="cell" data-hash="cache/unnamed-chunk-1_2af5d026261c7d6ebdedc33b3c0f6e07">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Récupération d'un fond de carte OSM des labels</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_theme</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>osm_labels <span class="ot">&lt;-</span> <span class="fu">get_tiles</span>(<span class="at">x =</span> com, <span class="at">provider =</span> <span class="st">"CartoDB.PositronOnlyLabels"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com, <span class="at">col =</span> <span class="st">'ivory'</span>, <span class="at">border =</span> <span class="st">'ivory3'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_raster</span>(osm_labels, <span class="at">add =</span> T)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_credits</span>(<span class="fu">get_credit</span>(<span class="st">"CartoDB.PositronOnlyLabels"</span>), <span class="at">bg =</span> <span class="st">"#ffffff80"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="figs/unnamed-chunk-1-1.png" class="img-fluid" width="448"></p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Pour certains styles, ceux fournis par Stadia ou Thunderforest par exemple, vous aurez besoin d’une clef d’API. Vous devez vous inscrire sur le site Web de ces fournisseurs pour obtenir une clef.</p>
+</div>
 </div>
 </div>
 
@@ -647,7 +672,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./16_OSM_interactif.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Carte interactive avec tuiles OSM</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

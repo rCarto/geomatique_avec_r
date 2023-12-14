@@ -170,13 +170,13 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_selection_attrib_sf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sélection par attributs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sélection et jointure attributaire</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06_selection_jointure_spatiale_sf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sélection et jointure spatiales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sélection et jointure spatiale</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -252,13 +252,13 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./15_OSM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">OpenStreetMap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./16_OSM_interactif.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Carte interactive avec tuiles OSM</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -328,6 +328,7 @@ div.csl-indent {
   <ul>
   <li><a href="#présentation" id="toc-présentation" class="nav-link active" data-scroll-target="#présentation"><span class="header-section-number">1.1</span> Présentation</a></li>
   <li><a href="#format-des-objets-sf" id="toc-format-des-objets-sf" class="nav-link" data-scroll-target="#format-des-objets-sf"><span class="header-section-number">1.2</span> Format des objets <code>sf</code></a></li>
+  <li><a href="#ressources" id="toc-ressources" class="nav-link" data-scroll-target="#ressources"><span class="header-section-number">1.3</span> Ressources</a></li>
   <li><a href="#exercice" id="toc-exercice" class="nav-link" data-scroll-target="#exercice">Exercice</a></li>
   </ul>
 </nav>
@@ -381,17 +382,27 @@ Historique
 <p><img src="img/sf.png" class="img-fluid"></p>
 <p>Les objets <code>sf</code> sont des <code>data.frame</code> dont l’une des colonnes contient des géométries. Cette colonne est de la classe <strong>sfc</strong> (<em>simple feature column</em>) et chaque individu de la colonne est un <strong>sfg</strong> (<em>simple feature geometry)</em>.<br>
 Ce format est très pratique dans la mesure où les données et les géométries sont intrinsèquement liées dans un même objet.</p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+</section>
+<section id="ressources" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="ressources"><span class="header-section-number">1.3</span> Ressources</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/sf_web.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://r-spatial.github.io/sf/">Site web de sf</a></figcaption>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-Vignette décrivant le format simple feature
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/sf_cheatsheet.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/4cfbc4c7ec5857b524473db219a1c4d402dd5e80/sf.pdf">Cheat sheet</a></figcaption>
+</figure>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p><a href="https://r-spatial.github.io/sf/articles/sf1.html">Simple Features for R</a></p>
 </div>
 </div>
 </section>

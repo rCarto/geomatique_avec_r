@@ -187,13 +187,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_selection_attrib_sf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sélection par attributs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sélection et jointure attributaire</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06_selection_jointure_spatiale_sf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sélection et jointure spatiales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sélection et jointure spatiale</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -269,13 +269,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./15_OSM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">OpenStreetMap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./16_OSM_interactif.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Carte interactive avec tuiles OSM</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -343,10 +343,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#rasterisation" id="toc-rasterisation" class="nav-link active" data-scroll-target="#rasterisation"><span class="header-section-number">14.1</span> Rasterisation</a>
-  <ul class="collapse">
-  <li><a href="#vectorisation" id="toc-vectorisation" class="nav-link" data-scroll-target="#vectorisation"><span class="header-section-number">14.1.1</span> Vectorisation</a></li>
-  </ul></li>
+  <li><a href="#rasterisation" id="toc-rasterisation" class="nav-link active" data-scroll-target="#rasterisation"><span class="header-section-number">14.1</span> Rasterisation</a></li>
+  <li><a href="#vectorisation" id="toc-vectorisation" class="nav-link" data-scroll-target="#vectorisation"><span class="header-section-number">14.2</span> Vectorisation</a></li>
   </ul>
 </nav>
     </div>
@@ -402,28 +400,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="figs/Raster_vec3-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
-<section id="vectorisation" class="level3" data-number="14.1.1">
-<h3 data-number="14.1.1" class="anchored" data-anchor-id="vectorisation"><span class="header-section-number">14.1.1</span> Vectorisation</h3>
-<p>Transformer un raster en polygones vectoriels avec la fonction <code>as.polygons()</code>.</p>
-<div class="cell" data-hash="cache/Raster_vec4_162638be5109564b56fec83283ef2e8f">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clc <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"data/clc.tif"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Polygone_Elevation <span class="ot">&lt;-</span> <span class="fu">as.polygons</span>(clc)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Polygone_Elevation, <span class="at">y =</span> <span class="dv">1</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="figs/Raster_vec4-1.png" class="img-fluid" width="576"></p>
-</div>
-</div>
-<p>Transformer un raster en points vectoriels avec la fonction <code>as.points()</code>.</p>
-<div class="cell" data-hash="cache/Raster_vec5_c0f71d6525be942cf83d26d001068c14">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Points_Elevation <span class="ot">&lt;-</span> <span class="fu">as.points</span>(clc)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Points_Elevation, <span class="at">y =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.3</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="figs/Raster_vec5-1.png" class="img-fluid" width="576"></p>
-</div>
-</div>
-
-
 </section>
+<section id="vectorisation" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="vectorisation"><span class="header-section-number">14.2</span> Vectorisation</h2>
+<p>Transformer un raster en polygones ou en points avec les fonctions <code>as.polygons()</code> et <code>as.points()</code>. Les objets créés sont dans le format <code>SpatVector</code> de <code>terra</code>.<br>
+Il est ensuite possible de les transformer en objets <code>sf</code> avec la fonction <code>st_as_sf()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>clc <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="at">x =</span> <span class="st">"data/clc.tif"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Reclassifions le raster CLC</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>reclassif <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">199</span>, <span class="dv">1</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">200</span>, <span class="dv">299</span>, <span class="dv">2</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">300</span>, <span class="dv">399</span>, <span class="dv">3</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">400</span>, <span class="dv">499</span>, <span class="dv">4</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">500</span>, <span class="dv">599</span>, <span class="dv">5</span>),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ncol =</span> <span class="dv">3</span>, </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>clc <span class="ot">&lt;-</span> <span class="fu">classify</span>(clc, <span class="at">rcl =</span> reclassif)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Changeons d'abord la résolution du raster CLC</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>clc_lower_model <span class="ot">&lt;-</span> clc</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(clc_lower_model) <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>clc_lower <span class="ot">&lt;-</span> <span class="fu">resample</span>(<span class="at">x =</span> clc, <span class="at">y =</span> clc_lower_model, <span class="at">method =</span> <span class="st">"near"</span>) </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformation en polygones</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>clc_poly <span class="ot">&lt;-</span> <span class="fu">as.polygons</span>(clc_lower)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>clc_poly <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(clc_poly)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Affichage </span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>clc_poly<span class="sc">$</span>clc <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(clc_poly<span class="sc">$</span>clc)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clc_poly[<span class="st">"clc"</span>])</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="figs/Raster_vec4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Transformer un raster en points vectoriels avec la fonction <code>as.points()</code>:</p>
+<div class="cell" data-hash="cache/Raster_vec5_8b9ce5400a784c16bd31beb7f6c6f5ee">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>clc_point <span class="ot">&lt;-</span> <span class="fu">as.points</span>(clc_lower)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>clc_point <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(clc_point)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>clc_point<span class="sc">$</span>clc <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(clc_point<span class="sc">$</span>clc)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clc_point[<span class="st">"clc"</span>], <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">cex =</span> <span class="dv">2</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="figs/Raster_vec5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -668,7 +693,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./15_OSM.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">OpenStreetMap</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

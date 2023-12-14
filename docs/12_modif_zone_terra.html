@@ -206,13 +206,13 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_selection_attrib_sf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sélection par attributs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sélection et jointure attributaire</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06_selection_jointure_spatiale_sf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sélection et jointure spatiales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sélection et jointure spatiale</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -288,13 +288,13 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./15_OSM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Focus sur OpenStreetMap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">OpenStreetMap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./16_OSM_interactif.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Afficher une carte interactive</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Carte interactive avec tuiles OSM</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -394,7 +394,7 @@ div.csl-indent {
 <section id="sec-proj" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="sec-proj"><span class="header-section-number">12.1</span> Projections</h2>
 <p>Pour modifier le système de projection d’un raster, nous pouvons utiliser la fonction <code>project()</code>. Il est alors nécessaire de <strong>fournir un modèle</strong> et d’indiquer la <strong>méthode d’estimation</strong> des nouvelles valeurs des cellules.</p>
-<p>Le modèle est un nouveau raster sur lequel aligner/projeter les données. Pour construire un model, nous utilisons dans un premier temps la fonction <code>project(x, crs)</code>, puis la fonction <code>res()</code> (ou <code>dim()</code>) pour définir la résolution de ce nouveau raster (voir <code>?project</code>). La fonction <code>project()</code> peut ensuite être réutiliser pour projeter les valeurs dans le nouveau raster, en précisant la méthode d’estimation à utiliser.</p>
+<p>Le modèle est un nouveau raster sur lequel aligner/projeter les données. Pour construire un modèle, nous utilisons dans un premier temps la fonction <code>project(x, crs)</code>. Cette fonction va produire un raster avec une résolution choisie automatiquement. Nous utilisons ensuite la fonction <code>res()</code> (ou <code>dim()</code>) pour ajuster la résolution de ce raster modèle (voir <code>?project</code>). La fonction <code>project()</code> peut ensuite être réutiliser pour projeter les valeurs dans le modèle, en précisant la méthode d’estimation à utiliser.</p>
 <p>Quatre méthodes d’estimation sont disponibles :</p>
 <ul>
 <li><strong><em>near</em></strong> : plus proche voisin. Méthode rapide et par défaut pour les données qualitatives;<br>
@@ -416,16 +416,15 @@ div.csl-indent {
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Création d'un modele de raster en 2154</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>model_proj <span class="ot">&lt;-</span> <span class="fu">project</span>(<span class="at">x =</span> elev_raw, <span class="at">y =</span> <span class="st">"EPSG:2154"</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajustement de la résolution du modèle</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># dim(z) = c(180, 360) / OU :</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(model_proj) <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Projection dans le modèle</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>elev <span class="ot">&lt;-</span> <span class="fu">project</span>(<span class="at">x =</span> elev_raw, <span class="at">y =</span> model_proj, <span class="at">method =</span> <span class="st">"bilinear"</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>clc <span class="ot">&lt;-</span> <span class="fu">project</span>(<span class="at">x =</span> clc_raw, <span class="at">y =</span> model_proj, <span class="at">method =</span> <span class="st">"near"</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elev, <span class="at">main =</span> <span class="st">"Altitudes - RGF93 v1 / Lambert-93"</span> )</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clc, <span class="at">type =</span> <span class="st">"classes"</span>,  <span class="at">main =</span> <span class="st">"CLC - RGF93 v1 / Lambert-93"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajustement de la résolution du modèle (100 m)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(model_proj) <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Projection dans le modèle</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>elev <span class="ot">&lt;-</span> <span class="fu">project</span>(<span class="at">x =</span> elev_raw, <span class="at">y =</span> model_proj, <span class="at">method =</span> <span class="st">"bilinear"</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>clc <span class="ot">&lt;-</span> <span class="fu">project</span>(<span class="at">x =</span> clc_raw, <span class="at">y =</span> model_proj, <span class="at">method =</span> <span class="st">"near"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elev, <span class="at">main =</span> <span class="st">"Altitudes - RGF93 v1 / Lambert-93"</span> )</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clc, <span class="at">type =</span> <span class="st">"classes"</span>,  <span class="at">main =</span> <span class="st">"CLC - RGF93 v1 / Lambert-93"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
