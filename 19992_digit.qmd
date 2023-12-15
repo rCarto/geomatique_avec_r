@@ -1,0 +1,6 @@
+# Digitalisation
+
+Le package `mapedit` [@R-mapedit] permet de digitaliser des fonds de carte directement dans R.
+Mais disons le franchement, bien que pouvant se révéler pratique dans certains cas, ce package ne saurait se substituer aux fonctionnalités d'un SIG pour les tâches de digitalisation importantes. 
+
+![From [`mapedit` website](https://r-spatial.org/r/2019/03/31/mapedit_leafpm.html)](img/mapedit-leafpm-1.gif)

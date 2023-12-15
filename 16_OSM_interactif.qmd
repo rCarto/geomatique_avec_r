@@ -1,4 +1,4 @@
-# Carte interactive avec tuiles OSM
+# Cartes interactives
 
 Les deux principaux packages qui permettent d'afficher une carte interactive basée sur OSM sont `leaflet` [@R-leaflet] et `mapview` [@R-mapview].
 

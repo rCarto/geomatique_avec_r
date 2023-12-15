@@ -1,13 +1,9 @@
-# Géoréferencement et digitalisation
+# Géocodage
 
-## Géocoder des adresses
+## Géocodage d'adresse avec `tidygeocoder`
 
 Plusieurs packages permettent de géocoder des adresses. <img src="img/logo_tidygeocoder.png" align="right" width="120"/>
 Le package `tidygeocoder` [@R-tidygeocoder] permet d'utiliser un grand nombre de [services de géocodage en ligne](https://jessecambon.github.io/tidygeocoder/articles/geocoder_services.html). 
-
-
-
-### Géocodage d'adresse avec `tidygeocoder`
 
 
 ```{r tidygeocoder}
@@ -22,7 +18,7 @@ places
 ```
 
 
-### Transformer des données long/lat en objet `sf`
+## Transformer des données long/lat en objet `sf`
 
 La fonction `st_as_sf()` permet de créer un objet sf à partir d'un `data.frame` contenant des coordonnées géographiques.  
 
@@ -44,7 +40,7 @@ mon_point
 ```
 
 
-### Affichage sur un fond OpenStreetMap
+## Affichage sur un fond OpenStreetMap
 
 Nous pouvons afficher cet objet `sf` sur un fond de carte [OpenStreetMap](https://www.openstreetmap.org/) avec le package `maptiles` [@R-maptiles]. 
 
@@ -66,9 +62,3 @@ mf_map(place_sf, pch = 4, cex = 2,
 
 
 
-## Digitalisation
-
-Le package `mapedit` [@R-mapedit] permet de digitaliser des fonds de carte directement dans R.
-Mais disons le franchement, bien que pouvant se révéler pratique dans certains cas, ce package ne saurait se substituer aux fonctionnalités d'un SIG pour les tâches de digitalisation importantes. 
-
-![From [`mapedit` website](https://r-spatial.org/r/2019/03/31/mapedit_leafpm.html)](img/mapedit-leafpm-1.gif)

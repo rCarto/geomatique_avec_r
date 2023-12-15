@@ -1,5 +1,5 @@
 
-## Utiliser un engin de routage
+## Matrices de temps et itinéraires
 
 <img src="img/logo_osrm.svg" align="right" width="120"/>
 Le package `osrm` [@R-osrm] sert d'interface entre R et le service de calcul d'itinéraire [OSRM](http://project-osrm.org/) [@luxen-vetter-2011].

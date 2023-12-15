@@ -1,4 +1,4 @@
-## Importer les fonds de carte raster
+## Import de fonds de carte
 
 <img src="img/logo_maptiles.png" align="right" width="150"/>
 
@@ -35,7 +35,7 @@ De nombreux styles de tuiles sont disponible avec le package. En voici quelque u
 
 Certains styles ne contiennent que des labels et peuvent être utilisés en complément de données vectorielles:
 
-```{r}
+```{r osm_lab}
 #| fig-width: 4.67
 #| fig-height: 4.51
 # Récupération d'un fond de carte OSM des labels

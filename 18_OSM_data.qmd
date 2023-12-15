@@ -1,4 +1,4 @@
-# Importer des données OSM
+# Import de données 
 
 ## `osmdata`
 <img src="img/logo_osmdata.png" align="right"  height=140 width=122/>

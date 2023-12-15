@@ -79,10 +79,13 @@ book:
         - 17_OSM_static.qmd
         - 18_OSM_data.qmd
         - 19_OSM_routing.qmd
+    - part: "**Acquisition de données**"
+      chapters: 
+        - 1999_georeferencement.qmd
+        - 19992_digit.qmd
+        - 2001_donnees.qmd
     - 2000_references.qmd
   appendices:
-    - 1999_georeferencement.qmd
-    - 2001_donnees.qmd
     - 2002_data.qmd
   
 knitr:

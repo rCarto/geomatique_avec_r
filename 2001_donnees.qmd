@@ -1,6 +1,8 @@
-# Sources de données spatiales
+# Packages de données spatiales
 
-Depuis l'apparition du package `sf`, qui a très largement contribué à la popularisation de la manipulation de données spatiales avec R, de nombreux packages de mise à disposition de données géographiques (géométries et/ou attributs) ont été développés. Il s'agit le plus souvent de packages d'API qui permettent d'interroger des données mises à disposition sur le Web, directement avec R. **Ce chapitre en présente une liste non-exhaustive**.
+De nombreux packages de mise à disposition de données géographiques (géométries et/ou attributs) ont été développés. Il s'agit le plus souvent de packages interfaçant des API qui permettent d'interroger des données mises à disposition sur le Web, directement avec R.
+
+**Ce chapitre en présente une liste non exhaustive.**
 
 ## À l'échelle mondiale
 
@@ -8,7 +10,7 @@ Depuis l'apparition du package `sf`, qui a très largement contribué à la popu
 - {{< fa globe >}} `cshapes` [@R-cshapes] : met à disposition les frontières nationales, de 1886 à aujourd'hui.  
 - {{< fa globe >}} `osmextract` [@R-osmextract] : permet d'importer des données [OpenStreetMap](https://www.openstreetmap.org/).   
 - {{< fa globe >}} `osmdata` [@R-osmdata] : pour télécharger et utiliser les données d'OpenStreetMap.
-- {{< fa globe >}} `maptiles` [@R-maptiles] : Ce package télécharge, compose et affiche des tuiles à partir d'un grand nombre de fournisseurs (*OpenStreetMap*, *Stamen*, *Esri*, *CARTO* ou *Thunderforest*...).   
+- {{< fa globe >}} `maptiles` [@R-maptiles] : Ce package télécharge, compose et affiche des tuiles à partir d'un grand nombre de fournisseurs (*OpenStreetMap*, *Stadia*, *Esri*, *CARTO* ou *Thunderforest*...).   
 - {{< fa table >}} `geonames` [@R-geonames] : permet d'interroger la BD [geonames](http://www.geonames.org/), qui fournit notamment des localisations.
 - {{< fa table >}} `wbstats` [@R-wbstats] et `WDI` [@R-WDI] : donnent accès aux données et statistiques de la Banque mondiale.   
 - {{< fa globe >}} `sen2r` [@R-sen2r] : permet de télécharger et prétraiter automatiquement les données du satellite Sentinel-2.   
