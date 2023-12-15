@@ -9,7 +9,7 @@ authors:
   orcid: "https://orcid.org/0000-0002-0246-0954"
 title: "Géomatique avec R"
 version: 1.0.1
-doi: 10.5281/zenodo.7528145
+doi: 10.5281/zenodo.5906212
 date-released: 2023-01-11
 url: "https://github.com/rCarto/geomatique_avec_r"
 preferred-citation:
@@ -23,6 +23,6 @@ preferred-citation:
     orcid: "https://orcid.org/0000-0002-0246-0954"
   title: "Géomatique avec R"
   version: 1.0.1
-  doi: 10.5281/zenodo.7528145
+  doi: 10.5281/zenodo.5906212
   year: 2023
   url: "https://rcarto.github.io/geomatique_avec_r/"
