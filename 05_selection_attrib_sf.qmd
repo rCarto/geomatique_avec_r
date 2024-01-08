@@ -28,7 +28,7 @@ Nous pouvons joindre un `data.frame` à un objet `sf` en utilisant la fonction `
 Attention à l'ordre des arguments, l'objet retourné sera du même type que `x`. Il n'est pas possible de faire une jointure attributaire en utilisant deux objets `sf`.
 
 ```{r jointAttr}
-# import de données supplémentaire 
+# import de données supplémentaires 
 com_df <- read.csv(file = "data/com.csv")
 
 # des identifiants en commun?

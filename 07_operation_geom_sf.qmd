@@ -89,7 +89,7 @@ com_u <- aggregate(
 
 
 :::{.callout-note}
-Cette solution ne permettra pas d'agréger les variables attributaires avec des fonctions d'agrégation différentes. Nous devons donc choisir avec précaution en amont les variable que l'on souhaite agréger et leur fonction d'agrégation. 
+Cette solution ne permettra pas d'agréger les variables attributaires avec des fonctions d'agrégation différentes. Nous devons donc choisir avec précaution en amont les variables que l'on souhaite agréger et leur fonction d'agrégation. 
 :::
 
 

@@ -407,9 +407,9 @@ div.csl-indent {
 <section id="consulter-le-système-de-coordonnées-dun-objet" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="consulter-le-système-de-coordonnées-dun-objet"><span class="header-section-number">4.1</span> Consulter le système de coordonnées d’un objet</h2>
 <p>La fonction <code>st_crs()</code> permet de consulter le système de coordonnées utilisé par un objet <code>sf</code>.</p>
-<div class="cell" data-hash="cache/proj1_9838ead80d422e039203077171cfe7a8">
+<div class="cell" data-hash="cache/proj1_d9c57c1bbdc41960d7e76ea638689473">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf) </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(com)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(<span class="at">x =</span> com)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Coordinate Reference System:
 #&gt;   User input: RGF93 v1 / Lambert-93 
@@ -466,12 +466,12 @@ div.csl-indent {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_graticule</span>(<span class="at">x =</span> com)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_title</span>(<span class="st">"RGF93 / Lambert-93"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># changement de projection</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>com_reproj <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(com, <span class="st">"EPSG:3035"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>com_reproj <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(<span class="at">x =</span> com, <span class="at">crs =</span> <span class="st">"EPSG:3035"</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_map</span>(com_reproj, <span class="at">expandBB =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">12</span>, .<span class="dv">0</span>, <span class="dv">0</span>))</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_graticule</span>(<span class="at">x =</span> com_reproj)</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mf_title</span>(<span class="st">"ETRS89-extended / LAEA Europe"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel" data-hash="cache/proj2_1326358c3c2d7a86913626e20e28d2ce">
+<div class="cell quarto-layout-panel" data-hash="cache/proj2_c12840a5055cf64b3321d8fde77e6585">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="figs/proj2-1.png" class="img-fluid" width="384"></p>

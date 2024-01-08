@@ -451,8 +451,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="5.2" class="anchored" data-anchor-id="jointure-attributaire"><span class="header-section-number">5.2</span> Jointure attributaire</h2>
 <p>Nous pouvons joindre un <code>data.frame</code> à un objet <code>sf</code> en utilisant la fonction <code>merge()</code> et en s’appuyant sur des identifiants communs aux deux objets.<br>
 Attention à l’ordre des arguments, l’objet retourné sera du même type que <code>x</code>. Il n’est pas possible de faire une jointure attributaire en utilisant deux objets <code>sf</code>.</p>
-<div class="cell" data-hash="cache/jointAttr_bfc8a84ec2ccdb30c961d5a55a532fcb">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import de données supplémentaire </span></span>
+<div class="cell" data-hash="cache/jointAttr_c19b8d7878ba7302284887afec1ce772">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import de données supplémentaires </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>com_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/com.csv"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># des identifiants en commun?</span></span>
