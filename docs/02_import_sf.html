@@ -448,6 +448,33 @@ La fonction <code>st_layers()</code> permet d’avoir un aperçu des couches pr�
 #&gt; Writing 313 features with 12 fields and geometry type Multi Polygon.</code></pre>
 </div>
 </div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Conversion pour le package <code>terra</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La fonction <code>vect()</code> du package <code>terra</code> permet de transformer un objet <code>sf</code> en objet <code>SpatVector</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; terra 1.7.65</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conversion</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>com2 <span class="ot">&lt;-</span> <span class="fu">vect</span>(com)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(com2)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] "SpatVector"
+#&gt; attr(,"package")
+#&gt; [1] "terra"</code></pre>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="exercice" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="exercice">Exercice</h2>

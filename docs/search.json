@@ -46,7 +46,7 @@
     "href": "02_import_sf.html#export",
     "title": "2  Import et export",
     "section": "2.2 Export",
-    "text": "2.2 Export\nLes lignes suivantes exportent l’objet com dans la couche communes du geopackage com.gpkg dans le dossier data.\n\nst_write(obj = com, dsn = \"data/com.gpkg\", layer = \"communes\")\n\n#&gt; Writing layer `communes' to data source `data/com.gpkg' using driver `GPKG'\n#&gt; Writing 313 features with 12 fields and geometry type Multi Polygon."
+    "text": "2.2 Export\nLes lignes suivantes exportent l’objet com dans la couche communes du geopackage com.gpkg dans le dossier data.\n\nst_write(obj = com, dsn = \"data/com.gpkg\", layer = \"communes\")\n\n#&gt; Writing layer `communes' to data source `data/com.gpkg' using driver `GPKG'\n#&gt; Writing 313 features with 12 fields and geometry type Multi Polygon.\n\n\n\n\n\n\n\n\nConversion pour le package terra\n\n\n\nLa fonction vect() du package terra permet de transformer un objet sf en objet SpatVector.\n\nlibrary(terra)\n\n#&gt; terra 1.7.65\n\n# conversion\ncom2 &lt;- vect(com)\nclass(com2)\n\n#&gt; [1] \"SpatVector\"\n#&gt; attr(,\"package\")\n#&gt; [1] \"terra\""
   },
   {
     "objectID": "02_import_sf.html#exercice",
@@ -249,7 +249,7 @@
     "href": "10_import_terra.html#export",
     "title": "10  Import et export",
     "section": "10.2 Export",
-    "text": "10.2 Export\nLa fonction writeRaster() permet d’enregistrer un objet SpatRaster sur votre machine, dans le format de votre choix.\n\nwriteRaster(x = elev, filename = \"data/new_elevation_Lot.tif\")\n\n\n\n\n\nGDAL/OGR contributors. (2022). GDAL/OGR Geospatial Data Abstraction software Library. Open Source Geospatial Foundation. https://doi.org/10.5281/zenodo.5884351"
+    "text": "10.2 Export\nLa fonction writeRaster() permet d’enregistrer un objet SpatRaster sur votre machine, dans le format de votre choix.\n\nwriteRaster(x = elev, filename = \"data/new_elevation_Lot.tif\")\n\n\n\n\n\n\n\nConversion pour le package sf\n\n\n\nLe package terra permet de manipuler des objets vectoriels en utilisant des objets de type SpatVector.\nLa fonction st_as_sf() du package sf permet de transformer un objet SpatVector en objet sf.\n\n# adresse du fichier d'exemple\nf &lt;- system.file(\"ex/lux.shp\", package=\"terra\")\n# import au format SpatVector\nv &lt;- vect(f)\nlibrary(sf)\n# conversion\nv2 &lt;- st_as_sf(v)\nclass(v2)\n\n#&gt; [1] \"sf\"         \"data.frame\"\n\n\n\n\n\n\n\n\nGDAL/OGR contributors. (2022). GDAL/OGR Geospatial Data Abstraction software Library. Open Source Geospatial Foundation. https://doi.org/10.5281/zenodo.5884351"
   },
   {
     "objectID": "11_affichage_terra.html",

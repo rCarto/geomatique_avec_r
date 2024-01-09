@@ -24,3 +24,22 @@ La fonction `writeRaster()` permet d'enregistrer un objet `SpatRaster` sur votre
 writeRaster(x = elev, filename = "data/new_elevation_Lot.tif")
 ```
 
+::: {.callout-note}
+## Conversion pour le package `sf`
+Le package `terra` permet de manipuler des objets vectoriels en utilisant des objets de type `SpatVector`.  
+
+La fonction `st_as_sf()` du package `sf` permet de transformer un objet `SpatVector` en objet `sf`.
+```{r rassttt}
+# adresse du fichier d'exemple
+f <- system.file("ex/lux.shp", package="terra")
+# import au format SpatVector
+v <- vect(f)
+library(sf)
+# conversion
+v2 <- st_as_sf(v)
+class(v2)
+```
+:::
+
+
+

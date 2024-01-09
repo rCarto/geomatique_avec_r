@@ -46,6 +46,19 @@ st_write(obj = com, dsn = "data/com.gpkg", layer = "communes")
 file.remove("data/com.gpkg")
 ```
 
+::: {.callout-note}
+## Conversion pour le package `terra`
+La fonction `vect()` du package `terra` permet de transformer un objet `sf` en objet `SpatVector`.
+```{r vectt}
+library(terra)
+# conversion
+com2 <- vect(com)
+class(com2)
+```
+:::
+
+
+
 ## Exercice {.unnumbered}
 
 Importez la couche des restaurants depuis le fichier **lot.gpkg** dans un objet nommé "resto".
