@@ -29,7 +29,7 @@ mf_credits(get_credit("OpenStreetMap"), bg = "#ffffff80")
 ```
 
 
-De nombreux styles de tuiles sont disponible avec le package. En voici quelque uns: 
+De nombreux styles de tuiles sont disponibles avec le package. En voici quelque uns: 
 
 ![](img/maptiles_bg.png)
 

@@ -38,7 +38,7 @@ m
 :::
 
 
-### `mapview`
+## `mapview`
 <img src="img/logo_mapview.gif" align="right" width="150"/>
 `mapview` s'appuie sur `leaflet` pour créer des carte interactive, sont utilisation basique est plus simple bien que sa documentation ne soit pas vraiment facile à aborder.
 

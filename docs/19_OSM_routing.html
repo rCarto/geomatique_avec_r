@@ -377,8 +377,8 @@ div.csl-indent {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#calcul-dun-itinéraire" id="toc-calcul-dun-itinéraire" class="nav-link active" data-scroll-target="#calcul-dun-itinéraire"><span class="header-section-number">19.0.1</span> Calcul d’un itinéraire</a></li>
-  <li><a href="#calcul-dune-matrice-de-temps" id="toc-calcul-dune-matrice-de-temps" class="nav-link" data-scroll-target="#calcul-dune-matrice-de-temps"><span class="header-section-number">19.0.2</span> Calcul d’une matrice de temps</a></li>
+  <li><a href="#calcul-dun-itinéraire" id="toc-calcul-dun-itinéraire" class="nav-link active" data-scroll-target="#calcul-dun-itinéraire"><span class="header-section-number">19.1</span> Calcul d’un itinéraire</a></li>
+  <li><a href="#calcul-dune-matrice-de-temps" id="toc-calcul-dune-matrice-de-temps" class="nav-link" data-scroll-target="#calcul-dune-matrice-de-temps"><span class="header-section-number">19.2</span> Calcul d’une matrice de temps</a></li>
   </ul>
 </nav>
     </div>
@@ -403,8 +403,8 @@ div.csl-indent {
 </header>
 
 <p><img src="img/logo_osrm.svg" align="right" width="120"> Le package <code>osrm</code> <span class="citation" data-cites="R-osrm">(<a href="2000_references.html#ref-R-osrm" role="doc-biblioref">Giraud, 2022</a>)</span> sert d’interface entre R et le service de calcul d’itinéraire <a href="http://project-osrm.org/">OSRM</a> <span class="citation" data-cites="luxen-vetter-2011">(<a href="2000_references.html#ref-luxen-vetter-2011" role="doc-biblioref">Luxen et Vetter, 2011</a>)</span>. Ce package permet de calculer des matrices de temps et de distances, des itinéraires routiers, des isochrones. Le package utilise par défaut le serveur de démo d’OSRM. En cas d’utilisation intensive il est fortement recommandé d’<a href="https://rcarto.github.io/posts/build_osrm_server/">utiliser sa propre instance d’OSRM avec Docker</a>.</p>
-<section id="calcul-dun-itinéraire" class="level3" data-number="19.0.1">
-<h3 data-number="19.0.1" class="anchored" data-anchor-id="calcul-dun-itinéraire"><span class="header-section-number">19.0.1</span> Calcul d’un itinéraire</h3>
+<section id="calcul-dun-itinéraire" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="calcul-dun-itinéraire"><span class="header-section-number">19.1</span> Calcul d’un itinéraire</h2>
 <p>La fonction <code>osrmRoute()</code> permet de calculer des itinéraires.</p>
 <div class="cell" data-hash="cache/osrmroute_d7d9a4b6e1f85bbfc9d993b4ef74a025">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
@@ -434,8 +434,8 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="calcul-dune-matrice-de-temps" class="level3" data-number="19.0.2">
-<h3 data-number="19.0.2" class="anchored" data-anchor-id="calcul-dune-matrice-de-temps"><span class="header-section-number">19.0.2</span> Calcul d’une matrice de temps</h3>
+<section id="calcul-dune-matrice-de-temps" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="calcul-dune-matrice-de-temps"><span class="header-section-number">19.2</span> Calcul d’une matrice de temps</h2>
 <p>La fonction <code>osrmTable()</code> permet de calculer des matrices de distances ou de temps par la route.</p>
 <p>Dans cet exemple nous calculons une matrice de temps entre 2 adresses et les restaurants de Cahors à pied.</p>
 <div class="cell" data-hash="cache/osrmtable_539b8f2850f6caf699958864a869e771">

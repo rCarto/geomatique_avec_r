@@ -25,8 +25,7 @@ res <- osmdata_sf(req)
 res <- unique_osmdata(res)
 ```
 
-Le résultat contient une couche de points et une couche de polygones.
-La couche de polygones contient des polygones qui représentent des restaurants.
+Le résultat contient une couche de points et une couche de polygones. Cela signifie que certains restaurants (la très grande majorité) sont enregistrés sous forme de points dans OSM et d'autres sous forme de polygones. 
 Pour obtenir une couche de points cohérente nous pouvons utiliser les centroides des polygones.
 
 ```{r osmdata2}

@@ -447,7 +447,7 @@ div.csl-indent {
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># les points composant les polygones sont supprimés</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">unique_osmdata</span>(res)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Le résultat contient une couche de points et une couche de polygones. La couche de polygones contient des polygones qui représentent des restaurants. Pour obtenir une couche de points cohérente nous pouvons utiliser les centroides des polygones.</p>
+<p>Le résultat contient une couche de points et une couche de polygones. Cela signifie que certains restaurants (la très grande majorité) sont enregistrés sous forme de points dans OSM et d’autres sous forme de polygones. Pour obtenir une couche de points cohérente nous pouvons utiliser les centroides des polygones.</p>
 <div class="cell" data-hash="cache/osmdata2_61d7840472fa91e7b5d51f719c06628e">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>resto_point <span class="ot">&lt;-</span> res<span class="sc">$</span>osm_points</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>

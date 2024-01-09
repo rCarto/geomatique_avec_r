@@ -1,5 +1,4 @@
-
-## Matrices de temps et itinéraires
+# Matrices de temps et itinéraires
 
 <img src="img/logo_osrm.svg" align="right" width="120"/>
 Le package `osrm` [@R-osrm] sert d'interface entre R et le service de calcul d'itinéraire [OSRM](http://project-osrm.org/) [@luxen-vetter-2011].
@@ -7,7 +6,7 @@ Ce package permet de calculer des matrices de temps et de distances, des itinér
 Le package utilise par défaut le serveur de démo d'OSRM. En cas d'utilisation intensive il est fortement recommandé d'[utiliser sa propre instance d'OSRM avec Docker](https://rcarto.github.io/posts/build_osrm_server/).
 
 
-### Calcul d'un itinéraire
+## Calcul d'un itinéraire
 La fonction `osrmRoute()` permet de calculer des itinéraires.
 ```{r osrmroute}
 #| fig-width: 3
@@ -39,7 +38,7 @@ mf_map(route, col = "grey90", lwd = 1, add = T)
 ```
 
 
-### Calcul d'une matrice de temps
+## Calcul d'une matrice de temps
 La fonction `osrmTable()` permet de calculer des matrices de distances ou de temps par la route.
 
 Dans cet exemple nous calculons une matrice de temps entre 2 adresses et les restaurants de Cahors à pied.
