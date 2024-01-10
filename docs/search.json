@@ -109,7 +109,7 @@
     "href": "05_selection_attrib_sf.html#exercice",
     "title": "5  Sélection et jointure attributaire",
     "section": "Exercice",
-    "text": "Exercice\nSélectionnez les communes du Lot ayant plus de 500 actifs et dont la part des actifs dans la population totale est supérieure à 30%."
+    "text": "Exercice\n\nImporter la couche des communes du département du Lot à partir du fichier geopackage lot.gpkg.\nImporter le fichier com.csv.\nCe jeu de données porte sur les communes du Lot et contient plusieurs variables supplémentaires:\n\nle nombre d’actifs (ACT).\nle nombre d’actifs dans l’industrie (IND)\nla part des actifs dans la population totale (SACT)\nla part des actifs dans l’industrie dans le total des actifs (SACT_IND)\n\nJoindre le jeu de données et la couche des communes.\nSélectionnez les communes du Lot ayant plus de 500 actifs et dont la part des actifs dans la population totale est supérieure à 30%.\nAffichez toutes les communes en gris et les communes sélectionnées en rouge."
   },
   {
     "objectID": "06_selection_jointure_spatiale_sf.html#sélection-spatiale",
@@ -130,7 +130,7 @@
     "href": "06_selection_jointure_spatiale_sf.html#exercice",
     "title": "6  Sélection et jointure spatiale",
     "section": "Exercice",
-    "text": "Exercice\n\nImportez la couche des restaurants du Lot.\nRéaliser une jointure spatiale pour connaitre pour chaque restaurant le nom et l’identifiant de la commune dans laquelle il se trouve. st_join()"
+    "text": "Exercice\n\nImportez la couche des communes et celle des restaurants du Lot.\nRéaliser une jointure spatiale pour connaitre pour chaque restaurant le nom et l’identifiant de la commune dans laquelle il se trouve."
   },
   {
     "objectID": "07_operation_geom_sf.html#extraire-des-centroides",

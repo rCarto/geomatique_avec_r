@@ -1,0 +1,179 @@
+---
+title: "Géomatique avec R - Exercices"
+toc: true
+highlight-style: atom-one
+output-file: Exercices
+output-ext: html
+self-contained: true
+knitr:
+  opts_chunk: 
+    comment: "#>" 
+---
+
+
+
+# Le package sf
+
+1. Les données utilisées dans ce document sont stockées dans un projet RStudio. 
+Vous devez le télécharger puis le décompresser sur votre machine. Il vous sera ensuite possible de tester l'ensemble des manipulations proposées dans ce document au sein du projet **geodata**.  
+[Télécharger le projet](geodata.zip){.btn .btn-primary .btn-sm role="button"}  
+
+2. Nous utiliserons principalement le package `sf` dans la suite de ce document.   
+Installez le en utilisant la fonction `install.packages()`.
+
+```{r}
+#| eval: false
+install.packages("sf")
+
+```
+
+
+# Import et export
+
+Importez la couche des restaurants depuis le fichier **lot.gpkg** dans un objet nommé "resto".
+
+```{r}
+library(sf)
+# inspecter le fichier pour connaître les couches disponibles
+st_layers(dsn = "data/lot.gpkg")
+# import de la couche des restaurants
+resto <- st_read(dsn = "data/lot.gpkg", layer = "restaurants")
+```
+
+# Exploration et affichage
+
+Affichez les communes et les restaurants sur une même carte. 
+
+```{r}
+# import des données
+library(sf)
+com <- st_read(dsn = "data/lot.gpkg", layer = "communes", quiet = TRUE)
+resto <- st_read(dsn = "data/lot.gpkg", layer = "restaurants", quiet = TRUE)
+# Avec le package sf
+plot(st_geometry(com))
+plot(st_geometry(resto), add = T)
+```
+
+```{r}
+#| eval: false
+# Avec le package mapsf
+# installation du package
+install.packages("mapsf")
+```
+```{r}
+library(mapsf)
+mf_map(com)
+mf_map(resto, add = T)
+```
+
+# Sélection et jointure attributaire 
+1. Importer la couche des communes du département du Lot à partir du fichier geopackage **lot.gpkg**.
+
+```{r}
+# import des données
+library(sf)
+com <- st_read(dsn = "data/lot.gpkg", layer = "communes", quiet = TRUE)
+```
+
+
+2. Importer le fichier **com.csv**.   
+  Ce jeu de données porte sur les communes du Lot et contient plusieurs variables supplémentaires: 
+    - le nombre d'actifs (**ACT**). 
+    - le nombre d'actifs dans l'industrie (**IND**)
+    - la part des actifs dans la population totale (**SACT**)
+    - la part des actifs dans l'industrie dans le total des actifs (**SACT_IND**) 
+
+```{r}
+# import de données supplémentaires 
+com_df <- read.csv(file = "data/com.csv")
+```
+
+3. Joindre le jeu de données et la couche des communes. 
+
+```{r}
+# des identifiants en commun?
+names(com_df)
+names(com)
+
+# jointure attributaire 
+com_final <- merge(
+  x = com,             # l'objet sf
+  y = com_df,          # le data.frame
+  by.x = "INSEE_COM",  # identifiant dans x
+  by.y = "INSEE_COM",  # identifiant dans y
+  all.x = TRUE         # conserver toutes les lignes
+)
+```
+
+
+4. Sélectionnez les communes du Lot ayant plus de 500 actifs et dont la part des actifs dans la population totale est supérieure à 30%. 
+
+```{r}
+# selection des communes
+com_sel <- com_final[com_final$ACT > 500 & com_final$SACT > 30, ]
+```
+
+5. Affichez toutes les communes en gris et les communes sélectionnées en rouge.
+
+```{r}
+# Affichage 
+library(mapsf)
+mf_map(com)
+mf_map(com_sel, col = "red", add = TRUE)
+```
+
+# Sélection et jointure spatiale
+
+1. Importez la couche des communes et celle des restaurants du Lot.
+
+```{r}
+# import des données
+library(sf)
+com <- st_read(dsn = "data/lot.gpkg", layer = "communes", quiet = TRUE)
+resto_raw <- st_read(dsn = "data/lot.gpkg", layer = "restaurants", quiet = TRUE)
+```
+
+2. Réaliser une jointure spatiale pour connaitre pour chaque restaurant le nom et l'identifiant de la commune dans laquelle il se trouve. `st_join()`
+
+```{r}
+# jointure spatiale
+resto <- st_join(resto_raw, com[ ,c("INSEE_COM", "NOM_COM")], join = st_within)
+head(resto, 3)
+```
+
+
+# Opérations sur les géométries
+
+1. Calculez le nombre de restaurants par commune.
+```{r}
+# import des données
+library(sf)
+com <- st_read(dsn = "data/lot.gpkg", layer = "communes", quiet = TRUE)
+resto <- st_read(dsn = "data/lot.gpkg", layer = "restaurants", quiet = TRUE)
+
+# liste des restaurants par communes
+inter <- st_intersects(com, resto, sparse = TRUE)
+inter
+
+# compter le nombre de restaurants
+com$n_resto <- lengths(inter)
+```
+
+
+2. Quelles communes ont plus de 10 restaurants et moins de 1000 habitants ?
+
+```{r}
+# sélection attributaire
+com_sel <- com[com$n_resto > 10 & com$POPULATION < 1000, ]
+com_sel$NOM_COM
+```
+
+
+3. Créez une carte où vous afficherez toutes les communes en gris et les communes sélectionnées plus haut en rouge.
+
+```{r}
+library(mapsf)
+mf_map(com)
+mf_map(com_sel, col = "red", add = TRUE)
+```
+
