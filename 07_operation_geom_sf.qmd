@@ -265,7 +265,7 @@ mf_map(com, "alt_max", "choro", breaks = bks, pal = cols)
 Le package `rmapshaper` [@R-mapshaper] s'appuie sur la bibliothèque JavaScript Mapshaper [@JS-mapshaper] pour proposer plusieurs méthodes de simplification des géométries qui respectent la topologie.  
 L'argument `keep` permet d'indiquer le niveau de simplification. L'argument `keep_shapes` permet de conserver tous les polygones quand le niveau de simplification est élevé. 
 
-```{r}
+```{r mapshapper}
 #| layout-ncol: 3
 library("rmapshaper")
 com_simp1 <- ms_simplify(com, keep = 0.01 , keep_shapes = TRUE)

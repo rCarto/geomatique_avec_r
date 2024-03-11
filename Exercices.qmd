@@ -16,7 +16,7 @@ knitr:
 
 1. Les données utilisées dans ce document sont stockées dans un projet RStudio. 
 Vous devez le télécharger puis le décompresser sur votre machine. Il vous sera ensuite possible de tester l'ensemble des manipulations proposées dans ce document au sein du projet **geodata**.  
-[Télécharger le projet](geodata.zip){.btn .btn-primary .btn-sm role="button"}  
+[Télécharger le projet](https://rcarto.github.io/geomatique_avec_r/geodata.zip){.btn .btn-primary .btn-sm role="button"}  
 
 2. Nous utiliserons principalement le package `sf` dans la suite de ce document.   
 Installez le en utilisant la fonction `install.packages()`.

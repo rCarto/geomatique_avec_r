@@ -7,7 +7,7 @@ L'accent est porté sur le traitement des données vectorielles mais une partie 
 **Comment utiliser le manuel**  
 Les données utilisées dans ce document sont stockées dans un projet RStudio. 
 Vous devez le télécharger puis le décompresser sur votre machine. Il vous sera ensuite possible de tester l'ensemble des manipulations proposées dans ce document au sein du projet **geodata**.  
-[Télécharger le projet](geodata.zip){.btn .btn-primary .btn-sm role="button"}  
+[Télécharger le projet](https://rcarto.github.io/geomatique_avec_r/geodata.zip){.btn .btn-primary .btn-sm role="button"}  
 
 
 **Contribution et feedback**  
@@ -16,7 +16,8 @@ Vous pouvez nous envoyer vos remarques et suggestions en [postant une *issue*](h
 **Contexte**  
 Ce manuel a été initialement conçu pour accompagner le cours "Cartographie avec R" 
 du Master 2 Géomatique, géodécisionnel, géomarketing et multimédia (G2M) de 
-l'Université Paris 8 Vincennes - Saint-Denis. 
+l'Université Paris 8 Vincennes - Saint-Denis. Une version PDF est disponible 
+ici : [{{< fa file-pdf >}}](https://rcarto.github.io/geomatique_avec_r/Géomatique-avec-R.pdf).    
 Un deuxième manuel centré sur la cartographie est disponible ici :
 [Cartographie avec R](https://rcarto.github.io/cartographie_avec_r/).
 
@@ -35,10 +36,9 @@ Un deuxième manuel centré sur la cartographie est disponible ici :
 :::
 
 
---------
 <small>
 **Pour citer le document :**  
 
-Giraud, T. et Pecout, H. (2023). Géomatique avec R. https://doi.org/10.5281/zenodo.5906212
+Giraud, T. et Pecout, H. (2024). Géomatique avec R. https://doi.org/10.5281/zenodo.5906212
 
 </small>

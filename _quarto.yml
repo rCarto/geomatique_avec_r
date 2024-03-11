@@ -22,6 +22,20 @@ format:
     bibliography: [book.bib]
     lang: fr
     csl: "universite-de-montreal-apa.csl"
+  pdf:
+    callout-appearance: simple
+    callout-icon: false
+    theme: cosmo
+    pagetitle: "Géomatique avec R"
+    author-meta: "Timothée Giraud et Hugues Pecout"
+    description-meta: 
+      "Géomatique avec R: pour la réalisation de traitements reproductibles de l'information géographique.
+      Ce manuel est destiné tant aux utilisateurs de R souhaitant mettre en place des traitements de données
+      spatiales qu’aux utilisateurs souhaitant utiliser R pour réaliser les taches qu’ils réalisent habituellement
+      avec un SIG. Les principales étapes du traitement de l’information géographiques y sont abordées."
+    bibliography: [book.bib]
+    lang: fr
+    csl: "universite-de-montreal-apa.csl"
 
 
 
@@ -31,7 +45,6 @@ book:
   author:
     - name: Timothée Giraud
       orcid: 0000-0001-5679-6536
-      email: timothee.giraud@cnrs.fr
       url: https://rcarto.github.io
       affiliation:
           name: RIATE (CNRS)
@@ -49,7 +62,7 @@ book:
   cover-image: img/layer-group-solid.svg
   page-footer: 
     right: "<img src='img/logos-footer.png' width=290px />"
-    left: "[![CreativeCommonsLicense](img/by-nc-sa.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
+    left: "[![](img/by-nc-sa.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
   favicon: img/layer-group-solid.svg
   site-url: https://rcarto.github.io/rcarto/geomatique_avec_r/
   open-graph: true

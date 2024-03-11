@@ -41,6 +41,13 @@ mf_map(route, col = "grey90", lwd = 1, add = T)
 ## Calcul d'une matrice de temps
 La fonction `osrmTable()` permet de calculer des matrices de distances ou de temps par la route.
 
+:::{.callout-note}
+## Géoréférencement d'adresses ?
+Voir le point [Géoréférencement](1999_georeferencement.qmd) pour le géocodage d'adresse avec R
+:::
+
+
+
 Dans cet exemple nous calculons une matrice de temps entre 2 adresses et les restaurants de Cahors à pied.
 ```{r osrmtable}
 library(sf)
@@ -71,7 +78,3 @@ boxplot(t(mat$durations), cex.axis = .7, horizontal = TRUE)
 ```
 
 
-:::{.callout-note}
-## Géoréférencement d'adresses ?
-Voir l'[annexe A](1999_georeferencement.qmd) pour le géocodage d'adresse avec R
-:::
