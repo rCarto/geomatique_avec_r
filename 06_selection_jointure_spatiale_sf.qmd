@@ -13,7 +13,7 @@ mf_theme(mar = rep(.5,4))
 
 La fonction `st_filter()` permet d'effectuer des sélections spatiales. 
 L'argument `.predicate` permet de choisir sur quel critère se fait la 
-selection en utilisant l'une des fonctions de "predicat géométrique" 
+sélection en utilisant l'une des fonctions de "prédicat géométrique" 
 (par exemple `st_intersects()`, `st_within()`, `st_crosses()`...).  
 Nous allons ici sélectionner les routes qui intersectent la commune de Gramat
 ```{r sel_spat_inter}
@@ -50,5 +50,5 @@ route_gramat
 
 1. Importez la couche des communes et celle des restaurants du Lot.
 
-2. Réaliser une jointure spatiale pour connaitre pour chaque restaurant le nom et l'identifiant de la commune dans laquelle il se trouve. 
+2. Réaliser une jointure spatiale pour connaître pour chaque restaurant le nom et l'identifiant de la commune dans laquelle il se trouve. 
 
