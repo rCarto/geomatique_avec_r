@@ -10,7 +10,7 @@ x <- mf_theme(mar = rep(.5,4))
 
 
 
-## Extraire des centroides
+## Extraire des centroïdes
 
 ```{r centroid}
 com_c <- st_centroid(com)
