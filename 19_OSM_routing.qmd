@@ -73,7 +73,7 @@ mat <- osrmTable(src = places[c(3, 2)],
                  osrm.profile = "foot")
 
 mat$durations[, 1:5]
-# Quelle adresse possède une meilleurs accessibilité aux restaurants ?
+# Quelle adresse possède une meilleure accessibilité aux restaurants ?
 boxplot(t(mat$durations), cex.axis = .7, horizontal = TRUE)
 ```
 
