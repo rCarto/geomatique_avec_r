@@ -10,7 +10,7 @@ Pour modifier le système de projection d'un raster, nous pouvons utiliser la fo
 
 Le modèle est un nouveau raster sur lequel aligner/projeter les données. 
 Pour construire un modèle, nous utilisons dans un premier temps la fonction `project(x, crs)`.
-Cette fonction va produire un raster avec une résolution choisie automatiquement. Nous utilisons ensuite la fonction `res()` (ou `dim()`) pour ajuster la résolution de ce raster modèle (voir `?project`). La fonction `project()` peut ensuite être réutiliser pour projeter les valeurs dans le modèle, en précisant la méthode d'estimation à utiliser. 
+Cette fonction va produire un raster avec une résolution choisie automatiquement. Nous utilisons ensuite la fonction `res()` (ou `dim()`) pour ajuster la résolution de ce raster modèle (voir `?project`). La fonction `project()` peut ensuite être réutilisée pour projeter les valeurs dans le modèle, en précisant la méthode d'estimation à utiliser. 
 
 Quatre méthodes d'estimation sont disponibles :   
 
@@ -25,7 +25,7 @@ library(terra)
 elev_raw <- rast("data/elevation.tif") 
 clc_raw <- rast("data/clc_2018.tif")
 
-# Création d'un modele de raster en 2154
+# Création d'un modèle de raster en 2154
 model_proj <- project(x = elev_raw, y = "EPSG:2154")
 
 # Ajustement de la résolution du modèle (100 m)
