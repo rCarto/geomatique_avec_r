@@ -19,7 +19,7 @@ De nombreux packages de mise à disposition de données géographiques (géomét
 - {{< fa globe >}} `elevatr` [@R-elevatr] : donne accès à des données d'élévation mises à disposition par [*Amazon Web Services Terrain Tiles*](https://registry.opendata.aws/terrain-tiles/), l'[*Open Topography Global Datasets API*](https://opentopography.org/developers/) et l'[*USGS Elevation Point Query Service*](https://nationalmap.gov/epqs/).
 - {{< fa globe >}} `rgee` [@R-rgee] : permet d'utiliser l'API de [Google Earth Engine](https://www.google.com/intl/fr_in/earth/education/tools/google-earth-engine/), catalogue de données publiques et infrastructure de calcul pour les images satellites.   
 - {{< fa globe >}} `nasapower` [@R-nasapower] : API client *NASA* (prévision des ressources énergétiques mondiales, météorologie, énergie solaire de surface et climatologie). 
-- {{< fa globe >}} `geoknife` [@R-geoknife] : permet de traiter (en ligne) des données matricielles volumineuses issuent du *Geo Data Portal* de l'*U.S. Geological Survey*.
+- {{< fa globe >}} `geoknife` [@R-geoknife] : permet de traiter (en ligne) des données matricielles volumineuses issues du *Geo Data Portal* de l'*U.S. Geological Survey*.
 - {{< fa globe >}} {{< fa table >}} `rdhs` [@R-rdhs] : API client et gestions de données de l'[enquête démographique et de santé (DHS)](https://dhsprogram.com/).
 
 
@@ -32,12 +32,12 @@ De nombreux packages de mise à disposition de données géographiques (géomét
   
 
 
-## À l'échelle national
+## À l'échelle nationale
 
 
 
 - **Brésil**
-  - {{< fa globe >}} `geobr` [@R-geobr] : fournit un accès facile aux séries de données spatiales officielles du Brésil pour différentes années et découpage administratifs. 
+  - {{< fa globe >}} `geobr` [@R-geobr] : fournit un accès facile aux séries de données spatiales officielles du Brésil pour différentes années et découpages administratifs. 
 - **Chili**
   - {{< fa globe >}} `chilemapas` [@R-chilemapas] : donne accès aux  divisions politiques et administratives du Chili. 
 - **Espagne** 
@@ -52,7 +52,7 @@ De nombreux packages de mise à disposition de données géographiques (géomét
   - {{< fa table >}} `ipumsr` [@R-ipumsr] : Permet d'importer des données de recensement, d'enquête et géographiques fournies par l'[IPUMS](https://www.ipums.org/).
   - {{< fa table >}} `totalcensus` [@R-totalcensus] : permet d'extraire les données du recensement décennal et de l'*American Community Survey* au niveaux des *block*, *block group* et *tract*.
 - **Finland**
-  - {{< fa globe >}} `mapsFinland` [@R-mapsFinland] : donne un accès à des cartes et données concernant la Finland.
+  - {{< fa globe >}} `mapsFinland` [@R-mapsFinland] : donne un accès à des cartes et données concernant la Finlande.
 - **France**
   - {{< fa globe >}} `happign` [@R-happign] : accès à certaines données de l'IGN.
   - {{< fa globe >}} `insee` [@R-insee] : pour télécharger facilement les données de la base BDM ([Banque de Données Macroéconomiques](https://www.data.gouv.fr/fr/reuses/insee-package-r/)) de l'INSEE.
