@@ -2,9 +2,9 @@
 cache: false
 ---
 
-# Algèbre spatial
+# Algèbre spatiale
 
-L'algèbre spatial se classifie en quatre groupes d'opération [@Tomlin_1990] :   
+L'algèbre spatiale se classifie en quatre groupes d'opération [@Tomlin_1990] :   
 
 - ***Local*** : opération par cellule, sur une ou plusieurs couches;   
 - ***Focal*** : opération de voisinage (cellules environnantes);   
