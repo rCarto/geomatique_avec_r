@@ -2,9 +2,9 @@
 cache: false
 ---
 
-# Algèbre spatial
+# Algèbre spatiale
 
-L'algèbre spatial se classifie en quatre groupes d'opération [@Tomlin_1990] :   
+L'algèbre spatiale se classifie en quatre groupes d'opération [@Tomlin_1990] :   
 
 - ***Local*** : opération par cellule, sur une ou plusieurs couches;   
 - ***Focal*** : opération de voisinage (cellules environnantes);   
@@ -120,7 +120,7 @@ Sentinel2a <- rast("data/Sentinel2A.tif")
 
 Sentinel2a
 ```
-Cette image satellite multispectrale (résolution de 10m) datée du 12/10/2021, a été produite par le satellite *Sentinel-2* et a été récupéré sur la [plateforme Copernicus Open Access Hub](https://scihub.copernicus.eu/dhus/#/home). Une extraction des bandes spectrales Rouge et proche infrarouge, centrée sur le département du Lot a ensuite été réalisée.
+Cette image satellite multispectrale (résolution de 10m) datée du 12/10/2021, a été produite par le satellite *Sentinel-2* et a été récupérée sur la [plateforme Copernicus Open Access Hub](https://scihub.copernicus.eu/dhus/#/home). Une extraction des bandes spectrales Rouge et proche infrarouge, centrée sur le département du Lot a ensuite été réalisée.
 
 ```{r NDVI_1}
 #| fig-width: 7 

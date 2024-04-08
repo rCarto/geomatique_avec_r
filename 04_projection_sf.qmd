@@ -45,6 +45,6 @@ mf_title("ETRS89-extended / LAEA Europe")
 Si l'on souhaite projeter un objet spatial utilisant des coordonnées géographiques (lon/lat), le package `crsuggest` [@R-crsuggest] propose des projections adaptées à l'emprise de l'objet.
 
 
-Le site [CRS Explorer](https://crs-explorer.proj.org) met à disposition les références de très nombreux systèmes coordonnées.
+Le site [CRS Explorer](https://crs-explorer.proj.org) met à disposition les références de très nombreux systèmes de coordonnées.
 
 :::
