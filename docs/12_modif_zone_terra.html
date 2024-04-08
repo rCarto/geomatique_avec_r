@@ -270,7 +270,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./13_algebre_spatial_terra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Algèbre spatial</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Algèbre spatiale</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -418,7 +418,7 @@ div.csl-indent {
 <section id="sec-proj" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="sec-proj"><span class="header-section-number">12.1</span> Projections</h2>
 <p>Pour modifier le système de projection d’un raster, nous pouvons utiliser la fonction <code>project()</code>. Il est alors nécessaire de <strong>fournir un modèle</strong> et d’indiquer la <strong>méthode d’estimation</strong> des nouvelles valeurs des cellules.</p>
-<p>Le modèle est un nouveau raster sur lequel aligner/projeter les données. Pour construire un modèle, nous utilisons dans un premier temps la fonction <code>project(x, crs)</code>. Cette fonction va produire un raster avec une résolution choisie automatiquement. Nous utilisons ensuite la fonction <code>res()</code> (ou <code>dim()</code>) pour ajuster la résolution de ce raster modèle (voir <code>?project</code>). La fonction <code>project()</code> peut ensuite être réutiliser pour projeter les valeurs dans le modèle, en précisant la méthode d’estimation à utiliser.</p>
+<p>Le modèle est un nouveau raster sur lequel aligner/projeter les données. Pour construire un modèle, nous utilisons dans un premier temps la fonction <code>project(x, crs)</code>. Cette fonction va produire un raster avec une résolution choisie automatiquement. Nous utilisons ensuite la fonction <code>res()</code> (ou <code>dim()</code>) pour ajuster la résolution de ce raster modèle (voir <code>?project</code>). La fonction <code>project()</code> peut ensuite être réutilisée pour projeter les valeurs dans le modèle, en précisant la méthode d’estimation à utiliser.</p>
 <p>Quatre méthodes d’estimation sont disponibles :</p>
 <ul>
 <li><strong><em>near</em></strong> : plus proche voisin. Méthode rapide et par défaut pour les données qualitatives;<br>
@@ -436,7 +436,7 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>elev_raw <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"data/elevation.tif"</span>) </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>clc_raw <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"data/clc_2018.tif"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Création d'un modele de raster en 2154</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Création d'un modèle de raster en 2154</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>model_proj <span class="ot">&lt;-</span> <span class="fu">project</span>(<span class="at">x =</span> elev_raw, <span class="at">y =</span> <span class="st">"EPSG:2154"</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajustement de la résolution du modèle (100 m)</span></span>
@@ -1088,8 +1088,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./13_algebre_spatial_terra.html" class="pagination-link" aria-label="<span class='chapter-number'>13</span>&nbsp; <span class='chapter-title'>Algèbre spatial</span>">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Algèbre spatial</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./13_algebre_spatial_terra.html" class="pagination-link" aria-label="<span class='chapter-number'>13</span>&nbsp; <span class='chapter-title'>Algèbre spatiale</span>">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Algèbre spatiale</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
