@@ -54,15 +54,14 @@ book:
       affiliation:
           name: Géographie-cités (CNRS)
           url: https://geographie-cites.cnrs.fr/       
-  date: last-modified
+  date: today
   date-format: "D MMM YYYY"
   doi: 10.5281/zenodo.5906212
   search: true
   repo-url: https://github.com/rcarto/geomatique_avec_r/
   cover-image: img/layer-group-solid.svg
-  page-footer: 
-    right: "<img src='img/logos-footer.png' width=290px />"
-    left: "[![](img/by-nc-sa.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
+  sidebar: 
+    footer: "</br>[![](img/cc-icon.svg){height=42px}](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr)" 
   favicon: img/layer-group-solid.svg
   site-url: https://rcarto.github.io/rcarto/geomatique_avec_r/
   open-graph: true
@@ -101,7 +100,8 @@ book:
     - 2000_references.qmd
   appendices:
     - 2002_data.qmd
-  
+
+
 knitr:
   opts_chunk: 
     collapse: false

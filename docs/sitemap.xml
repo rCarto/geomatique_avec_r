@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/index.html</loc>
-    <lastmod>2024-03-11T14:38:31.020Z</lastmod>
+    <lastmod>2024-10-07T13:00:14.536Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/01_package_sf.html</loc>
@@ -66,7 +66,7 @@
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/16_OSM_interactif.html</loc>
-    <lastmod>2024-04-08T12:00:53.540Z</lastmod>
+    <lastmod>2024-10-07T12:22:38.232Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/17_OSM_static.html</loc>
@@ -74,7 +74,7 @@
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/18_OSM_data.html</loc>
-    <lastmod>2024-04-08T12:00:53.540Z</lastmod>
+    <lastmod>2024-10-07T12:22:38.248Z</lastmod>
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/19_OSM_routing.html</loc>
@@ -102,6 +102,6 @@
   </url>
   <url>
     <loc>https://rcarto.github.io/rcarto/geomatique_avec_r/Géomatique-avec-R.pdf</loc>
-    <lastmod>2024-04-08T12:03:15.764Z</lastmod>
+    <lastmod>2024-10-07T13:53:58.372Z</lastmod>
   </url>
 </urlset>

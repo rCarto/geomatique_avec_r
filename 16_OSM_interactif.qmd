@@ -9,6 +9,7 @@ Les deux principaux packages qui permettent d'afficher une carte interactive bas
 
 ```{r leaflet}
 #| cache: false
+#| fig-format: png
 library(sf)
 library(leaflet)
 com <- st_read("data/lot.gpkg", layer = "communes", quiet = TRUE)
@@ -44,6 +45,7 @@ m
 
 ```{r}
 #| cache: false
+#| fig-format: png
 library(mapview)
 mapview(cahors) + mapview(restaurant_cahors)
 ```

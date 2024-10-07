@@ -43,7 +43,9 @@ resto <- rbind(resto_point[, chps], resto_poly_point[, chps])
 
 **Affichage des résultats**
 
-```{r osmdatadisplay, cache=FALSE}
+```{r osmdatadisplay}
+#| fig-format: png
+#| cache: false
 library(mapview)
 mapview(cahors) + mapview(resto)
 ```
@@ -82,14 +84,12 @@ unique(osm_pt$amenity)
 Nous allons maintenant sélectionner les bars, cafés, pubs et restaurants et les visualiser sur une carte interactive. 
 
 ```{r}
+#| fig-format: png
 poi <- c("bar", "cafe", "pub", "restaurant")
 osm_pt <- osm_pt[osm_pt$amenity %in% poi, ]
-
 library(leaflet)
-
 pal <- colorFactor(palette = c("navy", "red", "darkgreen", "gold"),
                    domain = poi)
-
 leaflet(osm_pt) |>
   addProviderTiles("OpenStreetMap.HOT") |>
   addCircleMarkers(radius = 4,
