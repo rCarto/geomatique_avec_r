@@ -26,6 +26,7 @@ format:
     callout-appearance: simple
     callout-icon: false
     theme: cosmo
+    fig-format: png
     pagetitle: "Géomatique avec R"
     author-meta: "Timothée Giraud et Hugues Pecout"
     description-meta: 
