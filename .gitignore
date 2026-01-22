@@ -45,3 +45,4 @@ data/com.gpkg
 *_cache/
 /cache/
 /_freeze/
+**/*.quarto_ipynb

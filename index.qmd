@@ -1,50 +1,6 @@
-# *Préambule* {.unnumbered}
-
-Ce manuel est destiné tant aux utilisateurs de R souhaitant mettre en place des traitements de données spatiales qu'aux utilisateurs souhaitant utiliser R pour réaliser les taches qu'ils réalisent habituellement avec un SIG.   
-Les principales étapes du traitement de l'information géographiques y sont abordées. 
-L'accent est porté sur le traitement des données vectorielles mais une partie est tout de même dédiée aux données raster. 
-
-**Comment utiliser le manuel**  
-Les données utilisées dans ce document sont stockées dans un projet RStudio. 
-Vous devez le télécharger puis le décompresser sur votre machine. Il vous sera ensuite possible de tester l'ensemble des manipulations proposées dans ce document au sein du projet **geodata**.  
-[Télécharger le projet](https://rcarto.github.io/geomatique_avec_r/geodata.zip){.btn .btn-primary .btn-sm role="button"}  
+---
+title: "Géomatique avec R"
+---
 
 
-**Contribution et feedback**  
-Vous pouvez nous envoyer vos remarques et suggestions en [postant une *issue*](https://github.com/rCarto/geomatique_avec_r/issues) sur le [dépôt GitHub](https://github.com/rCarto/geomatique_avec_r) de ce document. 
-
-**Contexte**  
-Ce manuel a été initialement conçu pour accompagner le cours "Cartographie avec R" 
-du Master 2 Géomatique, géodécisionnel, géomarketing et multimédia (G2M) de 
-l'Université Paris 8 Vincennes - Saint-Denis. Une version PDF est disponible 
-ici : [{{< fa file-pdf >}}](https://rcarto.github.io/geomatique_avec_r/Géomatique-avec-R.pdf).    
-Un deuxième manuel centré sur la cartographie est disponible ici :
-[Cartographie avec R](https://rcarto.github.io/cartographie_avec_r/).
-
-**Voir aussi en anglais : **
-
-::: {layout="[[1,1,1,1,1], [1,1,1]]"}
-
-![@lovelace2019](img/r2.png)
-
-
-![@pebesma2023](img/r1.png)
-
-
-![@hijmans](img/r3.png)
-
-:::
-
-
-<small>
-**Pour citer le document :**  
-
-Giraud, T. et Pecout, H. (2024). Géomatique avec R. https://doi.org/10.5281/zenodo.5906212
-
-</small>
-
-
-  
-</br>  
-
-![](img/logo_footer.svg){height=60px fi-align="center"}
+Ce document est archivé. Il a été remplacé par [Géomatique et cartographie avec R](https://rgeocarto.github.io/).
